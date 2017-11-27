@@ -1,15 +1,24 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Hundepass !
-  </h1>
+
+<div fxLayout="column" fxLayout.xs="column">
+  <div fxFlexAlign="center">
+    <nav
+      style="text-align: center; background-color: lightblue; height: 60px; padding-top: 20px; width: 1000px;border: solid black 1px;">
+      <a routerLink="/admin" routerLinkActive="active">Admin</a>
+      <a routerLink="/racing" routerLinkActive="active">Rennen</a>
+      <a routerLink="/coursing" routerLinkActive="active">Coursing</a>
+      <a routerLink="/exhibition" routerLinkActive="active">Ausstellung</a>
+
+    </nav>
+
+    <router-outlet></router-outlet>
+
+  </div>
+  <div fxFlexAlign="center" class="footer"> footer</div>
+
 </div>
-
-
-
-<div class="test">
+<!--<div class="test">
 <app-dog-form></app-dog-form>
-</div>
+</div>-->
 
 
 

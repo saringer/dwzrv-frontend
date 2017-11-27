@@ -1,1 +1,15 @@
+
+
 .test{border: solid 1px black}
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  background-color: lightblue;
+  height: 30px;
+  border: solid 1px black;
+  text-align: center;
+}

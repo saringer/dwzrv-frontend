@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Dogpass} from '../dogpass'
+import {Dogpass} from '../../dogpass'
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
 import {catchError, tap} from "rxjs/operators";
 import {Subject} from "rxjs/Subject";
+import {RequestOptions} from "@angular/http";
 
 
 @Component({
@@ -50,9 +51,10 @@ export class DogFormComponent implements OnInit {
 
 
   onSubmit() {
-   // const req = this.http.post(this.saveDogpassUrl, this.model);
-    //this.clickMessage = "submit sent";
-    //req.subscribe();
+    console.log("Test")
+    const req = this.http.post(this.saveDogpassUrl, this.model);
+    this.clickMessage = "submit sent";
+    req.subscribe();
   }
 
   /* GET heroes whose name contains search term */
@@ -83,13 +85,16 @@ export class DogFormComponent implements OnInit {
 
   searchEntries(term) {
     return this.http
-      .get(this.baseUrl + this.queryUrl + term)
+      .get(this.searchDogpassUrl)
       .map(res => res.toString());
   }
 
 
 
+
   private saveDogpassUrl = 'http://localhost:8080/save';  // URL to web api
+  private searchDogpassUrl = 'http://localhost:8080/search';  // URL to web api
+
 
 
   ngOnInit() {
