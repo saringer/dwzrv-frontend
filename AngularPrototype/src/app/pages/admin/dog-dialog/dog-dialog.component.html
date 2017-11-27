@@ -1,48 +1,11 @@
 <h2 mat-dialog-title>Delete all</h2>
-<mat-dialog-content><div class="example-container mat-elevation-z8" style="width: 1000px;height: 300px; overflow: auto">
-  <mat-table #table [dataSource]="dataSource">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="dog">
-      <mat-header-cell *matHeaderCellDef> Dog name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="owner">
-      <mat-header-cell *matHeaderCellDef> Owner</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
-    </ng-container>
-
-    <!-- Action Menu -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-      <mat-cell *matCellDef="let element">
-
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Edit</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item" (click)="openDialog()">edit dog</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
-          </div>
-        </div>
+<mat-dialog-content>
+  <div class="example-container mat-elevation-z8" style="width: 300px;height: 300px; overflow: auto">
+    <app-dog-form></app-dog-form>
 
 
-
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-
-
-</div></mat-dialog-content>
-
+  </div>
+</mat-dialog-content>
 
 
 <mat-dialog-actions>
@@ -50,9 +13,6 @@
   <button mat-raised-button (click)="onNoClick()">cancel</button>
   <button mat-raised-button (click)="onYesClick()">submit</button>
 </mat-dialog-actions>
-
-
-
 
 
 <p>
