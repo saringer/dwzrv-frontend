@@ -1,3 +1,49 @@
-<p>
-  exhibition works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Platz</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="punkte">
+      <mat-header-cell *matHeaderCellDef> Punkte</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.punkte}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bis">
+      <mat-header-cell *matHeaderCellDef> BIS</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bis}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="bob">
+      <mat-header-cell *matHeaderCellDef> BOB</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.bob}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="konkurrenz">
+      <mat-header-cell *matHeaderCellDef> Konkurrenz</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.konkurrenz}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="anzahl">
+      <mat-header-cell *matHeaderCellDef> Anzahl</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.anzahl}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+</div>
+
+

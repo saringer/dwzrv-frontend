@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
-import {DogFormComponent} from './pages/dog-form/dog-form.component';
+import {DogFormComponent} from './forms/dog-form/dog-form.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {SearchService} from "./pages/dog-form/search.service";
+import {CompetitionService} from "./forms/dog-form/shared.services";
 import {CoursingComponent} from './pages/coursing/coursing.component';
 import {RacingComponent} from './pages/racing/racing.component';
 import {MatTableModule} from '@angular/material/table';
@@ -25,6 +25,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DogDialogComponent } from './pages/admin/dog-dialog/dog-dialog.component';
 import { ExhibitionComponent } from './pages/exhibition/exhibition.component';
+import { OwnerFormComponent } from './forms/owner-form/owner-form.component';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -51,11 +52,13 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DogFormComponent,
+    OwnerFormComponent,
     CoursingComponent,
     RacingComponent,
     AdminComponent,
     DogDialogComponent,
     ExhibitionComponent
+
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [ DogDialogComponent ],
-  providers: [SearchService],
+  providers: [CompetitionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

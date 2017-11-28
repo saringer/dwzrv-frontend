@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialogRef, MatTableDataSource} from "@angular/material";
+import {HttpClient} from "@angular/common/http";
+import {DogFormComponent} from "../../../forms/dog-form/dog-form.component";
+import {OwnerFormComponent} from "../../../forms/owner-form/owner-form.component";
 
 @Component({
   selector: 'app-dog-dialog',
@@ -7,54 +10,30 @@ import {MatDialogRef, MatTableDataSource} from "@angular/material";
   styleUrls: ['./dog-dialog.component.css']
 })
 export class DogDialogComponent implements OnInit {
+  @ViewChild(DogFormComponent) dogForm: DogFormComponent;
+  @ViewChild(OwnerFormComponent) ownerForm: OwnerFormComponent;
 
-  constructor(public dialogRef: MatDialogRef<DogDialogComponent>) { }
+
+  constructor(private http: HttpClient, public dialogRef: MatDialogRef<DogDialogComponent>) { }
 
   ngOnInit() {
   }
 
-
-  onNoClick(): void {
+  onCreateNewClick() {
+    this.dogForm.onSubmit();
     this.dialogRef.close();
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+    this.clickMessage = 'test';
+    console.log("test")
+  }
 
-  displayedColumns = ['dog', 'owner', 'id'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+  clickMessage = '';
+
+
 
 }
 
-export interface Element {
-  id: number;
-  name: string;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: Element[] = [
-  {id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {id: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {id: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {id: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {id: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'}
-
-];

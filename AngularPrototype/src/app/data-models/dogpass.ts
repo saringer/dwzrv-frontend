@@ -9,7 +9,8 @@ export class Dogpass {
     public chip_no: number,
     public coat_colour: string,
     public breeder: string,
-    public date_of_birth: Date
+    public date_of_birth: Date,
+    public owner_id: number
   ) {
 
   }

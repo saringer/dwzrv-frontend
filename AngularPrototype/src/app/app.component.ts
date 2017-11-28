@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {SearchService} from "./pages/dog-form/search.service";
+import {SearchService} from "./forms/dog-form/shared.services";
 import {Subject} from "rxjs/Subject";
 
 @Component({

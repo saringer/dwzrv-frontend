@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Dogpass} from '../../dogpass'
+import {Dogpass} from '../../data-models/dogpass'
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {of} from "rxjs/observable/of";
@@ -17,13 +17,9 @@ import {RequestOptions} from "@angular/http";
 export class DogFormComponent implements OnInit {
 
   constructor(private http: HttpClient) {
-    this.search(this.searchTerm$)
-      .subscribe(results => {
-        this.results = results.toString();
-      });
+
 
   }
-  //constructor(public searchService: SearchService) {}
 
 
   clickMessage = '';
@@ -37,7 +33,7 @@ export class DogFormComponent implements OnInit {
 
   sex = ['male', 'female'];
 
-  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', '', new Date(2013, 11, 1));
+  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', '', new Date(2013, 11, 1),1);
 
   submitted = false;
   items: Array<string>;
@@ -51,9 +47,7 @@ export class DogFormComponent implements OnInit {
 
 
   onSubmit() {
-    console.log("Test")
     const req = this.http.post(this.saveDogpassUrl, this.model);
-    this.clickMessage = "submit sent";
     req.subscribe();
   }
 

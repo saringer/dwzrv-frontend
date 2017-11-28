@@ -1,5 +1,5 @@
-
 <div class="example-container mat-elevation-z8" style="width: 1000px;height: 100% !important;">
+
   <mat-table #table [dataSource]="dataSource">
 
     <!--- Note that these columns can be defined in any order.
@@ -8,29 +8,36 @@
     <!-- Position Column -->
     <ng-container matColumnDef="dog">
       <mat-header-cell *matHeaderCellDef> Dog name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.dogname}}</mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="owner">
       <mat-header-cell *matHeaderCellDef> Owner</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.dogowner}}</mat-cell>
     </ng-container>
 
     <!-- Action Menu -->
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
       <mat-cell *matCellDef="let element">
 
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Edit</button>
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Edit Dog/Owner</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button class="dropdown-item" (click)="openDialog()">edit dog</button>
             <button class="dropdown-item">Another Action</button>
             <button class="dropdown-item">Something else is here</button>
           </div>
         </div>
-
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Edit Ranking</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+            <button class="dropdown-item" (click)="openDialog()">Rennen</button>
+            <button class="dropdown-item">Coursing</button>
+            <button class="dropdown-item">Ausstellung</button>
+          </div>
+        </div>
 
 
       </mat-cell>
@@ -43,4 +50,8 @@
 
 </div>
 
+<div>
+  <button (click)="onCreateClick()">New</button>
+  {{clickmessage}}
 
+</div>

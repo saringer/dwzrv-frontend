@@ -1,6 +1,5 @@
-
 <div fxLayout="column" fxLayout.xs="column" style="width: 100%;">
-  <div fxFlexAlign="center" style="width: 100%;">
+  <div style="width: 100%;">
     <nav
       style="text-align: center; background-color: lightblue; height: 60px; padding-top: 20px;">
       <a routerLink="/admin" routerLinkActive="active">Admin</a>
@@ -10,9 +9,13 @@
 
     </nav>
 
-    <router-outlet></router-outlet>
 
   </div>
+
+  <div class="router-container" fxLayoutAlign="center left">
+    <router-outlet ></router-outlet>
+  </div>
+
   <div fxFlexAlign="center" class="footer"> footer</div>
 
 </div>

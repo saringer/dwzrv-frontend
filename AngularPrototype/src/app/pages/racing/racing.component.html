@@ -1,4 +1,46 @@
-<div>
-  <app-dog-form></app-dog-form>
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Platz</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="besitzer">
+      <mat-header-cell *matHeaderCellDef> Besitzer</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.besitzer}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rennengesamt">
+      <mat-header-cell *matHeaderCellDef> Rennen gesamt</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.rennengesamt}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rennengewertet">
+      <mat-header-cell *matHeaderCellDef> Rennen gewertet</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.rennengewertet}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="punkte">
+      <mat-header-cell *matHeaderCellDef> Punkte - 5 beste Rennen</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.punkte}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
 
 </div>
+
+
+

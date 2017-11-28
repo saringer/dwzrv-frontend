@@ -1,22 +1,21 @@
-<h2 mat-dialog-title>Delete all</h2>
+<h2 mat-dialog-title>New</h2>
 <mat-dialog-content>
-  <div class="example-container mat-elevation-z8" style="width: 300px;height: 300px; overflow: auto">
+  <div fxLayout="row" fxLayout.xs="column" style="width: 100%;">
     <app-dog-form></app-dog-form>
-
-
+    <app-owner-form></app-owner-form>
   </div>
+
 </mat-dialog-content>
 
 
 <mat-dialog-actions>
   <button mat-raised-button (click)="onCreateNewClick()">create</button>
   <button mat-raised-button (click)="onNoClick()">cancel</button>
-  <button mat-raised-button (click)="onYesClick()">submit</button>
 </mat-dialog-actions>
 
 
 <p>
-
+{{clickMessage}}
 </p>
 
 
