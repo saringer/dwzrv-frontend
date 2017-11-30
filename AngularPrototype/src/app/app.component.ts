@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import {SearchService} from "./forms/dog-form/shared.services";
 import {Subject} from "rxjs/Subject";
+import {CanActivate} from "@angular/router";
+import {AuthService} from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,29 @@ import {Subject} from "rxjs/Subject";
   providers: []
 })
 export class AppComponent {
+  constructor(private authService: AuthService) {}
+
   title = 'app';
+  isAdmin =false;
+
+  authenticate() {
+    this.authService.login();
+    this.isAdmin = true;
+  }
+  isLoggedIn() {
+    this.authService.isLoggedIn();
+  }
 
 
 }
+@Injectable()
+export class CanActivateViaAuthGuard implements CanActivate {
+
+
+  constructor(private authService: AuthService) {}
+
+  canActivate() {
+    return this.authService.isLoggedIn();
+  }
+}
+

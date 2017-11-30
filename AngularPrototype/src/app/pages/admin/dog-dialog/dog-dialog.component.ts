@@ -11,7 +11,6 @@ import {OwnerFormComponent} from "../../../forms/owner-form/owner-form.component
 })
 export class DogDialogComponent implements OnInit {
   @ViewChild(DogFormComponent) dogForm: DogFormComponent;
-  @ViewChild(OwnerFormComponent) ownerForm: OwnerFormComponent;
 
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<DogDialogComponent>) { }
@@ -26,11 +25,8 @@ export class DogDialogComponent implements OnInit {
 
   onNoClick(): void {
     this.dialogRef.close();
-    this.clickMessage = 'test';
-    console.log("test")
   }
 
-  clickMessage = '';
 
 
 

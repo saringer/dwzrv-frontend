@@ -1,9 +1,10 @@
 <div class="container" style="width: 300px;">
 
-  <h2>Dog Details</h2>
 
 
-  <form (ngSubmit)="onSubmit()"  #dogForm="ngForm" style="width: 60%; margin:0 auto;">
+ <form (ngSubmit)="onSubmit()"  #dogForm="ngForm" style="width: 60%; margin:0 auto;">
+
+
     <div class="form-group" >
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name">

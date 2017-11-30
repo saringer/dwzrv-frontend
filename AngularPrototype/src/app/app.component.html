@@ -1,11 +1,11 @@
 <div fxLayout="column" fxLayout.xs="column" style="width: 100%;">
   <div style="width: 100%;">
     <nav
-      style="text-align: center; background-color: lightblue; height: 60px; padding-top: 20px;">
-      <a routerLink="/admin" routerLinkActive="active">Admin</a>
-      <a routerLink="/racing" routerLinkActive="active">Rennen</a>
-      <a routerLink="/coursing" routerLinkActive="active">Coursing</a>
-      <a routerLink="/exhibition" routerLinkActive="active">Ausstellung</a>
+      style="text-align: center; background-color: #3f51b5; height: 60px; padding-top: 17px;">
+      <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" style="padding-right:15px; color: white;font-size: 20px;">Admin Ansicht</a>
+      <a routerLink="/racing" routerLinkActive="active" style="padding-right:15px; color: white;font-size: 20px;">Rennen</a>
+      <a routerLink="/coursing" routerLinkActive="active" style="padding-right:15px; color: white;font-size: 20px;">Coursing</a>
+      <a routerLink="/exhibition" routerLinkActive="active" style="padding-right:15px; color: white;font-size: 20px;">Ausstellung</a>
 
     </nav>
 
@@ -16,7 +16,7 @@
     <router-outlet ></router-outlet>
   </div>
 
-  <div fxFlexAlign="center" class="footer"> footer</div>
+  <div fxFlexAlign="center" class="footer"> <button mat-raised-button color="primary" style="text-align: center;" (click)="authenticate()">Admin Login</button>  </div>
 
 </div>
 <!--<div class="test">

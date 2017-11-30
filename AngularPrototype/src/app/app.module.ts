@@ -1,16 +1,19 @@
+import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AppComponent} from './app.component';
+import {AppComponent, CanActivateViaAuthGuard} from './app.component';
 import {DogFormComponent} from './forms/dog-form/dog-form.component';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
 import {CompetitionService} from "./forms/dog-form/shared.services";
 import {CoursingComponent} from './pages/coursing/coursing.component';
 import {RacingComponent} from './pages/racing/racing.component';
 import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from "@angular/cdk/table";
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from "@angular/material";
+import {MatStepperModule} from '@angular/material/stepper';
 
 [CdkTableModule]
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -26,11 +29,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DogDialogComponent } from './pages/admin/dog-dialog/dog-dialog.component';
 import { ExhibitionComponent } from './pages/exhibition/exhibition.component';
 import { OwnerFormComponent } from './forms/owner-form/owner-form.component';
+import {DogService} from "./services/dog.service";
+import { OwnerDialogComponent } from './pages/admin/owner-dialog/owner-dialog.component';
+import {AuthService} from "./services/auth.service";
+import {MatTabsModule} from '@angular/material/tabs';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
   {path: 'racing', component: RacingComponent},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [CanActivateViaAuthGuard]},
   {path: 'exhibition', component: ExhibitionComponent},
   {path: '', redirectTo: 'racing', pathMatch: 'full'}
 
@@ -57,7 +64,8 @@ const appRoutes: Routes = [
     RacingComponent,
     AdminComponent,
     DogDialogComponent,
-    ExhibitionComponent
+    ExhibitionComponent,
+    OwnerDialogComponent
 
   ],
   imports: [
@@ -77,11 +85,15 @@ const appRoutes: Routes = [
     CdkTableModule,
     FlexLayoutModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTabsModule
 
   ],
-  entryComponents: [ DogDialogComponent ],
-  providers: [CompetitionService],
+  entryComponents: [ DogDialogComponent, OwnerDialogComponent ],
+  providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

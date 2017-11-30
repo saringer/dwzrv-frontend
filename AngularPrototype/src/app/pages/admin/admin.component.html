@@ -1,57 +1,130 @@
 <div class="example-container mat-elevation-z8" style="width: 1000px;height: 100% !important;">
 
-  <mat-table #table [dataSource]="dataSource">
+  <mat-tab-group>
+    <!-- HUNDE ANMELDEN %%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <mat-tab label="Hunde anmelden">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+      <mat-table #table [dataSource]="dataSource" matSort>
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="dog">
-      <mat-header-cell *matHeaderCellDef> Dog name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dogname}}</mat-cell>
-    </ng-container>
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="owner">
-      <mat-header-cell *matHeaderCellDef> Owner</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dogowner}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+        </ng-container>
 
-    <!-- Action Menu -->
-    <ng-container matColumnDef="action">
-      <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-      <mat-cell *matCellDef="let element">
+        Name Column
+        <ng-container matColumnDef="owner">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Besitzer</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.owner_id}}</mat-cell>
+        </ng-container>
 
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Edit Dog/Owner</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button class="dropdown-item" (click)="openDialog()">edit dog</button>
-            <button class="dropdown-item">Another Action</button>
-            <button class="dropdown-item">Something else is here</button>
-          </div>
-        </div>
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Edit Ranking</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-            <button class="dropdown-item" (click)="openDialog()">Rennen</button>
-            <button class="dropdown-item">Coursing</button>
-            <button class="dropdown-item">Ausstellung</button>
-          </div>
-        </div>
+        <!-- Action Menu -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Edit Dog/Owner</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button class="dropdown-item" (click)="openDialog()">edit dog</button>
+                <button class="dropdown-item">Another Action</button>
+                <button class="dropdown-item">Something else is here</button>
+              </div>
+            </div>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Edit Ranking</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                <button class="dropdown-item" (click)="openDialog()">Rennen</button>
+                <button class="dropdown-item">Coursing</button>
+                <button class="dropdown-item">Ausstellung</button>
+              </div>
+            </div>
 
 
-      </mat-cell>
-    </ng-container>
+          </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+      </mat-table>
+
+      <div>
+        <button mat-raised-button color="primary" (click)="onCreateOwnerClick()">Add Owner</button>
+        <button mat-raised-button color="primary" (click)="onCreateDogClick()">Add Dog</button>
+        <button (click)="onLoadClick()">Load</button>
+
+        {{clickmessage}}
+
+      </div>
+
+    </mat-tab>
+    <!-- TURNIERE ANLEGEN %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <mat-tab label="Turniere anlegen">
+
+
+      <mat-table #table [dataSource]="dataSourceTournaments" matSort>
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Turniername</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+        </ng-container>
+
+        Name Column
+        <ng-container matColumnDef="owner">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Datum</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.owner_id}}</mat-cell>
+        </ng-container>
+
+        <!-- Action Menu -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic3" ngbDropdownToggle>Edit Dog/Owner</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
+                <button class="dropdown-item" (click)="openDialog()">edit dog</button>
+                <button class="dropdown-item">Another Action</button>
+                <button class="dropdown-item">Something else is here</button>
+              </div>
+            </div>
+            <div ngbDropdown class="d-inline-block">
+              <button class="btn btn-outline-primary" id="dropdownBasic4" ngbDropdownToggle>Edit Ranking</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
+                <button class="dropdown-item" (click)="openDialog()">Rennen</button>
+                <button class="dropdown-item">Coursing</button>
+                <button class="dropdown-item">Ausstellung</button>
+              </div>
+            </div>
+
+
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+      </mat-table>
+
+    </mat-tab>
+    <mat-tab label="Turnierwertungen eintragen">Content 3</mat-tab>
+
+  </mat-tab-group>
+
+
+
 
 
 </div>
 
-<div>
-  <button (click)="onCreateClick()">New</button>
-  {{clickmessage}}
 
-</div>

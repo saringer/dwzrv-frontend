@@ -27,6 +27,7 @@ export class DogFormComponent implements OnInit {
   queryUrl: string = '?search=';
   results: Object;
   searchTerm$ = new Subject<string>();
+  boolean = true;
 
   onClickMe() {
   }
@@ -44,6 +45,17 @@ export class DogFormComponent implements OnInit {
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
+
+
+  test() {
+    if (this.boolean == true) {
+      this.boolean = false;
+    }
+    else {
+      this.boolean = true;
+    }
+    console.log(this.boolean);
+  }
 
 
   onSubmit() {
@@ -71,22 +83,10 @@ export class DogFormComponent implements OnInit {
     );
   }*/
 
-  search(terms: Observable<string>) {
-    return terms.debounceTime(400)
-      .distinctUntilChanged()
-      .switchMap(term => this.searchEntries(term));
-  }
-
-  searchEntries(term) {
-    return this.http
-      .get(this.searchDogpassUrl)
-      .map(res => res.toString());
-  }
 
 
+  private saveDogpassUrl = 'http://localhost:8080/save/dog';  // URL to web api
 
-
-  private saveDogpassUrl = 'http://localhost:8080/save';  // URL to web api
   private searchDogpassUrl = 'http://localhost:8080/search';  // URL to web api
 
 
