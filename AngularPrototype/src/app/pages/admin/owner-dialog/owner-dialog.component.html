@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Owner Details</h1>
+
+
+<mat-dialog-content>
+  <div style="width: 100%;">
+    <app-owner-form></app-owner-form>
+  </div>
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onCreateNewClick()">create</button>
+  <button mat-raised-button (click)="onNoClick()">cancel</button>
+</mat-dialog-actions>
