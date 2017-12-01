@@ -11,8 +11,6 @@ import {OwnerFormComponent} from "../../../forms/owner-form/owner-form.component
 })
 export class DogDialogComponent implements OnInit {
   @ViewChild(DogFormComponent) dogForm: DogFormComponent;
-  @Input()  name: string;
-  @Output() onSubmit = new EventEmitter();
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<DogDialogComponent>) { }
 
@@ -22,7 +20,6 @@ export class DogDialogComponent implements OnInit {
   onCreateNewClick() {
     this.dogForm.onSubmit();
     this.dialogRef.close();
-    this.onSubmit.emit();
   }
 
   onNoClick(): void {

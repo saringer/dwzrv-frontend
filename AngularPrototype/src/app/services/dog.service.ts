@@ -4,11 +4,14 @@ import { Observable }   from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Dogpass } from "../data-models/dogpass";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Breeder} from "../data-models/breeder";
 
 @Injectable()
 export class DogService {
   private dogsUrl = 'http://localhost:8080/get/dogs';
   private tournamentsUrl = 'http://localhost:8080/get/tournaments';
+  private breedersUrl = 'http://localhost:8080/get/breeders';
+
 
 
   constructor(private http: HttpClient) {
@@ -22,6 +25,11 @@ export class DogService {
 
   getTournaments(): Observable<Tournament[]> {
     return this.http.get<Tournament[]>(this.tournamentsUrl);
+  }
+
+  getBreeders(): Observable<Breeder[]> {
+    return this.http.get<Breeder[]>(this.breedersUrl);
+
   }
 
 }

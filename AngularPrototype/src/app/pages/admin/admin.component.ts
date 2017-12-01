@@ -32,6 +32,8 @@ import {startWith} from 'rxjs/operators/startWith';
 import {OwnerDialogComponent} from "./owner-dialog/owner-dialog.component";
 import {TournamentDialogComponent} from "./tournament-dialog/tournament-dialog.component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Breeder} from "../../data-models/breeder";
+import {BreederDialogComponent} from "./breeder-dialog/breeder-dialog.component";
 
 @Component({
   selector: 'app-admin',
@@ -44,19 +46,20 @@ export class AdminComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: UserDataSource | null;
-
   dataSourceTournament: TournamentDataSource | null;
+  dataSourceBreeder: BreederDataSource | null;
+
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  tournaments:Observable<Tournament[]>;
-  selected:any;
-
+  tournaments: Observable<Tournament[]>;
+  selected: any;
 
 
   ngOnInit() {
     this.dataSource = new UserDataSource(this.dogService, this.sort);
     this.dataSourceTournament = new TournamentDataSource(this.dogService, this.sort);
-    this.tournaments= this.dogService.getTournaments();
+    this.dataSourceBreeder = new BreederDataSource(this.dogService, this.sort);
+    this.tournaments = this.dogService.getTournaments();
 
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -66,24 +69,21 @@ export class AdminComponent implements OnInit {
     });
 
 
-
   }
 
 
   displayedColumns = ['name', 'owner', 'action'];
   displayedColumsTournament = ['title', 'date', 'action'];
+  displayedColumnsBreeder = ['breederfirstname', 'breederlastname', 'kennelname', 'action'];
 
 
-  constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService,private _formBuilder: FormBuilder) {
+  constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService, private _formBuilder: FormBuilder) {
     this.dogService.getDogs();
     this.dogService.getTournaments()
   }
-
-
-  onSubmit() {
-    this.onLoadClick();
+  onCreateBreederClick() {
+    let dialogRef = this.dialog.open(BreederDialogComponent);
   }
-
   onCreateDogClick() {
     let dialogRef = this.dialog.open(DogDialogComponent);
   }
@@ -100,6 +100,8 @@ export class AdminComponent implements OnInit {
   onLoadClick() {
     this.dataSource = new UserDataSource(this.dogService, this.sort);
     this.dataSourceTournament = new TournamentDataSource(this.dogService, this.sort);
+    this.dataSourceBreeder = new BreederDataSource(this.dogService, this.sort);
+    this.tournaments = this.dogService.getTournaments();
 
   }
 
@@ -114,10 +116,21 @@ export class TournamentDataSource extends DataSource<any> {
 
   connect(): Observable<Tournament[]> {
     return this.dogService.getTournaments();
-
-    // https://github.com/angular/material2/issues/8283
   }
 
+  disconnect() {
+  }
+}
+
+export class BreederDataSource extends DataSource<any> {
+  constructor(private dogService: DogService,
+              private sort: MatSort) {
+    super();
+  }
+
+  connect(): Observable<Breeder[]> {
+    return this.dogService.getBreeders();
+  }
 
   disconnect() {
   }

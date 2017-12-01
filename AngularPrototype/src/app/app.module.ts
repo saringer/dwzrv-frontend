@@ -37,6 +37,8 @@ import {DropdownModule} from 'primeng/primeng';
 import { TournamentFormComponent } from './forms/tournament-form/tournament-form.component';
 import { TournamentDialogComponent } from './pages/admin/tournament-dialog/tournament-dialog.component';
 import {MatFormFieldModule, MatInputModule} from "@angular/material";
+import { BreederFormComponent } from './forms/breeder-form/breeder-form.component';
+import { BreederDialogComponent } from './pages/admin/breeder-dialog/breeder-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -66,7 +68,9 @@ const appRoutes: Routes = [
     ExhibitionComponent,
     OwnerDialogComponent,
     TournamentFormComponent,
-    TournamentDialogComponent
+    TournamentDialogComponent,
+    BreederFormComponent,
+    BreederDialogComponent
 
   ],
   imports: [
@@ -99,7 +103,7 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent ],
+  entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent ],
   providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService],
   bootstrap: [AppComponent]
 })

@@ -24,6 +24,6 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {total: '100%', position: 1, name: 'Hund1', besitzer: 'Lehmann', gesamtteilnahme: 2, inwertung: 2},
+  {total: '100%', position: 1, name: 'Hund1', besitzer: 'Lehmann', gesamtteilnahme: 5, inwertung: 5},
 ];
 
