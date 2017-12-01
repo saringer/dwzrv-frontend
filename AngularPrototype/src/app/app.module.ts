@@ -39,6 +39,8 @@ import { TournamentDialogComponent } from './pages/admin/tournament-dialog/tourn
 import {MatFormFieldModule, MatInputModule} from "@angular/material";
 import { BreederFormComponent } from './forms/breeder-form/breeder-form.component';
 import { BreederDialogComponent } from './pages/admin/breeder-dialog/breeder-dialog.component';
+import { ClubFormComponent } from './forms/club-form/club-form.component';
+import { ClubDialogComponent } from './pages/admin/club-dialog/club-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -70,7 +72,9 @@ const appRoutes: Routes = [
     TournamentFormComponent,
     TournamentDialogComponent,
     BreederFormComponent,
-    BreederDialogComponent
+    BreederDialogComponent,
+    ClubFormComponent,
+    ClubDialogComponent
 
   ],
   imports: [
@@ -103,7 +107,7 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent ],
+  entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent ],
   providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService],
   bootstrap: [AppComponent]
 })

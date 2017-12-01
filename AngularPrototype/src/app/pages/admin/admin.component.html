@@ -2,7 +2,59 @@
 
   <mat-tab-group>
 
+    <!-- VEREINE ANMELDEN %%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <mat-tab label="Vereine anlegen">
+
+      <mat-table #table [dataSource]="dataSourceClub" matSort>
+
+        <ng-container>
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <ng-container matColumnDef="clubname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Vereinsname</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.clubname}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="city">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Stadt</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.city}}</mat-cell>
+          </ng-container>
+
+          <!-- Action Menu -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+
+              <button mat-icon-button color="primary">
+                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+              </button>
+
+            </mat-cell>
+          </ng-container>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsClub"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsClub;"></mat-row>
+
+
+      </mat-table>
+
+      <div>
+        <button mat-raised-button color="primary" (click)="onCreateClubClick()">    <mat-icon>plus_one</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+      </div>
+
+    </mat-tab>
+
     <!-- ZÜCHTER ANMELDEN %%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Züchter anlegen">
 
@@ -50,14 +102,66 @@
       </mat-table>
 
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateBreederClick()">Add Breeder</button>
-        <button (click)="onLoadClick()">Load</button>
+        <button mat-raised-button color="primary" (click)="onCreateBreederClick()">    <mat-icon>plus_one</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
       </div>
 
     </mat-tab>
+    <!-- BESITZER ANMELDEN %%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <mat-tab label="Besitzer anlegen">
+
+      <mat-table #table [dataSource]="dataSourceOwner" matSort>
+
+        <ng-container>
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <ng-container matColumnDef="ownerfirstname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Vorname</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.firstname}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ownerlastname">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nachname</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastname}}</mat-cell>
+          </ng-container>
+
+          <!-- Action Menu -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+
+              <button mat-icon-button color="primary">
+                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+              </button>
+
+            </mat-cell>
+          </ng-container>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsOwner"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsOwner;"></mat-row>
+
+
+      </mat-table>
+
+      <div>
+        <button mat-raised-button color="primary" (click)="onCreateOwnerClick()"><mat-icon>plus_one</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+      </div>
+
+    </mat-tab>
+
     <!-- HUNDE ANMELDEN %%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Hunde anmelden">
+    <mat-tab label="Hunde anlegen">
 
       <mat-table #table [dataSource]="dataSource" matSort>
 
@@ -76,6 +180,11 @@
             <mat-cell *matCellDef="let element"> {{element.owner.firstname ++ ' ' ++ element.owner.lastname}}</mat-cell>
           </ng-container>
 
+          <ng-container matColumnDef="breeder">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Züchter</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.breeder.firstname ++ ' ' ++ element.breeder.lastname}}</mat-cell>
+          </ng-container>
+
 
           <!-- Action Menu -->
           <ng-container matColumnDef="action">
@@ -83,7 +192,7 @@
             <mat-cell *matCellDef="let element">
 
               <button mat-icon-button color="primary">
-                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                <mat-icon>edit</mat-icon>
               </button>
 
             </mat-cell>
@@ -98,9 +207,8 @@
       </mat-table>
 
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateOwnerClick()">Add Owner</button>
-        <button mat-raised-button color="primary" (click)="onCreateDogClick()">Add Dog</button>
-        <button (click)="onLoadClick()">Load</button>
+        <button mat-raised-button color="primary" (click)="onCreateDogClick()"><mat-icon>plus_one</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
       </div>
 
     </mat-tab>
@@ -142,8 +250,8 @@
       </mat-table>
 
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateTournamentClick()">Add Tournament</button>
-        <button (click)="onLoadClick()">Load</button>
+        <button mat-raised-button color="primary" (click)="onCreateTournamentClick()"><mat-icon>plus_one</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
       </div>
 
     </mat-tab>

@@ -24,6 +24,5 @@ export class BreederFormComponent implements OnInit {
 
 
   private saveBreederUrl = 'http://localhost:8080/save/breeder';  // URL to web api
-  private searchDogpassUrl = 'http://localhost:8080/search';  // URL to web api
 
 }

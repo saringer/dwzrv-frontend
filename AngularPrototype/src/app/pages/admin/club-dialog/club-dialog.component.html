@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Verein hinzufügen</h1>
+
+<mat-dialog-content>
+
+  <div style="width: 100%;">
+    <app-club-form></app-club-form>
+  </div>
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onCreateNewClick()">create</button>
+  <button mat-raised-button (click)="onNoClick()">cancel</button>
+</mat-dialog-actions>

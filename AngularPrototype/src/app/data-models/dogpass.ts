@@ -1,4 +1,5 @@
 import {Dogowner} from "./dogowner";
+import {Breeder} from "./breeder";
 
 export class Dogpass {
 
@@ -10,7 +11,7 @@ export class Dogpass {
     public sex: string,
     public chip_no: number,
     public coat_colour: string,
-    public breeder: string,
+    public breeder: Breeder,
     public date_of_birth: Date,
     public owner: Dogowner
   ) {

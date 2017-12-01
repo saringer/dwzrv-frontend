@@ -1,0 +1,35 @@
+<div class="container" style="width: 300px;">
+
+
+  <form (ngSubmit)="onSubmit()"  #clubForm="ngForm" style="width: 60%; margin:0 auto;">
+    <div class="form-group">
+      <label for="clubname"> Vereinsname</label>
+      <input type="text" class="form-control" id="clubname" required [(ngModel)]="model.clubname" name="clubname">
+    </div>
+    <div class="form-group">
+      <label for="street"> Strasse/Hausnr.</label>
+      <input type="text" class="form-control" id="street"  [(ngModel)]="model.street" name="street">
+    </div>
+    <div class="form-group">
+      <label for="postalcode"> Postleitzahl</label>
+      <input type="text" class="form-control" id="postalcode"  [(ngModel)]="model.postalcode" name="postalcode">
+    </div>
+    <div class="form-group">
+      <label for="city"> Stadt</label>
+      <input type="text" class="form-control" id="city"  [(ngModel)]="model.city" name="city">
+    </div>
+    <div class="form-group">
+      <label for="country"> Land</label>
+      <input type="text" class="form-control" id="country"  [(ngModel)]="model.country" name="country">
+    </div>
+
+
+  </form>
+
+
+
+
+</div>
+
+
+

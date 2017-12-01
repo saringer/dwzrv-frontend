@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {SelectItem} from 'primeng/primeng'
 import {Dogowner} from "../../data-models/dogowner";
 import {Observable} from "rxjs/Observable";
+import {Breeder} from "../../data-models/breeder";
 
 
 @Component({
@@ -16,24 +17,27 @@ export class DogFormComponent implements OnInit {
 
   constructor(private http: HttpClient) {
 
-    this.getOwners()
+    this.getOwners();
+    this.getBreeders();
   }
 
   owners: any;
+  breeders: any;
+
+  private getOwnersUrl = 'http://localhost:8080/get/owners';
+  private getBreedersUrl = 'http://localhost:8080/get/breeders';
 
 
-  cars: SelectItem[];
-  private serviceUrl = 'http://localhost:8080/get/owners';
-
-
-
+  getBreeders() {
+    this.http.get<Breeder[]>(this.getBreedersUrl).subscribe(breeders => this.breeders = breeders);
+  }
   getOwners() {
-     this.http.get<Dogowner[]>(this.serviceUrl).subscribe(owners => this.owners = owners);
+     this.http.get<Dogowner[]>(this.getOwnersUrl).subscribe(owners => this.owners = owners);
   }
 
   sex = ['male', 'female'];
 
-  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', '', new Date(2013, 11, 1),new Dogowner(1,'Harry', 'Schmitt', '', 'Chuck Overstreet', 'red', '', new Date(2013, 11, 1)));
+  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', new Breeder(1,'', '', '', '', '', '', ''), new Date(2013, 11, 1),new Dogowner(1,'Harry', 'Schmitt', '', 'Chuck Overstreet', 'red', '', new Date(2013, 11, 1)));
 
   submitted = false;
   items: Array<string>;
