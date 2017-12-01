@@ -13,7 +13,7 @@ export class OwnerDialogComponent implements OnInit {
   @ViewChild(OwnerFormComponent) ownerForm: OwnerFormComponent;
 
 
-  constructor(private http: HttpClient, public dialogRef: MatDialogRef<DogDialogComponent>) { }
+  constructor(private http: HttpClient, public dialogRef: MatDialogRef<OwnerDialogComponent>) { }
 
   ngOnInit() {
   }

@@ -1,3 +1,5 @@
+import {Dogowner} from "./dogowner";
+
 export class Dogpass {
 
   constructor(
@@ -10,7 +12,7 @@ export class Dogpass {
     public coat_colour: string,
     public breeder: string,
     public date_of_birth: Date,
-    public owner_id: number
+    public owner: Dogowner
   ) {
 
   }

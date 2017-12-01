@@ -30,6 +30,8 @@ import {catchError} from 'rxjs/operators/catchError';
 import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {OwnerDialogComponent} from "./owner-dialog/owner-dialog.component";
+import {TournamentDialogComponent} from "./tournament-dialog/tournament-dialog.component";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-admin',
@@ -41,63 +43,88 @@ export class AdminComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  clickmessage = '';
   dataSource: UserDataSource | null;
-  resultsLength = 0;
-  isLoadingResults = false;
-  isRateLimitReached = false;
+
+  dataSourceTournament: TournamentDataSource | null;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  tournaments:Observable<Tournament[]>;
+  selected:any;
+
 
 
   ngOnInit() {
     this.dataSource = new UserDataSource(this.dogService, this.sort);
+    this.dataSourceTournament = new TournamentDataSource(this.dogService, this.sort);
+    this.tournaments= this.dogService.getTournaments();
+
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
 
 
 
   }
-
-
 
 
   displayedColumns = ['name', 'owner', 'action'];
+  displayedColumsTournament = ['title', 'date', 'action'];
 
 
-  constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService) {
-        this.dogService.getDogs();
+  constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService,private _formBuilder: FormBuilder) {
+    this.dogService.getDogs();
+    this.dogService.getTournaments()
   }
 
 
-
-
-
-  openDialog() {
-
+  onSubmit() {
+    this.onLoadClick();
   }
-
 
   onCreateDogClick() {
     let dialogRef = this.dialog.open(DogDialogComponent);
   }
+
   onCreateOwnerClick() {
     let dialogRef = this.dialog.open(OwnerDialogComponent);
+  }
+
+  onCreateTournamentClick() {
+    let dialogRef = this.dialog.open(TournamentDialogComponent);
   }
 
 
   onLoadClick() {
     this.dataSource = new UserDataSource(this.dogService, this.sort);
+    this.dataSourceTournament = new TournamentDataSource(this.dogService, this.sort);
 
   }
 
 
 }
 
+export class TournamentDataSource extends DataSource<any> {
+  constructor(private dogService: DogService,
+              private sort: MatSort) {
+    super();
+  }
 
+  connect(): Observable<Tournament[]> {
+    return this.dogService.getTournaments();
+
+    // https://github.com/angular/material2/issues/8283
+  }
+
+
+  disconnect() {
+  }
+}
 
 
 export class UserDataSource extends DataSource<any> {
-  resultsLength = 0;
-  isLoadingResults = false;
-  isRateLimitReached = false;
-  subject:BehaviorSubject<Dog[]>;
 
 
   constructor(private dogService: DogService,
@@ -108,88 +135,29 @@ export class UserDataSource extends DataSource<any> {
   connect(): Observable<Dog[]> {
     return this.dogService.getDogs();
 
-  // https://github.com/angular/material2/issues/8283
+    // https://github.com/angular/material2/issues/8283
   }
-
-
 
 
   disconnect() {
   }
 }
 
-/*export class UserDataSource extends DataSource<any> {
-  _filterChange = new BehaviorSubject('');
-  get filter(): string { return this._filterChange.value; }
-  set filter(filter: string) { this._filterChange.next(filter); }
-
-  filteredData: Dog[] = [];
-  renderedData: Dog[] = [];
-
-  constructor(private _service: DogService,
-              private _sort: MatSort) {
-    super();
-
-    this._filterChange.subscribe();
-  }
-
-  connect(): Observable<Dog[]> {
-    // Listen for any changes in the base data, sorting, filtering, or pagination
-    const displayDataChanges = [
-      this._service.dataChange,
-      this._sort.sortChange,
-      this._filterChange,
-    ];
-
-    this._service.getDogs().subscribe();
-
-    return Observable.merge(...displayDataChanges).map(() => {
-      // Filter data
-      this.filteredData = this._service.data.filter((item: Dog) => {
-        let searchStr = (item.name).toLowerCase();
-        return searchStr.indexOf(this.filter.toLowerCase()) != -1;
-      });
-
-      // Sort filtered data
-      const sortedData = this.sortData(this.filteredData.slice());
-
-      // Grab the page's slice of the filtered sorted data.
-     // const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-      //this.renderedData = sortedData.splice(startIndex, this._paginator.pageSize);
-     // return this.renderedData;
-      return sortedData;
-    });
-  }
-
-  disconnect() {}
-
-  sortData(data: Dog[]): Dog[] {
-    if (!this._sort.active || this._sort.direction == '') { return data; }
-
-    return data.sort((a, b) => {
-      let propertyA: number|string = '';
-      let propertyB: number|string = '';
-
-      switch (this._sort.active) {
-        case 'name': [propertyA, propertyB] = [a.name, b.name]; break;
-        //case 'userName': [propertyA, propertyB] = [a.name, b.name]; break;
-        //case 'progress': [propertyA, propertyB] = [a.progress, b.progress]; break;
-        //case 'color': [propertyA, propertyB] = [a.color, b.color]; break;
-      }
-
-      let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-
-      return (valueA < valueB ? -1 : 1) * (this._sort.direction == 'asc' ? 1 : -1);
-    });
-  }
-}*/
+export interface Tournament {
+  id: number;
+  title: string;
+  date: Date;
+}
 
 
 export interface Dog {
   name: string;
-  //ownerid: number;
+  owner: Owner;
 }
 
+export interface Owner {
+  firstname: string;
+  lastname: string;
+}
 
 

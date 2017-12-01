@@ -7,44 +7,34 @@
 
       <mat-table #table [dataSource]="dataSource" matSort>
 
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
+        <ng-container>
 
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
-        </ng-container>
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
 
-        Name Column
-        <ng-container matColumnDef="owner">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Besitzer</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.owner_id}}</mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+          </ng-container>
 
-        <!-- Action Menu -->
-        <ng-container matColumnDef="action">
-          <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-          <mat-cell *matCellDef="let element">
-
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Edit Dog/Owner</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button class="dropdown-item" (click)="openDialog()">edit dog</button>
-                <button class="dropdown-item">Another Action</button>
-                <button class="dropdown-item">Something else is here</button>
-              </div>
-            </div>
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Edit Ranking</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-                <button class="dropdown-item" (click)="openDialog()">Rennen</button>
-                <button class="dropdown-item">Coursing</button>
-                <button class="dropdown-item">Ausstellung</button>
-              </div>
-            </div>
+          <ng-container matColumnDef="owner">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Besitzer</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.owner.firstname ++ ' ' ++ element.owner.lastname}}</mat-cell>
+          </ng-container>
 
 
-          </mat-cell>
+          <!-- Action Menu -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+
+              <button mat-icon-button color="primary">
+                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+              </button>
+
+            </mat-cell>
+          </ng-container>
+
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -57,72 +47,96 @@
         <button mat-raised-button color="primary" (click)="onCreateOwnerClick()">Add Owner</button>
         <button mat-raised-button color="primary" (click)="onCreateDogClick()">Add Dog</button>
         <button (click)="onLoadClick()">Load</button>
-
-        {{clickmessage}}
-
       </div>
 
     </mat-tab>
     <!-- TURNIERE ANLEGEN %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Turniere anlegen">
-
-
-      <mat-table #table [dataSource]="dataSourceTournaments" matSort>
+      <mat-table #table [dataSource]="dataSourceTournament" matSort>
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="title">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Turniername</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
         </ng-container>
 
-        Name Column
-        <ng-container matColumnDef="owner">
+        <ng-container matColumnDef="date">
           <mat-header-cell *matHeaderCellDef mat-sort-header> Datum</mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.owner_id}}</mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.date | date:'MMMM dd, yyyy'}}</mat-cell>
         </ng-container>
+
 
         <!-- Action Menu -->
         <ng-container matColumnDef="action">
           <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
           <mat-cell *matCellDef="let element">
 
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic3" ngbDropdownToggle>Edit Dog/Owner</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
-                <button class="dropdown-item" (click)="openDialog()">edit dog</button>
-                <button class="dropdown-item">Another Action</button>
-                <button class="dropdown-item">Something else is here</button>
-              </div>
-            </div>
-            <div ngbDropdown class="d-inline-block">
-              <button class="btn btn-outline-primary" id="dropdownBasic4" ngbDropdownToggle>Edit Ranking</button>
-              <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
-                <button class="dropdown-item" (click)="openDialog()">Rennen</button>
-                <button class="dropdown-item">Coursing</button>
-                <button class="dropdown-item">Ausstellung</button>
-              </div>
-            </div>
-
+            <button mat-icon-button color="primary">
+              <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+            </button>
 
           </mat-cell>
         </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-header-row *matHeaderRowDef=" displayedColumsTournament"></mat-header-row>
+        <mat-row *matRowDef="let row; columns:  displayedColumsTournament;"></mat-row>
 
 
       </mat-table>
 
+      <div>
+        <button mat-raised-button color="primary" (click)="onCreateTournamentClick()">Add Tournament</button>
+        <button (click)="onLoadClick()">Load</button>
+      </div>
+
     </mat-tab>
-    <mat-tab label="Turnierwertungen eintragen">Content 3</mat-tab>
+    <!-- TURNIERWERTUNGEN ANLEGEN %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+    <mat-tab label="Turnierwertungen eintragen">
+
+      <mat-horizontal-stepper [linear]=true>
+        <mat-step>
+          <form [formGroup]="secondFormGroup" class="content">
+            <ng-template matStepLabel>Turnier auswählen</ng-template>
+
+
+            <div class="form-group">
+              <label>Turniere</label>
+              <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="selected"
+                      style="height: auto;text-align: center;">
+                <option *ngFor='let tournament of tournaments | async' [value]="tournament.id">
+                  {{tournament.title}}
+                </option>
+              </select>
+            </div>
+            <!--<input matInput placeholder="Address" formControlName="secondCtrl" required>-->
+
+            <div>
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+          </form>
+
+
+        </mat-step>
+        <mat-step class="content">
+          <ng-template matStepLabel>Punkte vergeben</ng-template>
+          <div class="content">
+
+            {{selected}}
+            <div>
+              <button mat-raised-button color="primary" matStepperPrevious>Submit</button>
+            </div>
+          </div>
+
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-tab>
 
   </mat-tab-group>
-
-
-
 
 
 </div>

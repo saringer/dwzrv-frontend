@@ -7,10 +7,9 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Injectable()
 export class DogService {
-  private serviceUrl = 'http://localhost:8080/get/dogs';
+  private dogsUrl = 'http://localhost:8080/get/dogs';
+  private tournamentsUrl = 'http://localhost:8080/get/tournaments';
 
-  dataChange: BehaviorSubject<Dog[]> = new BehaviorSubject<Dog[]>([]);
-  get data(): Dog[] { return this.dataChange.value; }
 
   constructor(private http: HttpClient) {
   }
@@ -18,14 +17,27 @@ export class DogService {
 
 
   getDogs(): Observable<Dog[]> {
-    return this.http.get<Dog[]>(this.serviceUrl);
+    return this.http.get<Dog[]>(this.dogsUrl);
+  }
+
+  getTournaments(): Observable<Tournament[]> {
+    return this.http.get<Tournament[]>(this.tournamentsUrl);
   }
 
 }
 
-
+export interface Tournament {
+    id: number;
+    title: string;
+    date: Date;
+}
 
 export interface Dog {
   name: string;
-  //ownerid: number;
+  owner: Owner;
+}
+
+export interface Owner {
+  firstname: string;
+  lastname: string;
 }

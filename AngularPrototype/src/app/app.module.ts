@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent, CanActivateViaAuthGuard} from './app.component';
 import {DogFormComponent} from './forms/dog-form/dog-form.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CompetitionService} from "./forms/dog-form/shared.services";
 import {CoursingComponent} from './pages/coursing/coursing.component';
 import {RacingComponent} from './pages/racing/racing.component';
@@ -33,6 +33,10 @@ import {DogService} from "./services/dog.service";
 import { OwnerDialogComponent } from './pages/admin/owner-dialog/owner-dialog.component';
 import {AuthService} from "./services/auth.service";
 import {MatTabsModule} from '@angular/material/tabs';
+import {DropdownModule} from 'primeng/primeng';
+import { TournamentFormComponent } from './forms/tournament-form/tournament-form.component';
+import { TournamentDialogComponent } from './pages/admin/tournament-dialog/tournament-dialog.component';
+import {MatFormFieldModule, MatInputModule} from "@angular/material";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -44,15 +48,10 @@ const appRoutes: Routes = [
 ];
 //{ path: 'hero/:id',      component: HeroDetailComponent },
 /*{
-  path: 'heroes',
-  component: HeroListComponent,
-  data: { title: 'Heroes List' }
-},
-{ path: '',
-  redirectTo: '/heroes',
-  pathMatch: 'full'
-},
-{ path: '**', component: PageNotFoundComponent }*/
+    remove your node-modules directory,
+    remove the @angular/flex-layout entry in your package.json
+    then run terminal npm i; npm i @angular/flex-layout
+*/
 
 
 @NgModule({
@@ -65,7 +64,9 @@ const appRoutes: Routes = [
     AdminComponent,
     DogDialogComponent,
     ExhibitionComponent,
-    OwnerDialogComponent
+    OwnerDialogComponent,
+    TournamentFormComponent,
+    TournamentDialogComponent
 
   ],
   imports: [
@@ -89,10 +90,16 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
+
 
   ],
-  entryComponents: [ DogDialogComponent, OwnerDialogComponent ],
+  entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent ],
   providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService],
   bootstrap: [AppComponent]
 })

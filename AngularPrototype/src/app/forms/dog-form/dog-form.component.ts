@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Dogpass} from '../../data-models/dogpass'
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {SelectItem} from 'primeng/primeng'
+import {Dogowner} from "../../data-models/dogowner";
 import {Observable} from "rxjs/Observable";
-import {of} from "rxjs/observable/of";
-import {catchError, tap} from "rxjs/operators";
-import {Subject} from "rxjs/Subject";
-import {RequestOptions} from "@angular/http";
 
 
 @Component({
@@ -18,23 +16,24 @@ export class DogFormComponent implements OnInit {
 
   constructor(private http: HttpClient) {
 
-
+    this.getOwners()
   }
 
+  owners: any;
 
-  clickMessage = '';
-  baseUrl: string = 'https://api.cdnjs.com/libraries';
-  queryUrl: string = '?search=';
-  results: Object;
-  searchTerm$ = new Subject<string>();
-  boolean = true;
 
-  onClickMe() {
+  cars: SelectItem[];
+  private serviceUrl = 'http://localhost:8080/get/owners';
+
+
+
+  getOwners() {
+     this.http.get<Dogowner[]>(this.serviceUrl).subscribe(owners => this.owners = owners);
   }
 
   sex = ['male', 'female'];
 
-  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', '', new Date(2013, 11, 1),1);
+  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', '', new Date(2013, 11, 1),new Dogowner(1,'Harry', 'Schmitt', '', 'Chuck Overstreet', 'red', '', new Date(2013, 11, 1)));
 
   submitted = false;
   items: Array<string>;
@@ -47,15 +46,7 @@ export class DogFormComponent implements OnInit {
   get diagnostic() { return JSON.stringify(this.model); }
 
 
-  test() {
-    if (this.boolean == true) {
-      this.boolean = false;
-    }
-    else {
-      this.boolean = true;
-    }
-    console.log(this.boolean);
-  }
+
 
 
   onSubmit() {

@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="sex">Sex</label>
-      <select class="form-control" id="sex" required  [(ngModel)]="model.sex" name="sex">
+      <select class="form-control" id="sex" required  [(ngModel)]="model.sex" name="sex" style="height: auto;">
         <option *ngFor="let sex of sex" [value]="sex">{{sex}}</option>
       </select>
     </div>
@@ -39,7 +39,12 @@
       <label for="date_of_birth">Date of birth</label>
       <input type="date" class="form-control" id="date_of_birth" [(ngModel)]="model.date_of_birth" name="date_of_birth">
     </div>
-
+   <div class="form-group">
+     <label for="owner_id">Besitzer</label>
+     <select class="form-control" id="owner_id" required  [(ngModel)]="model.owner.id" name="owner_id" style="height: auto;">
+       <option *ngFor="let item of owners" [value]="item.id">{{item.firstname++' '++item.lastname}}</option>
+     </select>
+   </div>
 
   </form>
 
