@@ -77,7 +77,7 @@ export class AdminComponent implements OnInit {
 
 
   displayedColumns = ['name', 'owner', 'breeder', 'action'];
-  displayedColumsTournament = ['title', 'date', 'action'];
+  displayedColumsTournament = ['title',  'club', 'date', 'action'];
   displayedColumnsOwner = ['ownerfirstname', 'ownerlastname'];
   displayedColumnsBreeder = ['breederfirstname', 'breederlastname', 'kennelname', 'action'];
   displayedColumnsClub = ['clubname', 'city'];

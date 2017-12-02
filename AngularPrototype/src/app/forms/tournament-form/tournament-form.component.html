@@ -9,26 +9,16 @@
       <input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="name">
     </div>
     <div class="form-group">
-      <label for="tournamenttype">Turniertyp</label>
+      <label for="tournamenttype"> Turniertyp</label>
       <select class="form-control" id="tournamenttype" required  [(ngModel)]="model.tournamenttype" name="tournamenttype" style="height: auto;">
         <option *ngFor="let tournamenttype of tournamenttype" [value]="tournamenttype">{{tournamenttype}}</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="street"> Strasse/Hausnr.</label>
-      <input type="text" class="form-control" id="street"  [(ngModel)]="model.street" name="street">
-    </div>
-    <div class="form-group">
-      <label for="postalcode"> Postleitzahl</label>
-      <input type="text" class="form-control" id="postalcode"  [(ngModel)]="model.postalcode" name="postalcode">
-    </div>
-    <div class="form-group">
-      <label for="city"> Stadt</label>
-      <input type="text" class="form-control" id="city"  [(ngModel)]="model.city" name="city">
-    </div>
-    <div class="form-group">
-      <label for="country"> Land</label>
-      <input type="text" class="form-control" id="country"  [(ngModel)]="model.country" name="country">
+      <label for="club_id"> Austragender Verein</label>
+      <select class="form-control" id="club_id" required  [(ngModel)]="model.club.id" name="club_id" style="height: auto;">
+        <option *ngFor="let item of clubs" [value]="item.id">{{item.clubname}}</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="date"> Datum</label>

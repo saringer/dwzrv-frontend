@@ -47,7 +47,7 @@
 
       <div>
         <button mat-raised-button color="primary" (click)="onCreateClubClick()">    <mat-icon>plus_one</mat-icon></button>
-        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
     </mat-tab>
@@ -103,7 +103,7 @@
 
       <div>
         <button mat-raised-button color="primary" (click)="onCreateBreederClick()">    <mat-icon>plus_one</mat-icon></button>
-        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
     </mat-tab>
@@ -152,7 +152,7 @@
 
       <div>
         <button mat-raised-button color="primary" (click)="onCreateOwnerClick()"><mat-icon>plus_one</mat-icon></button>
-        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
     </mat-tab>
@@ -208,21 +208,26 @@
 
       <div>
         <button mat-raised-button color="primary" (click)="onCreateDogClick()"><mat-icon>plus_one</mat-icon></button>
-        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
     </mat-tab>
-    <!-- TURNIERE ANLEGEN %%%%%
+    <!-- VERANSTALTUNGEN ANLEGEN %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Turniere anlegen">
+    <mat-tab label="Veranstaltungen anlegen">
       <mat-table #table [dataSource]="dataSourceTournament" matSort>
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
         <ng-container matColumnDef="title">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> Turniername</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Veranstaltungsname</mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="club">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Verein</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.club.clubname}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="date">
@@ -251,7 +256,7 @@
 
       <div>
         <button mat-raised-button color="primary" (click)="onCreateTournamentClick()"><mat-icon>plus_one</mat-icon></button>
-        <button mat-raised-button color="primary" (click)="onLoadClick()">Refresh</button>
+        <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
     </mat-tab>
@@ -263,11 +268,11 @@
       <mat-horizontal-stepper [linear]=true>
         <mat-step>
           <form [formGroup]="secondFormGroup" class="content">
-            <ng-template matStepLabel>Turnier auswählen</ng-template>
+            <ng-template matStepLabel>Veranstaltung auswählen</ng-template>
 
 
             <div class="form-group">
-              <label>Turniere</label>
+              <label>Veranstaltungen</label>
               <select class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="selected"
                       style="height: auto;text-align: center;">
                 <option *ngFor='let tournament of tournaments | async' [value]="tournament.id">
@@ -287,11 +292,50 @@
         <mat-step class="content">
           <ng-template matStepLabel>Punkte vergeben</ng-template>
           <div class="content">
+            <mat-table #table [dataSource]="dataSource" matSort>
 
-            {{selected}}
-            <div>
-              <button mat-raised-button color="primary" matStepperPrevious>Submit</button>
-            </div>
+              <ng-container>
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="owner">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Besitzer</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.owner.firstname ++ ' ' ++ element.owner.lastname}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="breeder">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Züchter</mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.breeder.firstname ++ ' ' ++ element.breeder.lastname}}</mat-cell>
+                </ng-container>
+
+
+                <!-- Action Menu -->
+                <ng-container matColumnDef="action">
+                  <mat-header-cell *matHeaderCellDef> Wertungen</mat-header-cell>
+                  <mat-cell *matCellDef="let element">
+
+                    <button mat-icon-button color="primary">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+
+                  </mat-cell>
+                </ng-container>
+
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+            </mat-table>
+          <!--  {{selected}} -->
+
           </div>
 
         </mat-step>

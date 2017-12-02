@@ -6,29 +6,29 @@
 
 
     <div class="form-group" >
-      <label for="name">Name</label>
+      <label for="name"> Name</label>
       <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name">
     </div>
     <div class="form-group">
-      <label for="passport_no">Passport Number</label>
+      <label for="passport_no"> Passnummer</label>
       <input type="string" class="form-control" id="passport_no" [(ngModel)]="model.passport_no" name="passport_no">
     </div>
     <div class="form-group">
-      <label for="race">Race</label>
+      <label for="race"> Rasse</label>
       <input type="text" class="form-control" id="race"  [(ngModel)]="model.race" name="race">
     </div>
     <div class="form-group">
-      <label for="sex">Sex</label>
+      <label for="sex"> Geschlecht</label>
       <select class="form-control" id="sex" required  [(ngModel)]="model.sex" name="sex" style="height: auto;">
         <option *ngFor="let sex of sex" [value]="sex">{{sex}}</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="chip_no">Chip Number</label>
+      <label for="chip_no"> Chipnummer</label>
       <input type="number" class="form-control" id="chip_no"  [(ngModel)]="model.chip_no" name="chip_no">
     </div>
     <div class="form-group">
-      <label for="coat_colour">Coat Colour</label>
+      <label for="coat_colour"> Fellfarbe</label>
       <input type="text" class="form-control" id="coat_colour"  [(ngModel)]="model.coat_colour" name="coat_colour">
     </div>
    <div class="form-group">
@@ -38,11 +38,11 @@
      </select>
    </div>
     <div class="form-group">
-      <label for="date_of_birth">Date of birth</label>
+      <label for="date_of_birth"> Geburtsdatum</label>
       <input type="date" class="form-control" id="date_of_birth" [(ngModel)]="model.date_of_birth" name="date_of_birth">
     </div>
    <div class="form-group">
-     <label for="owner_id">Besitzer</label>
+     <label for="owner_id"> Besitzer</label>
      <select class="form-control" id="owner_id" required  [(ngModel)]="model.owner.id" name="owner_id" style="height: auto;">
        <option *ngFor="let item of owners" [value]="item.id">{{item.firstname++' '++item.lastname}}</option>
      </select>

@@ -32,5 +32,5 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hund1', punkte: 8, bis: 2, bob: 2, konkurrenz: 3, anzahl: 9},
+  {position: 1, name: 'Harley vom Kleinen Berg', punkte: 147, bis: 0, bob: 2, konkurrenz: 88, anzahl: 20},
 ];

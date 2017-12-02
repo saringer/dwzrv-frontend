@@ -37,7 +37,7 @@ export class DogFormComponent implements OnInit {
 
   sex = ['male', 'female'];
 
-  model = new Dogpass(0,'', 'MyDog', '', 'Chuck Overstreet', 12, 'red', new Breeder(1,'', '', '', '', '', '', ''), new Date(2013, 11, 1),new Dogowner(1,'Harry', 'Schmitt', '', 'Chuck Overstreet', 'red', '', new Date(2013, 11, 1)));
+  model = new Dogpass(0,'', '', '', '', null, '', new Breeder(1,'', '', '', '', '', '', ''), new Date(2017, 11, 1),new Dogowner(1,'Harry', 'Schmitt', '', 'Chuck Overstreet', 'red', '', new Date(2017, 11, 1)));
 
   submitted = false;
   items: Array<string>;
