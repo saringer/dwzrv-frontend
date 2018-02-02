@@ -29,9 +29,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DogDialogComponent } from './pages/admin/dog-dialog/dog-dialog.component';
 import { ExhibitionComponent } from './pages/exhibition/exhibition.component';
 import { OwnerFormComponent } from './forms/owner-form/owner-form.component';
-import {DogService} from "./services/dog.service";
+import {DogService} from "./services/DogService/dog.service";
 import { OwnerDialogComponent } from './pages/admin/owner-dialog/owner-dialog.component';
-import {AuthService} from "./services/auth.service";
+import {AuthService} from "./services/AuthService/auth.service";
 import {MatTabsModule} from '@angular/material/tabs';
 import {DropdownModule} from 'primeng/primeng';
 import { TournamentFormComponent } from './forms/tournament-form/tournament-form.component';
@@ -41,6 +41,10 @@ import { BreederFormComponent } from './forms/breeder-form/breeder-form.componen
 import { BreederDialogComponent } from './pages/admin/breeder-dialog/breeder-dialog.component';
 import { ClubFormComponent } from './forms/club-form/club-form.component';
 import { ClubDialogComponent } from './pages/admin/club-dialog/club-dialog.component';
+import {BreederService} from "./services/BreederService/breeder.service";
+import {ClubService} from "./services/ClubService/club.service";
+import {OwnerService} from "./services/OwnerService/owner.service";
+import {TournamentService} from "./services/TournamentService/tournament.service";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -108,7 +112,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent ],
-  providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService],
+  providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

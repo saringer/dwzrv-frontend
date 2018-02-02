@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient }   from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable }   from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Dogpass } from "../data-models/dogpass";
+import { Dogpass } from "../../data-models/dogpass";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Breeder} from "../data-models/breeder";
-import {Club} from "../data-models/club";
+import {Breeder} from "../../data-models/breeder";
+import {Club} from "../../data-models/club";
 
 @Injectable()
 export class DogService {
@@ -16,16 +16,42 @@ export class DogService {
   private clubsUrl = 'http://localhost:8080/get/clubs';
 
 
-
+  dataChange: BehaviorSubject<Dogpass[]> = new BehaviorSubject<Dogpass[]>([]);
+  // Temporarily stores data from dialogs
+  dialogData: any;
 
 
   constructor(private http: HttpClient) {
   }
 
+  get data(): Dogpass[] {
+    return this.dataChange.value;
+  }
 
+  getDialogData() {
+    return this.dialogData;
+  }
 
-  getDogs(): Observable<Dog[]> {
-    return this.http.get<Dog[]>(this.dogsUrl);
+  resetDialogData() {
+    this.dialogData = null;
+  }
+
+  getAllDogs(): void {
+    this.http.get<Dogpass[]>(this.dogsUrl).subscribe(data => {
+        this.dataChange.next(data);
+      },
+      (error: HttpErrorResponse) => {
+        console.log (error.name + ' ' + error.message);
+      });
+  }
+
+  /**
+   * Get Methods
+   *
+   */
+
+  getDogs(): Observable<Dogpass[]> {
+    return this.http.get<Dogpass[]>(this.dogsUrl);
   }
 
   getTournaments(): Observable<Tournament[]> {
@@ -42,6 +68,14 @@ export class DogService {
     return this.http.get<Club[]>(this.clubsUrl);
   }
 
+  /**
+   * Add Methods
+   */
+
+  addDog (dog: Dogpass): void {
+    this.dialogData = dog;
+  }
+
 }
 
 export interface Tournament {
@@ -50,12 +84,12 @@ export interface Tournament {
     date: Date;
 }
 
-export interface Dog {
+/*export interface Dog {
   name: string;
   owner: Owner;
   breeder: Breeder;
 
-}
+}*/
 
 export interface Owner {
   firstname: string;

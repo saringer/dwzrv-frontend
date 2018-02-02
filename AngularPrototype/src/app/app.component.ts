@@ -2,7 +2,7 @@ import {Component, Injectable} from '@angular/core';
 import {SearchService} from "./forms/dog-form/shared.services";
 import {Subject} from "rxjs/Subject";
 import {CanActivate} from "@angular/router";
-import {AuthService} from "./services/auth.service";
+import {AuthService} from "./services/AuthService/auth.service";
 
 @Component({
   selector: 'app-root',

@@ -2,15 +2,13 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  min-width: 1000px;
-  max-width: 90%;
   text-align: center;
 }
 
 .mat-table {
   overflow: auto;
-  min-height: 500px;
-  max-height: 500px;
+  /* min-height: 500px;*/
+  min-height: 100vh;
   text-align: center;
   display: inline-block;
 }

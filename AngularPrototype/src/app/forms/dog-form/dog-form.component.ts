@@ -5,6 +5,7 @@ import {SelectItem} from 'primeng/primeng'
 import {Dogowner} from "../../data-models/dogowner";
 import {Observable} from "rxjs/Observable";
 import {Breeder} from "../../data-models/breeder";
+import {DogService} from "../../services/DogService/dog.service";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {Breeder} from "../../data-models/breeder";
 })
 export class DogFormComponent implements OnInit {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private dogService: DogService) {
 
     this.getOwners();
     this.getBreeders();
@@ -55,7 +56,9 @@ export class DogFormComponent implements OnInit {
 
   onSubmit() {
     const req = this.http.post(this.saveDogpassUrl, this.model);
+    this.dogService.addDog(this.model);
     req.subscribe();
+
   }
 
   /* GET heroes whose name contains search term */

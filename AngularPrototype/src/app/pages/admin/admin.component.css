@@ -2,14 +2,15 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
-  min-width: 300px;
+ /* max-height: 500px;
+ min-width: 300px;*/
 }
+
+
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
-  min-height: 500px;
+  width: 100%;
 }
 
 .content{
@@ -17,3 +18,28 @@
   max-height: 500px;
   min-height: 500px;
 }
+
+
+/* Filter */
+.form {
+  min-height: 56px;
+  max-height: 56px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 0;
+  font-size: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+/* Mat table */
+.no-results {
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  font-size: 14px;
+  font-style: italic;
+}
+
+

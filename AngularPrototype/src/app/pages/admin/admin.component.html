@@ -1,4 +1,4 @@
-<div class="example-container mat-elevation-z8" style="width: 1000px;height: 100% !important;">
+<div class="example-container mat-elevation-z8">
 
   <mat-tab-group>
 
@@ -7,6 +7,12 @@
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Vereine anlegen">
+
+      <div class="form">
+        <mat-form-field floatPlaceholder="never" color="accent">
+          <input matInput #filterClub placeholder="suche...">
+        </mat-form-field>
+      </div>
 
       <mat-table #table [dataSource]="dataSourceClub" matSort>
 
@@ -27,13 +33,20 @@
 
           <!-- Action Menu -->
           <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="onCreateClubClick()">
+                <mat-icon aria-label="Add">add</mat-icon>
+              </button>
+            </mat-header-cell>
 
-              <button mat-icon-button color="primary">
-                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                <mat-icon aria-label="Edit">edit</mat-icon>
               </button>
 
+              <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
             </mat-cell>
           </ng-container>
 
@@ -45,8 +58,14 @@
 
       </mat-table>
 
+      <mat-paginator #paginatorClub
+                     [length]="dataSourceClub.filteredData.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateClubClick()">    <mat-icon>plus_one</mat-icon></button>
         <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
@@ -57,6 +76,12 @@
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Züchter anlegen">
+
+      <div class="form">
+        <mat-form-field floatPlaceholder="never" color="accent">
+          <input matInput #filterBreeder placeholder="suche...">
+        </mat-form-field>
+      </div>
 
       <mat-table #table [dataSource]="dataSourceBreeder" matSort>
 
@@ -83,13 +108,20 @@
 
           <!-- Action Menu -->
           <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="onCreateBreederClick()">
+                <mat-icon aria-label="Add">add</mat-icon>
+              </button>
+            </mat-header-cell>
 
-              <button mat-icon-button color="primary">
-                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                <mat-icon aria-label="Edit">edit</mat-icon>
               </button>
 
+              <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
             </mat-cell>
           </ng-container>
 
@@ -101,8 +133,14 @@
 
       </mat-table>
 
+      <mat-paginator #paginatorBreeder
+                     [length]="dataSourceBreeder.filteredData.length"
+      [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateBreederClick()">    <mat-icon>plus_one</mat-icon></button>
         <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
@@ -112,6 +150,12 @@
      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Besitzer anlegen">
+
+      <div class="form">
+        <mat-form-field floatPlaceholder="never" color="accent">
+          <input matInput #filterOwner placeholder="suche...">
+        </mat-form-field>
+      </div>
 
       <mat-table #table [dataSource]="dataSourceOwner" matSort>
 
@@ -132,13 +176,20 @@
 
           <!-- Action Menu -->
           <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="onCreateOwnerClick()">
+                <mat-icon aria-label="Add">add</mat-icon>
+              </button>
+            </mat-header-cell>
 
-              <button mat-icon-button color="primary">
-                <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                <mat-icon aria-label="Edit">edit</mat-icon>
               </button>
 
+              <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
             </mat-cell>
           </ng-container>
 
@@ -150,8 +201,14 @@
 
       </mat-table>
 
+      <mat-paginator #paginatorOwner
+                     [length]="dataSourceOwner.filteredData.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateOwnerClick()"><mat-icon>plus_one</mat-icon></button>
         <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
@@ -162,6 +219,12 @@
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Hunde anlegen">
+
+      <div class="form">
+        <mat-form-field floatPlaceholder="never" color="accent">
+          <input matInput #filter placeholder="suche...">
+        </mat-form-field>
+      </div>
 
       <mat-table #table [dataSource]="dataSource" matSort>
 
@@ -188,13 +251,20 @@
 
           <!-- Action Menu -->
           <ng-container matColumnDef="action">
-            <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button color="primary" (click)="onCreateDogClick()">
+                <mat-icon aria-label="Add">add</mat-icon>
+              </button>
+            </mat-header-cell>
 
-              <button mat-icon-button color="primary">
-                <mat-icon>edit</mat-icon>
+            <mat-cell *matCellDef="let row; let i=index;">
+              <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                <mat-icon aria-label="Edit">edit</mat-icon>
               </button>
 
+              <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+              </button>
             </mat-cell>
           </ng-container>
 
@@ -206,8 +276,14 @@
 
       </mat-table>
 
+      <mat-paginator #paginator
+                     [length]="dataSource.filteredData.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateDogClick()"><mat-icon>plus_one</mat-icon></button>
         <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 
@@ -215,6 +291,13 @@
     <!-- VERANSTALTUNGEN ANLEGEN %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
     <mat-tab label="Veranstaltungen anlegen">
+
+      <div class="form">
+        <mat-form-field floatPlaceholder="never" color="accent">
+          <input matInput #filterTournament placeholder="suche...">
+        </mat-form-field>
+      </div>
+
       <mat-table #table [dataSource]="dataSourceTournament" matSort>
 
         <!--- Note that these columns can be defined in any order.
@@ -238,13 +321,20 @@
 
         <!-- Action Menu -->
         <ng-container matColumnDef="action">
-          <mat-header-cell *matHeaderCellDef> Action</mat-header-cell>
-          <mat-cell *matCellDef="let element">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button color="primary" (click)="onCreateTournamentClick()">
+              <mat-icon aria-label="Add">add</mat-icon>
+            </button>
+          </mat-header-cell>
 
-            <button mat-icon-button color="primary">
-              <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+          <mat-cell *matCellDef="let row; let i=index;">
+            <button mat-icon-button color="accent" (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+              <mat-icon aria-label="Edit">edit</mat-icon>
             </button>
 
+            <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+              <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
           </mat-cell>
         </ng-container>
 
@@ -254,8 +344,14 @@
 
       </mat-table>
 
+      <mat-paginator #paginatorTournament
+                     [length]="dataSourceTournament.filteredData.length"
+                     [pageIndex]="0"
+                     [pageSize]="10"
+                     [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+
       <div>
-        <button mat-raised-button color="primary" (click)="onCreateTournamentClick()"><mat-icon>plus_one</mat-icon></button>
         <button mat-raised-button color="primary" (click)="onLoadClick()">Aktualisieren</button>
       </div>
 

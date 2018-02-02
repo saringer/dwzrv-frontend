@@ -1,6 +1,8 @@
 
+.header {
+  text-align: center; background-color: #3f51b5; height: 60px; padding-top: 17px;
+}
 
-.test{border: solid 1px black}
 .footer {
   position: absolute;
   right: 0;
@@ -10,8 +12,14 @@
   background-color: #3f51b5;
   height: 60px;
   text-align: center;
-  padding-top: 20px;
+  /*padding-top: 20px;*/
 }
 .router-container {
-  padding-top: 60px;
+  overflow-y: auto;
+  position: fixed;
+  top: 60px;
+  bottom: 60px;
+  width:100%;
 }
+
+
