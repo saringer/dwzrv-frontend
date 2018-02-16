@@ -25,5 +25,4 @@ export class OwnerFormComponent implements OnInit {
 
 
   private saveOwnerUrl = 'http://localhost:8080/save/owner';  // URL to web api
-  private searchDogpassUrl = 'http://localhost:8080/search';  // URL to web api
 }

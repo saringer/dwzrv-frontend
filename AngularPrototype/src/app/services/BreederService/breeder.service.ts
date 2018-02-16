@@ -9,11 +9,10 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 @Injectable()
 export class BreederService {
 
-  private dogsUrl = 'http://localhost:8080/get/dogs';
-  private tournamentsUrl = 'http://localhost:8080/get/tournaments';
+
   private breedersUrl = 'http://localhost:8080/get/breeders';
-  private ownersUrl = 'http://localhost:8080/get/owners';
-  private clubsUrl = 'http://localhost:8080/get/clubs';
+  private saveBreederUrl = 'http://localhost:8080/save/breeder';  // URL to web api
+
 
 
   dataChange: BehaviorSubject<Breeder[]> = new BehaviorSubject<Breeder[]>([]);
@@ -32,9 +31,7 @@ export class BreederService {
     return this.dialogData;
   }
 
-  resetDialogData() {
-    this.dialogData = null;
-  }
+
 
   getAllBreeder(): void {
     this.http.get<Breeder[]>(this.breedersUrl).subscribe(data => {
@@ -62,7 +59,10 @@ export class BreederService {
    */
 
   addBreeder (breeder: Breeder): void {
-    this.dialogData = breeder;
+
+    const req = this.http.post(this.saveBreederUrl, breeder);
+    req.subscribe(breeder => this.dialogData = breeder);
+   // this.dialogData = breeder;
   }
 
 }

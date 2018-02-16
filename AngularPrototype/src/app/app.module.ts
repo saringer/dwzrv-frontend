@@ -12,7 +12,7 @@ import {RacingComponent} from './pages/racing/racing.component';
 import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from "@angular/material";
+import {MatDatepickerModule, MatNativeDateModule, MatSortModule, NativeDateAdapter} from "@angular/material";
 import {MatStepperModule} from '@angular/material/stepper';
 
 [CdkTableModule]
@@ -26,21 +26,21 @@ import {MatCardModule} from "@angular/material";
 import {AdminComponent} from './pages/admin/admin.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
-import { DogDialogComponent } from './pages/admin/dog-dialog/dog-dialog.component';
+import { DogDialogComponent } from './pages/admin/dialogs/dog-dialog/dog-dialog.component';
 import { ExhibitionComponent } from './pages/exhibition/exhibition.component';
 import { OwnerFormComponent } from './forms/owner-form/owner-form.component';
 import {DogService} from "./services/DogService/dog.service";
-import { OwnerDialogComponent } from './pages/admin/owner-dialog/owner-dialog.component';
+import { OwnerDialogComponent } from './pages/admin/dialogs/owner-dialog/owner-dialog.component';
 import {AuthService} from "./services/AuthService/auth.service";
 import {MatTabsModule} from '@angular/material/tabs';
 import {DropdownModule} from 'primeng/primeng';
 import { TournamentFormComponent } from './forms/tournament-form/tournament-form.component';
-import { TournamentDialogComponent } from './pages/admin/tournament-dialog/tournament-dialog.component';
+import { TournamentDialogComponent } from './pages/admin/dialogs/tournament-dialog/tournament-dialog.component';
 import {MatFormFieldModule, MatInputModule} from "@angular/material";
 import { BreederFormComponent } from './forms/breeder-form/breeder-form.component';
-import { BreederDialogComponent } from './pages/admin/breeder-dialog/breeder-dialog.component';
+import { BreederDialogComponent } from './pages/admin/dialogs/breeder-dialog/breeder-dialog.component';
 import { ClubFormComponent } from './forms/club-form/club-form.component';
-import { ClubDialogComponent } from './pages/admin/club-dialog/club-dialog.component';
+import { ClubDialogComponent } from './pages/admin/dialogs/club-dialog/club-dialog.component';
 import {BreederService} from "./services/BreederService/breeder.service";
 import {ClubService} from "./services/ClubService/club.service";
 import {OwnerService} from "./services/OwnerService/owner.service";
@@ -102,17 +102,19 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatStepperModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
     MatTabsModule,
     DropdownModule,
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
 
 
   ],
   entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent ],
-  providers: [CompetitionService, DogService, CanActivateViaAuthGuard, AuthService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [NativeDateAdapter,CompetitionService, DogService, CanActivateViaAuthGuard, AuthService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

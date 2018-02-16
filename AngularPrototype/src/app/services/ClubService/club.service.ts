@@ -8,10 +8,7 @@ import {Club} from "../../data-models/club";
 @Injectable()
 export class ClubService {
 
-  private dogsUrl = 'http://localhost:8080/get/dogs';
-  private tournamentsUrl = 'http://localhost:8080/get/tournaments';
-  private breedersUrl = 'http://localhost:8080/get/breeders';
-  private ownersUrl = 'http://localhost:8080/get/owners';
+  private saveClubUrl = 'http://localhost:8080/save/club';  // URL to web api
   private clubsUrl = 'http://localhost:8080/get/clubs';
 
 
@@ -31,10 +28,6 @@ export class ClubService {
     return this.dialogData;
   }
 
-  resetDialogData() {
-    this.dialogData = null;
-  }
-
   getAllClubs(): void {
     this.http.get<Club[]>(this.clubsUrl).subscribe(data => {
         this.dataChange.next(data);
@@ -44,24 +37,9 @@ export class ClubService {
       });
   }
 
-  /**
-   * Get Methods
-   *
-   */
-
-
-
-  getClubs(): Observable<Club[]> {
-    return this.http.get<Club[]>(this.clubsUrl);
-  }
-
-
-  /**
-   * Add Methods
-   */
-
   addClub (club: Club): void {
-    this.dialogData = club;
+    const req = this.http.post(this.saveClubUrl, club);
+    req.subscribe(club => this.dialogData = club);
   }
 
 }

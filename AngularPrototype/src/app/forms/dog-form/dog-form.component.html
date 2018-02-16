@@ -33,8 +33,8 @@
     </div>
    <div class="form-group">
      <label for="breeder_id"> Züchter</label>
-     <select class="form-control" id="breeder_id" required  [(ngModel)]="model.breeder.id" name="breeder_id" style="height: auto;">
-       <option *ngFor="let item of breeders" [value]="item.id">{{item.firstname++' '++item.lastname}}</option>
+     <select class="form-control" id="breeder_id" required  [(ngModel)]="model.breeder" name="breeder" style="height: auto;">
+       <option *ngFor="let item of breeders" [ngValue]="item">{{item.firstname++' '++item.lastname}}</option>
      </select>
    </div>
     <div class="form-group">
@@ -43,8 +43,8 @@
     </div>
    <div class="form-group">
      <label for="owner_id"> Besitzer</label>
-     <select class="form-control" id="owner_id" required  [(ngModel)]="model.owner.id" name="owner_id" style="height: auto;">
-       <option *ngFor="let item of owners" [value]="item.id">{{item.firstname++' '++item.lastname}}</option>
+     <select class="form-control" id="owner_id" required  [(ngModel)]="model.owner" name="owner" style="height: auto;">
+       <option *ngFor="let item of owners" [ngValue]="item">{{item.firstname++' '++item.lastname}}</option>
      </select>
    </div>
 

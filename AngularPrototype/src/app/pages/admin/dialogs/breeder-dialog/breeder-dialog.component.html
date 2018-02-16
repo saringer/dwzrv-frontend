@@ -1,0 +1,59 @@
+
+<div class="container">
+  <h3 mat-dialog-title>Add new Breeder</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Vorname" [(ngModel)]="data.firstname" name="firstname" required >
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Nachname" [(ngModel)]="data.lastname" name="lastname" required >
+      </mat-form-field>
+    </div>
+
+    <!--Contains mat-hint for characters count and has maxLengt set-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Kennelname" [(ngModel)]="data.kennelname" name="kennelname" required >
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Strasse" [(ngModel)]="data.street" name="street" required >
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Postleitzahl" [(ngModel)]="data.postalCode" name="postalCode" required >
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Stadt" [(ngModel)]="data.city" name="city" required >
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="Land" [(ngModel)]="data.country" name="country" required >
+      </mat-form-field>
+    </div>
+
+
+
+
+
+    <div mat-dialog-actions>
+      <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+      <button mat-button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

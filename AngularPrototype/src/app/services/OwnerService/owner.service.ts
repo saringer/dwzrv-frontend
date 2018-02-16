@@ -8,11 +8,8 @@ import {Dogowner} from "../../data-models/dogowner";
 @Injectable()
 export class OwnerService {
 
-  private dogsUrl = 'http://localhost:8080/get/dogs';
-  private tournamentsUrl = 'http://localhost:8080/get/tournaments';
-  private breedersUrl = 'http://localhost:8080/get/breeders';
+  private saveOwnerUrl = 'http://localhost:8080/save/owner';  // URL to web api
   private ownersUrl = 'http://localhost:8080/get/owners';
-  private clubsUrl = 'http://localhost:8080/get/clubs';
 
 
   dataChange: BehaviorSubject<Dogowner[]> = new BehaviorSubject<Dogowner[]>([]);
@@ -61,7 +58,8 @@ export class OwnerService {
    */
 
   addOwner (dogowner: Dogowner): void {
-    this.dialogData = dogowner;
+    const req = this.http.post(this.saveOwnerUrl, dogowner);
+    req.subscribe(dogowner => this.dialogData = dogowner);
   }
 
 }

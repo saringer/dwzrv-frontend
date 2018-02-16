@@ -6,6 +6,8 @@ import { Dogpass } from "../../data-models/dogpass";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Breeder} from "../../data-models/breeder";
 import {Club} from "../../data-models/club";
+import {ErrorObservable} from "rxjs/observable/ErrorObservable";
+import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class DogService {
@@ -14,6 +16,8 @@ export class DogService {
   private breedersUrl = 'http://localhost:8080/get/breeders';
   private ownersUrl = 'http://localhost:8080/get/owners';
   private clubsUrl = 'http://localhost:8080/get/clubs';
+
+  private saveDogpassUrl = 'http://localhost:8080/save/dog';  // URL to web api
 
 
   dataChange: BehaviorSubject<Dogpass[]> = new BehaviorSubject<Dogpass[]>([]);
@@ -31,6 +35,9 @@ export class DogService {
   getDialogData() {
     return this.dialogData;
   }
+  setDialogData(data: any) {
+    this.dialogData = data;
+  }
 
   resetDialogData() {
     this.dialogData = null;
@@ -45,36 +52,50 @@ export class DogService {
       });
   }
 
-  /**
-   * Get Methods
-   *
-   */
 
-  getDogs(): Observable<Dogpass[]> {
-    return this.http.get<Dogpass[]>(this.dogsUrl);
-  }
 
   getTournaments(): Observable<Tournament[]> {
     return this.http.get<Tournament[]>(this.tournamentsUrl);
   }
 
-  getBreeders(): Observable<Breeder[]> {
-    return this.http.get<Breeder[]>(this.breedersUrl);
-  }
-  getOwners(): Observable<Owner[]> {
-    return this.http.get<Owner[]>(this.ownersUrl);
-  }
-  getClubs(): Observable<Club[]> {
-    return this.http.get<Club[]>(this.clubsUrl);
+
+  // ADD, POST METHOD
+  addDog (dog: Dogpass): Observable<Dogpass> {
+    /*const req = this.http.post(this.saveDogpassUrl, this.model);
+    this.dogService.addDog(this.model);
+    req.subscribe();*/
+    //this.dialogData = dog;
+    return this.http.post<Dogpass>(this.saveDogpassUrl, dog);
   }
 
-  /**
-   * Add Methods
-   */
-
-  addDog (dog: Dogpass): void {
-    this.dialogData = dog;
+  // DELETE METHOD
+  deleteItem(id: number): void {
+   /* this.httpClient.delete(this.API_URL + id).subscribe(data => {
+        console.log(data['']);
+        this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );*/
   }
+
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an ErrorObservable with a user-facing error message
+    return new ErrorObservable(
+      'Something bad happened; please try again later.');
+  };
 
 }
 
@@ -95,3 +116,4 @@ export interface Owner {
   firstname: string;
   lastname: string;
 }
+

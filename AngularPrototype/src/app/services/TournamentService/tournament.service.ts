@@ -8,11 +8,9 @@ import {Tournament} from "../../data-models/tournament";
 @Injectable()
 export class TournamentService {
 
-  private dogsUrl = 'http://localhost:8080/get/dogs';
   private tournamentsUrl = 'http://localhost:8080/get/tournaments';
-  private breedersUrl = 'http://localhost:8080/get/breeders';
-  private ownersUrl = 'http://localhost:8080/get/owners';
-  private clubsUrl = 'http://localhost:8080/get/clubs';
+  private saveTournamentUrl = 'http://localhost:8080/save/tournament';  // URL to web api
+
 
 
   dataChange: BehaviorSubject<Tournament[]> = new BehaviorSubject<Tournament[]>([]);
@@ -61,7 +59,7 @@ export class TournamentService {
    */
 
   addTournament (tournament: Tournament): void {
-    this.dialogData = tournament;
-  }
+    const req = this.http.post(this.saveTournamentUrl, tournament);
+    req.subscribe(tournament => this.dialogData = tournament);  }
 
 }

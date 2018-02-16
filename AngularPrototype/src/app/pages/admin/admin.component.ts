@@ -4,7 +4,7 @@ import {
   MatTableDataSource
 } from "@angular/material";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {DogDialogComponent} from "./dog-dialog/dog-dialog.component";
+import {DogDialogComponent} from "./dialogs/dog-dialog/dog-dialog.component";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
@@ -22,17 +22,17 @@ import {DataSource} from "@angular/cdk/collections";
 import {Http} from "@angular/http";
 import {CollectionViewer} from "@angular/cdk/typings/collections";
 import {DogService} from "../../services/DogService/dog.service";
+import {Dogpass} from "../../data-models/dogpass";
 
 import {Observable} from 'rxjs/Rx'
-import {OwnerDialogComponent} from "./owner-dialog/owner-dialog.component";
-import {TournamentDialogComponent} from "./tournament-dialog/tournament-dialog.component";
+import {OwnerDialogComponent} from "./dialogs/owner-dialog/owner-dialog.component";
+import {TournamentDialogComponent} from "./dialogs/tournament-dialog/tournament-dialog.component";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Breeder} from "../../data-models/breeder";
-import {BreederDialogComponent} from "./breeder-dialog/breeder-dialog.component";
-import {ClubDialogComponent} from "./club-dialog/club-dialog.component";
+import {BreederDialogComponent} from "./dialogs/breeder-dialog/breeder-dialog.component";
+import {ClubDialogComponent} from "./dialogs/club-dialog/club-dialog.component";
 import {Club} from "../../data-models/club";
 import {Dogowner} from "../../data-models/dogowner";
-import {Dogpass} from "../../data-models/dogpass";
 import {BreederService} from "../../services/BreederService/breeder.service";
 import {ClubService} from "../../services/ClubService/club.service";
 import {TournamentService} from "../../services/TournamentService/tournament.service";
@@ -92,7 +92,7 @@ export class AdminComponent implements OnInit {
   displayedColumns = ['name', 'owner', 'breeder', 'action'];
   displayedColumsTournament = ['title', 'club', 'date', 'action'];
   displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
-  displayedColumnsBreeder = ['breederfirstname', 'breederlastname', 'kennelname', 'action'];
+  displayedColumnsBreeder = ['breederid','breederfirstname', 'breederlastname', 'kennelname', 'action'];
   displayedColumnsClub = ['clubname', 'city', 'action'];
 
 
@@ -103,9 +103,19 @@ export class AdminComponent implements OnInit {
 
   }
 
-  onCreateBreederClick() {
-    let dialogRef = this.dialog.open(BreederDialogComponent);
-    this.refreshTableBreeder();
+  onCreateBreederClick(breeder: Breeder) {
+    const dialogRef = this.dialog.open(BreederDialogComponent, {
+      data: {breeder: breeder }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // After dialog is closed we're doing frontend updates
+        // For add we're just pushing a new row inside DataService
+        this.breederService.dataChange.value.push(this.breederService.getDialogData());
+        this.refreshTableBreeder();
+      }
+    });
   }
 
   onCreateDogClick(dog: Dogpass) {
@@ -122,23 +132,57 @@ export class AdminComponent implements OnInit {
       // For add we're just pushing a new row inside DataService
       console.log('test after closed' + result)
       this.dogService.dataChange.value.push(this.dogService.getDialogData());
-      this.refreshTable();
-      this.onLoadClick();
+      this.refreshTableDogpass();
+     // this.dogService.resetDialogData();
+      //this.onLoadClick();
       // }
 
     });
   }
 
-  onCreateOwnerClick() {
-    let dialogRef = this.dialog.open(OwnerDialogComponent);
+  onCreateOwnerClick(dogowner: Dogowner) {
+    const dialogRef = this.dialog.open(OwnerDialogComponent, {
+      data: {dogowner: dogowner }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // After dialog is closed we're doing frontend updates
+        // For add we're just pushing a new row inside DataService
+        this.ownerService.dataChange.value.push(this.ownerService.getDialogData());
+        this.refreshTableOwner();
+      }
+    });
   }
 
-  onCreateTournamentClick() {
-    let dialogRef = this.dialog.open(TournamentDialogComponent);
+  onCreateTournamentClick(tournament: Tournament) {
+    const dialogRef = this.dialog.open(TournamentDialogComponent, {
+      data: {tournament: tournament }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // After dialog is closed we're doing frontend updates
+        // For add we're just pushing a new row inside DataService
+        this.tournamentService.dataChange.value.push(this.tournamentService.getDialogData());
+        this.refreshTableTournament();
+      }
+    });
   }
 
-  onCreateClubClick() {
-    let dialogRef = this.dialog.open(ClubDialogComponent);
+  onCreateClubClick(club: Club) {
+    const dialogRef = this.dialog.open(ClubDialogComponent, {
+      data: {club: club }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // After dialog is closed we're doing frontend updates
+        // For add we're just pushing a new row inside DataService
+        this.clubService.dataChange.value.push(this.clubService.getDialogData());
+        this.refreshTableClub();
+      }
+    });
   }
 
 
@@ -155,7 +199,7 @@ export class AdminComponent implements OnInit {
   }
 
   // If you don't need a filter or a pagination this can be simplified, you just use code from else block
-  public refreshTable() {
+  public refreshTableDogpass() {
     // if there's a paginator active we're using it for refresh
     if (this.dataSource._paginator.hasNextPage()) {
       this.dataSource._paginator.nextPage();
@@ -168,6 +212,40 @@ export class AdminComponent implements OnInit {
     } else {
       this.dataSource.filter = '';
       this.dataSource.filter = this.filter.nativeElement.value;
+    }
+  }
+
+  // If you don't need a filter or a pagination this can be simplified, you just use code from else block
+  public refreshTableOwner() {
+    // if there's a paginator active we're using it for refresh
+    if (this.dataSourceOwner._paginatorOwner.hasNextPage()) {
+      this.dataSourceOwner._paginatorOwner.nextPage();
+      this.dataSourceOwner._paginatorOwner.previousPage();
+      // in case we're on last page this if will tick
+    } else if (this.dataSourceOwner._paginatorOwner.hasPreviousPage()) {
+      this.dataSourceOwner._paginatorOwner.previousPage();
+      this.dataSourceOwner._paginatorOwner.nextPage();
+      // in all other cases including active filter we do it like this
+    } else {
+      this.dataSourceOwner.filter = '';
+      this.dataSourceOwner.filter = this.filterOwner.nativeElement.value;
+    }
+  }
+
+  // If you don't need a filter or a pagination this can be simplified, you just use code from else block
+  public refreshTableClub() {
+    // if there's a paginator active we're using it for refresh
+    if (this.dataSourceClub._paginatorClub.hasNextPage()) {
+      this.dataSourceClub._paginatorClub.nextPage();
+      this.dataSourceClub._paginatorClub.previousPage();
+      // in case we're on last page this if will tick
+    } else if (this.dataSourceClub._paginatorClub.hasPreviousPage()) {
+      this.dataSourceClub._paginatorClub.previousPage();
+      this.dataSourceClub._paginatorClub.nextPage();
+      // in all other cases including active filter we do it like this
+    } else {
+      this.dataSourceClub.filter = '';
+      this.dataSourceClub.filter = this.filterClub.nativeElement.value;
     }
   }
 
@@ -185,6 +263,23 @@ export class AdminComponent implements OnInit {
     } else {
       this.dataSourceBreeder.filter = '';
       this.dataSourceBreeder.filter = this.filterBreeder.nativeElement.value;
+    }
+  }
+
+  // If you don't need a filter or a pagination this can be simplified, you just use code from else block
+  public refreshTableTournament() {
+    // if there's a paginator active we're using it for refresh
+    if (this.dataSourceTournament._paginatorTournament.hasNextPage()) {
+      this.dataSourceTournament._paginatorTournament.nextPage();
+      this.dataSourceTournament._paginatorTournament.previousPage();
+      // in case we're on last page this if will tick
+    } else if (this.dataSourceTournament._paginatorTournament.hasPreviousPage()) {
+      this.dataSourceTournament._paginatorTournament.previousPage();
+      this.dataSourceTournament._paginatorTournament.nextPage();
+      // in all other cases including active filter we do it like this
+    } else {
+      this.dataSourceTournament.filter = '';
+      this.dataSourceTournament.filter = this.filterTournament.nativeElement.value;
     }
   }
 
@@ -660,9 +755,5 @@ export interface Tournament {
 }
 
 
-export interface Owner {
-  firstname: string;
-  lastname: string;
-}
 
 
