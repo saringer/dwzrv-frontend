@@ -8,6 +8,7 @@ import {Breeder} from "../../data-models/breeder";
 import {Club} from "../../data-models/club";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {catchError} from "rxjs/operators";
+import {Tournament} from "../../data-models/tournament";
 
 @Injectable()
 export class DogService {
@@ -35,13 +36,7 @@ export class DogService {
   getDialogData() {
     return this.dialogData;
   }
-  setDialogData(data: any) {
-    this.dialogData = data;
-  }
 
-  resetDialogData() {
-    this.dialogData = null;
-  }
 
   getAllDogs(): void {
     this.http.get<Dogpass[]>(this.dogsUrl).subscribe(data => {
@@ -60,12 +55,9 @@ export class DogService {
 
 
   // ADD, POST METHOD
-  addDog (dog: Dogpass): Observable<Dogpass> {
-    /*const req = this.http.post(this.saveDogpassUrl, this.model);
-    this.dogService.addDog(this.model);
-    req.subscribe();*/
-    //this.dialogData = dog;
-    return this.http.post<Dogpass>(this.saveDogpassUrl, dog);
+  addDog (dog: Dogpass): void {
+    const req = this.http.post(this.saveDogpassUrl, dog);
+    req.subscribe(dog => this.dialogData = dog);
   }
 
   // DELETE METHOD
@@ -99,21 +91,4 @@ export class DogService {
 
 }
 
-export interface Tournament {
-    id: number;
-    title: string;
-    date: Date;
-}
-
-/*export interface Dog {
-  name: string;
-  owner: Owner;
-  breeder: Breeder;
-
-}*/
-
-export interface Owner {
-  firstname: string;
-  lastname: string;
-}
 

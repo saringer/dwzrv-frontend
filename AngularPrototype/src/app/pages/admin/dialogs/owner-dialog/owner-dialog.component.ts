@@ -15,8 +15,6 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ['./owner-dialog.component.css']
 })
 export class OwnerDialogComponent implements OnInit {
-  @ViewChild(OwnerFormComponent) ownerForm: OwnerFormComponent;
-
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<OwnerDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Dogowner, private ownerService: OwnerService) { }

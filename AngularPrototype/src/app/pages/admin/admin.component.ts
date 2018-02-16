@@ -75,7 +75,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
 
     this.onLoadClick();
-    this.loadData();
+  //  this.loadData();
 
 
     this.firstFormGroup = this._formBuilder.group({
@@ -119,24 +119,17 @@ export class AdminComponent implements OnInit {
   }
 
   onCreateDogClick(dog: Dogpass) {
-    let dialogRef = this.dialog.open(DogDialogComponent, {
-      data: {dog: dog}
+    const dialogRef = this.dialog.open(DogDialogComponent, {
+      data: {dog: dog }
     });
 
-
-    dialogRef.afterClosed().take(1).subscribe(result => {
-      console.log(`Dialog result: ${result}`); // Pizza!
-      //   if (result === 1) {
-
-      // After dialog is closed we're doing frontend updates
-      // For add we're just pushing a new row inside DataService
-      console.log('test after closed' + result)
-      this.dogService.dataChange.value.push(this.dogService.getDialogData());
-      this.refreshTableDogpass();
-     // this.dogService.resetDialogData();
-      //this.onLoadClick();
-      // }
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // After dialog is closed we're doing frontend updates
+        // For add we're just pushing a new row inside DataService
+        this.dogService.dataChange.value.push(this.dogService.getDialogData());
+        this.refreshTableDogpass();
+      }
     });
   }
 
@@ -194,7 +187,7 @@ export class AdminComponent implements OnInit {
     //this.dataSourceBreeder = new BreederDataSource(this.dogService, this.sort);
     this.loadDataOwner();
     this.loadDataClub();
-    this.tournaments = this.dogService.getTournaments();
+    //this.tournaments = this.dogService.getTournaments();
 
   }
 
@@ -284,7 +277,8 @@ export class AdminComponent implements OnInit {
   }
 
   refresh() {
-    this.loadData();
+    //this.loadData();
+    this.onLoadClick()
   }
 
   public loadData() {

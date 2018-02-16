@@ -17,6 +17,8 @@ import {DogService} from "../../services/DogService/dog.service";
 export class DogFormComponent implements OnInit {
   owners: Dogowner[];
   breeders: Breeder[];
+  private getOwnersUrl = 'http://localhost:8080/get/owners';
+  private getBreedersUrl = 'http://localhost:8080/get/breeders';
 
   constructor(private http: HttpClient, private dogService: DogService) {
 
@@ -26,8 +28,7 @@ export class DogFormComponent implements OnInit {
 
 
 
-  private getOwnersUrl = 'http://localhost:8080/get/owners';
-  private getBreedersUrl = 'http://localhost:8080/get/breeders';
+
 
 
   getBreeders() {
@@ -51,7 +52,7 @@ export class DogFormComponent implements OnInit {
   onSubmit() {
     //const req = this.http.post(this.saveDogpassUrl, this.model);
     // We post the dialog data to the server and subscribe for the created entity
-    this.dogService.addDog(this.model).subscribe(dog => this.dogService.dialogData = dog);
+    //this.dogService.addDog(this.model).subscribe(dog => this.dogService.dialogData = dog);
 
 
 

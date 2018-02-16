@@ -45,6 +45,8 @@ import {BreederService} from "./services/BreederService/breeder.service";
 import {ClubService} from "./services/ClubService/club.service";
 import {OwnerService} from "./services/OwnerService/owner.service";
 import {TournamentService} from "./services/TournamentService/tournament.service";
+import { JudgeDialogComponent } from './pages/admin/dialogs/judge-dialog/judge-dialog.component';
+import {JudgeService} from "./services/JudgeService/judge.service";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -78,7 +80,8 @@ const appRoutes: Routes = [
     BreederFormComponent,
     BreederDialogComponent,
     ClubFormComponent,
-    ClubDialogComponent
+    ClubDialogComponent,
+    JudgeDialogComponent
 
   ],
   imports: [
@@ -114,7 +117,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent ],
-  providers: [NativeDateAdapter,CompetitionService, DogService, CanActivateViaAuthGuard, AuthService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [NativeDateAdapter,CompetitionService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

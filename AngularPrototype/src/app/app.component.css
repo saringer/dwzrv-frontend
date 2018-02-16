@@ -1,6 +1,6 @@
 
 .header {
-  text-align: center; background-color: #3f51b5; height: 60px; padding-top: 17px;
+  text-align: center; background-color: #3f51b5; height: 50px; padding-top: 17px; width: 100%; position: absolute;
 }
 
 .footer {
@@ -17,7 +17,7 @@
 .router-container {
   overflow-y: auto;
   position: fixed;
-  top: 60px;
+  top: 70px;
   bottom: 60px;
   width:100%;
 }
