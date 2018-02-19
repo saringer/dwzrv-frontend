@@ -39,6 +39,8 @@ import {OwnerService} from "../../services/OwnerService/owner.service";
 import {Judge} from "../../data-models/judge";
 import {JudgeService} from "../../services/JudgeService/judge.service";
 import {JudgeDialogComponent} from "./dialogs/judge-dialog/judge-dialog.component";
+import {TournamentDog} from "../../data-models/tournamentdog";
+import {TournamentDogService} from "../../services/TournamentDogService/tournamentdog.service";
 
 @Component({
   selector: 'app-admin',
@@ -53,6 +55,8 @@ export class AdminComponent implements OnInit {
   @ViewChild('paginatorOwner') paginatorOwner: MatPaginator;
   @ViewChild('paginatorTournament') paginatorTournament: MatPaginator;
   @ViewChild('paginatorJudge') paginatorJudge: MatPaginator;
+  @ViewChild('paginatorTournamentDog') paginatorTournamentDog: MatPaginator;
+
 
 
   @ViewChild(MatSort) sort: MatSort;
@@ -62,6 +66,17 @@ export class AdminComponent implements OnInit {
   @ViewChild('filterOwner') filterOwner: ElementRef;
   @ViewChild('filterTournament') filterTournament: ElementRef;
   @ViewChild('filterJudge') filterJudge: ElementRef;
+  @ViewChild('filterTournamentDog') filterTournamentDog: ElementRef;
+
+
+  displayedColumns = ['name', 'owner', 'breeder', 'action'];
+  displayedColumsTournament = ['title', 'club', 'date', 'action'];
+  displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
+  displayedColumnsBreeder = ['breederid', 'breederfirstname', 'breederlastname', 'kennelname', 'action'];
+  displayedColumnsClub = ['clubname', 'city', 'action'];
+  displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
+  displayedColumnsTournamentDog = ['dogname', 'action'];
+
 
 
   dataSource: UserDataSource | null;
@@ -70,6 +85,8 @@ export class AdminComponent implements OnInit {
   dataSourceOwner: OwnerDataSource | null;
   dataSourceClub: ClubDataSource | null;
   dataSourceJudge: JudgeDataSource | null;
+  dataSourceTournamentDog: TournamentDogDataSource | null;
+
 
 
   firstFormGroup: FormGroup;
@@ -80,6 +97,7 @@ export class AdminComponent implements OnInit {
   list_all_judges: Judge[] = [];
   list_participating_judges: Judge[] = [];
   selected: any;
+  selected_awarding: any;
 
 
   ngOnInit() {
@@ -114,8 +132,9 @@ export class AdminComponent implements OnInit {
     this.list_all_dogs.splice(i, 1);
     this.selected.participating_dogs = this.list_participating_dogs;
     console.log('Hund: ' + this.selected.participating_dogs[0].name);
-    console.log(JSON.stringify(this.selected));
     this.tournamentService.updateTournament(this.selected);
+    this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null));
+
 
 
   }
@@ -140,6 +159,7 @@ export class AdminComponent implements OnInit {
     this.list_all_judges.splice(i, 1);
     this.selected.participating_judges = this.list_participating_judges;
     this.tournamentService.updateTournament(this.selected);
+
 
 
   }
@@ -216,18 +236,13 @@ export class AdminComponent implements OnInit {
   }
 
 
-  displayedColumns = ['name', 'owner', 'breeder', 'action'];
-  displayedColumsTournament = ['title', 'club', 'date', 'action'];
-  displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
-  displayedColumnsBreeder = ['breederid', 'breederfirstname', 'breederlastname', 'kennelname', 'action'];
-  displayedColumnsClub = ['clubname', 'city', 'action'];
-  displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
+
 
 
   constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService,
               private breederService: BreederService, private clubService: ClubService,
               private ownerService: OwnerService, private tournamentService: TournamentService,
-              private judgeService: JudgeService,
+              private judgeService: JudgeService, private tournamentDogService: TournamentDogService,
               private _formBuilder: FormBuilder) {
 
   }
@@ -241,6 +256,7 @@ export class AdminComponent implements OnInit {
     this.loadDataOwner();
     this.loadDataClub();
     this.loadDataJudge();
+    this.loadDataTournamentDog();
 
   }
 
@@ -370,6 +386,23 @@ export class AdminComponent implements OnInit {
   }
 
   // If you don't need a filter or a pagination this can be simplified, you just use code from else block
+  public refreshTableTournamentDog() {
+    // if there's a paginator active we're using it for refresh
+    if (this.dataSourceTournamentDog._paginatorTournamentDog.hasNextPage()) {
+      this.dataSourceTournamentDog._paginatorTournamentDog.nextPage();
+      this.dataSourceTournamentDog._paginatorTournamentDog.previousPage();
+      // in case we're on last page this if will tick
+    } else if (this.dataSourceTournamentDog._paginatorTournamentDog.hasPreviousPage()) {
+      this.dataSourceTournamentDog._paginatorTournamentDog.previousPage();
+      this.dataSourceTournamentDog._paginatorTournamentDog.nextPage();
+      // in all other cases including active filter we do it like this
+    } else {
+      this.dataSourceTournamentDog.filter = '';
+      this.dataSourceTournamentDog.filter = this.filterTournamentDog.nativeElement.value;
+    }
+  }
+
+  // If you don't need a filter or a pagination this can be simplified, you just use code from else block
   public refreshTableJudge() {
     // if there's a paginator active we're using it for refresh
     if (this.dataSourceJudge._paginatorJudge.hasNextPage()) {
@@ -465,6 +498,19 @@ export class AdminComponent implements OnInit {
           return;
         }
         this.dataSourceBreeder.filter = this.filterBreeder.nativeElement.value;
+      });
+  }
+
+  public loadDataTournamentDog() {
+    this.dataSourceTournamentDog = new TournamentDogDataSource(this.tournamentDogService, this.paginatorTournamentDog, this.sort);
+    Observable.fromEvent(this.filterTournamentDog.nativeElement, 'keyup')
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe(() => {
+        if (!this.dataSourceTournamentDog) {
+          return;
+        }
+        this.dataSourceTournamentDog.filter = this.filterTournamentDog.nativeElement.value;
       });
   }
 
@@ -823,6 +869,87 @@ export class BreederDataSource extends DataSource<any> {
       switch (this._sort.active) {
         case 'name':
           [propertyA, propertyB] = [a.firstname, b.firstname];
+          break;
+      }
+
+      const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+      const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+
+      return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
+    });
+  }
+
+
+}
+
+export class TournamentDogDataSource extends DataSource<any> {
+  _filterChange = new BehaviorSubject('');
+
+  get filter(): string {
+    return this._filterChange.value;
+  }
+
+  set filter(filterTournamentDog: string) {
+    this._filterChange.next(filterTournamentDog);
+  }
+
+  filteredData: TournamentDog[] = [];
+  renderedData: TournamentDog[] = [];
+
+  constructor(private tournamentDogService: TournamentDogService,
+              public _paginatorTournamentDog: MatPaginator,
+              private _sort: MatSort) {
+    super();
+    this._filterChange.subscribe(() => this._paginatorTournamentDog.pageIndex = 0);
+
+  }
+
+  connect(): Observable<TournamentDog[]> {
+    // return this.dogService.getDogs();
+    const displayDataChanges = [
+      this.tournamentDogService.dataChange,
+      this._sort.sortChange,
+      this._filterChange,
+      this._paginatorTournamentDog.page
+    ];
+
+    this.tournamentDogService.getAllTournamentDog();
+    return Observable.merge(...displayDataChanges).map(() => {
+      // Filter data
+      this.filteredData = this.tournamentDogService.data.slice().filter((tournamentDog: TournamentDog) => {
+        const searchStr = (tournamentDog.dog.name).toLowerCase();
+        return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
+      });
+
+      // Sort filtered data
+      const sortedData = this.sortData(this.filteredData.slice());
+
+
+      // Grab the page's slice of the filtered sorted data.
+      const startIndex = this._paginatorTournamentDog.pageIndex * this._paginatorTournamentDog.pageSize;
+      this.renderedData = sortedData.splice(startIndex, this._paginatorTournamentDog.pageSize);
+      return this.renderedData;
+
+    });
+
+  }
+
+  disconnect() {
+  }
+
+  /** Returns a sorted copy of the database data. */
+  sortData(data: TournamentDog[]): TournamentDog[] {
+    if (!this._sort.active || this._sort.direction === '') {
+      return data;
+    }
+
+    return data.sort((a, b) => {
+      let propertyA: number | string = '';
+      let propertyB: number | string = '';
+
+      switch (this._sort.active) {
+        case 'name':
+          [propertyA, propertyB] = [a.dog.name, b.dog.name];
           break;
       }
 

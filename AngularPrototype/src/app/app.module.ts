@@ -12,6 +12,7 @@ import {CdkTableModule} from "@angular/cdk/table";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDatepickerModule, MatNativeDateModule, MatSortModule, NativeDateAdapter} from "@angular/material";
 import {MatStepperModule} from '@angular/material/stepper';
+import { NgDragDropModule } from 'ng-drag-drop';
 
 [CdkTableModule]
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -45,8 +46,8 @@ import {TournamentService} from "./services/TournamentService/tournament.service
 import { JudgeDialogComponent } from './pages/admin/dialogs/judge-dialog/judge-dialog.component';
 import {JudgeService} from "./services/JudgeService/judge.service";
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {DragulaModule} from "ng2-dragula";
-import { NgDragDropModule } from 'ng-drag-drop';
+import {TournamentDogService} from "./services/TournamentDogService/tournamentdog.service";
+
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -113,12 +114,11 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatCheckboxModule,
-    DragulaModule
 
 
   ],
   entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [NativeDateAdapter, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [NativeDateAdapter, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
