@@ -17,7 +17,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import {CompetitionService} from "../../forms/dog-form/shared.services";
 import {DataSource} from "@angular/cdk/collections";
 import {Http} from "@angular/http";
 import {CollectionViewer} from "@angular/cdk/typings/collections";
@@ -27,7 +26,7 @@ import {Dogpass} from "../../data-models/dogpass";
 import {Observable} from 'rxjs/Rx'
 import {OwnerDialogComponent} from "./dialogs/owner-dialog/owner-dialog.component";
 import {TournamentDialogComponent} from "./dialogs/tournament-dialog/tournament-dialog.component";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Breeder} from "../../data-models/breeder";
 import {BreederDialogComponent} from "./dialogs/breeder-dialog/breeder-dialog.component";
 import {ClubDialogComponent} from "./dialogs/club-dialog/club-dialog.component";
@@ -37,6 +36,9 @@ import {BreederService} from "../../services/BreederService/breeder.service";
 import {ClubService} from "../../services/ClubService/club.service";
 import {TournamentService} from "../../services/TournamentService/tournament.service";
 import {OwnerService} from "../../services/OwnerService/owner.service";
+import {Judge} from "../../data-models/judge";
+import {JudgeService} from "../../services/JudgeService/judge.service";
+import {JudgeDialogComponent} from "./dialogs/judge-dialog/judge-dialog.component";
 
 @Component({
   selector: 'app-admin',
@@ -50,6 +52,8 @@ export class AdminComponent implements OnInit {
   @ViewChild('paginatorClub') paginatorClub: MatPaginator;
   @ViewChild('paginatorOwner') paginatorOwner: MatPaginator;
   @ViewChild('paginatorTournament') paginatorTournament: MatPaginator;
+  @ViewChild('paginatorJudge') paginatorJudge: MatPaginator;
+
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
@@ -57,6 +61,7 @@ export class AdminComponent implements OnInit {
   @ViewChild('filterClub') filterClub: ElementRef;
   @ViewChild('filterOwner') filterOwner: ElementRef;
   @ViewChild('filterTournament') filterTournament: ElementRef;
+  @ViewChild('filterJudge') filterJudge: ElementRef;
 
 
   dataSource: UserDataSource | null;
@@ -64,18 +69,25 @@ export class AdminComponent implements OnInit {
   dataSourceBreeder: BreederDataSource | null;
   dataSourceOwner: OwnerDataSource | null;
   dataSourceClub: ClubDataSource | null;
+  dataSourceJudge: JudgeDataSource | null;
 
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   tournaments: Observable<Tournament[]>;
+  list_all_dogs: Dogpass[] = [];
+  list_participating_dogs: Dogpass[] = [];
+  list_all_judges: Judge[] = [];
+  list_participating_judges: Judge[] = [];
   selected: any;
 
 
   ngOnInit() {
-
+    // Load tournaments
+    this.tournaments = this.tournamentService.getTournaments();
+    //this.tournamentService.getTournamentsAsArray().subscribe(tournaments => this.list_all_dogs = tournaments);
     this.onLoadClick();
-  //  this.loadData();
+    //  this.loadData();
 
 
     this.firstFormGroup = this._formBuilder.group({
@@ -88,24 +100,153 @@ export class AdminComponent implements OnInit {
 
   }
 
+  formControl = new FormControl('', [
+    Validators.required
+    // Validators.email,
+  ]);
+
+  onParticipatingDogsDrop(e: any) {
+    // Get the dropped data here
+
+
+    this.list_participating_dogs.push(e.dragData);
+    var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
+    this.list_all_dogs.splice(i, 1);
+    this.selected.participating_dogs = this.list_participating_dogs;
+    console.log('Hund: ' + this.selected.participating_dogs[0].name);
+    console.log(JSON.stringify(this.selected));
+    this.tournamentService.updateTournament(this.selected);
+
+
+  }
+
+  onAllDogsDrop(e: any) {
+    // Get the dropped data here
+
+
+    this.list_all_dogs.push(e.dragData);
+    var i = this.list_participating_dogs.findIndex(i => i.id === e.dragData.id);
+    this.list_participating_dogs.splice(i, 1);
+    this.tournamentService.updateTournament(this.selected);
+
+  }
+
+  onParticipatingJudgesDrop(e: any) {
+    // Get the dropped data here
+
+
+    this.list_participating_judges.push(e.dragData);
+    var i = this.list_all_judges.findIndex(i => i.id === e.dragData.id);
+    this.list_all_judges.splice(i, 1);
+    this.selected.participating_judges = this.list_participating_judges;
+    this.tournamentService.updateTournament(this.selected);
+
+
+  }
+
+  onAllJudgesDrop(e: any) {
+    // Get the dropped data here
+
+
+    this.list_all_judges.push(e.dragData);
+    var i = this.list_participating_judges.findIndex(i => i.id === e.dragData.id);
+    this.list_participating_judges.splice(i, 1);
+    this.tournamentService.updateTournament(this.selected);
+
+  }
+
+  onTabSwitch() {
+    this.tournaments = this.tournamentService.getTournaments();
+
+  }
+
+  stepperSelectionChange(event) {
+    this.tournaments = this.tournamentService.getTournaments();
+    if (this.selected.participating_dogs != null) {
+      this.list_participating_dogs = this.selected.participating_dogs;
+
+    }
+    else {
+      this.list_participating_dogs = [];
+    }
+    if (this.selected.participating_judges != null) {
+      this.list_participating_judges = this.selected.participating_judges;
+
+    }
+    else {
+      this.list_participating_judges = [];
+    }
+    this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
+    this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = this.removeParticipatingJudges(judges, this.list_participating_judges));
+
+
+    // Remove dogs from list which are already participating
+    //TODO
+
+
+
+  }
+
+
+
+  removeParticipatingDogs(first: Dogpass[], second: Dogpass[]): Dogpass[]{
+    var boolean = false;
+    for (var i=0; i<first.length; i++) {
+        for (var x=0; x<second.length; x++) {
+          if(first[i].id === second[x].id) {
+            first.splice(i, 1);
+            boolean = true;
+            break;
+          }
+        }
+    }
+    return first;
+  }
+
+  removeParticipatingJudges(first: Judge[], second: Judge[]): Judge[]{
+    for (var i=0; i<first.length; i++) {
+      for (var x=0; x<second.length; x++) {
+        if(first[i].id === second[x].id) {
+          first.splice(i, 1);
+          break;
+        }
+      }
+    }
+    return first;
+  }
+
 
   displayedColumns = ['name', 'owner', 'breeder', 'action'];
   displayedColumsTournament = ['title', 'club', 'date', 'action'];
   displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
-  displayedColumnsBreeder = ['breederid','breederfirstname', 'breederlastname', 'kennelname', 'action'];
+  displayedColumnsBreeder = ['breederid', 'breederfirstname', 'breederlastname', 'kennelname', 'action'];
   displayedColumnsClub = ['clubname', 'city', 'action'];
+  displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
 
 
   constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService,
               private breederService: BreederService, private clubService: ClubService,
               private ownerService: OwnerService, private tournamentService: TournamentService,
+              private judgeService: JudgeService,
               private _formBuilder: FormBuilder) {
+
+  }
+
+  onLoadClick() {
+    //this.dataSource = new UserDataSource(this.dogService, this.paginator, this.sort);
+    this.loadData();
+    this.loadDataTournaments();
+    this.loadDataBreeder();
+    //this.dataSourceBreeder = new BreederDataSource(this.dogService, this.sort);
+    this.loadDataOwner();
+    this.loadDataClub();
+    this.loadDataJudge();
 
   }
 
   onCreateBreederClick(breeder: Breeder) {
     const dialogRef = this.dialog.open(BreederDialogComponent, {
-      data: {breeder: breeder }
+      data: {breeder: breeder}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -120,7 +261,7 @@ export class AdminComponent implements OnInit {
 
   onCreateDogClick(dog: Dogpass) {
     const dialogRef = this.dialog.open(DogDialogComponent, {
-      data: {dog: dog }
+      data: {dog: dog}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -135,7 +276,7 @@ export class AdminComponent implements OnInit {
 
   onCreateOwnerClick(dogowner: Dogowner) {
     const dialogRef = this.dialog.open(OwnerDialogComponent, {
-      data: {dogowner: dogowner }
+      data: {dogowner: dogowner}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -148,9 +289,24 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  onCreateJudgeClick(judge: Judge) {
+    const dialogRef = this.dialog.open(JudgeDialogComponent, {
+      data: {judge: judge}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // After dialog is closed we're doing frontend updates
+        // For add we're just pushing a new row inside DataService
+        this.judgeService.dataChange.value.push(this.judgeService.getDialogData());
+        this.refreshTableJudge();
+      }
+    });
+  }
+
   onCreateTournamentClick(tournament: Tournament) {
     const dialogRef = this.dialog.open(TournamentDialogComponent, {
-      data: {tournament: tournament }
+      data: {tournament: tournament}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -165,7 +321,7 @@ export class AdminComponent implements OnInit {
 
   onCreateClubClick(club: Club) {
     const dialogRef = this.dialog.open(ClubDialogComponent, {
-      data: {club: club }
+      data: {club: club}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -178,18 +334,6 @@ export class AdminComponent implements OnInit {
     });
   }
 
-
-  onLoadClick() {
-    //this.dataSource = new UserDataSource(this.dogService, this.paginator, this.sort);
-    this.loadData();
-    this.loadDataTournaments();
-    this.loadDataBreeder();
-    //this.dataSourceBreeder = new BreederDataSource(this.dogService, this.sort);
-    this.loadDataOwner();
-    this.loadDataClub();
-    //this.tournaments = this.dogService.getTournaments();
-
-  }
 
   // If you don't need a filter or a pagination this can be simplified, you just use code from else block
   public refreshTableDogpass() {
@@ -222,6 +366,23 @@ export class AdminComponent implements OnInit {
     } else {
       this.dataSourceOwner.filter = '';
       this.dataSourceOwner.filter = this.filterOwner.nativeElement.value;
+    }
+  }
+
+  // If you don't need a filter or a pagination this can be simplified, you just use code from else block
+  public refreshTableJudge() {
+    // if there's a paginator active we're using it for refresh
+    if (this.dataSourceJudge._paginatorJudge.hasNextPage()) {
+      this.dataSourceJudge._paginatorJudge.nextPage();
+      this.dataSourceJudge._paginatorJudge.previousPage();
+      // in case we're on last page this if will tick
+    } else if (this.dataSourceJudge._paginatorJudge.hasPreviousPage()) {
+      this.dataSourceJudge._paginatorJudge.previousPage();
+      this.dataSourceJudge._paginatorJudge.nextPage();
+      // in all other cases including active filter we do it like this
+    } else {
+      this.dataSourceJudge.filter = '';
+      this.dataSourceJudge.filter = this.filterJudge.nativeElement.value;
     }
   }
 
@@ -339,10 +500,23 @@ export class AdminComponent implements OnInit {
       .debounceTime(150)
       .distinctUntilChanged()
       .subscribe(() => {
-        if (!this.dataSourceClub) {
+        if (!this.dataSourceOwner) {
           return;
         }
         this.dataSourceOwner.filter = this.filterOwner.nativeElement.value;
+      });
+  }
+
+  public loadDataJudge() {
+    this.dataSourceJudge = new JudgeDataSource(this.judgeService, this.paginatorJudge, this.sort);
+    Observable.fromEvent(this.filterJudge.nativeElement, 'keyup')
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe(() => {
+        if (!this.dataSourceJudge) {
+          return;
+        }
+        this.dataSourceJudge.filter = this.filterJudge.nativeElement.value;
       });
   }
 
@@ -638,6 +812,87 @@ export class BreederDataSource extends DataSource<any> {
 
   /** Returns a sorted copy of the database data. */
   sortData(data: Breeder[]): Breeder[] {
+    if (!this._sort.active || this._sort.direction === '') {
+      return data;
+    }
+
+    return data.sort((a, b) => {
+      let propertyA: number | string = '';
+      let propertyB: number | string = '';
+
+      switch (this._sort.active) {
+        case 'name':
+          [propertyA, propertyB] = [a.firstname, b.firstname];
+          break;
+      }
+
+      const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+      const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+
+      return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
+    });
+  }
+
+
+}
+
+export class JudgeDataSource extends DataSource<any> {
+  _filterChange = new BehaviorSubject('');
+
+  get filter(): string {
+    return this._filterChange.value;
+  }
+
+  set filter(filterJudge: string) {
+    this._filterChange.next(filterJudge);
+  }
+
+  filteredData: Judge[] = [];
+  renderedData: Judge[] = [];
+
+  constructor(private judgeService: JudgeService,
+              public _paginatorJudge: MatPaginator,
+              private _sort: MatSort) {
+    super();
+    this._filterChange.subscribe(() => this._paginatorJudge.pageIndex = 0);
+
+  }
+
+  connect(): Observable<Judge[]> {
+    // return this.dogService.getDogs();
+    const displayDataChanges = [
+      this.judgeService.dataChange,
+      this._sort.sortChange,
+      this._filterChange,
+      this._paginatorJudge.page
+    ];
+
+    this.judgeService.getAllJudges();
+    return Observable.merge(...displayDataChanges).map(() => {
+      // Filter data
+      this.filteredData = this.judgeService.data.slice().filter((judge: Judge) => {
+        const searchStr = (judge.firstname + judge.lastname).toLowerCase();
+        return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
+      });
+
+      // Sort filtered data
+      const sortedData = this.sortData(this.filteredData.slice());
+
+
+      // Grab the page's slice of the filtered sorted data.
+      const startIndex = this._paginatorJudge.pageIndex * this._paginatorJudge.pageSize;
+      this.renderedData = sortedData.splice(startIndex, this._paginatorJudge.pageSize);
+      return this.renderedData;
+
+    });
+
+  }
+
+  disconnect() {
+  }
+
+  /** Returns a sorted copy of the database data. */
+  sortData(data: Judge[]): Judge[] {
     if (!this._sort.active || this._sort.direction === '') {
       return data;
     }

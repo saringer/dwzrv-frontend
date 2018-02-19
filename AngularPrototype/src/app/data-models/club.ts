@@ -1,3 +1,5 @@
+import {Tournament} from "./tournament";
+
 export class Club {
 
   constructor(
@@ -6,7 +8,8 @@ export class Club {
     public street: string,
     public postalcode: string,
     public city: string,
-    public country: string
+    public country: string,
+    public tournaments: Tournament[]
   ) {
 
   }

@@ -49,8 +49,8 @@ export class DogService {
 
 
 
-  getTournaments(): Observable<Tournament[]> {
-    return this.http.get<Tournament[]>(this.tournamentsUrl);
+  getDogsAsArray() {
+    return this.http.get<Dogpass[]>(this.dogsUrl);
   }
 
 

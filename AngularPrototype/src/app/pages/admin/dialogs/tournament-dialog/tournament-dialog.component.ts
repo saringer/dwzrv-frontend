@@ -1,5 +1,4 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {TournamentFormComponent} from "../../../../forms/tournament-form/tournament-form.component";
 import {HttpClient} from "@angular/common/http";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {ClubService} from "../../../../services/ClubService/club.service";
@@ -15,7 +14,6 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class TournamentDialogComponent implements OnInit {
 
-  @ViewChild(TournamentFormComponent) tournamentForm: TournamentFormComponent;
   tournamenttype = ['Ausstellung', 'Coursing', 'Rennen'];
 
   clubs: any;

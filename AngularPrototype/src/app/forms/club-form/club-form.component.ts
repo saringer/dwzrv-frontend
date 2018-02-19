@@ -14,7 +14,7 @@ export class ClubFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  model = new Club(0, '', '', '', '', '');
+  model = new Club(0, '', '', '', '', '', null);
 
   onSubmit() {
     const req = this.http.post(this.saveClubUrl, this.model);

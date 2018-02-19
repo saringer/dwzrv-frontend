@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Observable} from "rxjs/Observable";
-import {Breeder} from "../../data-models/breeder";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Tournament} from "../../data-models/tournament";
 import {Judge} from "../../data-models/judge";
+import {Tournament} from "../../data-models/tournament";
+import {Dogpass} from "../../data-models/dogpass";
 
 @Injectable()
 export class JudgeService {
 
   private judgesUrl = 'http://localhost:8080/get/judges';
   private saveJudgeUrl = 'http://localhost:8080/save/judge';  // URL to web api
+  private updateJudgeUrl = 'http://localhost:8080/update/judges/'
+
 
 
 
@@ -34,7 +35,11 @@ export class JudgeService {
     this.dialogData = null;
   }
 
-  getAllTournaments(): void {
+  getJudgesAsArray() {
+    return this.http.get<Judge[]>(this.judgesUrl);
+  }
+
+  getAllJudges(): void {
     this.http.get<Judge[]>(this.judgesUrl).subscribe(data => {
         this.dataChange.next(data);
       },
@@ -50,9 +55,6 @@ export class JudgeService {
 
 
 
-  getTournaments(): Observable<Tournament[]> {
-    return this.http.get<Tournament[]>(this.judgesUrl);
-  }
 
 
   /**
@@ -62,5 +64,9 @@ export class JudgeService {
   addJudge (judge: Judge): void {
     const req = this.http.post(this.saveJudgeUrl, judge);
     req.subscribe(judge => this.dialogData = judge);  }
+
+  updateTournament(judge: Judge): void {
+    this.http.put(this.updateJudgeUrl + judge.id, judge).subscribe();
+  }
 
 }

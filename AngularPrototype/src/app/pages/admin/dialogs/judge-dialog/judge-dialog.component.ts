@@ -38,7 +38,7 @@ export class JudgeDialogComponent implements OnInit {
   }
 
   public confirmAdd(): void {
-    this.ownerService.addOwner(this.data);
+    this.judgeService.addJudge(this.data);
   }
 
 }

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatTableDataSource} from "@angular/material";
 import {HttpClient} from "@angular/common/http";
-import {DogFormComponent} from "../../../../forms/dog-form/dog-form.component";
 import {OwnerFormComponent} from "../../../../forms/owner-form/owner-form.component";
 import {DogService} from "../../../../services/DogService/dog.service";
 import {Dogpass} from "../../../../data-models/dogpass";
@@ -15,7 +14,6 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ['./dog-dialog.component.css']
 })
 export class DogDialogComponent implements OnInit {
-  @ViewChild(DogFormComponent) dogForm: DogFormComponent;
   sex = ['male', 'female'];
   owners: Dogowner[];
   breeders: Breeder[];
