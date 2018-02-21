@@ -132,7 +132,7 @@ export class AdminComponent implements OnInit {
     this.list_all_dogs.splice(i, 1);
     this.selected.participating_dogs = this.list_participating_dogs;
     console.log('Hund: ' + this.selected.participating_dogs[0].name);
-    this.tournamentService.updateTournament(this.selected);
+    //this.tournamentService.updateTournament(this.selected);
     this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null));
 
 
@@ -202,6 +202,7 @@ export class AdminComponent implements OnInit {
 
     // Remove dogs from list which are already participating
     //TODO
+    console.log(JSON.stringify(this.selected))
 
 
 
@@ -256,7 +257,7 @@ export class AdminComponent implements OnInit {
     this.loadDataOwner();
     this.loadDataClub();
     this.loadDataJudge();
-    this.loadDataTournamentDog();
+    //this.loadDataTournamentDog();
 
   }
 

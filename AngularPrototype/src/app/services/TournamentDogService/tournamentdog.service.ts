@@ -10,7 +10,7 @@ import {TournamentDog} from "../../data-models/tournamentdog";
 export class TournamentDogService {
 
   private tournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs';
-  private saveDogTournamentUrl = 'http://localhost:8080/save/dogtournament';  // URL to web api
+  private saveDogTournamentUrl = 'http://localhost:8080/save/tournamentdogs';  // URL to web api
   private updateJudgeUrl = 'http://localhost:8080/update/judges/'
 
 
