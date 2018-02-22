@@ -9,9 +9,8 @@ import {TournamentDog} from "../../data-models/tournamentdog";
 @Injectable()
 export class TournamentDogService {
 
-  private tournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs';
+  private tournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs/1';
   private saveDogTournamentUrl = 'http://localhost:8080/save/tournamentdogs';  // URL to web api
-  private updateJudgeUrl = 'http://localhost:8080/update/judges/'
 
 
 
@@ -48,6 +47,16 @@ export class TournamentDogService {
         console.log (error.name + ' ' + error.message);
       });
   }
+
+  getAllTournamentDogForTournament(tournamentid: number): void {
+    this.http.get<TournamentDog[]>('http://localhost:8080/get/tournamentdogs/' + tournamentid).subscribe(data => {
+        this.dataChange.next(data);
+      },
+      (error: HttpErrorResponse) => {
+        console.log (error.name + ' ' + error.message);
+      });
+  }
+
 
   /**
    * Get Methods

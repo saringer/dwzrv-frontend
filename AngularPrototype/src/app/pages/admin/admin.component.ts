@@ -75,7 +75,7 @@ export class AdminComponent implements OnInit {
   displayedColumnsBreeder = ['breederid', 'breederfirstname', 'breederlastname', 'kennelname', 'action'];
   displayedColumnsClub = ['clubname', 'city', 'action'];
   displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
-  displayedColumnsTournamentDog = ['dogname', 'action'];
+  displayedColumnsTournamentDog = ['dogname','judging', 'action'];
 
 
 
@@ -89,6 +89,7 @@ export class AdminComponent implements OnInit {
 
 
 
+
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   tournaments: Observable<Tournament[]>;
@@ -98,6 +99,8 @@ export class AdminComponent implements OnInit {
   list_participating_judges: Judge[] = [];
   selected: any;
   selected_awarding: any;
+
+
 
 
   ngOnInit() {
@@ -133,7 +136,7 @@ export class AdminComponent implements OnInit {
     this.selected.participating_dogs = this.list_participating_dogs;
     console.log('Hund: ' + this.selected.participating_dogs[0].name);
     //this.tournamentService.updateTournament(this.selected);
-    this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null));
+    this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
 
 
 
@@ -177,6 +180,7 @@ export class AdminComponent implements OnInit {
 
   onTabSwitch() {
     this.tournaments = this.tournamentService.getTournaments();
+    this.onLoadClick();
 
   }
 
@@ -206,6 +210,22 @@ export class AdminComponent implements OnInit {
 
 
 
+  }
+
+  editField(field: string, editValue: string, el: any) {
+    let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
+    this.dataSourceTournamentDog.renderedData[idx][field] = editValue;
+    //console.log(this.dataSourceTournamentDog.renderedData);
+    //this.selected_awarding.tournament_dog = this.dataSourceTournamentDog.renderedData;
+   // this.tournamentService.updateTournament(this.selected_awarding);
+   // this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
+    this.tournamentDogService.addTournamentDog(this.dataSourceTournamentDog.renderedData[idx]);
+
+
+  }
+
+  stepperSelectionChangeDogJudgement(event) {
+            this.tournamentDogService.getAllTournamentDogForTournament(this.selected_awarding.id);
   }
 
 
@@ -257,7 +277,7 @@ export class AdminComponent implements OnInit {
     this.loadDataOwner();
     this.loadDataClub();
     this.loadDataJudge();
-    //this.loadDataTournamentDog();
+    this.loadDataTournamentDog();
 
   }
 
@@ -918,7 +938,7 @@ export class TournamentDogDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentDogService.data.slice().filter((tournamentDog: TournamentDog) => {
-        const searchStr = (tournamentDog.dog.name).toLowerCase();
+        const searchStr = (tournamentDog.dogname).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 
@@ -950,7 +970,7 @@ export class TournamentDogDataSource extends DataSource<any> {
 
       switch (this._sort.active) {
         case 'name':
-          [propertyA, propertyB] = [a.dog.name, b.dog.name];
+          [propertyA, propertyB] = [a.dogname, b.dogname];
           break;
       }
 

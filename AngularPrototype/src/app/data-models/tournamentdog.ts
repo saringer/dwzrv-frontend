@@ -7,7 +7,9 @@ export class TournamentDog {
 
   constructor(public dog: Dogpass,
               public tournament: Tournament,
-              public judging: number) {
+              public judging: number,
+              public tournamenttype: string,
+              public dogname: string) {
 
   }
 

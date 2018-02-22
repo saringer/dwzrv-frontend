@@ -516,7 +516,7 @@
     <mat-tab label="Turnierwertungen eintragen">
 
 
-      <mat-horizontal-stepper [linear]="true">
+      <mat-horizontal-stepper (selectionChange)="stepperSelectionChangeDogJudgement($event)" [linear]="true">
 
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
@@ -538,7 +538,72 @@
         <mat-step class="content">
           <ng-template matStepLabel>Punkte vergeben</ng-template>
 
-          <li *ngFor="let subItem of selected_awarding['tournament_dog']"> {{subItem.name}} </li>
+
+          <div class="form">
+            <mat-form-field floatPlaceholder="never" color="accent">
+              <input matInput #filterTournamentDog placeholder="suche...">
+            </mat-form-field>
+          </div>
+
+          <mat-table #table [dataSource]="dataSourceTournamentDog" matSort>
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <ng-container matColumnDef="dogname">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.dogname}}</mat-cell>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="judging">
+              <mat-header-cell *matHeaderCellDef> Wertung </mat-header-cell>
+              <mat-cell *matCellDef="let element">
+                <mat-form-field floatLabel="never">
+                  <input matInput placeholder="Wertung" [value]="element.judging" (input)="editField('judging', $event.target.value, element)">
+                </mat-form-field>
+              </mat-cell>
+            </ng-container>
+
+
+           <!-- <ng-container matColumnDef="judging">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Wertung</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.judging}}</mat-cell>
+            </ng-container>-->
+
+            <!-- Action Menu -->
+            <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button color="primary" (click)="onCreateTournamentClick()">
+                  <mat-icon aria-label="Add">add</mat-icon>
+                </button>
+              </mat-header-cell>
+
+              <mat-cell *matCellDef="let row; let i=index;">
+                <button mat-icon-button color="accent"
+                        (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                  <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+                  <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef=" displayedColumnsTournamentDog"></mat-header-row>
+            <mat-row *matRowDef="let row; columns:  displayedColumnsTournamentDog;"></mat-row>
+
+
+          </mat-table>
+
+          <mat-paginator #paginatorTournamentDog
+                         [length]="dataSourceTournamentDog.filteredData.length"
+                         [pageIndex]="0"
+                         [pageSize]="10"
+                         [pageSizeOptions]="[5, 10, 25, 100]">
+          </mat-paginator>
+
 
         </mat-step>
       </mat-horizontal-stepper>
