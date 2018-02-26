@@ -213,6 +213,8 @@ export class AdminComponent implements OnInit {
   }
 
   editField(field: string, editValue: string, el: any) {
+    console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData));
+
     let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
     this.dataSourceTournamentDog.renderedData[idx][field] = editValue;
     //console.log(this.dataSourceTournamentDog.renderedData);
@@ -220,6 +222,7 @@ export class AdminComponent implements OnInit {
    // this.tournamentService.updateTournament(this.selected_awarding);
    // this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
     this.tournamentDogService.addTournamentDog(this.dataSourceTournamentDog.renderedData[idx]);
+    //console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData[idx]));
 
 
   }
@@ -938,7 +941,7 @@ export class TournamentDogDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentDogService.data.slice().filter((tournamentDog: TournamentDog) => {
-        const searchStr = (tournamentDog.dogname).toLowerCase();
+        const searchStr = (tournamentDog.dogname + tournamentDog.judging).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 
