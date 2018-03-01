@@ -6,8 +6,7 @@ export class Dogowner {
               public street: string,
               public postalcode: string,
               public city: string,
-              public country: string,
-              public date_of_birth: Date) {
+              public country: string) {
 
   }
 

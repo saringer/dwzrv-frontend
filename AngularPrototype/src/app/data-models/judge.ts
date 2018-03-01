@@ -10,7 +10,6 @@ export class Judge {
     public postalcode: string,
     public city: string,
     public country: string,
-    public date_of_birth: Date,
     public tournaments: Tournament[]
 
   ) {

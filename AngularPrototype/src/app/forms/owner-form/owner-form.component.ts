@@ -16,7 +16,7 @@ export class OwnerFormComponent implements OnInit {
 
 
 
-  model = new Dogowner(0,'', '', '', '', '', '', new Date(2017, 11, 1));
+  model = new Dogowner(0,'', '', '', '', '', '');
 
   onSubmit() {
     const req = this.http.post(this.saveOwnerUrl, this.model);

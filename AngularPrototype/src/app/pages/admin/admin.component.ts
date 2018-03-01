@@ -75,7 +75,7 @@ export class AdminComponent implements OnInit {
   displayedColumnsBreeder = ['breederid', 'breederfirstname', 'breederlastname', 'kennelname', 'action'];
   displayedColumnsClub = ['clubname', 'city', 'action'];
   displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
-  displayedColumnsTournamentDog = ['dogname','judging', 'action'];
+  displayedColumnsTournamentDog = ['dogname','coursingrating1'];
 
 
 
@@ -136,7 +136,7 @@ export class AdminComponent implements OnInit {
     this.selected.participating_dogs = this.list_participating_dogs;
     console.log('Hund: ' + this.selected.participating_dogs[0].name);
     //this.tournamentService.updateTournament(this.selected);
-    this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
+    this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected, this.selected.tournamenttype,e.dragData.name));
 
 
 
@@ -941,7 +941,7 @@ export class TournamentDogDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentDogService.data.slice().filter((tournamentDog: TournamentDog) => {
-        const searchStr = (tournamentDog.dogname + tournamentDog.judging).toLowerCase();
+        const searchStr = (tournamentDog.dogname + tournamentDog.coursingrating1).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

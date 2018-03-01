@@ -10,7 +10,7 @@ import {TournamentDog} from "../../data-models/tournamentdog";
 export class TournamentDogService {
 
   private tournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs/1';
-  private saveDogTournamentUrl = 'http://localhost:8080/save/tournamentdogs';  // URL to web api
+  private saveDogTournamentUrl = 'http://localhost:8080/save/tournamentdog';  // URL to web api
 
 
 
@@ -49,7 +49,7 @@ export class TournamentDogService {
   }
 
   getAllTournamentDogForTournament(tournamentid: number): void {
-    this.http.get<TournamentDog[]>('http://localhost:8080/get/tournamentdogs/' + tournamentid).subscribe(data => {
+    this.http.get<TournamentDog[]>('http://localhost:8080/get/tournamentdogcoursings/' + tournamentid).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {

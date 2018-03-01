@@ -556,11 +556,11 @@
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="judging">
-              <mat-header-cell *matHeaderCellDef> Wertung </mat-header-cell>
+            <ng-container matColumnDef="coursingrating1">
+              <mat-header-cell *matHeaderCellDef> Wertung 1 </mat-header-cell>
               <mat-cell *matCellDef="let element">
                 <mat-form-field floatLabel="never">
-                  <input matInput placeholder="Wertung" [value]="element.judging" (input)="editField('judging', $event.target.value, element)">
+                  <input matInput placeholder="Wertung" [value]="element.coursingrating1" (input)="editField('coursingrating1', $event.target.value, element)">
                 </mat-form-field>
               </mat-cell>
             </ng-container>
@@ -571,25 +571,6 @@
               <mat-cell *matCellDef="let element"> {{element.judging}}</mat-cell>
             </ng-container>-->
 
-            <!-- Action Menu -->
-            <ng-container matColumnDef="action">
-              <mat-header-cell *matHeaderCellDef>
-                <button mat-icon-button color="primary" (click)="onCreateTournamentClick()">
-                  <mat-icon aria-label="Add">add</mat-icon>
-                </button>
-              </mat-header-cell>
-
-              <mat-cell *matCellDef="let row; let i=index;">
-                <button mat-icon-button color="accent"
-                        (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
-                  <mat-icon aria-label="Edit">edit</mat-icon>
-                </button>
-
-                <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
-                  <mat-icon aria-label="Delete">delete</mat-icon>
-                </button>
-              </mat-cell>
-            </ng-container>
 
             <mat-header-row *matHeaderRowDef=" displayedColumnsTournamentDog"></mat-header-row>
             <mat-row *matRowDef="let row; columns:  displayedColumnsTournamentDog;"></mat-row>
