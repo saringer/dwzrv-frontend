@@ -47,7 +47,7 @@ import { JudgeDialogComponent } from './pages/admin/dialogs/judge-dialog/judge-d
 import {JudgeService} from "./services/JudgeService/judge.service";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {TournamentDogService} from "./services/TournamentDogService/tournamentdog.service";
-import { PasswordDialogComponent } from './pages/admin/dialogs/password-prompt-dialog/password-dialog/password-dialog.component';
+import { PasswordDialogComponent } from './pages/admin/dialogs/password-dialog/password-dialog.component';
 
 
 const appRoutes: Routes = [

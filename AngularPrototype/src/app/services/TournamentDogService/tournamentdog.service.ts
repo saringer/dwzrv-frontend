@@ -10,7 +10,7 @@ import {TournamentDog} from "../../data-models/tournamentdog";
 export class TournamentDogService {
 
   private tournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs/1';
-  private saveDogTournamentUrl = 'http://localhost:8080/save/tournamentdog';  // URL to web api
+  private saveTournamentDogUrl = 'http://localhost:8080/save/tournamentdog';  // URL to web api
 
 
 
@@ -72,7 +72,7 @@ export class TournamentDogService {
    */
 
   addTournamentDog (tournamentdog: TournamentDog): void {
-    const req = this.http.post(this.saveDogTournamentUrl, tournamentdog);
+    const req = this.http.post(this.saveTournamentDogUrl, tournamentdog);
     req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
 
 

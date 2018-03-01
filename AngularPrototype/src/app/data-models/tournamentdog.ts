@@ -17,10 +17,12 @@ export class TournamentDog {
   public coursingrating10: number;
   public coursingrating11: number;
   public coursingrating12: number;
+  public raceplacement: number;
+  public racetime: number;
+  public racetimewinner: number;
 
   constructor(public dog: Dogpass,
               public tournament: Tournament,
-
               public tournamenttype: string,
               public dogname: string) {
 
