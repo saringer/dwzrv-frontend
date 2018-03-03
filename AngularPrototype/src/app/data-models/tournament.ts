@@ -11,7 +11,6 @@ export class Tournament {
     public tournamenttype: string,
     public club: Club,
     public date: Date,
-    public participating_dogs: Dogpass[],
     public participating_judges: Judge[],
     public tournamentDogs: TournamentDog[]
   ) {
