@@ -128,7 +128,6 @@ export class AdminComponent implements OnInit {
     var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
     this.list_all_dogs.splice(i, 1);
     this.selected.participating_dogs = this.list_participating_dogs;
-    console.log('Hund: ' + this.selected.participating_dogs[0].name);
     //this.tournamentService.updateTournament(this.selected);
     this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData, this.selected, this.selected.tournamenttype, e.dragData.name));
     this.onLoadClick();
@@ -177,14 +176,21 @@ export class AdminComponent implements OnInit {
 
   stepperSelectionChange(event) {
     this.tournaments = this.tournamentService.getTournaments();
-    if (this.selected.participating_dogs != null) {
-      this.list_participating_dogs = this.selected.participating_dogs;
+    console.log("test1");
+    console.log(JSON.stringify(this.selected));
 
+    if (this.selected.tournamentDogs != null) {
+
+      this.list_participating_dogs = [];
+      for (var i=0;i<this.selected.tournamentDogs.length;i++) {
+        this.list_participating_dogs.push(this.selected.tournamentDogs[i].dog);
+      }
     }
     else {
       this.list_participating_dogs = [];
     }
     if (this.selected.participating_judges != null) {
+      this.list_participating_judges = [];
       this.list_participating_judges = this.selected.participating_judges;
 
     }
@@ -192,27 +198,22 @@ export class AdminComponent implements OnInit {
       this.list_participating_judges = [];
     }
     this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
+   // this.list_all_dogs = this.difference(dogs,this.list_participating_dogs);
     this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = this.removeParticipatingJudges(judges, this.list_participating_judges));
 
 
     // Remove dogs from list which are already participating
     //TODO
-    console.log(JSON.stringify(this.selected))
 
 
   }
 
   editField(field: string, editValue: string, el: any) {
-    console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData));
 
     let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
     this.dataSourceTournamentDog.renderedData[idx][field] = editValue;
-    //console.log(this.dataSourceTournamentDog.renderedData);
-    //this.selected_awarding.tournament_dog = this.dataSourceTournamentDog.renderedData;
-    // this.tournamentService.updateTournament(this.selected_awarding);
-    // this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
+
     this.tournamentDogService.addTournamentDog(this.dataSourceTournamentDog.renderedData[idx]);
-    //console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData[idx]));
 
 
   }
@@ -233,7 +234,10 @@ export class AdminComponent implements OnInit {
   }
 
 
+
   removeParticipatingDogs(first: Dogpass[], second: Dogpass[]): Dogpass[] {
+    console.log(first);
+    console.log(second);
     var boolean = false;
     for (var i = 0; i < first.length; i++) {
       for (var x = 0; x < second.length; x++) {

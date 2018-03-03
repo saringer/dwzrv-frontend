@@ -16,7 +16,7 @@ export class Dogpass {
               public date_of_birth: Date,
               public owner: Dogowner,
               public tournaments: Tournament[],
-              public tournament_dog: TournamentDog[]) {
+              public tournamentDogs: TournamentDog[]) {
 
   }
 
