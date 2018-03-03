@@ -1,0 +1,68 @@
+<div class="form">
+  <mat-form-field floatPlaceholder="never" color="accent">
+    <input matInput #filterBreeder placeholder="suche...">
+  </mat-form-field>
+</div>
+
+<mat-table #table [dataSource]="dataSourceBreeder" matSort>
+
+  <ng-container>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <ng-container matColumnDef="breederid">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="breederfirstname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Vorname</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.firstname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="breederlastname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nachname</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.lastname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="kennelname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Zwingername</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.kennelname}}</mat-cell>
+    </ng-container>
+
+
+    <!-- Action Menu -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="onCreateBreederClick()">
+          <mat-icon aria-label="Add">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent"
+                (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumnsBreeder"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumnsBreeder;"></mat-row>
+
+
+</mat-table>
+
+<mat-paginator #paginatorBreeder
+               [length]="dataSourceBreeder.filteredData.length"
+               [pageIndex]="0"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

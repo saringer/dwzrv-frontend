@@ -1,0 +1,159 @@
+<mat-horizontal-stepper (selectionChange)="stepperSelectionChangeDogJudgement($event)" [linear]="true">
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Veranstaltungen</ng-template>
+
+      <select matInput formControlName="firstCtrl" class="form-control" [(ngModel)]="selected_awarding"
+              style="height: auto;text-align: center;" name="selecttournaments" required>
+        <option *ngFor='let tournament of tournaments | async' [ngValue]="tournament">
+          {{tournament.title}}
+        </option>
+      </select>
+      <!--     //<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>-->
+      <div>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step class="content">
+    <ng-template matStepLabel>Punkte vergeben</ng-template>
+
+
+    <div class="form">
+      <mat-form-field floatPlaceholder="never" color="accent">
+        <input matInput #filterTournamentDog placeholder="suche...">
+      </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSourceTournamentDog" matSort>
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <ng-container matColumnDef="dogname">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name des Hundes</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dogname}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="coursing">
+        <mat-header-cell *matHeaderCellDef> Erster & zweiter Durchgang</mat-header-cell>
+        <!--
+        COURSING WERTUNGEN
+        -->
+        <mat-cell *matCellDef="let element">
+          Erster Durchgang:
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating1"
+                   (input)="editField('coursingrating1', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating2"
+                   (input)="editField('coursingrating2', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating3"
+                   (input)="editField('coursingrating3', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating4"
+                   (input)="editField('coursingrating4', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" class="field" [value]="element.coursingrating5"
+                   (input)="editField('coursingrating5', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating6"
+                   (input)="editField('coursingrating6', $event.target.value, element)">
+          </mat-form-field>
+          <br>
+          Zweiter Durchgang:
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating7"
+                   (input)="editField('coursingrating7', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating8"
+                   (input)="editField('coursingrating8', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating9"
+                   (input)="editField('coursingrating9', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating10"
+                   (input)="editField('coursingrating10', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating11"
+                   (input)="editField('coursingrating11', $event.target.value, element)">
+          </mat-form-field>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Wertung" [value]="element.coursingrating12"
+                   (input)="editField('coursingrating12', $event.target.value, element)">
+          </mat-form-field>
+        </mat-cell>
+
+      </ng-container>
+
+      <!--
+       RENNEN WERTUNGEN
+       -->
+      <ng-container matColumnDef="race">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Finallauf</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          Platz:
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Platz" [value]="element.raceplacement"
+                   (input)="editField('raceplacement', $event.target.value, element)">
+          </mat-form-field>
+          Eigene Zeit:
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Eigene Zeit" [value]="element.racetime"
+                   (input)="editField('racetime', $event.target.value, element)">
+          </mat-form-field>
+          Zeit des Siegers:
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Zeit des Siegers" [value]="element.racetimewinner"
+                   (input)="editField('racetimewinner', $event.target.value, element)">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="exhibition">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ausstellungswertungen</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <mat-form-field floatLabel="never">
+            Formwertnote:
+            <input matInput placeholder="Formwertnote" [value]="element.coursingrating12"
+                   (input)="editField('coursingrating12', $event.target.value, element)">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+
+      <!-- <ng-container matColumnDef="judging">
+         <mat-header-cell *matHeaderCellDef mat-sort-header> Wertung</mat-header-cell>
+         <mat-cell *matCellDef="let element"> {{element.judging}}</mat-cell>
+       </ng-container>-->
+
+
+      <mat-header-row *matHeaderRowDef=" displayedColumnsTournamentDog"></mat-header-row>
+      <mat-row *matRowDef="let row; columns:  displayedColumnsTournamentDog;"></mat-row>
+
+
+    </mat-table>
+
+    <mat-paginator #paginatorTournamentDog
+                   [length]="dataSourceTournamentDog.filteredData.length"
+                   [pageIndex]="0"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+
+  </mat-step>
+</mat-horizontal-stepper>

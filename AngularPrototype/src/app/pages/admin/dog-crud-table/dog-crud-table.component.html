@@ -1,0 +1,65 @@
+<div class="form">
+  <mat-form-field floatPlaceholder="never" color="accent">
+    <input matInput #filter placeholder="suche...">
+  </mat-form-field>
+</div>
+
+<mat-table #table [dataSource]="dataSource" matSort>
+
+  <ng-container>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Besitzer</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.owner.firstname ++ ' ' ++ element.owner.lastname}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="breeder">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Züchter</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.breeder.firstname ++ ' ' ++ element.breeder.lastname}}
+      </mat-cell>
+    </ng-container>
+
+
+    <!-- Action Menu -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="primary" (click)="onCreateDogClick()">
+          <mat-icon aria-label="Add">add</mat-icon>
+        </button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="accent"
+                (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+
+</mat-table>
+
+<mat-paginator #paginator
+               [length]="dataSource.filteredData.length"
+               [pageIndex]="0"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

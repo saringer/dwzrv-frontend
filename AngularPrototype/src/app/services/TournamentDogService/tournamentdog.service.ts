@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Judge} from "../../data-models/judge";
-import {Tournament} from "../../data-models/tournament";
-import {Dogpass} from "../../data-models/dogpass";
+import {AppSettings} from "../../appsettings";
 import {TournamentDog} from "../../data-models/tournamentdog";
 
 @Injectable()
 export class TournamentDogService {
 
-  private tournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs/1';
-  private saveTournamentDogUrl = 'http://localhost:8080/save/tournamentdog';  // URL to web api
+
 
 
 
@@ -35,46 +32,46 @@ export class TournamentDogService {
     this.dialogData = null;
   }
 
-  getTournamentDogsAsArray() {
-    return this.http.get<TournamentDog[]>(this.tournamentDogsUrl);
-  }
-
-  getAllTournamentDog(): void {
-    this.http.get<TournamentDog[]>(this.tournamentDogsUrl).subscribe(data => {
-        this.dataChange.next(data);
-      },
-      (error: HttpErrorResponse) => {
-        console.log (error.name + ' ' + error.message);
-      });
-  }
-
-  getAllTournamentDogForTournament(tournamentid: number): void {
-    this.http.get<TournamentDog[]>('http://localhost:8080/get/tournamentdogcoursings/' + tournamentid).subscribe(data => {
-        this.dataChange.next(data);
-      },
-      (error: HttpErrorResponse) => {
-        console.log (error.name + ' ' + error.message);
-      });
-  }
-
-
   /**
    * Get Methods
    *
    */
 
 
+  getTournamentDogsAsArray() {
+    return this.http.get<TournamentDog[]>(AppSettings.getTournamentDogsUrl);
+  }
+
+  getAllTournamentDog(): void {
+    this.http.get<TournamentDog[]>(AppSettings.getTournamentDogsUrl).subscribe(data => {
+        this.dataChange.next(data);
+      },
+      (error: HttpErrorResponse) => {
+        console.log (error.name + ' ' + error.message);
+      });
+  }
 
 
 
-  /**
-   * Add Methods
-   */
+
+  // Add Method
 
   addTournamentDog (tournamentdog: TournamentDog): void {
-    const req = this.http.post(this.saveTournamentDogUrl, tournamentdog);
+    const req = this.http.post(AppSettings.saveTournamentDogUrl, tournamentdog);
     req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
 
+
+  // Delete Method
+  deleteItem(dog_id: number, tournament_id): void {
+    this.http.delete(AppSettings.deleteTournamentDogUrl + dog_id + '/' + tournament_id).subscribe(data => {
+        console.log(AppSettings.deleteTournamentDogUrl + dog_id + '/' + tournament_id);
+       // this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
 
 
 }

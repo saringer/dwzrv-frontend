@@ -9,7 +9,7 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class CoursingComponent {
 
-  displayedColumns = ['total', 'position', 'name', 'besitzer', 'gesamtteilnahme','inwertung'];
+  displayedColumns = ['position','total', 'name', 'besitzer', 'gesamtteilnahme','inwertung'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
 }

@@ -13,7 +13,7 @@ export class Tournament {
     public date: Date,
     public participating_dogs: Dogpass[],
     public participating_judges: Judge[],
-    public tournament_dog: TournamentDog[]
+    public tournamentDogs: TournamentDog[]
   ) {
 
   }

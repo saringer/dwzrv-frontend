@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AppComponent, CanActivateViaAuthGuard} from './app.component';
+import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CoursingComponent} from './pages/coursing/coursing.component';
 import {RacingComponent} from './pages/racing/racing.component';
@@ -47,7 +47,18 @@ import { JudgeDialogComponent } from './pages/admin/dialogs/judge-dialog/judge-d
 import {JudgeService} from "./services/JudgeService/judge.service";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {TournamentDogService} from "./services/TournamentDogService/tournamentdog.service";
-import { PasswordDialogComponent } from './pages/admin/dialogs/password-dialog/password-dialog.component';
+import {
+  CanActivateViaAuthGuard,
+  PasswordDialogComponent
+} from './pages/admin/dialogs/password-dialog/password-dialog.component';
+import { ClubCrudTableComponent } from './pages/admin/club-crud-table/club-crud-table.component';
+import { BreederCrudTableComponent } from './pages/admin/breeder-crud-table/breeder-crud-table.component';
+import { OwnerCrudTableComponent } from './pages/admin/owner-crud-table/owner-crud-table.component';
+import { JudgeCrudTableComponent } from './pages/admin/judge-crud-table/judge-crud-table.component';
+import { DogCrudTableComponent } from './pages/admin/dog-crud-table/dog-crud-table.component';
+import { TournamentCrudTableComponent } from './pages/admin/tournament-crud-table/tournament-crud-table.component';
+import { ManageTournamentsComponent } from './pages/admin/manage-tournaments/manage-tournaments.component';
+import { ManageTournamentEvaluationsComponent } from './pages/admin/manage-tournament-evaluations/manage-tournament-evaluations.component';
 
 
 const appRoutes: Routes = [
@@ -82,7 +93,15 @@ const appRoutes: Routes = [
     ClubFormComponent,
     ClubDialogComponent,
     JudgeDialogComponent,
-    PasswordDialogComponent
+    PasswordDialogComponent,
+    ClubCrudTableComponent,
+    BreederCrudTableComponent,
+    OwnerCrudTableComponent,
+    JudgeCrudTableComponent,
+    DogCrudTableComponent,
+    TournamentCrudTableComponent,
+    ManageTournamentsComponent,
+    ManageTournamentEvaluationsComponent
 
   ],
   imports: [
@@ -119,7 +138,7 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [ DogDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
+  entryComponents: [ DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
   providers: [NativeDateAdapter, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })

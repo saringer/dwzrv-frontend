@@ -1,0 +1,84 @@
+<mat-horizontal-stepper (selectionChange)="stepperSelectionChange($event)" [linear]="true">
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Veranstaltungen</ng-template>
+      <label> Veranstaltung auswählen</label>
+      <select matInput formControlName="firstCtrl" class="form-control" name="selectedtournaments2"
+              [(ngModel)]="selected" style="height: auto;text-align: center;" required>
+        <option *ngFor='let tournament of tournaments | async' [ngValue]="tournament">
+          {{tournament.title}}
+        </option>
+      </select>
+      <!--     //<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>-->
+      <div>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step class="content">
+    <ng-template matStepLabel>Richter zuordnen</ng-template>
+    <label> Hunde auswählen</label>
+
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="panel panel-default" droppable (onDrop)="onAllJudgesDrop($event)">
+          <div class="panel-heading">Alle Richter</div>
+          <div class="panel-body">
+            <li draggable *ngFor="let item of list_all_judges" [dragData]="item" class="list-group-item">
+              {{item.firstname + ' ' + item.lastname}}
+            </li>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="panel panel-default" droppable (onDrop)="onParticipatingJudgesDrop($event)">
+          <div class="panel-heading">Teilnehmende Richter</div>
+          <div class="panel-body">
+            <li draggable *ngFor="let item of list_participating_judges" [dragData]="item"
+                class="list-group-item">{{item.firstname + ' ' + item.lastname}}
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </mat-step>
+
+
+  <mat-step class="content">
+    <ng-template matStepLabel>Hunde zuordnen</ng-template>
+    <label> Hunde auswählen</label>
+
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="panel panel-default" droppable (onDrop)="onAllDogsDrop($event)">
+          <div class="panel-heading">Alle Hunde</div>
+          <div class="panel-body">
+            <li draggable *ngFor="let item of list_all_dogs" [dragData]="item" class="list-group-item">
+              {{item.name}}
+            </li>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="panel panel-default" droppable (onDrop)="onParticipatingDogsDrop($event)">
+          <div class="panel-heading">Teilnehmende Hunde</div>
+          <div class="panel-body">
+            <li draggable *ngFor="let item of list_participating_dogs" [dragData]="item" class="list-group-item">
+              {{item.name}}
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,64 @@
+<div class="form">
+  <mat-form-field floatPlaceholder="never" color="accent">
+    <input matInput #filterTournament placeholder="suche...">
+  </mat-form-field>
+</div>
+
+<mat-table #table [dataSource]="dataSourceTournament" matSort>
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Veranstaltungsname</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="club">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Austragender Verein</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.club.clubname}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="tournamenttype">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Typ der Veranstaltung</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.tournamenttype}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Datum der Veranstaltung</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.date | date:'MMMM dd, yyyy'}}</mat-cell>
+  </ng-container>
+
+
+  <!-- Action Menu -->
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button color="primary" (click)="onCreateTournamentClick()">
+        <mat-icon aria-label="Add">add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let row; let i=index;">
+      <button mat-icon-button color="accent"
+              (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+        <mat-icon aria-label="Edit">edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef=" displayedColumsTournament"></mat-header-row>
+  <mat-row *matRowDef="let row; columns:  displayedColumsTournament;"></mat-row>
+
+
+</mat-table>
+
+<mat-paginator #paginatorTournament
+               [length]="dataSourceTournament.filteredData.length"
+               [pageIndex]="0"
+               [pageSize]="10"
+               [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
