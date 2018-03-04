@@ -7,6 +7,8 @@ import {OwnerDialogComponent} from "../dialogs/owner-dialog/owner-dialog.compone
 import {Observable} from "rxjs/Rx";
 import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {OwnerEditDialogComponent} from "../dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component";
+import {OwnerDeleteDialogComponent} from "../dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component";
 
 @Component({
   selector: 'app-owner-crud-table',
@@ -21,6 +23,7 @@ export class OwnerCrudTableComponent implements OnInit {
 
   displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
   dataSourceOwner: OwnerDataSource | null;
+  id: number;
 
   constructor(public dialog: MatDialog, private http: HttpClient,private ownerService: OwnerService) { }
 
@@ -39,6 +42,41 @@ export class OwnerCrudTableComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         this.ownerService.dataChange.value.push(this.ownerService.getDialogData());
+        this.refreshTableOwner();
+      }
+    });
+  }
+
+
+  startEdit(id: number, firstname: string, lastname: string, street: string, postalcode: string, city: string, country: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(OwnerEditDialogComponent, {
+      data: {id: id, firstname: firstname, lastname: lastname,  street: street, postalcode: postalcode, city: city, country: country}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // When using an edit things are little different, firstly we find record inside DataService by id
+        const foundIndex = this.ownerService.dataChange.value.findIndex(x => x.id === this.id);
+        // Then you update that record using data from dialogData (values you enetered)
+        this.ownerService.dataChange.value[foundIndex] = this.ownerService.getDialogData();
+        // And lastly refresh table
+        this.refreshTableOwner();
+      }
+    });
+  }
+
+  deleteItem(id: number, firstname: string, lastname: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(OwnerDeleteDialogComponent, {
+      data: {id: id, firstname: firstname, lastname: lastname}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.ownerService.dataChange.value.findIndex(x => x.id === this.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.ownerService.dataChange.value.splice(foundIndex, 1);
         this.refreshTableOwner();
       }
     });

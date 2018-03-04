@@ -14,7 +14,11 @@ export class AppSettings {
   public static clubsUrl = 'http://localhost:8080/get/clubs';
   public static updateClubUrl = 'http://localhost:8080/update/club/';
   public static deleteClubUrl = 'http://localhost:8080/delete/club/';
-
+  // Owner
+  public static saveOwnerUrl = 'http://localhost:8080/save/owner';
+  public static ownersUrl = 'http://localhost:8080/get/owners';
+  public static updateOwnerUrl = 'http://localhost:8080/update/owner/';
+  public static deleteOwnerUrl = 'http://localhost:8080/delete/owner/';
 
 
 }
