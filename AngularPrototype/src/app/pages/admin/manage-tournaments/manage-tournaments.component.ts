@@ -17,6 +17,8 @@ import {JudgeService} from "../../../services/JudgeService/judge.service";
 })
 export class ManageTournamentsComponent implements OnInit {
 
+  dataInitialized: boolean = false;
+
   firstFormGroup: FormGroup;
   tournaments: Observable<Tournament[]>;
   list_all_dogs: Dogpass[] = [];
@@ -102,7 +104,7 @@ export class ManageTournamentsComponent implements OnInit {
   }
 
   loadData() {
-    if (this.selected != null) {
+    if (this.selected != null && !this.dataInitialized) {
 
       this.list_all_dogs = [];
       this.list_participating_dogs = [];
@@ -115,6 +117,8 @@ export class ManageTournamentsComponent implements OnInit {
       //this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
       this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = judges.filter(judge => this.customFilter(judge, this.list_participating_judges)));
 
+      this.dataInitialized = true;
+      console.log(this.dataInitialized)
     }
   }
 

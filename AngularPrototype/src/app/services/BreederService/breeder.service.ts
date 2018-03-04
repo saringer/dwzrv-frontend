@@ -1,17 +1,13 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
-import {Club} from "../../data-models/club";
 import {Breeder} from "../../data-models/breeder";
-import {Dogpass} from "../../data-models/dogpass";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {AppSettings} from "../../appsettings";
 
 @Injectable()
 export class BreederService {
 
-
-  private breedersUrl = 'http://localhost:8080/get/breeders';
-  private saveBreederUrl = 'http://localhost:8080/save/breeder';  // URL to web api
 
 
 
@@ -21,6 +17,7 @@ export class BreederService {
 
 
   constructor(private http: HttpClient) {
+
   }
 
   get data(): Breeder[] {
@@ -34,7 +31,7 @@ export class BreederService {
 
 
   getAllBreeder(): void {
-    this.http.get<Breeder[]>(this.breedersUrl).subscribe(data => {
+    this.http.get<Breeder[]>(AppSettings.breedersUrl).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -50,7 +47,7 @@ export class BreederService {
 
 
   getBreeders(): Observable<Breeder[]> {
-    return this.http.get<Breeder[]>(this.breedersUrl);
+    return this.http.get<Breeder[]>(AppSettings.breedersUrl);
   }
 
 
@@ -60,29 +57,35 @@ export class BreederService {
 
   addBreeder (breeder: Breeder): void {
 
-    const req = this.http.post(this.saveBreederUrl, breeder);
+    const req = this.http.post(AppSettings.saveBreederUrl, breeder);
     req.subscribe(breeder => this.dialogData = breeder);
    // this.dialogData = breeder;
   }
 
+
+  updateBreeder(breeder: Breeder): void {
+    this.http.put(AppSettings.updateBreederUrl + breeder.id, breeder).subscribe(data => {
+        this.dialogData = breeder;
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+
+  // DELETE METHOD
+  deleteBreeder(id: number): void {
+    this.http.delete(AppSettings.deleteBreederUrl + id).subscribe(data => {
+
+      //  this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+
 }
 
-export interface Tournament {
-  id: number;
-  title: string;
-  date: Date;
-}
-
-/*export interface Dog {
-  name: string;
-  owner: Owner;
-  breeder: Breeder;
-
-}*/
-
-export interface Owner {
-  firstname: string;
-  lastname: string;
-}
 
 

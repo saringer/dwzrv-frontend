@@ -7,8 +7,8 @@ export class Club {
               public street: string,
               public postalcode: string,
               public city: string,
-              public country: string,
-              public tournaments: Tournament[]) {
+              public country: string
+              ) {
 
   }
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClubFormComponent } from './club-form.component';
+import { ClubEditDialogComponent } from './club-edit-dialog.component';
 
-describe('ClubFormComponent', () => {
-  let component: ClubFormComponent;
-  let fixture: ComponentFixture<ClubFormComponent>;
+describe('ClubEditDialogComponent', () => {
+  let component: ClubEditDialogComponent;
+  let fixture: ComponentFixture<ClubEditDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClubFormComponent ]
+      declarations: [ ClubEditDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClubFormComponent);
+    fixture = TestBed.createComponent(ClubEditDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

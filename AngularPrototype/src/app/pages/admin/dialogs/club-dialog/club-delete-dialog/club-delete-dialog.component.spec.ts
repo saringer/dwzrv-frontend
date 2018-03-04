@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BreederFormComponent } from './breeder-form.component';
+import { ClubDeleteDialogComponent } from './club-delete-dialog.component';
 
-describe('BreederFormComponent', () => {
-  let component: BreederFormComponent;
-  let fixture: ComponentFixture<BreederFormComponent>;
+describe('ClubDeleteDialogComponent', () => {
+  let component: ClubDeleteDialogComponent;
+  let fixture: ComponentFixture<ClubDeleteDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BreederFormComponent ]
+      declarations: [ ClubDeleteDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BreederFormComponent);
+    fixture = TestBed.createComponent(ClubDeleteDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

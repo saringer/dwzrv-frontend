@@ -3,12 +3,18 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  height: 100%;
+  overflow: auto;
 }
 
 .mat-table {
-  overflow: auto;
  /* min-height: 500px;*/
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   text-align: center;
   display: inline-block;
 }
+
+
+.title {
+  color: white; background-color: #3f51b5; height: 50px; width: 100%; display: block; padding-left: 20px; font-size: 20px;
+  padding-top:11px}

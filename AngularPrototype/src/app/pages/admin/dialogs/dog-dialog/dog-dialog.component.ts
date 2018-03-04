@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatTableDataSource} from "@angular/material";
 import {HttpClient} from "@angular/common/http";
-import {OwnerFormComponent} from "../../../../forms/owner-form/owner-form.component";
 import {DogService} from "../../../../services/DogService/dog.service";
 import {Dogpass} from "../../../../data-models/dogpass";
 import {Breeder} from "../../../../data-models/breeder";

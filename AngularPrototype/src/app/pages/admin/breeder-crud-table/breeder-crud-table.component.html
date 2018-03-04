@@ -11,10 +11,6 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container matColumnDef="breederid">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}}</mat-cell>
-    </ng-container>
 
     <ng-container matColumnDef="breederfirstname">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Vorname</mat-header-cell>
@@ -42,11 +38,11 @@
 
       <mat-cell *matCellDef="let row; let i=index;">
         <button mat-icon-button color="accent"
-                (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                (click)="startEdit(row.id, row.firstname, row.lastname, row.kennelname, row.street, row.postalcode, row.city, row.country)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+        <button mat-icon-button color="accent" (click)="deleteItem(row.id, row.firstname, row.lastname)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>

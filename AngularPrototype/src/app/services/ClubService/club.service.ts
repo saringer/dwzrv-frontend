@@ -4,12 +4,12 @@ import {Observable} from "rxjs/Observable";
 import {Breeder} from "../../data-models/breeder";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Club} from "../../data-models/club";
+import {AppSettings} from "../../appsettings";
 
 @Injectable()
 export class ClubService {
 
-  private saveClubUrl = 'http://localhost:8080/save/club';  // URL to web api
-  private clubsUrl = 'http://localhost:8080/get/clubs';
+
 
 
   dataChange: BehaviorSubject<Club[]> = new BehaviorSubject<Club[]>([]);
@@ -29,7 +29,7 @@ export class ClubService {
   }
 
   getAllClubs(): void {
-    this.http.get<Club[]>(this.clubsUrl).subscribe(data => {
+    this.http.get<Club[]>(AppSettings.clubsUrl).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -38,8 +38,30 @@ export class ClubService {
   }
 
   addClub (club: Club): void {
-    const req = this.http.post(this.saveClubUrl, club);
+    const req = this.http.post(AppSettings.saveClubUrl, club);
     req.subscribe(club => this.dialogData = club);
+  }
+
+  updateClub(club: Club): void {
+    this.http.put(AppSettings.updateClubUrl + club.id, club).subscribe(data => {
+        this.dialogData = club;
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+
+  // DELETE METHOD
+  deleteClub(id: number): void {
+    this.http.delete(AppSettings.deleteClubUrl + id).subscribe(data => {
+
+        //  this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
   }
 
 }

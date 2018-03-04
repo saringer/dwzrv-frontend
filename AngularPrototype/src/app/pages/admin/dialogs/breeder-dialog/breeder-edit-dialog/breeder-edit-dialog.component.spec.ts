@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OwnerFormComponent } from './owner-form.component';
+import { BreederEditDialogComponent } from './breeder-edit-dialog.component';
 
-describe('OwnerFormComponent', () => {
-  let component: OwnerFormComponent;
-  let fixture: ComponentFixture<OwnerFormComponent>;
+describe('BreederEditDialogComponent', () => {
+  let component: BreederEditDialogComponent;
+  let fixture: ComponentFixture<BreederEditDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OwnerFormComponent ]
+      declarations: [ BreederEditDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OwnerFormComponent);
+    fixture = TestBed.createComponent(BreederEditDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

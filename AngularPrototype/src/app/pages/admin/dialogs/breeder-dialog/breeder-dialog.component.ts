@@ -1,5 +1,4 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {BreederFormComponent} from "../../../../forms/breeder-form/breeder-form.component";
 import {HttpClient} from "@angular/common/http";
 import {DogDialogComponent} from "../dog-dialog/dog-dialog.component";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
@@ -13,7 +12,6 @@ import {BreederService} from "../../../../services/BreederService/breeder.servic
   styleUrls: ['./breeder-dialog.component.css']
 })
 export class BreederDialogComponent implements OnInit {
-  @ViewChild(BreederFormComponent) breederForm: BreederFormComponent;
 
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<BreederDialogComponent>,

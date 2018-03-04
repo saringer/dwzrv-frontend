@@ -1,7 +1,9 @@
 
 .header {
-  text-align: center; background-color: #3f51b5; height: 50px; padding-top: 17px; width: 100%; position: absolute;
+  background-color: #3f51b5; height: 50px; width: 100%; display: block; padding-left: 22px; padding-top:14px;
+  border-bottom: 1px solid black;
 }
+
 
 .footer {
   position: absolute;
@@ -13,13 +15,25 @@
   height: 60px;
   text-align: center;
   /*padding-top: 20px;*/
+
 }
 .router-container {
+  margin: 0; padding: 0; outline: 0;
   overflow-y: auto;
   position: fixed;
-  top: 70px;
+  top: 50px;
   bottom: 60px;
   width:100%;
+}
+
+nav a {
+  padding-right:15px; color: white;font-size: 12px;
+}
+
+/* Change the link color on hover */
+nav a:hover {
+  /*background-color: white;*/
+  color: red;
 }
 
 

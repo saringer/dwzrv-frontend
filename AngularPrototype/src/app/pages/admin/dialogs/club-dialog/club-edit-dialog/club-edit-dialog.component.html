@@ -1,6 +1,6 @@
 
 <div class="container">
-  <h3 mat-dialog-title>Neuen Verein erstellen</h3>
+  <h3 mat-dialog-title>Verein: {{data.clubname}}</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
@@ -40,7 +40,8 @@
 
     <div mat-dialog-actions align="end">
       <button mat-button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
-      <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+      <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
     </div>
   </form>
 </div>
+

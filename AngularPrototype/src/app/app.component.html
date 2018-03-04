@@ -1,14 +1,19 @@
-<div  fxLayout="column" fxLayout.xs="column" style="width: 100%;">
+<div  fxLayout="column" fxLayout.xs="column" style="width: 100%; height: 100%">
   <div class ="header">
     <nav>
-      <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin" style="padding-right:15px; color: white;font-size: 20px;">Admin Ansicht</a>
-      <a routerLink="/racing" routerLinkActive="active" style="padding-right:15px; color: white;font-size: 20px;">Rennen</a>
-      <a routerLink="/coursing" routerLinkActive="active" style="padding-right:15px; color: white;font-size: 20px;">Coursing</a>
-      <a routerLink="/exhibition" routerLinkActive="active" style="padding-right:15px; color: white;font-size: 20px;">Ausstellung</a>
+      <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin Ansicht</a>
+      <a routerLink="/racing" routerLinkActive="active">Rennen</a>
+      <a routerLink="/coursing" routerLinkActive="active">Coursing</a>
+      <a routerLink="/exhibition" routerLinkActive="active">Ausstellung</a>
 
     </nav>
 
+
+
   </div>
+
+
+
 
   <div class="router-container">
     <router-outlet ></router-outlet>

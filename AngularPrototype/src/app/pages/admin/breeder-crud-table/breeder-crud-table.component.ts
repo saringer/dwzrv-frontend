@@ -7,6 +7,8 @@ import {Breeder} from "../../../data-models/breeder";
 import {Observable} from "rxjs/Rx";
 import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {BreederEditDialogComponent} from "../dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component";
+import {BreederDeleteDialogComponent} from "../dialogs/breeder-dialog/breeder-delete-dialog/breeder-delete-dialog.component";
 
 @Component({
   selector: 'app-breeder-crud-table',
@@ -19,8 +21,9 @@ export class BreederCrudTableComponent implements OnInit {
   @ViewChild('paginatorBreeder') paginatorBreeder: MatPaginator;
   @ViewChild('filterBreeder') filterBreeder: ElementRef;
 
-  displayedColumnsBreeder = ['breederid', 'breederfirstname', 'breederlastname', 'kennelname', 'action'];
+  displayedColumnsBreeder = ['breederfirstname', 'breederlastname', 'kennelname', 'action'];
   dataSourceBreeder: BreederDataSource | null;
+  id: number;
 
 
   constructor(private breederService: BreederService, public dialog: MatDialog, private http: HttpClient) { }
@@ -39,6 +42,40 @@ export class BreederCrudTableComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         this.breederService.dataChange.value.push(this.breederService.getDialogData());
+        this.refreshTableBreeder();
+      }
+    });
+  }
+
+  startEdit(id: number, firstname: string, lastname: string, kennelname: string, street: string, postalcode: string, city: string, country: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(BreederEditDialogComponent, {
+      data: {id: id, firstname: firstname, lastname: lastname, kennelname: kennelname, street: street, postalcode: postalcode, city: city, country: country}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // When using an edit things are little different, firstly we find record inside DataService by id
+        const foundIndex = this.breederService.dataChange.value.findIndex(x => x.id === this.id);
+        // Then you update that record using data from dialogData (values you enetered)
+        this.breederService.dataChange.value[foundIndex] = this.breederService.getDialogData();
+        // And lastly refresh table
+        this.refreshTableBreeder();
+      }
+    });
+  }
+
+  deleteItem(id: number, firstname: string, lastname: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(BreederDeleteDialogComponent, {
+      data: {id: id, firstname: firstname, lastname: lastname}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.breederService.dataChange.value.findIndex(x => x.id === this.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.breederService.dataChange.value.splice(foundIndex, 1);
         this.refreshTableBreeder();
       }
     });

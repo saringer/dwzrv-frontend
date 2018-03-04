@@ -27,7 +27,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DogDialogComponent } from './pages/admin/dialogs/dog-dialog/dog-dialog.component';
 import { ExhibitionComponent } from './pages/exhibition/exhibition.component';
-import { OwnerFormComponent } from './forms/owner-form/owner-form.component';
 import {DogService} from "./services/DogService/dog.service";
 import { OwnerDialogComponent } from './pages/admin/dialogs/owner-dialog/owner-dialog.component';
 import {AuthService} from "./services/AuthService/auth.service";
@@ -35,9 +34,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {DropdownModule} from 'primeng/primeng';
 import { TournamentDialogComponent } from './pages/admin/dialogs/tournament-dialog/tournament-dialog.component';
 import {MatFormFieldModule, MatInputModule} from "@angular/material";
-import { BreederFormComponent } from './forms/breeder-form/breeder-form.component';
 import { BreederDialogComponent } from './pages/admin/dialogs/breeder-dialog/breeder-dialog.component';
-import { ClubFormComponent } from './forms/club-form/club-form.component';
 import { ClubDialogComponent } from './pages/admin/dialogs/club-dialog/club-dialog.component';
 import {BreederService} from "./services/BreederService/breeder.service";
 import {ClubService} from "./services/ClubService/club.service";
@@ -59,6 +56,10 @@ import { DogCrudTableComponent } from './pages/admin/dog-crud-table/dog-crud-tab
 import { TournamentCrudTableComponent } from './pages/admin/tournament-crud-table/tournament-crud-table.component';
 import { ManageTournamentsComponent } from './pages/admin/manage-tournaments/manage-tournaments.component';
 import { ManageTournamentEvaluationsComponent } from './pages/admin/manage-tournament-evaluations/manage-tournament-evaluations.component';
+import { BreederEditDialogComponent } from './pages/admin/dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component';
+import { BreederDeleteDialogComponent } from './pages/admin/dialogs/breeder-dialog/breeder-delete-dialog/breeder-delete-dialog.component';
+import { ClubEditDialogComponent } from './pages/admin/dialogs/club-dialog/club-edit-dialog/club-edit-dialog.component';
+import { ClubDeleteDialogComponent } from './pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component';
 
 
 const appRoutes: Routes = [
@@ -80,7 +81,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    OwnerFormComponent,
     CoursingComponent,
     RacingComponent,
     AdminComponent,
@@ -88,9 +88,7 @@ const appRoutes: Routes = [
     ExhibitionComponent,
     OwnerDialogComponent,
     TournamentDialogComponent,
-    BreederFormComponent,
     BreederDialogComponent,
-    ClubFormComponent,
     ClubDialogComponent,
     JudgeDialogComponent,
     PasswordDialogComponent,
@@ -101,7 +99,11 @@ const appRoutes: Routes = [
     DogCrudTableComponent,
     TournamentCrudTableComponent,
     ManageTournamentsComponent,
-    ManageTournamentEvaluationsComponent
+    ManageTournamentEvaluationsComponent,
+    BreederEditDialogComponent,
+    BreederDeleteDialogComponent,
+    ClubEditDialogComponent,
+    ClubDeleteDialogComponent
 
   ],
   imports: [
@@ -138,7 +140,7 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [ DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
+  entryComponents: [ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
   providers: [NativeDateAdapter, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })

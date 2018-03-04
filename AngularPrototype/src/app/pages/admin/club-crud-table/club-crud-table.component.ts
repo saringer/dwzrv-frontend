@@ -8,6 +8,11 @@ import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 import {HttpClient} from "@angular/common/http";
+import {BreederEditDialogComponent} from "../dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component";
+import {BreederDeleteDialogComponent} from "../dialogs/breeder-dialog/breeder-delete-dialog/breeder-delete-dialog.component";
+import {Tournament} from "../../../data-models/tournament";
+import {ClubEditDialogComponent} from "../dialogs/club-dialog/club-edit-dialog/club-edit-dialog.component";
+import {ClubDeleteDialogComponent} from "../dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component";
 
 @Component({
   selector: 'app-club-crud-table',
@@ -22,6 +27,7 @@ export class ClubCrudTableComponent implements OnInit {
 
   displayedColumnsClub = ['clubname', 'city', 'action'];
   dataSourceClub: ClubDataSource | null;
+  id: number;
 
 
 
@@ -41,6 +47,42 @@ export class ClubCrudTableComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         this.clubService.dataChange.value.push(this.clubService.getDialogData());
+        this.refreshTableClub();
+      }
+    });
+  }
+
+
+
+  startEdit(id: number, clubname: string, street: string, postalcode: string, city: string, country: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(ClubEditDialogComponent, {
+      data: {id: id, clubname: clubname,  street: street, postalcode: postalcode, city: city, country: country}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // When using an edit things are little different, firstly we find record inside DataService by id
+        const foundIndex = this.clubService.dataChange.value.findIndex(x => x.id === this.id);
+        // Then you update that record using data from dialogData (values you enetered)
+        this.clubService.dataChange.value[foundIndex] = this.clubService.getDialogData();
+        // And lastly refresh table
+        this.refreshTableClub();
+      }
+    });
+  }
+
+  deleteItem(id: number, clubname: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(ClubDeleteDialogComponent, {
+      data: {id: id, clubname: clubname}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.clubService.dataChange.value.findIndex(x => x.id === this.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.clubService.dataChange.value.splice(foundIndex, 1);
         this.refreshTableClub();
       }
     });
