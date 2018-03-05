@@ -19,6 +19,16 @@ export class AppSettings {
   public static ownersUrl = 'http://localhost:8080/get/owners';
   public static updateOwnerUrl = 'http://localhost:8080/update/owner/';
   public static deleteOwnerUrl = 'http://localhost:8080/delete/owner/';
+  // Tournament
+  public static getTournamentUrl = 'http://localhost:8080/get/tournament/';
+  public static tournamentsUrl = 'http://localhost:8080/get/tournaments';
+  public static saveTournamentUrl = 'http://localhost:8080/save/tournament';
+  public static updateTournamentUrl = 'http://localhost:8080/update/tournament/'
+  // Dogpass
+  public static dogsUrl = 'http://localhost:8080/get/dogs';
+  public static saveDogpassUrl = 'http://localhost:8080/save/dog';
+  public static getDogUrl = 'http://localhost:8080/get/dog/';
+
 
 
 }

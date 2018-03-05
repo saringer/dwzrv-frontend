@@ -38,7 +38,7 @@ export class ManageTournamentsComponent implements OnInit {
       firstCtrl: ['', Validators.required]
     });
 
-    this.selected.valueChanges.forEach((tournament) => this.loadData());
+    //this.selected.valueChanges.forEach((tournament) => this.loadData());
 
   }
 
@@ -99,39 +99,67 @@ export class ManageTournamentsComponent implements OnInit {
 
   stepperSelectionChange(event) {
     // Load already selected dogs and judges
+    this.tournamentService.getTournamentById(this.selected.id).subscribe(tournament => this.selected = tournament);
    this.loadData()
+   // this.tournaments = this.tournamentService.getTournaments();
+
 
   }
 
   loadData() {
-    if (this.selected != null && !this.dataInitialized) {
+    //if (this.selected != null && !this.dataInitialized) {
+     // this.selected = this.tournamentService.getTournament(this.selected.id)
 
       this.list_all_dogs = [];
       this.list_participating_dogs = [];
       for (var i = 0; i < this.selected.tournamentDogs.length; i++) {
-        this.list_participating_dogs.push(this.selected.tournamentDogs[i].dog)
+        if (this.isNumber(this.selected.tournamentDogs[i].dog)) {
+           this.dogService.getDogById(this.selected.tournamentDogs[i].dog).subscribe(dog => this.list_participating_dogs.push(dog));
+        }
+        else {
+          this.list_participating_dogs.push(this.selected.tournamentDogs[i].dog)
+        }
       }
       this.list_participating_judges = this.selected.participating_judges;
       // Load available dogs and judges
-      this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilter(dog, this.list_participating_dogs)));
+      this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_participating_dogs)));
       //this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
-      this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = judges.filter(judge => this.customFilter(judge, this.list_participating_judges)));
+      this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = judges.filter(judge => this.customFilterJudge(judge, this.list_participating_judges)));
 
-      this.dataInitialized = true;
-      console.log(this.dataInitialized)
-    }
+     // this.dataInitialized = true;
+     // console.log(this.dataInitialized)
+    //}
   }
 
-  customFilter(element: any, array: any[]): boolean {
+  customFilterDog(element: Dogpass, array: Dogpass[]): boolean {
     var result = true;
     for (var i = 0; i < array.length; i++) {
       if (element.id === array[i].id) {
+        //console.log('element' + element.id)
+        //console.log('array' + array[i].id)
+
         result = false;
         break;
       }
     }
     return result;
   }
+
+  customFilterJudge(element: Judge, array: Judge[]): boolean {
+    var result = true;
+    for (var i = 0; i < array.length; i++) {
+      if (element.id === array[i].id) {
+        console.log('element' + element.id)
+        console.log('array' + array[i].id)
+
+        result = false;
+        break;
+      }
+    }
+    return result;
+  }
+
+  isNumber(val): boolean { return typeof val === 'number'; }
 
 
 }

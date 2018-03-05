@@ -28,7 +28,7 @@ export class AppComponent {
   ];
 
   onAdminLoginClick() {
-  //  const dialogRef = this.dialog.open(PasswordDialogComponent);
+    const dialogRef = this.dialog.open(PasswordDialogComponent);
 
     this.authenticate();
   }

@@ -4,13 +4,12 @@ import {Observable} from "rxjs/Observable";
 import {Breeder} from "../../data-models/breeder";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Tournament} from "../../data-models/tournament";
+import {AppSettings} from "../../appsettings";
 
 @Injectable()
 export class TournamentService {
 
-  private tournamentsUrl = 'http://localhost:8080/get/tournaments';
-  private saveTournamentUrl = 'http://localhost:8080/save/tournament';  // URL to web api
-  private updateTournamentUrl = 'http://localhost:8080/update/tournaments/'
+
 
 
   dataChange: BehaviorSubject<Tournament[]> = new BehaviorSubject<Tournament[]>([]);
@@ -34,7 +33,7 @@ export class TournamentService {
   }
 
   getAllTournaments(): void {
-    this.http.get<Tournament[]>(this.tournamentsUrl).subscribe(data => {
+    this.http.get<Tournament[]>(AppSettings.tournamentsUrl).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -47,14 +46,17 @@ export class TournamentService {
    *
    */
 
-
+  getTournamentById(tournament_id: number) {
+    // now returns an Observable of Config
+   return this.http.get<Tournament>(AppSettings.getTournamentUrl + tournament_id);
+  }
 
   getTournaments(): Observable<Tournament[]> {
-    return this.http.get<Tournament[]>(this.tournamentsUrl);
+    return this.http.get<Tournament[]>(AppSettings.tournamentsUrl);
   }
 
   getTournamentsAsArray() {
-    return this.http.get<Tournament[]>(this.tournamentsUrl);
+    return this.http.get<Tournament[]>(AppSettings.tournamentsUrl);
   }
 
 
@@ -63,12 +65,12 @@ export class TournamentService {
    */
 
   addTournament(tournament: Tournament): void {
-    const req = this.http.post(this.saveTournamentUrl, tournament);
+    const req = this.http.post(AppSettings.saveTournamentUrl, tournament);
     req.subscribe(tournament => this.dialogData = tournament);
   }
 
   updateTournament(tournament: Tournament): void {
-    this.http.put(this.updateTournamentUrl + tournament.id, tournament).subscribe();
+    this.http.put(AppSettings.updateTournamentUrl + tournament.id, tournament).subscribe();
   }
 
 

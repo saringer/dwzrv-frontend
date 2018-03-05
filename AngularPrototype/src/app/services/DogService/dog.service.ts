@@ -4,21 +4,14 @@ import { Observable }   from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Dogpass } from "../../data-models/dogpass";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Breeder} from "../../data-models/breeder";
-import {Club} from "../../data-models/club";
+
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
-import {catchError} from "rxjs/operators";
-import {Tournament} from "../../data-models/tournament";
+import {AppSettings} from "../../appsettings";
+
 
 @Injectable()
 export class DogService {
-  private dogsUrl = 'http://localhost:8080/get/dogs';
-  private tournamentsUrl = 'http://localhost:8080/get/tournaments';
-  private breedersUrl = 'http://localhost:8080/get/breeders';
-  private ownersUrl = 'http://localhost:8080/get/owners';
-  private clubsUrl = 'http://localhost:8080/get/clubs';
 
-  private saveDogpassUrl = 'http://localhost:8080/save/dog';  // URL to web api
 
 
   dataChange: BehaviorSubject<Dogpass[]> = new BehaviorSubject<Dogpass[]>([]);
@@ -39,7 +32,7 @@ export class DogService {
 
 
   getAllDogs(): void {
-    this.http.get<Dogpass[]>(this.dogsUrl).subscribe(data => {
+    this.http.get<Dogpass[]>(AppSettings.dogsUrl).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -47,16 +40,18 @@ export class DogService {
       });
   }
 
-
+  getDogById(dog_id: number) {
+    return this.http.get<Dogpass>(AppSettings.getDogUrl + dog_id);
+  }
 
   getDogsAsArray() {
-    return this.http.get<Dogpass[]>(this.dogsUrl);
+    return this.http.get<Dogpass[]>(AppSettings.dogsUrl);
   }
 
 
   // ADD, POST METHOD
   addDog (dog: Dogpass): void {
-    const req = this.http.post(this.saveDogpassUrl, dog);
+    const req = this.http.post(AppSettings.saveDogpassUrl, dog);
     req.subscribe(dog => this.dialogData = dog);
   }
 
