@@ -64,7 +64,10 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
   }
 
   stepperSelectionChangeDogJudgement(event) {
-    //this.tournamentDogService.getAllTournamentDogForTournament(this.selected_awarding.id);
+    //this.tournamentDogService.getAllTournamentDogForTournamentI(this.selected_awarding.id);
+    //this.tournamentDogService.getAllTournamentDog();
+    this.tournamentDogService.getAllTournamentDogByTournamentId(this.selected_awarding.id)
+
     if (this.selected_awarding.tournamenttype == 'Coursing') {
       this.displayedColumnsTournamentDog = ['dogname', 'coursing'];
     }
@@ -142,7 +145,7 @@ export class TournamentDogDataSource extends DataSource<any> {
       this._paginatorTournamentDog.page
     ];
 
-    this.tournamentDogService.getAllTournamentDog();
+    //this.tournamentDogService.getAllTournamentDog();
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentDogService.data.slice().filter((tournamentDog: TournamentDog) => {

@@ -1,7 +1,7 @@
 export class AppSettings {
 
   // TournamentDog
-  public static getTournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs/1';
+  public static getTournamentDogsUrl = 'http://localhost:8080/get/tournamentdogs/';
   public static saveTournamentDogUrl = 'http://localhost:8080/save/tournamentdog';
   public static deleteTournamentDogUrl = 'http://localhost:8080/delete/tournamentdog/';
   // Breeder

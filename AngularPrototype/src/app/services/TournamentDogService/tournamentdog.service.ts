@@ -38,12 +38,9 @@ export class TournamentDogService {
    */
 
 
-  getTournamentDogsAsArray() {
-    return this.http.get<TournamentDog[]>(AppSettings.getTournamentDogsUrl);
-  }
 
-  getAllTournamentDog(): void {
-    this.http.get<TournamentDog[]>(AppSettings.getTournamentDogsUrl).subscribe(data => {
+  getAllTournamentDogByTournamentId(tournament_id): void {
+    this.http.get<TournamentDog[]>(AppSettings.getTournamentDogsUrl + tournament_id).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
