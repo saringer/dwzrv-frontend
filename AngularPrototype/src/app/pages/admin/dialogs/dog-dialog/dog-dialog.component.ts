@@ -13,7 +13,9 @@ import {FormControl, Validators} from "@angular/forms";
   styleUrls: ['./dog-dialog.component.css']
 })
 export class DogDialogComponent implements OnInit {
-  sex = ['male', 'female'];
+  sex = ['Rüde', 'Hündin'];
+  race = ['Afghanischer Windhund','Azawakh','Barsoi','Chart Polski','Deerhound','Greyhound','Galgo Español','Irischer Wolfshund',
+  'Italienisches Windspiel','Magyar agár', 'Saluki', 'Sloughi', 'Silken Windsprite', 'Whippet'];
   owners: Dogowner[];
   breeders: Breeder[];
   private getOwnersUrl = 'http://localhost:8080/get/owners';

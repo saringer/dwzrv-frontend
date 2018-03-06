@@ -16,32 +16,6 @@
       </mat-form-field>
     </div>
 
-
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Strasse" [(ngModel)]="data.street" name="street" required >
-      </mat-form-field>
-    </div>
-
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Postleitzahl" [(ngModel)]="data.postalCode" name="postalCode" required >
-      </mat-form-field>
-    </div>
-
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Stadt" [(ngModel)]="data.city" name="city" required >
-      </mat-form-field>
-    </div>
-
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Land" [(ngModel)]="data.country" name="country" required >
-      </mat-form-field>
-    </div>
-
-
     <div mat-dialog-actions align="end">
       <button mat-button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
       <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>

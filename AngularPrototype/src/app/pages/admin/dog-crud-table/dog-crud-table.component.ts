@@ -19,7 +19,7 @@ export class DogCrudTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filter: ElementRef;
 
-  displayedColumns = ['name', 'owner', 'breeder', 'action'];
+  displayedColumns = ['name', 'race', 'sex', 'action'];
   dataSource: UserDataSource | null;
 
 
@@ -113,7 +113,7 @@ export class UserDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.dogService.data.slice().filter((dog: Dogpass) => {
-        const searchStr = (dog.name + dog.owner.firstname + dog.owner.lastname + dog.breeder.firstname + dog.breeder.lastname).toLowerCase();
+        const searchStr = (dog.name + dog.race + dog.sex).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

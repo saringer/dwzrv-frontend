@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  min-width: 450px;
+  max-width: 350px;
   overflow:hidden;
 }
 
@@ -17,4 +17,8 @@
 .mat-form-field {
   font-size: 16px;
   flex-grow: 1;
+}
+
+.mat-dialog-actions:last-child {
+  margin-bottom: 0px;
 }

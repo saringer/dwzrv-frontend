@@ -5,20 +5,15 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Name" [(ngModel)]="data.name" name="name" required >
+        <input matInput #input class="form-control" placeholder="Name des Hundes" [(ngModel)]="data.name" name="name" required >
       </mat-form-field>
     </div>
 
     <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Passnummer" [(ngModel)]="data.passport_no" name="passport_no" required >
-      </mat-form-field>
-    </div>
-
-    <div class="form">
-      <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Rasse" [(ngModel)]="data.race" name="race" required >
-      </mat-form-field>
+      <label for="race"> Rasse</label>
+      <select matInput #input class="form-control" id="race" required  [(ngModel)]="data.race" name="race" style="height: auto;">
+        <option *ngFor="let race of race" [ngValue]="race">{{race}}</option>
+      </select>
     </div>
 
     <div class="form">
@@ -28,38 +23,43 @@
       </select>
     </div>
 
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Lizenznummer" [(ngModel)]="data.passport_no" name="passport_no" >
+      </mat-form-field>
+    </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Chipnummer" [(ngModel)]="data.chip_no" name="chip_no" required >
+        <input matInput #input class="form-control" placeholder="Chipnummer" [(ngModel)]="data.chip_no" name="chip_no" >
       </mat-form-field>
     </div>
 
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Fellfarbe" [(ngModel)]="data.coat_colour" name="coat_colour" required >
+        <input matInput #input class="form-control" placeholder="Fellfarbe" [(ngModel)]="data.coat_colour" name="coat_colour" >
       </mat-form-field>
     </div>
 
 
     <div class="form">
       <label for="breeder"> Züchter</label>
-      <select matInput #input class="form-control" placeholder="Züchter" id="breeder" required  [(ngModel)]="data.breeder" name="breeder" style="height: auto;">
+      <select matInput #input class="form-control" placeholder="Züchter" id="breeder"  [(ngModel)]="data.breeder" name="breeder" style="height: auto;">
         <option *ngFor="let breeder of breeders" [ngValue]="breeder">{{breeder.firstname + " " + breeder.lastname}}</option>
       </select>
     </div>
 
     <div class="form">
       <label for="owner"> Besitzer</label>
-      <select matInput #input class="form-control" placeholder="Besitzer" id="owner" required  [(ngModel)]="data.owner" name="owner" style="height: auto;">
+      <select matInput #input class="form-control" placeholder="Besitzer" id="owner"  [(ngModel)]="data.owner" name="owner" style="height: auto;">
         <option *ngFor="let owner of owners" [ngValue]="owner">{{owner.firstname + " " + owner.lastname}}</option>
       </select>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input type="date" matInput [matDatepicker]="myDatepicker" #inputstate class="form-control" placeholder="Wurfdatum" [(ngModel)]="data.date_of_birth" name="date_of_birth" required >
+        <input type="date" matInput [matDatepicker]="myDatepicker" #inputstate class="form-control" placeholder="Wurfdatum" [(ngModel)]="data.date_of_birth" name="date_of_birth" >
         <mat-datepicker #myDatepicker></mat-datepicker>
       </mat-form-field>
     </div>

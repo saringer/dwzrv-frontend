@@ -13,18 +13,18 @@
 
 
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Hundename</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name des Hundes</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="owner">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Besitzer</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.owner.firstname ++ ' ' ++ element.owner.lastname}}</mat-cell>
+    <ng-container matColumnDef="race">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Rasse</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.race}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="breeder">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Züchter</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.breeder.firstname ++ ' ' ++ element.breeder.lastname}}
+    <ng-container matColumnDef="sex">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Geschlecht</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sex}}
       </mat-cell>
     </ng-container>
 
