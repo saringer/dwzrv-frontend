@@ -4,26 +4,26 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 @Injectable()
 export class AuthService {
 
-  admin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  //admin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 
-  //admin = false;
+  admin: boolean = false;
 
   constructor() {}
 
   adminVariableAsObservable() {
-    return this.admin.asObservable();
+    //return this.admin.asObservable();
   }
 
   isLoggedIn():boolean {
-      return this.admin.getValue();
+      return this.admin;
   }
 
   login() {
-    this.admin.next(true);
+    this.admin = true;
   }
   logout() {
-    this.admin.next(false);
+    this.admin = false;
   }
 
 }

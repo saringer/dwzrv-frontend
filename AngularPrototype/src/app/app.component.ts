@@ -4,10 +4,6 @@ import {CanActivate} from "@angular/router";
 import {AuthService} from "./services/AuthService/auth.service";
 import {MatDialog} from "@angular/material";
 import {PasswordDialogComponent} from "./pages/admin/dialogs/password-dialog/password-dialog.component";
-import {AdminComponent} from "./pages/admin/admin.component";
-import {RacingComponent} from "./pages/racing/racing.component";
-import {ExhibitionComponent} from "./pages/exhibition/exhibition.component";
-import {CoursingComponent} from "./pages/coursing/coursing.component";
 import {Observable} from "rxjs/Observable";
 
 @Component({
@@ -16,22 +12,20 @@ import {Observable} from "rxjs/Observable";
   styleUrls: ['./app.component.css'],
   providers: []
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   constructor(private authService: AuthService, public dialog: MatDialog) {}
 
 
-  isAdmin: Observable<boolean>;
 
-  ngOnInit() {
-    this.isAdmin = this.authService.adminVariableAsObservable();
-  }
+
+
 
 
 
   onAdminLoginClick() {
-    //const dialogRef = this.dialog.open(PasswordDialogComponent);
+    const dialogRef = this.dialog.open(PasswordDialogComponent);
 
-    this.authenticate();
+    //this.authenticate();
   }
 
   authenticate() {

@@ -8,11 +8,11 @@
       <a routerLink="/racing" routerLinkActive="active">Rennen</a>
       <a routerLink="/coursing" routerLinkActive="active">Coursing</a>
       <a routerLink="/exhibition" routerLinkActive="active">Ausstellung</a>
-      <a routerLink="/admin" routerLinkActive="active" *ngIf="isAdmin">Admin Ansicht</a>
+      <a routerLink="/admin" routerLinkActive="active" *ngIf="authService.isLoggedIn()">Admin Ansicht</a>
 
     </nav>
 
-    <div class="nav-login-right"> <button mat-raised-button color="primary" (click)="onAdminLoginClick()">Admin Login</button> </div>
+    <div class="nav-login-right" (click)="onAdminLoginClick()"> <div class="nav-login-right-text">Admin Login</div>  </div>
 
 
     <!-- <button mat-raised-button color="primary" (click)="onAdminLoginClick()">Admin Login</button> -->
