@@ -1,7 +1,7 @@
 
 .header {
   background-color: #3f51b5; height: 50px; width: 100%; display: flex; padding-left: 22px; padding-top:14px;
-  border-bottom: 1px solid black; font-size: 20px; color: white;
+  border-bottom: 1px solid black; color: white; padding-right: 22px;
 }
 
 
@@ -25,13 +25,29 @@
   width:100%;
 }
 
+.nav-title-left {
+  float: left; width: 300px; font-size: 20px;
+}
+
+.nav-login-right {
+  float: right; width: 300px; text-align: right; font-size: 16px;
+}
+
+.nav-menu-center {
+  margin:0 auto; width: 300px; font-size: 16px;
+}
+
 nav a {
-  padding-left:15px; color: white;font-size: 18px;
+  padding-left:15px; color: white;
 }
 
 /* Change the link color on hover */
 nav a:hover {
   color: red;
+}
+
+.loginbutton {
+
 }
 
 

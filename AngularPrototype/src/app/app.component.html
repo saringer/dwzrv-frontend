@@ -1,7 +1,10 @@
-<div  fxLayout="column" fxLayout.xs="column" style="width: 100%; height: 100%">
-  <div class ="header">
-    <div>DRZWV Bestenlisten</div>
-    <nav>
+<div fxLayout="column" fxLayout.xs="column" style="width: 100%; height: 100%">
+  <div class="header">
+
+    <div class="nav-title-left">DRZWV Bestenlisten</div>
+
+
+    <nav class="nav-menu-center">
       <a routerLink="/racing" routerLinkActive="active">Rennen</a>
       <a routerLink="/coursing" routerLinkActive="active">Coursing</a>
       <a routerLink="/exhibition" routerLinkActive="active">Ausstellung</a>
@@ -9,17 +12,17 @@
 
     </nav>
 
-    <div style="float:right; width:30px;"> <button mat-raised-button color="primary" (click)="onAdminLoginClick()">Admin Login</button> </div>
+    <div class="nav-login-right"> <button mat-raised-button color="primary" (click)="onAdminLoginClick()">Admin Login</button> </div>
 
+
+    <!-- <button mat-raised-button color="primary" (click)="onAdminLoginClick()">Admin Login</button> -->
 
 
   </div>
 
 
-
-
   <div class="router-container">
-    <router-outlet ></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 
   <!--<div class="footer">   </div>-->
