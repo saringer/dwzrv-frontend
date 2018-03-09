@@ -1,6 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {Subject} from "rxjs/Subject";
-import {CanActivate} from "@angular/router";
+import {CanActivate, Router} from "@angular/router";
 import {AuthService} from "./services/AuthService/auth.service";
 import {MatDialog} from "@angular/material";
 import {PasswordDialogComponent} from "./pages/admin/dialogs/password-dialog/password-dialog.component";
@@ -13,14 +13,18 @@ import {Observable} from "rxjs/Observable";
   providers: []
 })
 export class AppComponent {
-  constructor(private authService: AuthService, public dialog: MatDialog) {}
+  constructor(private router: Router, private authService: AuthService, public dialog: MatDialog) {}
 
 
 
 
 
 
+  onAdminLogoutClick() {
+    this.authService.logout();
+    this.router.navigate(['/racing']);
 
+}
 
   onAdminLoginClick() {
     const dialogRef = this.dialog.open(PasswordDialogComponent);

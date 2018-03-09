@@ -1,6 +1,6 @@
 import {Component, Injectable, OnInit} from '@angular/core';
 import {AuthService} from "../../../../services/AuthService/auth.service";
-import {CanActivate} from "@angular/router";
+import {CanActivate, Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/forms';
 
@@ -13,7 +13,7 @@ export class PasswordDialogComponent implements OnInit {
   form: FormGroup;
   password;
 
-  constructor(private authService: AuthService, public dialogRef: MatDialogRef<PasswordDialogComponent>, fb: FormBuilder) {
+  constructor(private router: Router, private authService: AuthService, public dialogRef: MatDialogRef<PasswordDialogComponent>, fb: FormBuilder) {
 
     this.form = fb.group({
       password: ['', Validators.required]})
@@ -30,7 +30,7 @@ export class PasswordDialogComponent implements OnInit {
 
   authenticate() {
     this.authService.login();
-  }
+    this.router.navigate(['/admin']);  }
 
   isLoggedIn() {
     this.authService.isLoggedIn();

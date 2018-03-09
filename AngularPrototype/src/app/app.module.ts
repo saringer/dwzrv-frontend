@@ -23,7 +23,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatCardModule} from "@angular/material";
 import {AdminComponent} from './pages/admin/admin.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+//import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DogDialogComponent } from './pages/admin/dialogs/dog-dialog/dog-dialog.component';
 import { ExhibitionComponent } from './pages/exhibition/exhibition.component';
@@ -118,7 +118,7 @@ const appRoutes: Routes = [
     ),
     NgDragDropModule.forRoot(),
     BrowserAnimationsModule,
-    NgbModule.forRoot(),
+    //NgbModule.forRoot(),
     FormsModule,
     MatCardModule,
     HttpClientModule,
