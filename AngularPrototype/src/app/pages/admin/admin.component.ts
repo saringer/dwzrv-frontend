@@ -58,7 +58,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  onTabSwitch() {
+  onTabSwitch(event) {
     //this.onLoadClick();
 
   }

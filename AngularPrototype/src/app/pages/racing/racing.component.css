@@ -48,6 +48,12 @@
 
 }
 
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background: white;
+}
+
 .mat-table {
  /* min-height: 500px;*/
   /*min-height: 100vh;*/
