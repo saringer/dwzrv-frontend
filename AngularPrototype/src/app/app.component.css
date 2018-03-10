@@ -1,4 +1,13 @@
 
+/*.navbar .navbar-nav > li > a {
+  color: #9d9d9d;
+}*/
+
+.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active > a:focus, .navbar .navbar-nav > .active > a:hover {
+  background-color: #080808;
+  color: #fff;
+}
+
 
 
 /*.header {
