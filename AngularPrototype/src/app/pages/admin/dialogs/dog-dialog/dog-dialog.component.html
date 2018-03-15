@@ -11,7 +11,7 @@
 
     <div class="form">
       <label for="race"> Rasse</label>
-      <select matInput #input class="form-control" id="race" required  [(ngModel)]="data.race" name="race" style="height: auto;">
+      <select matInput #input class="form-control" id="race" [(ngModel)]="data.race" name="race" style="height: auto;" [required]="true">
         <option *ngFor="let race of race" [ngValue]="race">{{race}}</option>
       </select>
     </div>

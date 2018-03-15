@@ -19,14 +19,13 @@
 
   <mat-step class="content">
     <ng-template matStepLabel>Richter zuordnen</ng-template>
-    <label> Richter auswählen</label>
-
 
     <div class="row">
+
       <div class="col-sm-3">
-        <div class="panel panel-default" droppable (onDrop)="onAllJudgesDrop($event)">
-          <div class="panel-heading">Alle Richter</div>
-          <div class="panel-body">
+        <div class="card">
+          <h5 class="card-header">Alle Richter</h5>
+          <div class="card-body" droppable (onDrop)="onAllJudgesDrop($event)">
             <li draggable *ngFor="let item of list_all_judges" [dragData]="item" class="list-group-item">
               {{item.firstname + ' ' + item.lastname}}
             </li>
@@ -35,15 +34,16 @@
       </div>
 
       <div class="col-sm-3">
-        <div class="panel panel-default" droppable (onDrop)="onParticipatingJudgesDrop($event)">
-          <div class="panel-heading">Teilnehmende Richter</div>
-          <div class="panel-body">
+        <div class="card">
+          <h5 class="card-header">Teilnehmende Richter</h5>
+          <div class="card-body" droppable (onDrop)="onParticipatingJudgesDrop($event)">
             <li draggable *ngFor="let item of list_participating_judges" [dragData]="item"
                 class="list-group-item">{{item.firstname + ' ' + item.lastname}}
             </li>
           </div>
         </div>
       </div>
+
     </div>
 
 
@@ -51,16 +51,18 @@
 
 
   <mat-step class="content">
+
+
     <ng-template matStepLabel>Hunde zuordnen</ng-template>
-    <label> Hunde auswählen</label>
 
 
     <div class="row">
+
       <div class="col-sm-3">
-        <div class="panel panel-default" droppable (onDrop)="onAllDogsDrop($event)">
-          <div class="panel-heading">Alle Hunde</div>
-          <div class="panel-body">
-            <li draggable *ngFor="let item of list_all_dogs" [dragData]="item" class="list-group-item">
+        <div class="card">
+          <h5 class="card-header">Alle Hunde</h5>
+          <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)">
+            <li [draggable] *ngFor="let item of list_all_dogs" [dragData]="item" class="list-group-item">
               {{item.name}}
             </li>
           </div>
@@ -68,15 +70,17 @@
       </div>
 
       <div class="col-sm-3">
-        <div class="panel panel-default" droppable (onDrop)="onParticipatingDogsDrop($event)">
-          <div class="panel-heading">Teilnehmende Hunde</div>
-          <div class="panel-body">
+        <div class="card">
+          <h5 class="card-header">Teilnehmende Hunde</h5>
+          <div class="card-body" droppable (onDrop)="onParticipatingDogsDrop($event)">
             <li draggable *ngFor="let item of list_participating_dogs" [dragData]="item" class="list-group-item">
               {{item.name}}
             </li>
           </div>
         </div>
       </div>
+
+
     </div>
 
 

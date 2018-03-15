@@ -50,84 +50,89 @@ export class ManageTournamentsComponent implements OnInit {
 
   onParticipatingDogsDrop(e: any) {
     // Get the dropped data here
+    if (!this.dogIsAlreadyInList(e.dragData.id, this.list_participating_dogs)) {
 
+      this.list_participating_dogs.push(e.dragData);
+      var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
+      this.list_all_dogs.splice(i, 1);
+      this.selected.participating_dogs = this.list_participating_dogs;
+      console.log('Hund: ' + this.selected.participating_dogs[0].name);
+      //this.tournamentService.updateTournament(this.selected);
+      this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData, this.selected, this.selected.tournamenttype, e.dragData.name));
 
-    this.list_participating_dogs.push(e.dragData);
-    var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
-    this.list_all_dogs.splice(i, 1);
-    this.selected.participating_dogs = this.list_participating_dogs;
-    console.log('Hund: ' + this.selected.participating_dogs[0].name);
-    //this.tournamentService.updateTournament(this.selected);
-    this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData, this.selected, this.selected.tournamenttype, e.dragData.name));
-
+    }
   }
 
   onAllDogsDrop(e: any) {
     // Get the dropped data here
+    if (!this.dogIsAlreadyInList(e.dragData.id, this.list_all_dogs)) {
 
 
-    this.list_all_dogs.push(e.dragData);
-    var i = this.list_participating_dogs.findIndex(i => i.id === e.dragData.id);
-    this.list_participating_dogs.splice(i, 1);
-    //this.tournamentService.updateTournament(this.selected);
-    this.tournamentDogService.deleteItem(e.dragData.id, this.selected.id);
+      this.list_all_dogs.push(e.dragData);
+      var i = this.list_participating_dogs.findIndex(i => i.id === e.dragData.id);
+      this.list_participating_dogs.splice(i, 1);
+      //this.tournamentService.updateTournament(this.selected);
+      this.tournamentDogService.deleteItem(e.dragData.id, this.selected.id);
+    }
   }
 
   onParticipatingJudgesDrop(e: any) {
     // Get the dropped data here
+    if (!this.judgeIsAlreadyInList(e.dragData.id, this.list_participating_judges)) {
 
 
-    this.list_participating_judges.push(e.dragData);
-    var i = this.list_all_judges.findIndex(i => i.id === e.dragData.id);
-    this.list_all_judges.splice(i, 1);
-    this.selected.participating_judges = this.list_participating_judges;
-    this.tournamentService.updateTournament(this.selected);
-
+      this.list_participating_judges.push(e.dragData);
+      var i = this.list_all_judges.findIndex(i => i.id === e.dragData.id);
+      this.list_all_judges.splice(i, 1);
+      this.selected.participating_judges = this.list_participating_judges;
+      this.tournamentService.updateTournament(this.selected);
+    }
 
   }
 
   onAllJudgesDrop(e: any) {
     // Get the dropped data here
+    if (!this.judgeIsAlreadyInList(e.dragData.id, this.list_all_judges)) {
 
 
-    this.list_all_judges.push(e.dragData);
-    var i = this.list_participating_judges.findIndex(i => i.id === e.dragData.id);
-    this.list_participating_judges.splice(i, 1);
-    this.tournamentService.updateTournament(this.selected);
-
+      this.list_all_judges.push(e.dragData);
+      var i = this.list_participating_judges.findIndex(i => i.id === e.dragData.id);
+      this.list_participating_judges.splice(i, 1);
+      this.tournamentService.updateTournament(this.selected);
+    }
   }
 
   stepperSelectionChange(event) {
     // Load already selected dogs and judges
     this.tournamentService.getTournamentById(this.selected.id).subscribe(tournament => this.selected = tournament);
-   this.loadData()
-   // this.tournaments = this.tournamentService.getTournaments();
+    this.loadData()
+    // this.tournaments = this.tournamentService.getTournaments();
 
 
   }
 
   loadData() {
     //if (this.selected != null && !this.dataInitialized) {
-     // this.selected = this.tournamentService.getTournament(this.selected.id)
+    // this.selected = this.tournamentService.getTournament(this.selected.id)
 
-      this.list_all_dogs = [];
-      this.list_participating_dogs = [];
-      for (var i = 0; i < this.selected.tournamentDogs.length; i++) {
-        if (this.isNumber(this.selected.tournamentDogs[i].dog)) {
-           this.dogService.getDogById(this.selected.tournamentDogs[i].dog).subscribe(dog => this.list_participating_dogs.push(dog));
-        }
-        else {
-          this.list_participating_dogs.push(this.selected.tournamentDogs[i].dog)
-        }
+    this.list_all_dogs = [];
+    this.list_participating_dogs = [];
+    for (var i = 0; i < this.selected.tournamentDogs.length; i++) {
+      if (this.isNumber(this.selected.tournamentDogs[i].dog)) {
+        this.dogService.getDogById(this.selected.tournamentDogs[i].dog).subscribe(dog => this.list_participating_dogs.push(dog));
       }
-      this.list_participating_judges = this.selected.participating_judges;
-      // Load available dogs and judges
-      this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_participating_dogs)));
-      //this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
-      this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = judges.filter(judge => this.customFilterJudge(judge, this.list_participating_judges)));
+      else {
+        this.list_participating_dogs.push(this.selected.tournamentDogs[i].dog)
+      }
+    }
+    this.list_participating_judges = this.selected.participating_judges;
+    // Load available dogs and judges
+    this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_participating_dogs)));
+    //this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
+    this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = judges.filter(judge => this.customFilterJudge(judge, this.list_participating_judges)));
 
-     // this.dataInitialized = true;
-     // console.log(this.dataInitialized)
+    // this.dataInitialized = true;
+    // console.log(this.dataInitialized)
     //}
   }
 
@@ -159,7 +164,31 @@ export class ManageTournamentsComponent implements OnInit {
     return result;
   }
 
-  isNumber(val): boolean { return typeof val === 'number'; }
+  isNumber(val): boolean {
+    return typeof val === 'number';
+  }
+
+  dogIsAlreadyInList(dogid: number, dogs: Dogpass[]): boolean {
+    var result: boolean = false;
+    for (var i = 0; i < dogs.length; i++) {
+      if (dogid === dogs[i].id) {
+        result = true;
+        break;
+      }
+    }
+    return result;
+  }
+
+  judgeIsAlreadyInList(judgeid: number, judges: Judge[]): boolean {
+    var result: boolean = false;
+    for (var i = 0; i < judges.length; i++) {
+      if (judgeid === judges[i].id) {
+        result = true;
+        break;
+      }
+    }
+    return result;
+  }
 
 
 }
