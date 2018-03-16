@@ -62,6 +62,7 @@ import { ClubEditDialogComponent } from './pages/admin/dialogs/club-dialog/club-
 import { ClubDeleteDialogComponent } from './pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component';
 import { OwnerEditDialogComponent } from './pages/admin/dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component';
 import { OwnerDeleteDialogComponent } from './pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component';
+import {CoursingService} from "./services/CoursingService/coursing.service";
 
 
 const appRoutes: Routes = [
@@ -69,7 +70,7 @@ const appRoutes: Routes = [
   {path: 'racing', component: RacingComponent},
   {path: 'admin', component: AdminComponent, canActivate: [CanActivateViaAuthGuard]},
   {path: 'exhibition', component: ExhibitionComponent},
-  {path: '', redirectTo: 'racing', pathMatch: 'full'}
+  {path: '', redirectTo: 'coursing', pathMatch: 'full'}
 
 ];
 //{ path: 'hero/:id',      component: HeroDetailComponent },
@@ -145,7 +146,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [NativeDateAdapter, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [NativeDateAdapter, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

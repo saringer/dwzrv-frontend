@@ -4,11 +4,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Judge} from "../../../data-models/judge";
 import {Dogpass} from "../../../data-models/dogpass";
 import {Observable} from "rxjs/Rx";
-import {TournamentDog} from "../../../data-models/tournamentdog";
 import {TournamentService} from "../../../services/TournamentService/tournament.service";
 import {TournamentDogService} from "../../../services/TournamentDogService/tournamentdog.service";
 import {DogService} from "../../../services/DogService/dog.service";
 import {JudgeService} from "../../../services/JudgeService/judge.service";
+import {Coursing} from "../../../data-models/coursing";
 
 @Component({
   selector: 'app-manage-tournaments',
@@ -22,10 +22,13 @@ export class ManageTournamentsComponent implements OnInit {
   firstFormGroup: FormGroup;
   tournaments: Observable<Tournament[]>;
   list_all_dogs: Dogpass[] = [];
-  list_participating_dogs: Dogpass[] = [];
+  list_national_class: Dogpass[] = [];
+  list_international_class: Dogpass[] = [];
+
   list_all_judges: Judge[] = [];
   list_participating_judges: Judge[] = [];
   selected: any;
+  dragcontainer: string;
 
   constructor(private tournamentService: TournamentService, private tournamentDogService: TournamentDogService, private _formBuilder: FormBuilder,
               private dogService: DogService, private judgeService: JudgeService) {
@@ -48,17 +51,61 @@ export class ManageTournamentsComponent implements OnInit {
     // Validators.email,
   ]);
 
-  onParticipatingDogsDrop(e: any) {
-    // Get the dropped data here
-    if (!this.dogIsAlreadyInList(e.dragData.id, this.list_participating_dogs)) {
+  dragStart(container: string) {
+    console.log(container);
+    this.dragcontainer = container;
+  }
 
-      this.list_participating_dogs.push(e.dragData);
-      var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
-      this.list_all_dogs.splice(i, 1);
-      this.selected.participating_dogs = this.list_participating_dogs;
-      console.log('Hund: ' + this.selected.participating_dogs[0].name);
-      //this.tournamentService.updateTournament(this.selected);
-      this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData, this.selected, this.selected.tournamenttype, e.dragData.name));
+  onInternationalClassDrop(e: any) {
+    // Get the dropped data here
+    if (!this.dogIsAlreadyInList(e.dragData.id, this.list_international_class)) {
+
+      // Add object to the international class container and remove it from all_dogs container
+      if (this.dragcontainer === 'alldogs') {
+        this.list_international_class.push(e.dragData);
+
+        var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
+        this.list_all_dogs.splice(i, 1);
+        //this.tournamentService.updateTournament(this.selected);
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selected, e.dragData.name, 'international'));
+      }
+
+      // Add object to the international class container and remove it from national container
+      if (this.dragcontainer === 'national') {
+        this.list_international_class.push(e.dragData);
+
+        var i = this.list_national_class.findIndex(i => i.id === e.dragData.id);
+        this.list_national_class.splice(i, 1);
+        //this.tournamentService.updateTournament(this.selected);
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selected,  e.dragData.name, 'international'));
+      }
+
+    }
+  }
+
+  onNationalClassDrop(e: any) {
+    // Get the dropped data here
+    if (!this.dogIsAlreadyInList(e.dragData.id, this.list_national_class)) {
+
+      // Add object to the national class container and remove it from all_dogs container
+      if (this.dragcontainer === 'alldogs') {
+        this.list_national_class.push(e.dragData);
+
+        var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
+        this.list_all_dogs.splice(i, 1);
+        //this.tournamentService.updateTournament(this.selected);
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selected, e.dragData.name, 'national'));
+      }
+
+      // Add object to the national class container and remove it from international container
+      if (this.dragcontainer === 'international') {
+        this.list_national_class.push(e.dragData);
+
+        var i = this.list_international_class.findIndex(i => i.id === e.dragData.id);
+        this.list_international_class.splice(i, 1);
+        //this.tournamentService.updateTournament(this.selected);
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selected, e.dragData.name, 'national'));
+      }
 
     }
   }
@@ -67,12 +114,23 @@ export class ManageTournamentsComponent implements OnInit {
     // Get the dropped data here
     if (!this.dogIsAlreadyInList(e.dragData.id, this.list_all_dogs)) {
 
+      if (this.dragcontainer === 'international') {
+        this.list_all_dogs.push(e.dragData);
+        var i = this.list_international_class.findIndex(i => i.id === e.dragData.id);
+        this.list_international_class.splice(i, 1);
+        //this.tournamentService.updateTournament(this.selected);
+        this.tournamentDogService.deleteItem(e.dragData.id, this.selected.id);
+      }
 
-      this.list_all_dogs.push(e.dragData);
-      var i = this.list_participating_dogs.findIndex(i => i.id === e.dragData.id);
-      this.list_participating_dogs.splice(i, 1);
-      //this.tournamentService.updateTournament(this.selected);
-      this.tournamentDogService.deleteItem(e.dragData.id, this.selected.id);
+      if (this.dragcontainer === 'national') {
+        this.list_all_dogs.push(e.dragData);
+        var i = this.list_national_class.findIndex(i => i.id === e.dragData.id);
+        this.list_national_class.splice(i, 1);
+        //this.tournamentService.updateTournament(this.selected);
+        this.tournamentDogService.deleteItem(e.dragData.id, this.selected.id);
+      }
+
+
     }
   }
 
@@ -112,37 +170,51 @@ export class ManageTournamentsComponent implements OnInit {
   }
 
   loadData() {
-    //if (this.selected != null && !this.dataInitialized) {
-    // this.selected = this.tournamentService.getTournament(this.selected.id)
+
 
     this.list_all_dogs = [];
-    this.list_participating_dogs = [];
-    for (var i = 0; i < this.selected.tournamentDogs.length; i++) {
-      if (this.isNumber(this.selected.tournamentDogs[i].dog)) {
-        this.dogService.getDogById(this.selected.tournamentDogs[i].dog).subscribe(dog => this.list_participating_dogs.push(dog));
+    this.list_international_class = [];
+    this.list_national_class = [];
+    for (var i = 0; i < this.selected.coursings.length; i++) {
+      // If dog object of the json-array is is represented by its id only we fetch the object from the db
+      if (this.isNumber(this.selected.coursings[i].dog)) {
+        if (this.selected.coursings[i].coursingClass === 'international') {
+          this.dogService.getDogById(this.selected.coursings[i].dog).subscribe(dog => this.list_international_class.push(dog));
+        }
+        if (this.selected.coursings[i].coursingClass === 'national') {
+          this.dogService.getDogById(this.selected.coursings[i].dog).subscribe(dog => this.list_national_class.push(dog));
+        }
       }
       else {
-        this.list_participating_dogs.push(this.selected.tournamentDogs[i].dog)
+        if (this.selected.coursings[i].coursingClass === 'international') {
+          this.list_international_class.push(this.selected.coursings[i].dog)
+        }
+        if (this.selected.coursings[i].coursingClass === 'national') {
+          this.list_national_class.push(this.selected.coursings[i].dog)
+        }
+
+
       }
     }
     this.list_participating_judges = this.selected.participating_judges;
     // Load available dogs and judges
-    this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_participating_dogs)));
-    //this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = this.removeParticipatingDogs(dogs, this.list_participating_dogs));
+    this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_international_class, this.list_national_class)));
     this.judgeService.getJudgesAsArray().subscribe(judges => this.list_all_judges = judges.filter(judge => this.customFilterJudge(judge, this.list_participating_judges)));
 
-    // this.dataInitialized = true;
-    // console.log(this.dataInitialized)
-    //}
+
   }
 
-  customFilterDog(element: Dogpass, array: Dogpass[]): boolean {
-    var result = true;
-    for (var i = 0; i < array.length; i++) {
-      if (element.id === array[i].id) {
-        //console.log('element' + element.id)
-        //console.log('array' + array[i].id)
 
+  customFilterDog(element: Dogpass, international_class: Dogpass[], national_class: Dogpass[]): boolean {
+    var result = true;
+    for (var i = 0; i < international_class.length; i++) {
+      if (element.id === international_class[i].id) {
+        result = false;
+        break;
+      }
+    }
+    for (var i = 0; i < national_class.length; i++) {
+      if (element.id === national_class[i].id) {
         result = false;
         break;
       }

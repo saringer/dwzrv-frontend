@@ -1,7 +1,7 @@
 import {Club} from "./club";
 import {Dogpass} from "./dogpass";
 import {Judge} from "./judge";
-import {TournamentDog} from "./tournamentdog";
+import {Coursing} from "./coursing";
 
 export class Tournament {
 
@@ -12,7 +12,7 @@ export class Tournament {
     public club: Club,
     public date: Date,
     public participating_judges: Judge[],
-    public tournamentDogs: TournamentDog[]
+    public coursings: Coursing[]
   ) {
 
   }

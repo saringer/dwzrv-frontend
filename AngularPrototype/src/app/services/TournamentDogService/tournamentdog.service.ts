@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {AppSettings} from "../../appsettings";
-import {TournamentDog} from "../../data-models/tournamentdog";
+import {Coursing} from "../../data-models/coursing";
 
 @Injectable()
 export class TournamentDogService {
@@ -12,7 +12,7 @@ export class TournamentDogService {
 
 
 
-  dataChange: BehaviorSubject<TournamentDog[]> = new BehaviorSubject<TournamentDog[]>([]);
+  dataChange: BehaviorSubject<Coursing[]> = new BehaviorSubject<Coursing[]>([]);
   // Temporarily stores data from dialogs
   dialogData: any;
 
@@ -20,7 +20,7 @@ export class TournamentDogService {
   constructor(private http: HttpClient) {
   }
 
-  get data(): TournamentDog[] {
+  get data(): Coursing[] {
     return this.dataChange.value;
   }
 
@@ -40,7 +40,7 @@ export class TournamentDogService {
 
 
   getAllTournamentDogByTournamentId(tournament_id): void {
-    this.http.get<TournamentDog[]>(AppSettings.getTournamentDogsUrl + tournament_id).subscribe(data => {
+    this.http.get<Coursing[]>(AppSettings.getTournamentDogsUrl + tournament_id).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -53,7 +53,7 @@ export class TournamentDogService {
 
   // Add Method
 
-  addTournamentDog (tournamentdog: TournamentDog): void {
+  addTournamentDog (tournamentdog: Coursing): void {
     const req = this.http.post(AppSettings.saveTournamentDogUrl, tournamentdog);
     req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
 

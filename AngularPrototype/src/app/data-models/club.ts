@@ -1,4 +1,3 @@
-import {Tournament} from "./tournament";
 
 export class Club {
 

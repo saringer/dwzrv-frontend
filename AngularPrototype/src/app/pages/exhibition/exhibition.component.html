@@ -1,68 +1,98 @@
 <nav class="nav-race">
   <div class="nav nav-tabs" id="nav-tab-race" role="tablist">
 
-    <a class="nav-item nav-link disabled" id="afghanischer-windhund" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px; max-height: 70px; min-height: 70px;" src="assets/img/afghanischer-windhund.jpg">
+    <a class="nav-item nav-link" id="afghane" data-toggle="tab" href="#nav-home" role="tab">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Afghane</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="azawakh" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px; max-height: 70px; min-height: 70px;" src="assets/img/azawakh.jpg">
+    <a class="nav-item nav-link disabled" id="azawakh" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Azawakh</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="barsoi" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/barsoi.jpg">
+    <a class="nav-item nav-link disabled" id="barsoi" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Barsoi</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="chart-polski" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/chart-polski.jpg">
+    <a class="nav-item nav-link disabled" id="chart-polski" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Chart Polski</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="deerhound" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/deerhound.jpg">
+    <a class="nav-item nav-link disabled" id="deerhound" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Deerhound</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="galgo" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/galgo.jpg">
+    <a class="nav-item nav-link disabled" id="galgo" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Galgo Español</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="greyhound" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/greyhound.jpg">
+    <a class="nav-item nav-link disabled" id="greyhound" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Greyhound</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="irish_wolfshound" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/Irish_wolfhound.JPG">
+    <a class="nav-item nav-link disabled" id="irish_wolfshound" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Ir. Wolfshund</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="magyar" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/magyar_agar.JPG">
+    <a class="nav-item nav-link disabled" id="it_windspiel" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
+      <figcaption>It. Windspiel</figcaption>
+    </a>
+
+    <a class="nav-item nav-link disabled" id="magyar" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Magyar Agar</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="saluki" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/Saluki.jpg">
+    <a class="nav-item nav-link disabled" id="saluki" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Saluki</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="windsprite" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/silken_windsprite.jpg">
+    <a class="nav-item nav-link disabled" id="windsprite" data-toggle="tab" href="#nav-home" role="tab"
+       aria-controls="nav-home" aria-selected="true">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>S. Windsprite</figcaption>
     </a>
 
-    <a class="nav-item nav-link disabled" id="sloughi" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/sloughi.jpg">
+    <a class="nav-item nav-link" id="sloughi" data-toggle="tab" href="#nav-home" role="tab">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImg" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Sloughi</figcaption>
     </a>
 
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
-      <img style="max-width:70px;max-height: 70px; min-height: 70px;" src="assets/img/whippet.jpg">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab">
+      <img style="max-width:70px; max-height: 70px; min-height: 70px;" [src]="whippetImgColored" (mouseover)="hover($event)"
+           (mouseout)="unhover($event)">
       <figcaption>Whippet</figcaption>
     </a>
 

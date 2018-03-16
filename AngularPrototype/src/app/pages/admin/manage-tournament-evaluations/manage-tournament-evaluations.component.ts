@@ -5,7 +5,7 @@ import {Observable} from "rxjs/Rx";
 import {TournamentDogService} from "../../../services/TournamentDogService/tournamentdog.service";
 import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {TournamentDog} from "../../../data-models/tournamentdog";
+import {Coursing} from "../../../data-models/coursing";
 import {Tournament} from "../../../data-models/tournament";
 import {TournamentService} from "../../../services/TournamentService/tournament.service";
 
@@ -125,8 +125,8 @@ export class TournamentDogDataSource extends DataSource<any> {
     this._filterChange.next(filterTournamentDog);
   }
 
-  filteredData: TournamentDog[] = [];
-  renderedData: TournamentDog[] = [];
+  filteredData: Coursing[] = [];
+  renderedData: Coursing[] = [];
 
   constructor(private tournamentDogService: TournamentDogService,
               public _paginatorTournamentDog: MatPaginator,
@@ -136,7 +136,7 @@ export class TournamentDogDataSource extends DataSource<any> {
 
   }
 
-  connect(): Observable<TournamentDog[]> {
+  connect(): Observable<Coursing[]> {
     // return this.dogService.getDogs();
     const displayDataChanges = [
       this.tournamentDogService.dataChange,
@@ -148,8 +148,8 @@ export class TournamentDogDataSource extends DataSource<any> {
     //this.tournamentDogService.getAllTournamentDog();
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
-      this.filteredData = this.tournamentDogService.data.slice().filter((tournamentDog: TournamentDog) => {
-        const searchStr = (tournamentDog.dogname + tournamentDog.coursingrating1).toLowerCase();
+      this.filteredData = this.tournamentDogService.data.slice().filter((coursing: Coursing) => {
+        const searchStr = (coursing.dogname + coursing.coursingRating).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 
@@ -170,7 +170,7 @@ export class TournamentDogDataSource extends DataSource<any> {
   }
 
   /** Returns a sorted copy of the database data. */
-  sortData(data: TournamentDog[]): TournamentDog[] {
+  sortData(data: Coursing[]): Coursing[] {
     if (!this._sort.active || this._sort.direction === '') {
       return data;
     }

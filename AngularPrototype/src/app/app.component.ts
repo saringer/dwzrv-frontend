@@ -22,7 +22,7 @@ export class AppComponent {
 
   onAdminLogoutClick() {
     this.authService.logout();
-    this.router.navigate(['/racing']);
+    this.router.navigate(['/coursing']);
 
 }
 

@@ -29,6 +29,9 @@ export class AppSettings {
   public static saveDogpassUrl = 'http://localhost:8080/save/dog';
   public static getDogUrl = 'http://localhost:8080/get/dog/';
 
+  // CoursingResults
+  public static coursingResultsUrl = 'http://localhost:8080/get/coursings/'
+
 
 
 }

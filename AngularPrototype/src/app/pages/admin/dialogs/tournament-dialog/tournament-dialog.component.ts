@@ -14,7 +14,7 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class TournamentDialogComponent implements OnInit {
 
-  tournamenttype = ['Coursing', 'Rennen'];
+  tournamenttype = ['Coursing'];
 
   clubs: any;
   private getClubsUrl = 'http://localhost:8080/get/clubs';

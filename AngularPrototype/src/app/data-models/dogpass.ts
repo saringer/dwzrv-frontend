@@ -1,7 +1,7 @@
 import {Dogowner} from "./dogowner";
 import {Breeder} from "./breeder";
 import {Tournament} from "./tournament";
-import {TournamentDog} from "./tournamentdog";
+import {Coursing} from "./coursing";
 
 export class Dogpass {
 
@@ -16,7 +16,7 @@ export class Dogpass {
               public date_of_birth: Date,
               public owner: Dogowner,
               public tournaments: Tournament[],
-              public tournamentDogs: TournamentDog[]) {
+              public coursings: Coursing[]) {
 
   }
 
