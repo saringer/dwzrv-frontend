@@ -19,6 +19,11 @@ export class AppSettings {
   public static ownersUrl = 'http://localhost:8080/get/owners';
   public static updateOwnerUrl = 'http://localhost:8080/update/owner/';
   public static deleteOwnerUrl = 'http://localhost:8080/delete/owner/';
+  // Judge
+  public static judgesUrl = 'http://localhost:8080/get/judges';
+  public static saveJudgeUrl = 'http://localhost:8080/save/judge';
+  public static updateJudgeUrl = 'http://localhost:8080/update/judge/'
+  public static deleteJudgeUrl = 'http://localhost:8080/delete/judge/';
   // Tournament
   public static getTournamentUrl = 'http://localhost:8080/get/tournament/';
   public static tournamentsUrl = 'http://localhost:8080/get/tournaments';

@@ -4,13 +4,12 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Judge} from "../../data-models/judge";
 import {Tournament} from "../../data-models/tournament";
 import {Dogpass} from "../../data-models/dogpass";
+import {AppSettings} from "../../appsettings";
 
 @Injectable()
 export class JudgeService {
 
-  private judgesUrl = 'http://localhost:8080/get/judges';
-  private saveJudgeUrl = 'http://localhost:8080/save/judge';  // URL to web api
-  private updateJudgeUrl = 'http://localhost:8080/update/judges/'
+
 
 
 
@@ -36,11 +35,11 @@ export class JudgeService {
   }
 
   getJudgesAsArray() {
-    return this.http.get<Judge[]>(this.judgesUrl);
+    return this.http.get<Judge[]>(AppSettings.judgesUrl);
   }
 
   getAllJudges(): void {
-    this.http.get<Judge[]>(this.judgesUrl).subscribe(data => {
+    this.http.get<Judge[]>(AppSettings.judgesUrl).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
@@ -62,11 +61,29 @@ export class JudgeService {
    */
 
   addJudge (judge: Judge): void {
-    const req = this.http.post(this.saveJudgeUrl, judge);
+    const req = this.http.post(AppSettings.saveJudgeUrl, judge);
     req.subscribe(judge => this.dialogData = judge);  }
 
-  updateTournament(judge: Judge): void {
-    this.http.put(this.updateJudgeUrl + judge.id, judge).subscribe();
+  updateJudge(judge: Judge): void {
+    this.http.put(AppSettings.updateJudgeUrl + judge.id, judge).subscribe(data => {
+        this.dialogData = judge;
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+
+  // DELETE METHOD
+  deleteJudge(id: number): void {
+    this.http.delete(AppSettings.deleteJudgeUrl + id).subscribe(data => {
+
+        //  this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
   }
 
 }

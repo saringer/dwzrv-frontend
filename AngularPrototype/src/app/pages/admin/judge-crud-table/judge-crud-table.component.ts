@@ -7,6 +7,8 @@ import {JudgeDialogComponent} from "../dialogs/judge-dialog/judge-dialog.compone
 import {Observable} from "rxjs/Rx";
 import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {JudgeEditComponent} from "../dialogs/judge-dialog/judge-edit-dialog/judge-edit.component";
+import {JudgeDeleteDialogComponent} from "../dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component";
 
 @Component({
   selector: 'app-judge-crud-table',
@@ -21,6 +23,8 @@ export class JudgeCrudTableComponent implements OnInit {
 
   displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
   dataSourceJudge: JudgeDataSource | null;
+  id: number;
+
 
 
   constructor(public dialog: MatDialog, private http: HttpClient,private judgeService: JudgeService) { }
@@ -39,6 +43,40 @@ export class JudgeCrudTableComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         this.judgeService.dataChange.value.push(this.judgeService.getDialogData());
+        this.refreshTableJudge();
+      }
+    });
+  }
+
+  startEdit(id: number, firstname: string, lastname: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(JudgeEditComponent, {
+      data: {id: id, firstname: firstname,  lastname: lastname}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // When using an edit things are little different, firstly we find record inside DataService by id
+        const foundIndex = this.judgeService.dataChange.value.findIndex(x => x.id === this.id);
+        // Then you update that record using data from dialogData (values you enetered)
+        this.judgeService.dataChange.value[foundIndex] = this.judgeService.getDialogData();
+        // And lastly refresh table
+        this.refreshTableJudge();
+      }
+    });
+  }
+
+  deleteItem(id: number, firstname: string, lastname: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(JudgeDeleteDialogComponent, {
+      data: {id: id, firstname: firstname, lastname: lastname}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.judgeService.dataChange.value.findIndex(x => x.id === this.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.judgeService.dataChange.value.splice(foundIndex, 1);
         this.refreshTableJudge();
       }
     });

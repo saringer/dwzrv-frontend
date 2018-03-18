@@ -1,11 +1,8 @@
-.mat-dialog-actions:last-child {
-  margin-bottom: 0px;
-}
-
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 350px;
+  min-width: 400px;
+
 }
 
 .container > * {
@@ -20,4 +17,8 @@
 .mat-form-field {
   font-size: 16px;
   flex-grow: 1;
+}
+
+.mat-dialog-actions:last-child {
+  margin-bottom: 0px;
 }

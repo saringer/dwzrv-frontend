@@ -3,7 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="09aa7ae8-5936-439a-b279-93e89de1968b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component.css" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.css" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/services/JudgeService/judge.service.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/services/JudgeService/judge.service.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,110 +22,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="83" column="8" lean-forward="false" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="coursing.component.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="coursing.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="165" column="19" lean-forward="false" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+            <state relative-caret-position="452">
+              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage-tournaments.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournaments/manage-tournaments.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="88" column="27" lean-forward="false" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
-              <folding>
-                <marker date="1521217252000" expanded="true" signature="3192:3256" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage-tournament-evaluations.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournament-evaluations/manage-tournament-evaluations.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="12" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="12" />
-              <folding>
-                <marker date="1521217252000" expanded="true" signature="2277:2310" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tournament.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournament.ts">
+      <file leaf-file-name="judge.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/judge.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-                <marker date="1521217252000" expanded="true" signature="376:393" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="owner-crud-table.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage-tournaments.component.spec.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournaments/manage-tournaments.component.spec.ts">
+      <file leaf-file-name="judge-crud-table.component.spec.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.spec.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#73#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage-tournaments.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournaments/manage-tournaments.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="40" column="42" lean-forward="false" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manage-tournaments.component.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournaments/manage-tournaments.component.css">
+      <file leaf-file-name="judge-crud-table.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="34" column="53" lean-forward="true" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="judge-crud-table.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="76" column="38" lean-forward="false" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="owner-crud-table.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="owner-edit-dialog.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="breeder-edit-dialog.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="club-delete-dialog.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="judge-edit.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -168,19 +167,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/dog-dialog/dog-dialog.component.css" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-dialog.component.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/services/JudgeService/judge.service.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-dialog.component.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/data-models/club.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/data-models/dogowner.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournamentdogcoursing.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/forms/owner-form/owner-form.component.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/data-models/judge.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-dialog.component.html" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-dialog.component.html" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-dialog.component.html" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-dialog.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournamentdog.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournament.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.ts" />
@@ -188,14 +174,12 @@
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/services/OwnerService/owner.service.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component.css" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-dialog.component.css" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentDogService/tournamentdog.service.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournament-evaluations/manage-tournament-evaluations.component.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.css" />
@@ -211,7 +195,6 @@
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/app.component.css" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/racing/racing.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/exhibition/exhibition.component.html" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/dog-dialog/dog-dialog.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/index.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournaments/manage-tournaments.component.css" />
@@ -219,6 +202,22 @@
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournaments/manage-tournaments.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.html" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit/judge-edit.component.html" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit/judge-edit.component.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/services/JudgeService/judge.service.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.html" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component.html" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component.css" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.html" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component.css" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.css" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.css" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html" />
       </list>
     </option>
   </component>
@@ -252,7 +251,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -311,6 +311,16 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="club-crud-table" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="dialogs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -323,6 +333,29 @@
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="dialogs" type="462c0819:PsiDirectoryNode" />
               <item name="dog-dialog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
+              <item name="owner-dialog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
+              <item name="owner-dialog" type="462c0819:PsiDirectoryNode" />
+              <item name="owner-edit-dialog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
@@ -431,6 +464,15 @@
               <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
               <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+              <item name="JudgeService" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -438,8 +480,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -449,13 +490,133 @@
     <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentDogService" />
       <recent name="$PROJECT_DIR$/AngularPrototype/src/app/services" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog" />
+      <recent name="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/app.component.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/app.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/app.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.css</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Backend/rest-service</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/services/SearchService/search.service.spec.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/AngularPrototype/src/app/services/SearchService/search.service.ts</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -610,7 +771,8 @@
       <workItem from="1521218371243" duration="2014000" />
       <workItem from="1521217776582" duration="1052000" />
       <workItem from="1521220080188" duration="1997000" />
-      <workItem from="1521305859460" duration="963000" />
+      <workItem from="1521305859460" duration="1576000" />
+      <workItem from="1521395984277" duration="5586000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1511805098701</created>
@@ -703,29 +865,37 @@
       <option name="project" value="LOCAL" />
       <updated>1521110653206</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update">
+      <created>1521307330322</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1521307330322</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97520000" />
+    <option name="totallyTimeSpent" value="103719000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="973" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982457" sideWeight="0.60683763" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.6086691" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.48779" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982457" sideWeight="0.3931624" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982457" sideWeight="0.3913309" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36813188" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37240538" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -764,221 +934,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/exhibition/exhibition.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/exhibition/exhibition.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-579">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/exhibition/exhibition.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentDogService/tournamentdog.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" column="3" lean-forward="true" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="54" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/BreederService/breeder.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="13" column="44" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/AuthService/auth.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/AuthService/auth.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/dogowner.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/club.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/club-crud-table/club-crud-table.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1995">
-          <caret line="147" column="32" lean-forward="false" selection-start-line="147" selection-start-column="32" selection-end-line="147" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/ClubService/club.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="34" lean-forward="false" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/racing/racing.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/assets/img/galgo.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/racing/racing.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/dog-dialog/dog-dialog.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1004,13 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1057,20 +1005,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="24" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournament.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="false" />
             <marker date="1521217252000" expanded="true" signature="376:393" ph="{...}" />
           </folding>
         </state>
@@ -1089,7 +1029,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#73#0" expanded="true" />
+            <element signature="e#0#73#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1117,8 +1057,17 @@
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
+          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <marker date="1521398966000" expanded="false" signature="1497:1509" ph="..." />
+            <marker date="1521398966000" expanded="true" signature="1510:1746" ph="..." />
+            <marker date="1521398966000" expanded="true" signature="1619:1734" ph="..." />
+            <marker date="1521398966000" expanded="false" signature="1782:1794" ph="..." />
+            <marker date="1521398966000" expanded="true" signature="1795:2035" ph="..." />
+            <marker date="1521398966000" expanded="true" signature="1903:2023" ph="..." />
+            <marker date="1521398966000" expanded="true" signature="2106:2258" ph="..." />
+            <marker date="1521398966000" expanded="true" signature="2147:2246" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1130,10 +1079,296 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/ClubService/club.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="64" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="68" lean-forward="false" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/JudgeService/judge.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="60" column="5" lean-forward="false" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/club-crud-table/club-crud-table.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="88" column="3" lean-forward="false" selection-start-line="56" selection-start-column="2" selection-end-line="88" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="34" column="39" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-edit-dialog/club-edit-dialog.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="107" lean-forward="true" selection-start-line="20" selection-start-column="107" selection-end-line="20" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="37" lean-forward="true" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-edit-dialog/club-edit-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#56#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="24" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#56#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-edit-dialog/club-edit-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="41" column="55" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="105" lean-forward="false" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="152" column="68" lean-forward="false" selection-start-line="152" selection-start-column="68" selection-end-line="152" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#997#1054#0" expanded="true" />
+            <element signature="e#1408#1465#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="165" column="19" lean-forward="false" selection-start-line="165" selection-start-column="19" selection-end-line="165" selection-end-column="19" />
+        <state relative-caret-position="452">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/judge.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="76" column="38" lean-forward="false" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="34" column="53" lean-forward="true" selection-start-line="34" selection-start-column="53" selection-end-line="34" selection-end-column="53" />
           <folding />
         </state>
       </provider>
