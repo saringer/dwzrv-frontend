@@ -63,6 +63,7 @@ import { ClubDeleteDialogComponent } from './pages/admin/dialogs/club-dialog/clu
 import { OwnerEditDialogComponent } from './pages/admin/dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component';
 import { OwnerDeleteDialogComponent } from './pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component';
 import {CoursingService} from "./services/CoursingService/coursing.service";
+import {SearchService} from "./services/SearchService/search.service";
 
 
 const appRoutes: Routes = [
@@ -146,7 +147,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [NativeDateAdapter, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

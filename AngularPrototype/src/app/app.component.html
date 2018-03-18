@@ -25,6 +25,15 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
+
+        <form class="form-inline">
+          <input matInput (keyup)="onKey($event)" class="form-control mr-sm-2 search-input" type="search" placeholder="suche..."
+                 name="search" id="search">
+
+        </form>
+
+
+
       <li class="nav-item" style="float: right">
         <a class="nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="!authService.isLoggedIn()"
            (click)="onAdminLoginClick()">

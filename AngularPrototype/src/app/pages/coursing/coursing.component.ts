@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Club} from "../../data-models/club";
 import {ClubService} from "../../services/ClubService/club.service";
@@ -9,6 +9,7 @@ import {Coursing} from "../../data-models/coursing";
 import {CoursingService} from "../../services/CoursingService/coursing.service";
 import {Coursingresult} from "../../data-models/coursingresult";
 import {ClubDataSource} from "../admin/club-crud-table/club-crud-table.component";
+import {SearchService} from "../../services/SearchService/search.service";
 
 
 @Component({
@@ -19,16 +20,17 @@ import {ClubDataSource} from "../admin/club-crud-table/club-crud-table.component
 export class CoursingComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('paginatorCoursing') paginatorCoursing: MatPaginator;
-  @ViewChild('filterCoursing') filterCoursing: ElementRef;
 
-  displayedColumns = ['position','total', 'name', 'besitzer', 'gesamtteilnahme','inwertung'];
+
+  displayedColumns = ['position', 'total', 'name', 'besitzer', 'gesamtteilnahme', 'inwertung'];
   dataSourceCoursing: CoursingDataSource | null;
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
   defaultCoursingClass: string = 'international';
   defaultDogGender: string = 'Rüde';
 
-  constructor(private coursingService: CoursingService) {
+
+  constructor(private searchService: SearchService, private coursingService: CoursingService, elementRef: ElementRef) {
 
   }
 
@@ -39,6 +41,7 @@ export class CoursingComponent implements OnInit {
   hover(element) {
     this.whippetImg = 'assets/img/whippet.png';
   }
+
   unhover(element) {
     this.whippetImg = 'assets/img/whippet_grau.png';
   }
@@ -46,15 +49,25 @@ export class CoursingComponent implements OnInit {
   public loadDataCoursing() {
 
     this.dataSourceCoursing = new CoursingDataSource(this.coursingService, this.paginatorCoursing, this.sort);
-    Observable.fromEvent(this.filterCoursing.nativeElement, 'keyup')
+    /*Observable.fromEvent(this.filterCoursing.nativeElement, 'keyup')
       .debounceTime(150)
       .distinctUntilChanged()
       .subscribe(() => {
         if (!this.dataSourceCoursing) {
           return;
         }
-        this.dataSourceCoursing.filter = this.filterCoursing.nativeElement.value;
-      });
+        //this.dataSourceCoursing.filter = this.filterCoursing.nativeElement.value;
+        this.dataSourceCoursing.filter = this.filterString;
+
+      });*/
+    //this.dataSourceCoursing.filter = this.searchService.currentMessage.subscribe(message => );
+    if (!this.dataSourceCoursing) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceCoursing.filter = message);
+    }
+
   }
 
 }
