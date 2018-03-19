@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, PipeTransform} from '@angular/core';
 import {Tournament} from "../../../data-models/tournament";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Judge} from "../../../data-models/judge";
@@ -9,6 +9,9 @@ import {TournamentDogService} from "../../../services/TournamentDogService/tourn
 import {DogService} from "../../../services/DogService/dog.service";
 import {JudgeService} from "../../../services/JudgeService/judge.service";
 import {Coursing} from "../../../data-models/coursing";
+import {SearchService} from "../../../services/SearchService/search.service";
+import {Dogowner} from "../../../data-models/dogowner";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Component({
   selector: 'app-manage-tournaments',
@@ -30,11 +33,16 @@ export class ManageTournamentsComponent implements OnInit {
   selected: any;
   dragcontainer: string;
 
-  constructor(private tournamentService: TournamentService, private tournamentDogService: TournamentDogService, private _formBuilder: FormBuilder,
+  constructor(private searchService: SearchService, private tournamentService: TournamentService, private tournamentDogService: TournamentDogService, private _formBuilder: FormBuilder,
               private dogService: DogService, private judgeService: JudgeService) {
+
+
   }
 
+
   ngOnInit() {
+
+
 
     this.tournaments = this.tournamentService.getTournaments();
     this.firstFormGroup = this._formBuilder.group({
@@ -263,4 +271,7 @@ export class ManageTournamentsComponent implements OnInit {
   }
 
 
+
 }
+
+

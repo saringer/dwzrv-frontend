@@ -12,8 +12,10 @@ import {JudgeService} from "../../../../services/JudgeService/judge.service";
 })
 export class JudgeDialogComponent implements OnInit {
 
-  nationalities = ['Deutsch'];
-
+  nationalities = ['Deutschland', 'Belgien', 'Bulgarien', 'Dänemark', 'Deutschland', 'Estland', 'Finnland',
+    'Frankreich', 'Griechenland', 'Irland', 'Italien', 'Kroatien', 'Lettland', 'Litauen', 'Luxemburg',
+    'Malta', 'Niederlande', 'Österreich', 'Polen', 'Portugal', 'Rumänien', 'Schweden', 'Slowakei', 'Slowenien',
+    'Spanien', 'Tschechische Republik', 'Ungarn', 'Vereinigtes Königreich', 'Zypern' ];
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<JudgeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Judge, private judgeService: JudgeService) { }

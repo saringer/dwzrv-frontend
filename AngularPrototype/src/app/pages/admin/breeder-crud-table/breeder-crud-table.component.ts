@@ -9,6 +9,7 @@ import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {BreederEditDialogComponent} from "../dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component";
 import {BreederDeleteDialogComponent} from "../dialogs/breeder-dialog/breeder-delete-dialog/breeder-delete-dialog.component";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-breeder-crud-table',
@@ -19,16 +20,19 @@ export class BreederCrudTableComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('paginatorBreeder') paginatorBreeder: MatPaginator;
-  @ViewChild('filterBreeder') filterBreeder: ElementRef;
 
   displayedColumnsBreeder = ['breederfirstname', 'breederlastname', 'kennelname', 'action'];
   dataSourceBreeder: BreederDataSource | null;
   id: number;
 
 
-  constructor(private breederService: BreederService, public dialog: MatDialog, private http: HttpClient) { }
+  constructor(private searchService: SearchService, private breederService: BreederService, public dialog: MatDialog, private http: HttpClient) {
+  }
 
   ngOnInit() {
+    this.paginatorBreeder._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorBreeder._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorBreeder._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataBreeder();
   }
 
@@ -50,7 +54,16 @@ export class BreederCrudTableComponent implements OnInit {
   startEdit(id: number, firstname: string, lastname: string, kennelname: string, street: string, postalcode: string, city: string, country: string) {
     this.id = id;
     const dialogRef = this.dialog.open(BreederEditDialogComponent, {
-      data: {id: id, firstname: firstname, lastname: lastname, kennelname: kennelname, street: street, postalcode: postalcode, city: city, country: country}
+      data: {
+        id: id,
+        firstname: firstname,
+        lastname: lastname,
+        kennelname: kennelname,
+        street: street,
+        postalcode: postalcode,
+        city: city,
+        country: country
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -94,21 +107,19 @@ export class BreederCrudTableComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSourceBreeder.filter = '';
-      this.dataSourceBreeder.filter = this.filterBreeder.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSourceBreeder.filter = message);
+
     }
   }
 
   public loadDataBreeder() {
     this.dataSourceBreeder = new BreederDataSource(this.breederService, this.paginatorBreeder, this.sort);
-    Observable.fromEvent(this.filterBreeder.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceBreeder) {
-          return;
-        }
-        this.dataSourceBreeder.filter = this.filterBreeder.nativeElement.value;
-      });
+    if (!this.dataSourceBreeder) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceBreeder.filter = message);
+    }
   }
 
 }

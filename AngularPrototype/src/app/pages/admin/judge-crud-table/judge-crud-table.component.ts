@@ -9,6 +9,7 @@ import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {JudgeEditComponent} from "../dialogs/judge-dialog/judge-edit-dialog/judge-edit.component";
 import {JudgeDeleteDialogComponent} from "../dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-judge-crud-table',
@@ -19,7 +20,6 @@ export class JudgeCrudTableComponent implements OnInit {
 
   @ViewChild('paginatorJudge') paginatorJudge: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filterJudge') filterJudge: ElementRef;
 
   displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
   dataSourceJudge: JudgeDataSource | null;
@@ -27,9 +27,12 @@ export class JudgeCrudTableComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog, private http: HttpClient,private judgeService: JudgeService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient,private judgeService: JudgeService) { }
 
   ngOnInit() {
+    this.paginatorJudge._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorJudge._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorJudge._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataJudge();
     }
 
@@ -95,21 +98,18 @@ export class JudgeCrudTableComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSourceJudge.filter = '';
-      this.dataSourceJudge.filter = this.filterJudge.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSourceJudge.filter = message);
     }
   }
 
   public loadDataJudge() {
     this.dataSourceJudge = new JudgeDataSource(this.judgeService, this.paginatorJudge, this.sort);
-    Observable.fromEvent(this.filterJudge.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceJudge) {
-          return;
-        }
-        this.dataSourceJudge.filter = this.filterJudge.nativeElement.value;
-      });
+    if (!this.dataSourceJudge) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceJudge.filter = message);
+    }
   }
 
 }

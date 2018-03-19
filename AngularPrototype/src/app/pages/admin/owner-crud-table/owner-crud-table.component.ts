@@ -9,6 +9,7 @@ import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {OwnerEditDialogComponent} from "../dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component";
 import {OwnerDeleteDialogComponent} from "../dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-owner-crud-table',
@@ -19,15 +20,18 @@ export class OwnerCrudTableComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('paginatorOwner') paginatorOwner: MatPaginator;
-  @ViewChild('filterOwner') filterOwner: ElementRef;
 
   displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
   dataSourceOwner: OwnerDataSource | null;
   id: number;
 
-  constructor(public dialog: MatDialog, private http: HttpClient,private ownerService: OwnerService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private ownerService: OwnerService) {
+  }
 
   ngOnInit() {
+    this.paginatorOwner._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorOwner._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorOwner._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataOwner();
 
   }
@@ -51,7 +55,15 @@ export class OwnerCrudTableComponent implements OnInit {
   startEdit(id: number, firstname: string, lastname: string, street: string, postalcode: string, city: string, country: string) {
     this.id = id;
     const dialogRef = this.dialog.open(OwnerEditDialogComponent, {
-      data: {id: id, firstname: firstname, lastname: lastname,  street: street, postalcode: postalcode, city: city, country: country}
+      data: {
+        id: id,
+        firstname: firstname,
+        lastname: lastname,
+        street: street,
+        postalcode: postalcode,
+        city: city,
+        country: country
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -95,21 +107,19 @@ export class OwnerCrudTableComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSourceOwner.filter = '';
-      this.dataSourceOwner.filter = this.filterOwner.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSourceOwner.filter = message);
+
     }
   }
 
   public loadDataOwner() {
     this.dataSourceOwner = new OwnerDataSource(this.ownerService, this.paginatorOwner, this.sort);
-    Observable.fromEvent(this.filterOwner.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceOwner) {
-          return;
-        }
-        this.dataSourceOwner.filter = this.filterOwner.nativeElement.value;
-      });
+    if (!this.dataSourceOwner) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceOwner.filter = message);
+    }
   }
 
 }

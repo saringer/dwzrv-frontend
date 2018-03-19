@@ -52,24 +52,17 @@ export class CoursingComponent implements OnInit {
   public loadDataCoursing() {
 
     this.dataSourceCoursing = new CoursingDataSource(this.coursingService, this.paginatorCoursing, this.sort);
-    /*Observable.fromEvent(this.filterCoursing.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceCoursing) {
-          return;
-        }
-        //this.dataSourceCoursing.filter = this.filterCoursing.nativeElement.value;
-        this.dataSourceCoursing.filter = this.filterString;
-
-      });*/
-    //this.dataSourceCoursing.filter = this.searchService.currentMessage.subscribe(message => );
     if (!this.dataSourceCoursing) {
       return;
     }
     else {
       this.searchService.currentMessage.subscribe(message => this.dataSourceCoursing.filter = message);
     }
+
+  }
+
+  onTabSwitch(event) {
+    //this.onLoadClick();
 
   }
 

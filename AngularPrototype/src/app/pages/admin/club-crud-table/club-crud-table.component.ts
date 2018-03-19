@@ -13,6 +13,7 @@ import {BreederDeleteDialogComponent} from "../dialogs/breeder-dialog/breeder-de
 import {Tournament} from "../../../data-models/tournament";
 import {ClubEditDialogComponent} from "../dialogs/club-dialog/club-edit-dialog/club-edit-dialog.component";
 import {ClubDeleteDialogComponent} from "../dialogs/club-dialog/club-delete-dialog/club-delete-dialog.component";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-club-crud-table',
@@ -23,7 +24,6 @@ export class ClubCrudTableComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('paginatorClub') paginatorClub: MatPaginator;
-  @ViewChild('filterClub') filterClub: ElementRef;
 
   displayedColumnsClub = ['clubname', 'city', 'action'];
   dataSourceClub: ClubDataSource | null;
@@ -31,9 +31,12 @@ export class ClubCrudTableComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog, private http: HttpClient, private clubService: ClubService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private clubService: ClubService) { }
 
   ngOnInit() {
+    this.paginatorClub._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorClub._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorClub._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataClub();
   }
 
@@ -101,21 +104,19 @@ export class ClubCrudTableComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSourceClub.filter = '';
-      this.dataSourceClub.filter = this.filterClub.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSourceClub.filter = message);
+
     }
   }
 
   public loadDataClub() {
     this.dataSourceClub = new ClubDataSource(this.clubService, this.paginatorClub, this.sort);
-    Observable.fromEvent(this.filterClub.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceClub) {
-          return;
-        }
-        this.dataSourceClub.filter = this.filterClub.nativeElement.value;
-      });
+    if (!this.dataSourceClub) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceClub.filter = message);
+    }
   }
 
 

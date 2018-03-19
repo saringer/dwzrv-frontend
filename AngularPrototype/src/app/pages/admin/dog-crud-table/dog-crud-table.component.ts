@@ -13,6 +13,7 @@ import {DogEditDialogComponent} from "../dialogs/dog-dialog/dog-edit-dialog/dog-
 import {DogDeleteDialogComponent} from "../dialogs/dog-dialog/dog-delete-dialog/dog-delete-dialog.component";
 import {Breeder} from "../../../data-models/breeder";
 import {Dogowner} from "../../../data-models/dogowner";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-dog-crud-table',
@@ -23,16 +24,18 @@ export class DogCrudTableComponent implements OnInit {
 
   @ViewChild('paginator') paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filter') filter: ElementRef;
 
   displayedColumns = ['name', 'race', 'sex', 'action'];
   dataSource: UserDataSource | null;
   id: number;
 
 
-  constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private dogService: DogService) { }
 
   ngOnInit() {
+    this.paginator._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginator._intl.nextPageLabel = 'Nächste Seite';
+    this.paginator._intl.previousPageLabel = 'Vorherige Seite';
     this.loadData();
 
   }
@@ -99,21 +102,18 @@ export class DogCrudTableComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSource.filter = '';
-      this.dataSource.filter = this.filter.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSource.filter = message);
     }
   }
 
   public loadData() {
     this.dataSource = new UserDataSource(this.dogService, this.paginator, this.sort);
-    Observable.fromEvent(this.filter.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSource) {
-          return;
-        }
-        this.dataSource.filter = this.filter.nativeElement.value;
-      });
+    if (!this.dataSource) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSource.filter = message);
+    }
   }
 
 }

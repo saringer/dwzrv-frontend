@@ -12,6 +12,7 @@ import {OwnerDeleteDialogComponent} from "../dialogs/owner-dialog/owner-delete-d
 import {TournamentEditDialogComponent} from "../dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component";
 import {TournamentDeleteDialogComponent} from "../dialogs/tournament-dialog/tournament-delete-dialog/tournament-delete-dialog.component";
 import {Club} from "../../../data-models/club";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-tournament-crud-table',
@@ -22,15 +23,17 @@ export class TournamentCrudTableComponent implements OnInit {
 
   @ViewChild('paginatorTournament') paginatorTournament: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filterTournament') filterTournament: ElementRef;
 
   displayedColumsTournament = ['title', 'club','tournamenttype', 'date', 'action'];
   dataSourceTournament: TournamentDataSource | null;
   id: number;
 
-  constructor(public dialog: MatDialog, private http: HttpClient,private tournamentService: TournamentService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient,private tournamentService: TournamentService) { }
 
   ngOnInit() {
+    this.paginatorTournament._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorTournament._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorTournament._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataTournaments();
 
   }
@@ -99,21 +102,18 @@ export class TournamentCrudTableComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSourceTournament.filter = '';
-      this.dataSourceTournament.filter = this.filterTournament.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSourceTournament.filter = message);
     }
   }
 
   public loadDataTournaments() {
     this.dataSourceTournament = new TournamentDataSource(this.tournamentService, this.paginatorTournament, this.sort);
-    Observable.fromEvent(this.filterTournament.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceTournament) {
-          return;
-        }
-        this.dataSourceTournament.filter = this.filterTournament.nativeElement.value;
-      });
+    if (!this.dataSourceTournament) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceTournament.filter = message);
+    }
   }
 }
 
@@ -151,7 +151,7 @@ export class TournamentDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentService.data.slice().filter((tournament: Tournament) => {
-        const searchStr = (tournament.title + tournament.date).toLowerCase();
+        const searchStr = (tournament.title + tournament.date + tournament.tournamenttype + tournament.date).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 
