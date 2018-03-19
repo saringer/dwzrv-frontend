@@ -38,6 +38,7 @@ export class ClubService {
   }
 
   addClub (club: Club): void {
+    console.log(AppSettings.saveClubUrl);
     const req = this.http.post(AppSettings.saveClubUrl, club);
     req.subscribe(club => this.dialogData = club);
   }
