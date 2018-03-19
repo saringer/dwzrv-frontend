@@ -1,0 +1,55 @@
+<div class="container">
+  <h3 mat-dialog-title>{{data.title}}</h3>
+
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Veranstaltungsname" [(ngModel)]="data.title"
+               name="title" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <label for="club"> Typ der Veranstaltung</label>
+      <select matInput #input class="form-control" id="tournamenttype" required [(ngModel)]="data.tournamenttype"
+              name="tournamenttype" style="height: auto;">
+        <option *ngFor="let tournamenttype of tournamenttype" [ngValue]="tournamenttype">{{tournamenttype}}</option>
+      </select>
+    </div>
+
+    <div class="form">
+      <label for="club"> Austragender Verein</label>
+      <select matInput #input class="form-control" placeholder="Austragender Verein" id="club" required
+              [(ngModel)]="data.club" name="club" style="height: auto;">
+        <option *ngFor="let club of clubs" [ngValue]="club">{{club.clubname}}</option>
+      </select>
+    </div>
+
+
+    <div class="form">
+      <mat-form-field color="accent">
+        <input type="date" matInput [matDatepicker]="myDatepicker" #inputstate class="form-control" placeholder="Datum"
+               [(ngModel)]="data.date" name="date" required>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+
+      <mat-checkbox type="checkbox"  #inputstate class="form-control"
+                    [(ngModel)]="data.double_weighted" name="double_weighted">
+        Veranstaltung doppelt werten
+      </mat-checkbox>
+
+    </div>
+
+
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+      <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid"
+              [mat-dialog-close]="1" (click)="stopEdit()">Save
+      </button>
+    </div>
+  </form>
+</div>
