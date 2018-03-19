@@ -17,6 +17,11 @@
       <mat-cell *matCellDef="let element"> {{element.lastname}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="judgenationality">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nationalität</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nationality}}</mat-cell>
+    </ng-container>
+
     <!-- Action Menu -->
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef>

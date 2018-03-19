@@ -46,7 +46,7 @@
     <div class="form">
       <label for="breeder"> Züchter</label>
       <select matInput #input class="form-control" placeholder="Züchter" id="breeder"  [(ngModel)]="data.breeder" name="breeder" style="height: auto;">
-        <option *ngFor="let breeder of breeders" [ngValue]="breeder">{{breeder.firstname + " " + breeder.lastname}}</option>
+        <option *ngFor="let breeder of breeders" [ngValue]="breeder">{{breeder.kennelname}}</option>
       </select>
     </div>
 

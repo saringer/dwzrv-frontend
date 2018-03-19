@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../../../../services/AuthService/auth.service";
 import {CanActivate, Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material";
@@ -10,8 +10,10 @@ import {FormGroup, FormBuilder, Validators, AbstractControl} from '@angular/form
   styleUrls: ['./password-dialog.component.css']
 })
 export class PasswordDialogComponent implements OnInit {
+  @ViewChild('user') user:any;
+  @ViewChild('password') password:any;
   form: FormGroup;
-  password;
+  
 
   constructor(private router: Router, private authService: AuthService, public dialogRef: MatDialogRef<PasswordDialogComponent>, fb: FormBuilder) {
 
@@ -29,8 +31,11 @@ export class PasswordDialogComponent implements OnInit {
 
 
   authenticate() {
-    this.authService.login();
-    this.router.navigate(['/admin']);  }
+    if ((this.user.nativeElement.value === 'dwzrv') && (this.password.nativeElement.value === 'wertungen')) {
+      this.authService.login();
+      this.router.navigate(['/admin']);  }
+    }
+
 
   isLoggedIn() {
     this.authService.isLoggedIn();

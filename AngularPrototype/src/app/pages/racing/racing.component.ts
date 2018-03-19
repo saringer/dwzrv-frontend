@@ -37,28 +37,4 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 2, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 1, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81},
-  {position: 66, name: 'Fast Company\'s Boys Talk', besitzer: 'Behrendt/Sicking', rennengesamt: 5, rennengewertet: 5, punkte: 81}
 ];

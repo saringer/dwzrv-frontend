@@ -21,7 +21,7 @@ export class JudgeCrudTableComponent implements OnInit {
   @ViewChild('paginatorJudge') paginatorJudge: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'action'];
+  displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'judgenationality', 'action'];
   dataSourceJudge: JudgeDataSource | null;
   id: number;
 
