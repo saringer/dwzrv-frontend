@@ -1,7 +1,7 @@
 export class AppSettings {
 
- // public static server: string = '83.169.5.181:';
-  public static server: string = 'http://localhost:';
+  public static server: string = '83.169.5.181:';
+  //public static server: string = 'http://localhost:';
 
 
   // TournamentDog
