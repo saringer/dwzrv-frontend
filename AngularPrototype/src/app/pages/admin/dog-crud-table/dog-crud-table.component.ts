@@ -7,6 +7,12 @@ import {DogDialogComponent} from "../dialogs/dog-dialog/dog-dialog.component";
 import {Observable} from "rxjs/Rx";
 import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {JudgeDeleteDialogComponent} from "../dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component";
+import {JudgeEditComponent} from "../dialogs/judge-dialog/judge-edit-dialog/judge-edit.component";
+import {DogEditDialogComponent} from "../dialogs/dog-dialog/dog-edit-dialog/dog-edit-dialog.component";
+import {DogDeleteDialogComponent} from "../dialogs/dog-dialog/dog-delete-dialog/dog-delete-dialog.component";
+import {Breeder} from "../../../data-models/breeder";
+import {Dogowner} from "../../../data-models/dogowner";
 
 @Component({
   selector: 'app-dog-crud-table',
@@ -21,6 +27,7 @@ export class DogCrudTableComponent implements OnInit {
 
   displayedColumns = ['name', 'race', 'sex', 'action'];
   dataSource: UserDataSource | null;
+  id: number;
 
 
   constructor(public dialog: MatDialog, private http: HttpClient, private dogService: DogService) { }
@@ -40,6 +47,40 @@ export class DogCrudTableComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         this.dogService.dataChange.value.push(this.dogService.getDialogData());
+        this.refreshTableDogpass();
+      }
+    });
+  }
+
+  startEdit(id: number, name: string, race: string, sex: string, passport_no: string, chip_no: string, coat_colour: string, breeder: Breeder, owner: Dogowner, date_of_birth: Date) {
+    this.id = id;
+    const dialogRef = this.dialog.open(DogEditDialogComponent, {
+      data: {id: id, name: name, race : race, sex: sex, passport_no: passport_no, chip_no: chip_no, coat_colour: coat_colour, breeder: breeder, owner: owner, date_of_birth: date_of_birth}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // When using an edit things are little different, firstly we find record inside DataService by id
+        const foundIndex = this.dogService.dataChange.value.findIndex(x => x.id === this.id);
+        // Then you update that record using data from dialogData (values you enetered)
+        this.dogService.dataChange.value[foundIndex] = this.dogService.getDialogData();
+        // And lastly refresh table
+        this.refreshTableDogpass();
+      }
+    });
+  }
+
+  deleteItem(id: number, name: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(DogDeleteDialogComponent, {
+      data: {id: id, name: name}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.dogService.dataChange.value.findIndex(x => x.id === this.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.dogService.dataChange.value.splice(foundIndex, 1);
         this.refreshTableDogpass();
       }
     });

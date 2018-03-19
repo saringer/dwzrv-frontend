@@ -11,6 +11,7 @@ export class Tournament {
     public tournamenttype: string,
     public club: Club,
     public date: Date,
+    public double_weighted: boolean,
     public participating_judges: Judge[],
     public coursings: Coursing[]
   ) {

@@ -1,5 +1,5 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {Component, ElementRef, Injectable, Input, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator, MatPaginatorIntl, MatSort, MatTableDataSource} from '@angular/material';
 import {Club} from "../../data-models/club";
 import {ClubService} from "../../services/ClubService/club.service";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
@@ -35,15 +35,18 @@ export class CoursingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.paginatorCoursing._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorCoursing._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorCoursing._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataCoursing();
   }
 
   hover(element) {
-    this.whippetImg = 'assets/img/whippet.png';
+    //this.whippetImg = 'assets/img/whippet.png';
   }
 
   unhover(element) {
-    this.whippetImg = 'assets/img/whippet_grau.png';
+   // this.whippetImg = 'assets/img/whippet_grau.png';
   }
 
   public loadDataCoursing() {
@@ -148,4 +151,9 @@ export class CoursingDataSource extends DataSource<any> {
       return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
     });
   }
+}
+
+@Injectable()
+export class CustomPaginator extends MatPaginatorIntl {
+  itemsPerPageLabel = 'Rows per page';
 }

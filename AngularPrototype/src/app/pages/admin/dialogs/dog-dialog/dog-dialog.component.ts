@@ -6,6 +6,7 @@ import {Dogpass} from "../../../../data-models/dogpass";
 import {Breeder} from "../../../../data-models/breeder";
 import {Dogowner} from "../../../../data-models/dogowner";
 import {FormControl, Validators} from "@angular/forms";
+import {AppSettings} from "../../../../appsettings";
 
 @Component({
   selector: 'app-dog-dialog',
@@ -18,8 +19,7 @@ export class DogDialogComponent implements OnInit {
   'Italienisches Windspiel','Magyar agár', 'Saluki', 'Sloughi', 'Silken Windsprite', 'Whippet'];
   owners: Dogowner[];
   breeders: Breeder[];
-  private getOwnersUrl = 'http://localhost:8080/get/owners';
-  private getBreedersUrl = 'http://localhost:8080/get/breeders';
+
 
 
   constructor(public dogService: DogService,
@@ -34,10 +34,10 @@ export class DogDialogComponent implements OnInit {
   }
 
   getBreeders() {
-    this.http.get<Breeder[]>(this.getBreedersUrl).subscribe(breeders => this.breeders = breeders);
+    this.http.get<Breeder[]>(AppSettings.getBreedersUrl).subscribe(breeders => this.breeders = breeders);
   }
   getOwners() {
-    this.http.get<Dogowner[]>(this.getOwnersUrl).subscribe(owners => this.owners = owners);
+    this.http.get<Dogowner[]>(AppSettings.getOwnersUrl).subscribe(owners => this.owners = owners);
   }
 
   formControl = new FormControl('', [

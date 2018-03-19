@@ -1,6 +1,6 @@
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AppComponent} from './app.component';
@@ -10,7 +10,10 @@ import {RacingComponent} from './pages/racing/racing.component';
 import {MatTableModule} from '@angular/material/table';
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDatepickerModule, MatNativeDateModule, MatSortModule, NativeDateAdapter} from "@angular/material";
+import {
+  MatDatepickerModule, MatNativeDateModule, MatPaginatorIntl, MatSelectModule, MatSortModule,
+  NativeDateAdapter
+} from "@angular/material";
 import {MatStepperModule} from '@angular/material/stepper';
 import { NgDragDropModule } from 'ng-drag-drop';
 
@@ -66,7 +69,10 @@ import {CoursingService} from "./services/CoursingService/coursing.service";
 import {SearchService} from "./services/SearchService/search.service";
 import { JudgeDeleteDialogComponent } from './pages/admin/dialogs/judge-dialog/judge-delete-dialog/judge-delete-dialog.component';
 import {JudgeEditComponent} from "./pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component";
-
+import { DogEditDialogComponent } from './pages/admin/dialogs/dog-dialog/dog-edit-dialog/dog-edit-dialog.component';
+import { DogDeleteDialogComponent } from './pages/admin/dialogs/dog-dialog/dog-delete-dialog/dog-delete-dialog.component';
+import { TournamentEditDialogComponent } from './pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component';
+import { TournamentDeleteDialogComponent } from './pages/admin/dialogs/tournament-dialog/tournament-delete-dialog/tournament-delete-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -113,7 +119,11 @@ const appRoutes: Routes = [
     OwnerEditDialogComponent,
     OwnerDeleteDialogComponent,
     JudgeEditComponent,
-    JudgeDeleteDialogComponent
+    JudgeDeleteDialogComponent,
+    DogEditDialogComponent,
+    DogDeleteDialogComponent,
+    TournamentEditDialogComponent,
+    TournamentDeleteDialogComponent
 
   ],
   imports: [
@@ -141,6 +151,7 @@ const appRoutes: Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    MatSelectModule,
     MatTabsModule,
     DropdownModule,
     FormsModule,
@@ -150,9 +161,20 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
+  entryComponents: [TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
   providers: [NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+}
+
+@Injectable()
+export class MatPaginatorIntlGerman extends MatPaginatorIntl {
+  itemsPerPageLabel = 'Pro Seite: ';
+  nextPageLabel = 'Nächste Seite';
+  previousPageLabel = 'Vorherige Seite';
+
+  getRangeLabel = (page: number, pageSize: number, length: number) => {
+    return ((page * pageSize) + 1) + ' - ' + ((page * pageSize) + pageSize) + ' von ' + length;
+  }
 }

@@ -6,6 +6,7 @@ import {Club} from "../../../../data-models/club";
 import {TournamentService} from "../../../../services/TournamentService/tournament.service";
 import {Tournament} from "../../../../data-models/tournament";
 import {FormControl, Validators} from "@angular/forms";
+import {AppSettings} from "../../../../appsettings";
 
 @Component({
   selector: 'app-tournament-dialog',
@@ -17,7 +18,6 @@ export class TournamentDialogComponent implements OnInit {
   tournamenttype = ['Coursing'];
 
   clubs: any;
-  private getClubsUrl = 'http://localhost:8080/get/clubs';
 
 
 
@@ -30,7 +30,7 @@ export class TournamentDialogComponent implements OnInit {
   }
 
   getClubs() {
-    this.http.get<Club[]>(this.getClubsUrl).subscribe(clubs => this.clubs = clubs);
+    this.http.get<Club[]>(AppSettings.getClubsUrl).subscribe(clubs => this.clubs = clubs);
   }
 
   formControl = new FormControl('', [

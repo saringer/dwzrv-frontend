@@ -12,6 +12,9 @@ import {JudgeService} from "../../../../services/JudgeService/judge.service";
 })
 export class JudgeDialogComponent implements OnInit {
 
+  nationalities = ['Deutsch'];
+
+
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<JudgeDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Judge, private judgeService: JudgeService) { }
 

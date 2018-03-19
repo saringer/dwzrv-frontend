@@ -7,6 +7,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {AppSettings} from "../../appsettings";
+import {Judge} from "../../data-models/judge";
 
 
 @Injectable()
@@ -55,16 +56,27 @@ export class DogService {
     req.subscribe(dog => this.dialogData = dog);
   }
 
-  // DELETE METHOD
-  deleteItem(id: number): void {
-   /* this.httpClient.delete(this.API_URL + id).subscribe(data => {
-        console.log(data['']);
-        this.toasterService.showToaster('Successfully deleted', 3000);
+  updateDog(dog: Dogpass): void {
+    console.log(dog);
+    this.http.put(AppSettings.updateDogUrl + dog.id, dog).subscribe(data => {
+        this.dialogData = dog;
       },
       (err: HttpErrorResponse) => {
-        this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
       }
-    );*/
+    );
+  }
+
+  // DELETE METHOD
+  deleteDog(id: number): void {
+    this.http.delete(AppSettings.deleteDogUrl + id).subscribe(data => {
+
+        //  this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
   }
 
 

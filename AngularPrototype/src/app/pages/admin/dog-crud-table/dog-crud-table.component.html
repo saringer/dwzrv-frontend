@@ -39,11 +39,11 @@
 
       <mat-cell *matCellDef="let row; let i=index;">
         <button mat-icon-button color="accent"
-                (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+                (click)="startEdit(row.id, row.name, row.race, row.sex, row.passport_no, row.chip_no, row.coat_colour, row.breeder, row.owner, row.date_of_birth)">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
 
-        <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+        <button mat-icon-button color="accent" (click)="deleteItem(row.id, row.name)">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>

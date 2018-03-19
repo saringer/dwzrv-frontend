@@ -6,6 +6,7 @@ export class Judge {
     public id: number,
     public firstname: string,
     public lastname: string,
+    public nationality: string,
     public tournaments: Tournament[]
 
   ) {

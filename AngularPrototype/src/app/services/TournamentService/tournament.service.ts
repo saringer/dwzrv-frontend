@@ -73,6 +73,18 @@ export class TournamentService {
     this.http.put(AppSettings.updateTournamentUrl + tournament.id, tournament).subscribe();
   }
 
+  // DELETE METHOD
+  deleteTournament(id: number): void {
+    this.http.delete(AppSettings.deleteTournamentUrl + id).subscribe(data => {
+
+        //  this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+
 
 
 }

@@ -7,6 +7,11 @@ import {DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {TournamentService} from "../../../services/TournamentService/tournament.service";
 import {HttpClient} from "@angular/common/http";
+import {OwnerEditDialogComponent} from "../dialogs/owner-dialog/owner-edit-dialog/owner-edit-dialog.component";
+import {OwnerDeleteDialogComponent} from "../dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component";
+import {TournamentEditDialogComponent} from "../dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component";
+import {TournamentDeleteDialogComponent} from "../dialogs/tournament-dialog/tournament-delete-dialog/tournament-delete-dialog.component";
+import {Club} from "../../../data-models/club";
 
 @Component({
   selector: 'app-tournament-crud-table',
@@ -21,7 +26,7 @@ export class TournamentCrudTableComponent implements OnInit {
 
   displayedColumsTournament = ['title', 'club','tournamenttype', 'date', 'action'];
   dataSourceTournament: TournamentDataSource | null;
-
+  id: number;
 
   constructor(public dialog: MatDialog, private http: HttpClient,private tournamentService: TournamentService) { }
 
@@ -40,6 +45,42 @@ export class TournamentCrudTableComponent implements OnInit {
         // After dialog is closed we're doing frontend updates
         // For add we're just pushing a new row inside DataService
         this.tournamentService.dataChange.value.push(this.tournamentService.getDialogData());
+        this.refreshTableTournament();
+      }
+    });
+  }
+
+
+
+  startEdit(id: number, title: string, tournamenttype: string, club: Club, date: Date, double_weighted: boolean) {
+    this.id = id;
+    const dialogRef = this.dialog.open(TournamentEditDialogComponent, {
+      data: {id: id, title: title, tournamenttype: tournamenttype,  club: Club, date: Date, double_weighted: double_weighted}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        // When using an edit things are little different, firstly we find record inside DataService by id
+        const foundIndex = this.tournamentService.dataChange.value.findIndex(x => x.id === this.id);
+        // Then you update that record using data from dialogData (values you enetered)
+        this.tournamentService.dataChange.value[foundIndex] = this.tournamentService.getDialogData();
+        // And lastly refresh table
+        this.refreshTableTournament();
+      }
+    });
+  }
+
+  deleteItem(id: number, title: string) {
+    this.id = id;
+    const dialogRef = this.dialog.open(TournamentDeleteDialogComponent, {
+      data: {id: id, title: title}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.tournamentService.dataChange.value.findIndex(x => x.id === this.id);
+        // for delete we use splice in order to remove single object from DataService
+        this.tournamentService.dataChange.value.splice(foundIndex, 1);
         this.refreshTableTournament();
       }
     });

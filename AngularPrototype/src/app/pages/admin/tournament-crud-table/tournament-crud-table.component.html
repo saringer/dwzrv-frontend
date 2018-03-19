@@ -38,13 +38,15 @@
       </button>
     </mat-header-cell>
 
+
+
     <mat-cell *matCellDef="let row; let i=index;">
       <button mat-icon-button color="accent"
-              (click)="startEdit(i, row.id, row.title, row.state, row.url, row.created_at, row.updated_at)">
+              (click)="startEdit(row.id, row.title, row.tournamenttype, row.club, row.date, row.double_weighted)">
         <mat-icon aria-label="Edit">edit</mat-icon>
       </button>
 
-      <button mat-icon-button color="accent" (click)="deleteItem(i, row.id, row.title, row.state, row.url)">
+      <button mat-icon-button color="accent" (click)="deleteItem(row.id, row.title)">
         <mat-icon aria-label="Delete">delete</mat-icon>
       </button>
     </mat-cell>

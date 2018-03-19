@@ -21,10 +21,10 @@ export class ExhibitionComponent implements OnInit {
   whippetImgColored = 'assets/img/whippet.png';
 
   hover(element) {
-    this.whippetImg = 'assets/img/whippet.png';
+   // this.whippetImg = 'assets/img/whippet.png';
   }
   unhover(element) {
-    this.whippetImg = 'assets/img/whippet_grau.png';
+   // this.whippetImg = 'assets/img/whippet_grau.png';
   }
 
 }
