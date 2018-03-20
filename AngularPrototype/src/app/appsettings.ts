@@ -44,7 +44,7 @@ export class AppSettings {
   public static saveDogpassUrl = AppSettings.server + '8080/save/dog';
   public static getDogUrl = AppSettings.server + '8080/get/dog/';
   public static updateDogUrl = AppSettings.server + '8080/update/dog/'
-  public static deleteDogUrl = AppSettings.server + '/delete/dog/';
+  public static deleteDogUrl = AppSettings.server + '8080/delete/dog/';
 
   // CoursingResults
   public static coursingResultsUrl = AppSettings.server + '8080/get/coursings/'

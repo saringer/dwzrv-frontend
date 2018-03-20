@@ -12,6 +12,11 @@
       <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="breeder">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Zwingername</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{breederNotNull(element)}}</mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="race">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Rasse</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.race}}</mat-cell>

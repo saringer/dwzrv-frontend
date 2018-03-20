@@ -25,7 +25,7 @@ export class DogCrudTableComponent implements OnInit {
   @ViewChild('paginator') paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns = ['name', 'race', 'sex', 'action'];
+  displayedColumns = ['name', 'breeder', 'race', 'sex', 'action'];
   dataSource: UserDataSource | null;
   id: number;
 
@@ -38,6 +38,15 @@ export class DogCrudTableComponent implements OnInit {
     this.paginator._intl.previousPageLabel = 'Vorherige Seite';
     this.loadData();
 
+  }
+
+  breederNotNull(dogpass): string {
+    if (dogpass.breeder != null) {
+          return dogpass.breeder.kennelname;
+    }
+    else {
+       return '-';
+    }
   }
 
   onCreateDogClick(dog: Dogpass) {
