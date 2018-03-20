@@ -27,6 +27,10 @@ export class ExhibitionComponent implements OnInit {
    // this.whippetImg = 'assets/img/whippet_grau.png';
   }
 
+  onTabSwitch(event) {
+
+  }
+
 }
 
 export interface Element {

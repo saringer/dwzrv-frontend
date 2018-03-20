@@ -26,8 +26,7 @@ export class CoursingComponent implements OnInit {
   dataSourceCoursing: CoursingDataSource | null;
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
-  defaultCoursingClass: string = 'international';
-  defaultDogGender: string = 'Rüde';
+
 
 
   constructor(private searchService: SearchService, private coursingService: CoursingService, elementRef: ElementRef) {
@@ -62,8 +61,18 @@ export class CoursingComponent implements OnInit {
   }
 
   onTabSwitch(event) {
-    //this.onLoadClick();
-
+    if (event.index === 0) {
+      this.coursingService.getAllCoursings('all', 'all');
+    }
+    else if (event.index === 1) {
+      this.coursingService.getAllCoursings('international', 'Rüde');
+    }
+    else if (event.index === 2) {
+      this.coursingService.getAllCoursings('international', 'Hündin');
+    }
+    else if (event.index === 3) {
+      this.coursingService.getAllCoursings('national', 'all');
+    }
   }
 
 }
@@ -99,7 +108,7 @@ export class CoursingDataSource extends DataSource<any> {
       this._paginatorCoursing.page
     ];
 
-    this.coursingService.getAllCoursings('international', 'Rüde');
+    this.coursingService.getAllCoursings('all', 'all');
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.coursingService.data.slice().filter((coursingResult: Coursingresult) => {

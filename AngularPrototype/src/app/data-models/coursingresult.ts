@@ -4,7 +4,8 @@ export class Coursingresult {
               public ownername: string,
               public totalParticipations: number,
               public totalratings: number,
-              public maxNoRatings:number
+              public maxNoRatings:number,
+              public ranking:number
               ) {
 
   }

@@ -13,7 +13,7 @@ export class PasswordDialogComponent implements OnInit {
   @ViewChild('user') user:any;
   @ViewChild('password') password:any;
   form: FormGroup;
-  
+
 
   constructor(private router: Router, private authService: AuthService, public dialogRef: MatDialogRef<PasswordDialogComponent>, fb: FormBuilder) {
 
@@ -22,8 +22,8 @@ export class PasswordDialogComponent implements OnInit {
 
 
   }
-  onSubmit() {
-
+  submit() {
+    // emppty stuff
   }
 
   ngOnInit() {

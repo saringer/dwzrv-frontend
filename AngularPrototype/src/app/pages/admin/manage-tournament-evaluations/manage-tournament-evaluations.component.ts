@@ -8,6 +8,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Coursing} from "../../../data-models/coursing";
 import {Tournament} from "../../../data-models/tournament";
 import {TournamentService} from "../../../services/TournamentService/tournament.service";
+import {SearchService} from "../../../services/SearchService/search.service";
 
 @Component({
   selector: 'app-manage-tournament-evaluations',
@@ -18,7 +19,6 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
 
   @ViewChild('paginatorTournamentDog') paginatorTournamentDog: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filterTournamentDog') filterTournamentDog: ElementRef;
 
   tournaments: Observable<Tournament[]>;
   displayedColumnsTournamentDog = ['dogname', 'coursing'];
@@ -26,13 +26,17 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
   firstFormGroup: FormGroup;
   selected_awarding: any;
 
-  constructor(public dialog: MatDialog,
+  constructor(private searchService: SearchService,
+              public dialog: MatDialog,
               private tournamentDogService: TournamentDogService,
               private _formBuilder: FormBuilder,
               private tournamentService: TournamentService) {
   }
 
   ngOnInit() {
+    this.paginatorTournamentDog._intl.itemsPerPageLabel = 'Pro Seite: ';
+    this.paginatorTournamentDog._intl.nextPageLabel = 'Nächste Seite';
+    this.paginatorTournamentDog._intl.previousPageLabel = 'Vorherige Seite';
     this.tournaments = this.tournamentService.getTournaments();
     this.loadDataTournamentDog();
 
@@ -94,22 +98,19 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
       // in all other cases including active filter we do it like this
     } else {
       this.dataSourceTournamentDog.filter = '';
-      this.dataSourceTournamentDog.filter = this.filterTournamentDog.nativeElement.value;
+      this.searchService.currentMessage.subscribe(message => this.dataSourceTournamentDog.filter = message);
     }
   }
 
 
   public loadDataTournamentDog() {
     this.dataSourceTournamentDog = new TournamentDogDataSource(this.tournamentDogService, this.paginatorTournamentDog, this.sort);
-    Observable.fromEvent(this.filterTournamentDog.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe(() => {
-        if (!this.dataSourceTournamentDog) {
-          return;
-        }
-        this.dataSourceTournamentDog.filter = this.filterTournamentDog.nativeElement.value;
-      });
+    if (!this.dataSourceTournamentDog) {
+      return;
+    }
+    else {
+      this.searchService.currentMessage.subscribe(message => this.dataSourceTournamentDog.filter = message);
+    }
   }
 
 }
@@ -149,7 +150,7 @@ export class TournamentDogDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentDogService.data.slice().filter((coursing: Coursing) => {
-        const searchStr = (coursing.dogname + coursing.coursingRating).toLowerCase();
+        const searchStr = (coursing.dogname + coursing.coursingRating + coursing.coursingPlacement).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

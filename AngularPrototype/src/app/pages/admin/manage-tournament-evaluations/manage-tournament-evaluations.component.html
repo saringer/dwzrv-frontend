@@ -22,12 +22,6 @@
     <ng-template matStepLabel>Punkte vergeben</ng-template>
 
 
-    <div class="form">
-      <mat-form-field floatPlaceholder="never" color="accent">
-        <input matInput #filterTournamentDog placeholder="suche...">
-      </mat-form-field>
-    </div>
-
     <mat-table #table [dataSource]="dataSourceTournamentDog" matSort>
 
       <!--- Note that these columns can be defined in any order.
@@ -49,9 +43,9 @@
             <input matInput placeholder="Wertung" [value]="element.coursingRating"
                    (input)="editField('coursingRating', $event.target.value, element)">
           </mat-form-field>
-          Platzierung:
+          Punkte(optional):
           <mat-form-field floatLabel="never">
-            <input matInput placeholder="Wertung" [value]="element.coursingPlacement"
+            <input matInput placeholder="Punkte" [value]="element.coursingPlacement"
                    (input)="editField('coursingPlacement', $event.target.value, element)">
           </mat-form-field>
         </mat-cell>

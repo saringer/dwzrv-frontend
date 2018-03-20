@@ -25,6 +25,10 @@ export class RacingComponent implements OnInit {
   unhover(element) {
   //  this.whippetImg = 'assets/img/whippet_grau.png';
   }
+
+  onTabSwitch(event) {
+
+  }
 }
 
 export interface Element {

@@ -1,7 +1,7 @@
 export class AppSettings {
 
-  //public static server: string = 'http://softwerkerei.de:';
-  public static server: string = 'http://localhost:';
+  public static server: string = 'http://softwerkerei.de:';
+  //public static server: string = 'http://localhost:';
   //public static server: string = '';
 
 
