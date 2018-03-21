@@ -30,7 +30,8 @@ export class DogCrudTableComponent implements OnInit {
   id: number;
 
 
-  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private dogService: DogService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private dogService: DogService) {
+  }
 
   ngOnInit() {
     this.paginator._intl.itemsPerPageLabel = 'Pro Seite: ';
@@ -42,10 +43,10 @@ export class DogCrudTableComponent implements OnInit {
 
   breederNotNull(dogpass): string {
     if (dogpass.breeder != null) {
-          return dogpass.breeder.kennelname;
+      return dogpass.breeder.kennelname;
     }
     else {
-       return '-';
+      return '-';
     }
   }
 
@@ -67,7 +68,18 @@ export class DogCrudTableComponent implements OnInit {
   startEdit(id: number, name: string, race: string, sex: string, passport_no: string, chip_no: string, coat_colour: string, breeder: Breeder, owner: Dogowner, date_of_birth: Date) {
     this.id = id;
     const dialogRef = this.dialog.open(DogEditDialogComponent, {
-      data: {id: id, name: name, race : race, sex: sex, passport_no: passport_no, chip_no: chip_no, coat_colour: coat_colour, breeder: breeder, owner: owner, date_of_birth: date_of_birth}
+      data: {
+        id: id,
+        name: name,
+        race: race,
+        sex: sex,
+        passport_no: passport_no,
+        chip_no: chip_no,
+        coat_colour: coat_colour,
+        breeder: breeder,
+        owner: owner,
+        date_of_birth: date_of_birth
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -163,7 +175,13 @@ export class UserDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.dogService.data.slice().filter((dog: Dogpass) => {
-        const searchStr = (dog.name + dog.race + dog.sex).toLowerCase();
+        var searchStr = '';
+        if (dog.breeder != null) {
+          searchStr = (dog.name + dog.breeder.kennelname + dog.race + dog.sex).toLowerCase();
+        }
+        else {
+          searchStr = (dog.name + '-' + dog.race + dog.sex).toLowerCase();
+        }
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 
