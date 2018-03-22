@@ -151,7 +151,7 @@ export class TournamentDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.tournamentService.data.slice().filter((tournament: Tournament) => {
-        const searchStr = (tournament.title + tournament.date + tournament.tournamenttype + tournament.date).toLowerCase();
+        const searchStr = (tournament.title + tournament.club.clubname + tournament.tournamenttype + tournament.date).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

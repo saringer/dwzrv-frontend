@@ -72,6 +72,7 @@ export class TournamentService {
   updateTournament(tournament: Tournament): void {
     this.http.put(AppSettings.updateTournamentUrl + tournament.id, tournament).subscribe(data => {
         this.dialogData = tournament;
+        console.log(tournament);
       },
       (err: HttpErrorResponse) => {
         //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);

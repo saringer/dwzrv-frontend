@@ -20,10 +20,11 @@
 
     <div class="form">
       <label for="club"> Austragender Verein</label>
-      <select matInput #input class="form-control" placeholder="Austragender Verein" id="club" required
-              [(ngModel)]="data.club" name="club" style="height: auto;">
-        <option *ngFor="let club of clubs" [ngValue]="club">{{club.clubname}}</option>
-      </select>
+      <mat-select matInput #input [(ngModel)]="data.club" name="club" style="height: auto;" class="form-control" placeholder="Austragender Verein" id="club" required>
+        <mat-option *ngFor="let club of clubs" [value]="club">{{club.clubname}}</mat-option>
+
+        <!--<option *ngFor="let club of clubs" [ngValue]="club">{{club.clubname}}</option>-->
+      </mat-select>
     </div>
 
 
@@ -53,3 +54,4 @@
     </div>
   </form>
 </div>
+

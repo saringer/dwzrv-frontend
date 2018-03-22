@@ -3,16 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="09aa7ae8-5936-439a-b279-93e89de1968b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/breeder-crud-table/breeder-crud-table.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/breeder-crud-table/breeder-crud-table.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/club-crud-table/club-crud-table.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/club-crud-table/club-crud-table.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/password-dialog/password-dialog.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/password-dialog/password-dialog.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/judge-crud-table/judge-crud-table.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournament-evaluations/manage-tournament-evaluations.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/manage-tournament-evaluations/manage-tournament-evaluations.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/coursing/coursing.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.html" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.ts" afterPath="$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,65 +16,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="owner-crud-table.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.html">
+      <file leaf-file-name="tournament.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="28" lean-forward="false" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="owner-crud-table.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
-              <caret line="149" column="37" lean-forward="false" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="password-dialog.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/password-dialog/password-dialog.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="appsettings.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-377">
-              <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dog-crud-table.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="182" column="39" lean-forward="false" selection-start-line="182" selection-start-column="39" selection-end-line="182" selection-end-column="39" />
+            <state relative-caret-position="1020">
+              <caret line="74" column="32" lean-forward="false" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
               <folding>
-                <element signature="e#0#71#0" expanded="true" />
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tournament.service.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.ts">
+      <file leaf-file-name="tournament.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournament.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="68" column="3" lean-forward="false" selection-start-line="68" selection-start-column="3" selection-end-line="68" selection-end-column="3" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tournament-edit-dialog.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tournament-edit-dialog.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +65,8 @@
       <file leaf-file-name="club.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/ClubService/club.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="53" selection-end-column="3" />
+            <state relative-caret-position="585">
+              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="53" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -101,7 +75,7 @@
       <file leaf-file-name="dog.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/DogService/dog.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="735">
               <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="67" selection-end-column="3" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
@@ -113,7 +87,7 @@
       <file leaf-file-name="admin.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-134">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -123,11 +97,33 @@
       <file leaf-file-name="tournament-crud-table.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1207">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="2085">
+              <caret line="153" column="72" lean-forward="false" selection-start-line="153" selection-start-column="72" selection-end-line="153" selection-end-column="72" />
               <folding>
                 <element signature="e#0#71#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tournament-crud-table.component.spec.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.spec.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#73#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tournament-crud-table.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,8 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.ts" />
-        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component.css" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/owner-dialog/owner-delete-dialog/owner-delete-dialog.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/breeder-dialog/breeder-dialog.component.css" />
@@ -227,7 +221,9 @@
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/password-dialog/password-dialog.component.html" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.ts" />
         <option value="$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.ts" />
+        <option value="$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.html" />
       </list>
     </option>
   </component>
@@ -312,6 +308,39 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
+              <item name="tournament-dialog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AngularWebservicePrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="AngularPrototype" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
+              <item name="tournament-dialog" type="462c0819:PsiDirectoryNode" />
+              <item name="tournament-edit-dialog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AngularWebservicePrototype" type="b2602c69:ProjectViewProjectNode" />
@@ -443,8 +472,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -621,7 +650,9 @@
       <workItem from="1521457104615" duration="3410000" />
       <workItem from="1521494020025" duration="1678000" />
       <workItem from="1521563136038" duration="4336000" />
-      <workItem from="1521636482846" duration="2360000" />
+      <workItem from="1521636482846" duration="2464000" />
+      <workItem from="1521649546015" duration="3874000" />
+      <workItem from="1521682626775" duration="224000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1511805098701</created>
@@ -735,11 +766,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521498119028</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update">
+      <created>1521643033587</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1521643033587</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115578000" />
+    <option name="totallyTimeSpent" value="119780000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="973" extended-state="0" />
@@ -752,20 +790,20 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.6086691" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.48779" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.495116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32982457" sideWeight="0.3913309" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982457" sideWeight="0.497558" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3907204" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4004884" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -797,44 +835,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/JudgeService/judge.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="60" column="5" lean-forward="false" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/club-crud-table/club-crud-table.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="88" column="3" lean-forward="false" selection-start-line="56" selection-start-column="2" selection-end-line="88" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/club-dialog/club-dialog.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-edit-dialog/judge-edit.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/judge-dialog/judge-dialog.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -986,9 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="79" column="38" lean-forward="false" selection-start-line="79" selection-start-column="38" selection-end-line="79" selection-end-column="38" />
-          <folding>
-            <marker date="1521477327000" expanded="true" signature="4689:4693" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1024,9 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-261">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#71#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1034,7 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1106">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1042,7 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2610">
           <caret line="174" column="52" lean-forward="false" selection-start-line="174" selection-start-column="37" selection-end-line="174" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1050,7 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="57" column="28" lean-forward="false" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1058,7 +1049,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
           <caret line="49" column="28" lean-forward="false" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1066,7 +1056,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="62" column="28" lean-forward="false" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1074,7 +1063,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
           <caret line="55" column="28" lean-forward="false" selection-start-line="55" selection-start-column="28" selection-end-line="55" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1082,7 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1575">
           <caret line="105" column="32" lean-forward="false" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,7 +1077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
           <caret line="88" column="27" lean-forward="false" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,7 +1084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1245">
           <caret line="83" column="8" lean-forward="false" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1106,15 +1091,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="51" column="28" lean-forward="false" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/owner-crud-table/owner-crud-table.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
+        <state relative-caret-position="2070">
           <caret line="149" column="37" lean-forward="false" selection-start-line="149" selection-start-column="37" selection-end-line="149" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,57 +1105,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/appsettings.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-377">
+        <state relative-caret-position="45">
           <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dog-crud-table/dog-crud-table.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="2505">
           <caret line="182" column="39" lean-forward="false" selection-start-line="182" selection-start-column="39" selection-end-line="182" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#71#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/admin.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-134">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1207">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#71#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/ClubService/club.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="53" selection-end-column="3" />
+        <state relative-caret-position="585">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="53" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/DogService/dog.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="735">
           <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="67" selection-end-column="3" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
@@ -1180,13 +1148,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/tournament-crud-table/tournament-crud-table.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2085">
+          <caret line="153" column="72" lean-forward="false" selection-start-line="153" selection-start-column="72" selection-end-line="153" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/services/TournamentService/tournament.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="68" column="3" lean-forward="false" selection-start-line="68" selection-start-column="3" selection-end-line="68" selection-end-column="3" />
+        <state relative-caret-position="1020">
+          <caret line="74" column="32" lean-forward="false" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/data-models/tournament.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AngularPrototype/src/app/pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
