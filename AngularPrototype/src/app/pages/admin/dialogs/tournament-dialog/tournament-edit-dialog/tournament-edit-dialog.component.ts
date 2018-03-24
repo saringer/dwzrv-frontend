@@ -22,12 +22,17 @@ export class TournamentEditDialogComponent implements OnInit {
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<TournamentEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public tournamentService: TournamentService) {
     this.getClubs();
+    this.data.club = 'test';
   }
 
   ngOnInit() {
   }
   getClubs() {
     this.http.get<Club[]>(AppSettings.getClubsUrl).subscribe(clubs => this.clubs = clubs);
+  }
+
+  compareFn(c1: Club, c2: Club): boolean {
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
 
   formControl = new FormControl('', [

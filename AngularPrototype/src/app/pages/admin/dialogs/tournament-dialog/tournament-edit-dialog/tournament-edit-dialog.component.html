@@ -19,8 +19,7 @@
     </div>
 
     <div class="form">
-      <label for="club"> Austragender Verein</label>
-      <mat-select matInput #input [(ngModel)]="data.club" name="club" style="height: auto;" class="form-control" placeholder="Austragender Verein" id="club" required>
+      <mat-select placeholder="Austragender Verein" matInput #input [compareWith]="compareFn" [(ngModel)]="data.club" name="club" style="height: auto;" class="form-control"  id="club" required>
         <mat-option *ngFor="let club of clubs" [value]="club">{{club.clubname}}</mat-option>
 
         <!--<option *ngFor="let club of clubs" [ngValue]="club">{{club.clubname}}</option>-->

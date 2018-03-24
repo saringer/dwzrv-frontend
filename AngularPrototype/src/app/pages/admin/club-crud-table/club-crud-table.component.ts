@@ -30,8 +30,8 @@ export class ClubCrudTableComponent implements OnInit {
   id: number;
 
 
-
-  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private clubService: ClubService) { }
+  constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient, private clubService: ClubService) {
+  }
 
   ngOnInit() {
     this.paginatorClub._intl.itemsPerPageLabel = 'Pro Seite: ';
@@ -56,11 +56,10 @@ export class ClubCrudTableComponent implements OnInit {
   }
 
 
-
   startEdit(id: number, clubname: string, street: string, postalcode: string, city: string, country: string) {
     this.id = id;
     const dialogRef = this.dialog.open(ClubEditDialogComponent, {
-      data: {id: id, clubname: clubname,  street: street, postalcode: postalcode, city: city, country: country}
+      data: {id: id, clubname: clubname, street: street, postalcode: postalcode, city: city, country: country}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -120,7 +119,6 @@ export class ClubCrudTableComponent implements OnInit {
   }
 
 
-
 }
 
 export class ClubDataSource extends DataSource<any> {
@@ -162,8 +160,8 @@ export class ClubDataSource extends DataSource<any> {
       });
 
       // Sort filtered data
-      const sortedData = this.sortData(this.filteredData.slice());
-
+      //const sortedData = this.sortData(this.filteredData.slice());
+      const sortedData = this.getSortedData(this.filteredData.slice());
 
       // Grab the page's slice of the filtered sorted data.
       const startIndex = this._paginatorClub.pageIndex * this._paginatorClub.pageSize;
@@ -176,9 +174,11 @@ export class ClubDataSource extends DataSource<any> {
   disconnect() {
   }
 
+
   /** Returns a sorted copy of the database data. */
-  sortData(data: Club[]): Club[] {
-    if (!this._sort.active || this._sort.direction === '') {
+  getSortedData(clubs: Club[]): Club[] {
+    const data = clubs;
+    if (!this._sort.active || this._sort.direction == '') {
       return data;
     }
 
@@ -186,17 +186,22 @@ export class ClubDataSource extends DataSource<any> {
       let propertyA: number | string = '';
       let propertyB: number | string = '';
 
+
       switch (this._sort.active) {
-        case 'name':
+        case 'clubname':
           [propertyA, propertyB] = [a.clubname, b.clubname];
+          break;
+        case 'city':
+          [propertyA, propertyB] = [a.city, b.city];
           break;
       }
 
-      const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
 
-      return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
+      let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+      let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+
+      return (valueA < valueB ? -1 : 1) * (this._sort.direction == 'asc' ? 1 : -1);
     });
-  }
 
+  }
 }

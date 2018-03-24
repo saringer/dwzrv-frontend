@@ -11,7 +11,7 @@
 
     <div class="form">
       <label for="race"> Rasse</label>
-      <select matInput #input class="form-control" id="race" [(ngModel)]="data.race" name="race" style="height: auto;" [required]="true">
+      <select matInput #input class="form-control" id="race" [(ngModel)]="data.race" name="race" style="height: auto;" required>
         <option *ngFor="let race of race" [ngValue]="race">{{race}}</option>
       </select>
     </div>
@@ -59,7 +59,7 @@
 
     <div class="form">
       <mat-form-field color="accent">
-        <input type="date" matInput [matDatepicker]="myDatepicker" #inputstate class="form-control" placeholder="Wurfdatum" [(ngModel)]="data.date_of_birth" name="date_of_birth" >
+        <input type="date" matInput [matDatepicker]="myDatepicker" #inputstate class="form-control" placeholder="Wurfdatum" [(ngModel)]="data.date_of_birth" name="date_of_birth">
         <mat-datepicker #myDatepicker></mat-datepicker>
       </mat-form-field>
     </div>

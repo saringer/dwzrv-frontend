@@ -10,6 +10,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {BreederEditDialogComponent} from "../dialogs/breeder-dialog/breeder-edit-dialog/breeder-edit-dialog.component";
 import {BreederDeleteDialogComponent} from "../dialogs/breeder-dialog/breeder-delete-dialog/breeder-delete-dialog.component";
 import {SearchService} from "../../../services/SearchService/search.service";
+import {Club} from "../../../data-models/club";
 
 @Component({
   selector: 'app-breeder-crud-table',
@@ -21,7 +22,7 @@ export class BreederCrudTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('paginatorBreeder') paginatorBreeder: MatPaginator;
 
-  displayedColumnsBreeder = ['breederfirstname', 'breederlastname', 'kennelname', 'action'];
+  displayedColumnsBreeder = ['firstname', 'lastname', 'kennelname', 'action'];
   dataSourceBreeder: BreederDataSource | null;
   id: number;
 
@@ -165,7 +166,9 @@ export class BreederDataSource extends DataSource<any> {
       });
 
       // Sort filtered data
-      const sortedData = this.sortData(this.filteredData.slice());
+      //const sortedData = this.sortData(this.filteredData.slice());
+      const sortedData = this.getSortedData(this.filteredData.slice());
+
 
 
       // Grab the page's slice of the filtered sorted data.
@@ -181,8 +184,9 @@ export class BreederDataSource extends DataSource<any> {
   }
 
   /** Returns a sorted copy of the database data. */
-  sortData(data: Breeder[]): Breeder[] {
-    if (!this._sort.active || this._sort.direction === '') {
+  getSortedData(breeders: Breeder[]): Breeder[] {
+    const data = breeders;
+    if (!this._sort.active || this._sort.direction == '') {
       return data;
     }
 
@@ -190,17 +194,27 @@ export class BreederDataSource extends DataSource<any> {
       let propertyA: number | string = '';
       let propertyB: number | string = '';
 
+
       switch (this._sort.active) {
-        case 'name':
+        case 'city':
+          [propertyA, propertyB] = [a.kennelname, b.kennelname];
+          break;
+        case 'clubname':
           [propertyA, propertyB] = [a.firstname, b.firstname];
           break;
+        case 'city':
+          [propertyA, propertyB] = [a.lastname, b.lastname];
+          break;
+
       }
 
-      const valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      const valueB = isNaN(+propertyB) ? propertyB : +propertyB;
 
-      return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
+      let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
+      let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
+
+      return (valueA < valueB ? -1 : 1) * (this._sort.direction == 'asc' ? 1 : -1);
     });
+
   }
 
 

@@ -33,10 +33,17 @@ export class ManageTournamentsComponent implements OnInit {
   selected: any;
   dragcontainer: string;
 
+  filterDog = {name: ''};
+  filterJudge = {firstname: ''};
+
   constructor(private searchService: SearchService, private tournamentService: TournamentService, private tournamentDogService: TournamentDogService, private _formBuilder: FormBuilder,
               private dogService: DogService, private judgeService: JudgeService) {
+    this.searchService.currentMessage.subscribe(message =>  this.setUpFilters(message));
+  }
 
-
+  setUpFilters(message: string ) {
+    this.filterDog.name = message;
+    this.filterJudge.firstname = message;
   }
 
 

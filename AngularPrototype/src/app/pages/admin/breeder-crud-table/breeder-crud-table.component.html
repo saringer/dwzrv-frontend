@@ -8,12 +8,12 @@
           The actual rendered columns are set as a property on the row definition" -->
 
 
-    <ng-container matColumnDef="breederfirstname">
+    <ng-container matColumnDef="firstname">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Vorname</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.firstname}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="breederlastname">
+    <ng-container matColumnDef="lastname">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nachname</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.lastname}}</mat-cell>
     </ng-container>
