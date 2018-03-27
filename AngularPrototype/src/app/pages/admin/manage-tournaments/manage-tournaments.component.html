@@ -26,7 +26,8 @@
         <div class="card">
           <h5 class="card-header">Alle Richter</h5>
           <div class="card-body" droppable (onDrop)="onAllJudgesDrop($event)">
-            <li draggable *ngFor="let item of list_all_judges | customjudgefilter:filterJudge" [dragData]="item" class="list-group-item">
+            <li draggable *ngFor="let item of list_all_judges | customjudgefilter:filterJudge" [dragData]="item"
+                class="list-group-item">
               {{item.firstname + ' ' + item.lastname}}
             </li>
           </div>
@@ -37,7 +38,8 @@
         <div class="card">
           <h5 class="card-header">Teilnehmende Richter</h5>
           <div class="card-body" droppable (onDrop)="onParticipatingJudgesDrop($event)">
-            <li draggable *ngFor="let item of list_participating_judges | customjudgefilter:filterJudge" [dragData]="item"
+            <li draggable *ngFor="let item of list_participating_judges | customjudgefilter:filterJudge"
+                [dragData]="item"
                 class="list-group-item">{{item.firstname + ' ' + item.lastname}}
             </li>
           </div>
@@ -56,45 +58,8 @@
 
     <ng-template matStepLabel>Hunde zuordnen</ng-template>
 
-
-    <div class="row">
-
-      <div class="col-sm-3">
-        <div class="card">
-          <h5 class="card-header">Alle Hunde</h5>
-          <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)" >
-            <li [draggable] *ngFor="let item of list_all_dogs | customdogfilter:filterDog" [dragData]="item" class="list-group-item" (onDragStart)="dragStart('alldogs')">
-              {{item.name}}
-            </li>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-3">
-        <div class="card">
-          <h5 class="card-header">Internationale Klasse</h5>
-          <div class="card-body" droppable (onDrop)="onInternationalClassDrop($event)">
-            <li draggable *ngFor="let item of list_international_class | customdogfilter:filterDog" [dragData]="item" class="list-group-item" (onDragStart)="dragStart('international')">
-              {{item.name}}
-            </li>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-3">
-        <div class="card">
-          <h5 class="card-header">Nationale Klasse</h5>
-          <div class="card-body" droppable (onDrop)="onNationalClassDrop($event)">
-            <li draggable *ngFor="let item of list_national_class | customdogfilter:filterDog" [dragData]="item" class="list-group-item" (onDragStart)="dragStart('national')">
-              {{item.name}}
-            </li>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
+    <app-set-up-coursing *ngIf="selected != null && selected.tournamenttype == 'Coursing'"
+                         [selectedTournament]="selected" [currentStepperIndex]="stepperIndex"></app-set-up-coursing>
 
   </mat-step>
 </mat-horizontal-stepper>

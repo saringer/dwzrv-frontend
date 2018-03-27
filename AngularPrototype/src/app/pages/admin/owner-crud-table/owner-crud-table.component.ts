@@ -177,7 +177,7 @@ export class OwnerDataSource extends DataSource<any> {
 
   disconnect() {
   }
-
+//http://tphangout.com/angular-5-firestore-sorting-in-data-tables/
   /** Returns a sorted copy of the database data. */
   sortData(data: Dogowner[]): Dogowner[] {
     if (!this._sort.active || this._sort.direction === '') {

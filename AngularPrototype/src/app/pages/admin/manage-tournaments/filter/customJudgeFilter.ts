@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Dogpass} from "../../../data-models/dogpass";
-import {Club} from "../../../data-models/club";
-import {Judge} from "../../../data-models/judge";
+
+import {Judge} from "../../../../data-models/judge";
 
 @Pipe({
   name: 'customjudgefilter',

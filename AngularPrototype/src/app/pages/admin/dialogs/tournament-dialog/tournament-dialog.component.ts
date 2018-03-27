@@ -15,7 +15,7 @@ import {AppSettings} from "../../../../appsettings";
 })
 export class TournamentDialogComponent implements OnInit {
 
-  tournamenttype = ['Coursing'];
+  tournamenttype = ['Coursing','Rennen'];
 
   clubs: any;
 

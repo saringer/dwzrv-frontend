@@ -16,7 +16,7 @@ import {AppSettings} from "../../../../../appsettings";
 export class TournamentEditDialogComponent implements OnInit {
 
   clubs: any;
-  tournamenttype = ['Coursing'];
+  tournamenttype = ['Coursing','Rennen'];
 
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<TournamentEditDialogComponent>,

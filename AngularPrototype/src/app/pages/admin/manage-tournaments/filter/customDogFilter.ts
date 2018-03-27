@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Dogpass} from "../../../data-models/dogpass";
+import {Dogpass} from "../../../../data-models/dogpass";
 
 @Pipe({
   name: 'customdogfilter',

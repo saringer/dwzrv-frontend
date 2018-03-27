@@ -74,8 +74,9 @@ import { DogDeleteDialogComponent } from './pages/admin/dialogs/dog-dialog/dog-d
 import { TournamentEditDialogComponent } from './pages/admin/dialogs/tournament-dialog/tournament-edit-dialog/tournament-edit-dialog.component';
 import { TournamentDeleteDialogComponent } from './pages/admin/dialogs/tournament-dialog/tournament-delete-dialog/tournament-delete-dialog.component';
 import { Pipe, PipeTransform } from '@angular/core';
-import {CustomDogFilter} from "./pages/admin/manage-tournaments/customDogFilter";
-import {CustomJudgeFilter} from "./pages/admin/manage-tournaments/customJudgeFilter";
+import {CustomDogFilter} from "./pages/admin/manage-tournaments/filter/customDogFilter";
+import {CustomJudgeFilter} from "./pages/admin/manage-tournaments/filter/customJudgeFilter";
+import { SetUpCoursingComponent } from './pages/admin/manage-tournaments/set-up-coursing/set-up-coursing.component';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -128,7 +129,8 @@ const appRoutes: Routes = [
     TournamentEditDialogComponent,
     TournamentDeleteDialogComponent,
     CustomDogFilter,
-    CustomJudgeFilter
+    CustomJudgeFilter,
+    SetUpCoursingComponent
 
   ],
   imports: [
