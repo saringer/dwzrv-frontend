@@ -55,10 +55,6 @@ export class TournamentService {
     return this.http.get<Tournament[]>(AppSettings.tournamentsUrl);
   }
 
-  getTournamentsAsArray() {
-    return this.http.get<Tournament[]>(AppSettings.tournamentsUrl);
-  }
-
 
   /**
    * Add Methods

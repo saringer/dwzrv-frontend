@@ -6,7 +6,7 @@
       <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)">
         <li [draggable] *ngFor="let item of list_all_dogs | customdogfilter:filterDog" [dragData]="item"
             class="list-group-item" (onDragStart)="dragStart('alldogs')">
-          {{item.name}}
+          {{formatDogAndKennel(item)}}
         </li>
       </div>
     </div>
@@ -18,7 +18,7 @@
       <div class="card-body" droppable (onDrop)="onInternationalClassDrop($event)">
         <li draggable *ngFor="let item of list_international_class | customdogfilter:filterDog" [dragData]="item"
             class="list-group-item" (onDragStart)="dragStart('international')">
-          {{item.name}}
+          {{formatDogAndKennel(item)}}
         </li>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <div class="card-body" droppable (onDrop)="onNationalClassDrop($event)">
         <li draggable *ngFor="let item of list_national_class | customdogfilter:filterDog" [dragData]="item"
             class="list-group-item" (onDragStart)="dragStart('national')">
-          {{item.name}}
+          {{formatDogAndKennel(item)}}
         </li>
       </div>
     </div>

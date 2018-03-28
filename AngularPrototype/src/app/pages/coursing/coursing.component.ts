@@ -112,7 +112,7 @@ export class CoursingDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.coursingService.data.slice().filter((coursingResult: Coursingresult) => {
-        const searchStr = (coursingResult.dogname + coursingResult.ownername + coursingResult.totalParticipations + coursingResult.totalratings).toLowerCase();
+        const searchStr = (coursingResult.dogname + coursingResult.ownername + coursingResult.totalParticipations + coursingResult.totalratings + coursingResult.ranking).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

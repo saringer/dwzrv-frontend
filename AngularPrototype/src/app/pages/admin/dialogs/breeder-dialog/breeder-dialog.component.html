@@ -1,32 +1,59 @@
-
 <div class="container">
-  <h3 mat-dialog-title>Neuen Züchter erstellen</h3>
+  <h3 mat-dialog-title>Neuen Zwinger anlegen</h3>
 
   <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Vorname" [(ngModel)]="data.firstname" name="firstname" required >
+        <input matInput #input class="form-control" placeholder="Vorname" [(ngModel)]="data.firstname" name="firstname">
       </mat-form-field>
     </div>
 
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #input class="form-control" placeholder="Nachname" [(ngModel)]="data.lastname" name="lastname" required >
+        <input matInput #input class="form-control" placeholder="Nachname" [(ngModel)]="data.lastname" name="lastname">
       </mat-form-field>
     </div>
 
     <!--Contains mat-hint for characters count and has maxLengt set-->
     <div class="form">
       <mat-form-field color="accent">
-        <input matInput #inputstate class="form-control" placeholder="Zwingername" [(ngModel)]="data.kennelname" name="kennelname" required >
+        <input matInput #inputstate class="form-control" placeholder="Zwingername" [(ngModel)]="data.kennelname"
+               name="kennelname" required>
       </mat-form-field>
     </div>
 
+    <div class="form">
+      <mat-form-field color="accent">
+
+        <!-- the matInput with display:none makes the magic. It's ugly, I've warned you -->
+        <input matInput style="display: none">
+        <label for="affix"> Zwingername als</label>
+        <mat-radio-group name="affix" id="affix" [(ngModel)]="data.affix">
+          <mat-radio-button *ngFor="let affix of affixes" [checked]="affix" [value]="affix">
+            {{affix }}
+          </mat-radio-button>
+
+        </mat-radio-group>
+
+      </mat-form-field>
+
+    </div>
+
+    <!--<div class="form">
+      <mat-radio-group [(ngModel)]="data.affix" id="affix">
+
+        <mat-radio-button  value="prefix">Prefix</mat-radio-button>
+        <mat-radio-button checked=true  value="suffix">Suffix</mat-radio-button>
+
+      </mat-radio-group>
+    </div>-->
 
     <div mat-dialog-actions align="end">
       <button mat-button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
-      <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+      <button mat-button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid"
+              [mat-dialog-close]="1" (click)="confirmAdd()">Save
+      </button>
     </div>
   </form>
 </div>

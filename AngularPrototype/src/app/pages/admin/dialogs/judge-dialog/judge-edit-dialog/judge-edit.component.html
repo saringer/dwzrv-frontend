@@ -16,6 +16,14 @@
       </mat-form-field>
     </div>
 
+    <div class="form">
+      <label for="nationality"> Nationalität</label>
+      <select matInput #input class="form-control" id="nationality" required [(ngModel)]="data.nationality"
+              name="nationality" style="height: auto;">
+        <option *ngFor="let nationality of nationalities" [ngValue]="nationality">{{nationality}}</option>
+      </select>
+    </div>
+
 
     <div mat-dialog-actions align="end">
       <button mat-button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>

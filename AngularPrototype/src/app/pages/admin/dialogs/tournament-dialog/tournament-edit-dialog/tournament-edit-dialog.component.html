@@ -11,7 +11,7 @@
     </div>
 
     <div class="form">
-      <label for="club"> Typ der Veranstaltung</label>
+      <label for="tournamenttype"> Typ der Veranstaltung</label>
       <select matInput #input class="form-control" id="tournamenttype" required [(ngModel)]="data.tournamenttype"
               name="tournamenttype" style="height: auto;">
         <option *ngFor="let tournamenttype of tournamenttype" [ngValue]="tournamenttype">{{tournamenttype}}</option>
@@ -19,12 +19,15 @@
     </div>
 
     <div class="form">
-      <mat-select placeholder="Austragender Verein" matInput #input [compareWith]="compareFn" [(ngModel)]="data.club" name="club" style="height: auto;" class="form-control"  id="club" required>
-        <mat-option *ngFor="let club of clubs" [value]="club">{{club.clubname}}</mat-option>
-
-        <!--<option *ngFor="let club of clubs" [ngValue]="club">{{club.clubname}}</option>-->
-      </mat-select>
+      <label for="club"> Austragender Verein</label>
+      <select [compareWith]="compareFn" matInput #input class="form-control" id="club" required [(ngModel)]="data.club"
+              name="club" style="height: auto;">
+        <option *ngFor="let club of clubs" [selected]="log(data)" [ngValue]="club">{{club.clubname}}</option>
+      </select>
     </div>
+
+
+
 
 
     <div class="form">

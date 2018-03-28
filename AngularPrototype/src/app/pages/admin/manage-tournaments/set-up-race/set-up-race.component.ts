@@ -468,4 +468,19 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
     return result;
   }
 
+  formatDogAndKennel(dog: Dogpass): string {
+    if (dog.breeder != null) {
+      if (dog.breeder.affix == 'prefix') {
+        return dog.breeder.kennelname + ' ' + dog.name
+      }
+      else {
+        return dog.name + ' ' + dog.breeder.kennelname
+
+      }
+    }
+    else {
+      return dog.name;
+    }
+  }
+
 }

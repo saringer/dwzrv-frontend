@@ -7,6 +7,7 @@ import {TournamentService} from "../../../../../services/TournamentService/tourn
 import {Club} from "../../../../../data-models/club";
 import {HttpClient} from "@angular/common/http";
 import {AppSettings} from "../../../../../appsettings";
+import {Breeder} from "../../../../../data-models/breeder";
 
 @Component({
   selector: 'app-tournament-edit-dialog',
@@ -15,25 +16,30 @@ import {AppSettings} from "../../../../../appsettings";
 })
 export class TournamentEditDialogComponent implements OnInit {
 
-  clubs: any;
-  tournamenttype = ['Coursing','Rennen'];
+  clubs: Club[];
+  tournamenttype = ['Coursing', 'Rennen'];
 
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<TournamentEditDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any, public tournamentService: TournamentService) {
     this.getClubs();
-    this.data.club = 'test';
   }
 
-  ngOnInit() {
-  }
   getClubs() {
     this.http.get<Club[]>(AppSettings.getClubsUrl).subscribe(clubs => this.clubs = clubs);
+
   }
+
+
+  log(val) { console.log(val); }
 
   compareFn(c1: Club, c2: Club): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
+
+  ngOnInit() {
+  }
+
 
   formControl = new FormControl('', [
     Validators.required

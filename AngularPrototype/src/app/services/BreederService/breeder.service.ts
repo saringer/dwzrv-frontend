@@ -32,7 +32,7 @@ export class BreederService {
 
   getAllBreeder(): void {
     this.http.get<Breeder[]>(AppSettings.breedersUrl).subscribe(data => {
-        this.dataChange.next(data);
+        this.dataChange.next(data); for (var i=0;i<data.length;i++) {console.log(data[i])}
       },
       (error: HttpErrorResponse) => {
         console.log (error.name + ' ' + error.message);

@@ -45,14 +45,14 @@
 
     <div class="form">
       <label for="breeder"> Züchter</label>
-      <select matInput #input class="form-control" placeholder="Züchter" id="breeder"  [(ngModel)]="data.breeder" name="breeder" style="height: auto;">
+      <select [compareWith]="compareBreeders" matInput #input class="form-control" placeholder="Züchter" id="breeder"  [(ngModel)]="data.breeder" name="breeder" style="height: auto;">
         <option *ngFor="let breeder of breeders" [ngValue]="breeder">{{breeder.kennelname}}</option>
       </select>
     </div>
 
     <div class="form">
       <label for="owner"> Besitzer</label>
-      <select matInput #input class="form-control" placeholder="Besitzer" id="owner"  [(ngModel)]="data.owner" name="owner" style="height: auto;">
+      <select [compareWith]="compareOwners" matInput #input class="form-control" placeholder="Besitzer" id="owner"  [(ngModel)]="data.owner" name="owner" style="height: auto;">
         <option *ngFor="let owner of owners" [ngValue]="owner">{{owner.firstname + " " + owner.lastname}}</option>
       </select>
     </div>

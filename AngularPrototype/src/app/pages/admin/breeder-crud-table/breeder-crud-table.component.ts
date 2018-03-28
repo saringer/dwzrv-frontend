@@ -52,7 +52,7 @@ export class BreederCrudTableComponent implements OnInit {
     });
   }
 
-  startEdit(id: number, firstname: string, lastname: string, kennelname: string, street: string, postalcode: string, city: string, country: string) {
+  startEdit(id: number, firstname: string, lastname: string, kennelname: string, street: string, postalcode: string, city: string, country: string, affix: string) {
     this.id = id;
     const dialogRef = this.dialog.open(BreederEditDialogComponent, {
       data: {
@@ -63,7 +63,8 @@ export class BreederCrudTableComponent implements OnInit {
         street: street,
         postalcode: postalcode,
         city: city,
-        country: country
+        country: country,
+        affix: affix
       }
     });
 

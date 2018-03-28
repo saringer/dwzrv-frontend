@@ -29,6 +29,20 @@ export class DogEditDialogComponent implements OnInit {
     this.getBreeders();
   }
 
+  log(val) { console.log(val); }
+
+  compareBreeders(c1: Breeder, c2: Breeder): boolean {
+
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
+  compareOwners(c1: Dogowner, c2: Dogowner): boolean {
+
+    return c1 && c2 ? c1.id === c2.id : c1 === c2;
+  }
+
+
+
   ngOnInit() {
   }
 

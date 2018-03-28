@@ -24,7 +24,7 @@ export class JudgeDialogComponent implements OnInit {
   }
 
   formControl = new FormControl('', [
-    Validators.required
+    Validators.required,
     // Validators.email,
   ]);
 

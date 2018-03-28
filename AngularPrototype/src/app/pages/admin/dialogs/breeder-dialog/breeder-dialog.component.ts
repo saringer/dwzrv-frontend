@@ -13,9 +13,14 @@ import {BreederService} from "../../../../services/BreederService/breeder.servic
 })
 export class BreederDialogComponent implements OnInit {
 
+  affixes: string[] = ['prefix','suffix'];
+
 
   constructor(private http: HttpClient, public dialogRef: MatDialogRef<BreederDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Breeder, private breederService: BreederService) { }
+              @Inject(MAT_DIALOG_DATA) public data: Breeder, private breederService: BreederService) {
+    // kennelname affix is set as suffix by default
+    data.affix = 'suffix'
+  }
 
   ngOnInit() {
   }

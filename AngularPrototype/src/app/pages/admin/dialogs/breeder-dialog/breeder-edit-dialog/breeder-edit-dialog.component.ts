@@ -10,8 +10,12 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class BreederEditDialogComponent implements OnInit {
 
+  affixes: string[] = ['prefix','suffix'];
+  defaultValue: string = 'suffix';
+
   constructor(public dialogRef: MatDialogRef<BreederEditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, public breederService: BreederService) { }
+              @Inject(MAT_DIALOG_DATA) public data: any, public breederService: BreederService) {
+  }
 
   ngOnInit() {
   }
