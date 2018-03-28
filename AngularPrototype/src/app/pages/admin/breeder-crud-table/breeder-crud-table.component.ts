@@ -161,7 +161,7 @@ export class BreederDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.breederService.data.slice().filter((breeder: Breeder) => {
-        const searchStr = (breeder.firstname + breeder.lastname).toLowerCase();
+        const searchStr = (breeder.firstname + breeder.lastname + breeder.kennelname).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

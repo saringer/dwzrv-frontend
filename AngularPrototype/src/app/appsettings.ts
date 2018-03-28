@@ -1,15 +1,16 @@
 export class AppSettings {
 
-  //public static server: string = 'http://softwerkerei.de:';
-  public static server: string = 'http://localhost:';
+  public static server: string = 'http://softwerkerei.de:';
+  //public static server: string = 'http://localhost:';
   //public static server: string = '';
-
 
 
   // TournamentDog
   public static getTournamentDogsUrl = AppSettings.server + '8080/get/tournamentdogs/';
   public static saveTournamentDogUrl = AppSettings.server + '8080/save/tournamentdog';
+  public static saveTournamentDogRaceUrl = AppSettings.server + '8080/save/tournamentdograce';
   public static deleteTournamentDogUrl = AppSettings.server + '8080/delete/tournamentdog/';
+  public static deleteTournamentDogRaceUrl = AppSettings.server + '8080/delete/tournamentdograce/';
   // Breeder
   public static breedersUrl = AppSettings.server + '8080/get/breeders';
   public static saveBreederUrl = AppSettings.server + '8080/save/breeder';
@@ -46,8 +47,12 @@ export class AppSettings {
   public static updateDogUrl = AppSettings.server + '8080/update/dog/'
   public static deleteDogUrl = AppSettings.server + '8080/delete/dog/';
 
+  // Race
+  public static getRacesUrl = AppSettings.server + '8080/get/races/';
+
   // CoursingResults
   public static coursingResultsUrl = AppSettings.server + '8080/get/coursings/'
+
 
 
   public static getOwnersUrl = AppSettings.server + '8080/get/owners';

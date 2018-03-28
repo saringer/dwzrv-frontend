@@ -3,6 +3,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {AppSettings} from "../../appsettings";
 import {Coursing} from "../../data-models/coursing";
+import {Race} from "../../data-models/race";
 
 @Injectable()
 export class TournamentDogService {
@@ -39,7 +40,7 @@ export class TournamentDogService {
 
 
 
-  getAllTournamentDogByTournamentId(tournament_id): void {
+  getAllTournamentDogCoursingsByTournamentId(tournament_id): void {
     this.http.get<Coursing[]>(AppSettings.getTournamentDogsUrl + tournament_id).subscribe(data => {
         this.dataChange.next(data);
       },
@@ -49,20 +50,31 @@ export class TournamentDogService {
   }
 
 
-
-
   // Add Method
 
   addTournamentDog (tournamentdog: Coursing): void {
     const req = this.http.post(AppSettings.saveTournamentDogUrl, tournamentdog);
     req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
 
+  addTournamentDogRace (tournamentdog: Race): void {
+    const req = this.http.post(AppSettings.saveTournamentDogRaceUrl, tournamentdog);
+    req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
+
 
   // Delete Method
-  deleteItem(dog_id: number, tournament_id): void {
+  deleteCoursing(dog_id: number, tournament_id): void {
     this.http.delete(AppSettings.deleteTournamentDogUrl + dog_id + '/' + tournament_id).subscribe(data => {
-        console.log(AppSettings.deleteTournamentDogUrl + dog_id + '/' + tournament_id);
        // this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
+  // Delete Method
+  deleteRace(dog_id: number, tournament_id): void {
+    this.http.delete(AppSettings.deleteTournamentDogRaceUrl + dog_id + '/' + tournament_id).subscribe(data => {
+        // this.toasterService.showToaster('Successfully deleted', 3000);
       },
       (err: HttpErrorResponse) => {
         //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);

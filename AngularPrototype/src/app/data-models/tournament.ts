@@ -1,7 +1,7 @@
 import {Club} from "./club";
-import {Dogpass} from "./dogpass";
 import {Judge} from "./judge";
 import {Coursing} from "./coursing";
+import {Race} from "./race";
 
 export class Tournament {
 
@@ -13,7 +13,8 @@ export class Tournament {
     public date: Date,
     public double_weighted: boolean,
     public participating_judges: Judge[],
-    public coursings: Coursing[]
+    public coursings: Coursing[],
+    public races: Race[]
   ) {
 
   }

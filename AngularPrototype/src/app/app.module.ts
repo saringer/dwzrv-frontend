@@ -77,6 +77,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {CustomDogFilter} from "./pages/admin/manage-tournaments/filter/customDogFilter";
 import {CustomJudgeFilter} from "./pages/admin/manage-tournaments/filter/customJudgeFilter";
 import { SetUpCoursingComponent } from './pages/admin/manage-tournaments/set-up-coursing/set-up-coursing.component';
+import { SetUpRaceComponent } from './pages/admin/manage-tournaments/set-up-race/set-up-race.component';
+import { RaceEvaluationComponent } from './pages/admin/manage-tournament-evaluations/race-evaluation/race-evaluation.component';
+import { CoursingEvaluationComponent } from './pages/admin/manage-tournament-evaluations/coursing-evaluation/coursing-evaluation.component';
+import {RaceService} from "./services/TournamentDogService/RaceService";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -130,7 +134,10 @@ const appRoutes: Routes = [
     TournamentDeleteDialogComponent,
     CustomDogFilter,
     CustomJudgeFilter,
-    SetUpCoursingComponent
+    SetUpCoursingComponent,
+    SetUpRaceComponent,
+    RaceEvaluationComponent,
+    CoursingEvaluationComponent
 
   ],
   imports: [
@@ -169,7 +176,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

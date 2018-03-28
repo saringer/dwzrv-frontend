@@ -36,6 +36,11 @@ export class ManageTournamentsComponent implements OnInit {
     this.searchService.currentMessage.subscribe(message =>  this.filterJudge.firstname = message);
   }
 
+  datetostring(milliseconds: number): String {
+    return new Date(milliseconds).toLocaleDateString();
+  }
+
+
 
 
   ngOnInit() {

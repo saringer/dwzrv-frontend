@@ -110,7 +110,7 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         var i = this.list_international_class.findIndex(i => i.id === e.dragData.id);
         this.list_international_class.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.deleteItem(e.dragData.id, this.selectedTournament.id);
+        this.tournamentDogService.deleteCoursing(e.dragData.id, this.selectedTournament.id);
       }
 
       if (this.dragcontainer === 'national') {
@@ -118,7 +118,7 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         var i = this.list_national_class.findIndex(i => i.id === e.dragData.id);
         this.list_national_class.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.deleteItem(e.dragData.id, this.selectedTournament.id);
+        this.tournamentDogService.deleteCoursing(e.dragData.id, this.selectedTournament.id);
       }
 
 
@@ -166,10 +166,12 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         break;
       }
     }
-    for (var i = 0; i < national_class.length; i++) {
-      if (element.id === national_class[i].id) {
-        result = false;
-        break;
+    if (result) {
+      for (var i = 0; i < national_class.length; i++) {
+        if (element.id === national_class[i].id) {
+          result = false;
+          break;
+        }
       }
     }
     return result;
