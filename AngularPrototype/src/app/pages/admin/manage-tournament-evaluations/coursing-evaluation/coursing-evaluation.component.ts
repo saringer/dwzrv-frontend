@@ -66,25 +66,7 @@ export class CoursingEvaluationComponent implements OnInit {
 
   }
 
-  stepperSelectionChangeDogJudgement(event) {
-    //this.tournamentDogService.getAllTournamentDogForTournamentI(this.selected_awarding.id);
-    //this.tournamentDogService.getAllTournamentDog();
-    this.tournamentDogService.getAllTournamentDogCoursingsByTournamentId(this.selected_awarding.id)
 
-    if (this.selected_awarding.tournamenttype == 'Coursing') {
-      this.displayedColumnsTournamentDog = ['dogname', 'coursing'];
-    }
-    if (this.selected_awarding.tournamenttype == 'Ausstellung') {
-      this.displayedColumnsTournamentDog = ['dogname', 'exhibition'];
-    }
-    if (this.selected_awarding.tournamenttype == 'Rennen') {
-      this.displayedColumnsTournamentDog = ['dogname', 'race'];
-    }
-
-
-  }
-
-  // If you don't need a filter or a pagination this can be simplified, you just use code from else block
   public refreshTableTournamentDog() {
     // if there's a paginator active we're using it for refresh
     if (this.dataSourceTournamentDog._paginatorTournamentDog.hasNextPage()) {

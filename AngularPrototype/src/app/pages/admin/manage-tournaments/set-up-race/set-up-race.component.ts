@@ -274,29 +274,37 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
       // If dog object of the json-array is is represented by its id only we fetch the object from the db
       if (this.isNumber(this.selectedTournament.races[i].dog)) {
         if (this.selectedTournament.races[i].raceClass === 'a') {
+          this.selectedDistanceA = this.selectedTournament.races[i].distance;
           this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_a_class.push(dog));
         }
         if (this.selectedTournament.races[i].raceClass === 'national') {
+          this.selectedDistanceNational = this.selectedTournament.races[i].distance;
           this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_national_class.push(dog));
         }
         if (this.selectedTournament.races[i].raceClass === 'elementary') {
+          this.selectedDistanceElementary = this.selectedTournament.races[i].distance;
           this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_elementary_class.push(dog));
         }
         if (this.selectedTournament.races[i].raceClass === 'senior') {
+          this.selectedDistanceSenior = this.selectedTournament.races[i].distance;
           this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_senior_class.push(dog));
         }
       }
       else {
         if (this.selectedTournament.races[i].raceClass === 'a') {
+          this.selectedDistanceA = this.selectedTournament.races[i].distance;
           this.list_a_class.push(this.selectedTournament.races[i].dog)
         }
         if (this.selectedTournament.races[i].raceClass === 'national') {
+          this.selectedDistanceNational = this.selectedTournament.races[i].distance;
           this.list_national_class.push(this.selectedTournament.races[i].dog)
         }
         if (this.selectedTournament.races[i].raceClass === 'elementary') {
+          this.selectedDistanceElementary = this.selectedTournament.races[i].distance;
           this.list_elementary_class.push(this.selectedTournament.races[i].dog)
         }
         if (this.selectedTournament.races[i].raceClass === 'senior') {
+          this.selectedDistanceSenior = this.selectedTournament.races[i].distance;
           this.list_senior_class.push(this.selectedTournament.races[i].dog)
         }
       }

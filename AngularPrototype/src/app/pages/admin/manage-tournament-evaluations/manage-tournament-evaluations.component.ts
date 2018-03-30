@@ -65,7 +65,7 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
 
 
   stepperSelectionChangeDogJudgement(event) {
-    this.tournamentDogService.getAllTournamentDogCoursingsByTournamentId(this.selected_awarding.id)
+    //this.tournamentDogService.getAllTournamentDogCoursingsByTournamentId(this.selected_awarding.id)
   }
 
   /*filter(val: string): Observable<any[]> {
