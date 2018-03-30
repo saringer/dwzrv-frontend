@@ -57,9 +57,18 @@ export class RaceEvaluationComponent implements OnInit {
     // Validators.email,
   ]);
 
+  checkSelected(el) {
+    let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
+    this.raceService.addTournamentDogRace(this.dataSourceTournamentDog.renderedData[idx]);
+
+  }
 
   editField(field: string, editValue: string, el: any) {
-    console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData));
+
+    editValue = editValue.replace(',','.');
+    if (editValue == null) {
+      editValue = '0';
+    }
 
     let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
     this.dataSourceTournamentDog.renderedData[idx][field] = editValue;
@@ -67,7 +76,7 @@ export class RaceEvaluationComponent implements OnInit {
     //this.selected_awarding.tournament_dog = this.dataSourceTournamentDog.renderedData;
     // this.tournamentService.updateTournament(this.selected_awarding);
     // this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
-    this.tournamentDogService.addTournamentDogRace(this.dataSourceTournamentDog.renderedData[idx]);
+    this.raceService.addTournamentDogRace(this.dataSourceTournamentDog.renderedData[idx]);
     //console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData[idx]));
 
 
@@ -139,7 +148,7 @@ export class TournamentDogDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.raceService.data.slice().filter((race: Race) => {
-        const searchStr = (race.raceTime + race.racePlacement + race.dogname).toLowerCase();
+        const searchStr = (race.raceTime + race.dogname).toLowerCase();
         return searchStr.indexOf(this.filter.toLowerCase()) !== -1;
       });
 

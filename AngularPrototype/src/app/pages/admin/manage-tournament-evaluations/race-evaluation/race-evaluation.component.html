@@ -14,16 +14,21 @@
     COURSING WERTUNGEN
     -->
     <mat-cell *matCellDef="let element">
-      Zeit:
+      Punkte:
       <mat-form-field floatLabel="never">
-        <input matInput placeholder="Zeit" [value]="element.raceTime"
+        <input matInput [disabled]="element.notfinished" placeholder="Punkte" [value]="element.points"
+               (input)="editField('points', $event.target.value, element)">
+      </mat-form-field>
+      Zeit(optional):
+      <mat-form-field floatLabel="never">
+        <input matInput [disabled]="element.notfinished" placeholder="Zeit" [value]="element.raceTime===null ? element.raceTime : element.raceTime.toString().replace('.',',')"
                (input)="editField('raceTime', $event.target.value, element)">
       </mat-form-field>
-      Platz(optional):
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Platzierung" [value]="element.racePlacement"
-               (input)="editField('racePlacement', $event.target.value, element)">
-      </mat-form-field>
+      <mat-checkbox
+        class="example-margin"
+        [(ngModel)]="element.notfinished" (change)="checkSelected(element)">
+        zurückgezogen/disqualifiziert/nicht durch
+      </mat-checkbox>
     </mat-cell>
 
   </ng-container>

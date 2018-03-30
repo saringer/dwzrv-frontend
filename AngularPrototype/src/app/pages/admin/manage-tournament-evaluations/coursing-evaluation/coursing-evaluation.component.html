@@ -18,7 +18,7 @@
     <mat-cell *matCellDef="let element">
       Wertung in %:
       <mat-form-field floatLabel="never">
-        <input matInput placeholder="Wertung" [value]="element.coursingRating.toString().replace('.',',')"
+        <input matInput placeholder="Wertung" [value]="element.coursingRating===null ? element.coursingRating : element.coursingRating.toString().replace('.',',')"
                (input)="editField('coursingRating', $event.target.value, element)">
       </mat-form-field>
       Punkte(optional):

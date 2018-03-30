@@ -38,7 +38,21 @@ export class RaceService {
    *
    */
 
+  addTournamentDogRace (tournamentdog: Race): void {
+    const req = this.http.post(AppSettings.saveTournamentDogRaceUrl, tournamentdog);
+    req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
 
+
+  // Delete Method
+  deleteRace(dog_id: number, tournament_id): void {
+    this.http.delete(AppSettings.deleteTournamentDogRaceUrl + dog_id + '/' + tournament_id).subscribe(data => {
+        // this.toasterService.showToaster('Successfully deleted', 3000);
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
 
   getAllRacesByTournamentId(tournament_id): void {
     this.http.get<Race[]>(AppSettings.getRacesUrl + tournament_id).subscribe(data => {

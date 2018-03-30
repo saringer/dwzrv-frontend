@@ -58,7 +58,6 @@ export class CoursingEvaluationComponent implements OnInit {
     if (editValue == null) {
       editValue = '0';
     }
-    console.log(editValue);
 
     let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
     this.dataSourceTournamentDog.renderedData[idx][field] = editValue;
