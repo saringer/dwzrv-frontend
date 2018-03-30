@@ -1,14 +1,13 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatPaginator, MatSort} from "@angular/material";
+import {Component, OnInit} from '@angular/core';
+import {MatDialog} from "@angular/material";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Rx";
 import {TournamentDogService} from "../../../services/TournamentDogService/tournamentdog.service";
-import {DataSource} from "@angular/cdk/collections";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Coursing} from "../../../data-models/coursing";
 import {Tournament} from "../../../data-models/tournament";
 import {TournamentService} from "../../../services/TournamentService/tournament.service";
 import {SearchService} from "../../../services/SearchService/search.service";
+
+import { catchError, map, tap,startWith, switchMap, debounceTime, distinctUntilChanged, takeWhile, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-manage-tournament-evaluations',
@@ -19,15 +18,27 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
 
 
   tournaments: Observable<Tournament[]>;
-  displayedColumnsTournamentDog = ['dogname', 'coursing'];
+  //tournaments: Tournament[];
   firstFormGroup: FormGroup;
   selected_awarding: any;
+  //filteredTournaments: Observable<Tournament[]>;
 
   constructor(private searchService: SearchService,
               public dialog: MatDialog,
               private tournamentDogService: TournamentDogService,
               private _formBuilder: FormBuilder,
               private tournamentService: TournamentService) {
+
+    /*this.filteredTournaments = this.formControl.valueChanges
+      .pipe(
+        startWith(null),
+        debounceTime(200),
+        distinctUntilChanged(),
+        switchMap(val => {
+          return this.filter(val || '')
+        })
+      );*/
+
   }
 
   datetostring(milliseconds: number): String {
@@ -37,6 +48,7 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
   ngOnInit() {
 
     this.tournaments = this.tournamentService.getTournaments();
+    //this.tournamentService.getTournaments().subscribe(tournaments => this.tournaments = this.tournaments);
 
 
     this.firstFormGroup = this._formBuilder.group({
@@ -53,22 +65,29 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
 
 
   stepperSelectionChangeDogJudgement(event) {
-    //this.tournamentDogService.getAllTournamentDogForTournamentI(this.selected_awarding.id);
-    //this.tournamentDogService.getAllTournamentDog();
     this.tournamentDogService.getAllTournamentDogCoursingsByTournamentId(this.selected_awarding.id)
-
-    if (this.selected_awarding.tournamenttype == 'Coursing') {
-      this.displayedColumnsTournamentDog = ['dogname', 'coursing'];
-    }
-    if (this.selected_awarding.tournamenttype == 'Ausstellung') {
-      this.displayedColumnsTournamentDog = ['dogname', 'exhibition'];
-    }
-    if (this.selected_awarding.tournamenttype == 'Rennen') {
-      this.displayedColumnsTournamentDog = ['dogname', 'race'];
-    }
-
-
   }
+
+  /*filter(val: string): Observable<any[]> {
+    return this.tournamentService.getTournaments()
+      .pipe(
+        map(response => response.filter(option => {
+          return option.title.toLowerCase().indexOf(val.toLowerCase()) !== -1
+        }))
+      )
+  }
+
+
+  displayFn(country:Tournament): string {
+    this.selected_awarding = country;
+    console.log(this.selected_awarding);
+    return country.title;
+  }
+
+  test(event) {
+    this.selected_awarding = event;
+    console.log(event)
+  }*/
 
 
 

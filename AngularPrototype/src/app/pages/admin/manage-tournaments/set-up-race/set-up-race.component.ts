@@ -16,15 +16,13 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
 
   list_all_dogs: Dogpass[] = [];
   list_a_class: Dogpass[] = [];
-  list_b_class: Dogpass[] = [];
   list_elementary_class: Dogpass[] = [];
   list_national_class: Dogpass[] = [];
   list_senior_class: Dogpass[] = [];
   dragcontainer: string;
   filterDog = {name: ''};
-  distances: string[] = ['280 m','365 m'];
+  distances: string[] = ['280 m', '365 m'];
   selectedDistanceA: string = '280 m';
-  selectedDistanceB: string = '280 m';
   selectedDistanceNational: string = '280 m';
   selectedDistanceElementary: string = '280 m';
   selectedDistanceSenior: string = '280 m';
@@ -78,14 +76,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
         //this.tournamentService.updateTournament(this.selected);
         this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'a', this.selectedDistanceA));
       }
-      if (this.dragcontainer === 'b') {
-        this.list_a_class.push(e.dragData);
-
-        var i = this.list_b_class.findIndex(i => i.id === e.dragData.id);
-        this.list_b_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'a', this.selectedDistanceA));
-      }
       if (this.dragcontainer === 'elementary') {
         this.list_a_class.push(e.dragData);
 
@@ -106,56 +96,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
     }
   }
 
-  onBClassDrop(e: any) {
-    // Get the dropped data here
-    if (!this.dogIsAlreadyInList(e.dragData.id, this.list_b_class)) {
-
-      // Add object to the international class container and remove it from all_dogs container
-      if (this.dragcontainer === 'alldogs') {
-        this.list_b_class.push(e.dragData);
-
-        var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
-        this.list_all_dogs.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'b', this.selectedDistanceB));
-      }
-
-      // Add object to the international class container and remove it from national container
-      if (this.dragcontainer === 'national') {
-        this.list_b_class.push(e.dragData);
-
-        var i = this.list_national_class.findIndex(i => i.id === e.dragData.id);
-        this.list_national_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'b', this.selectedDistanceB));
-      }
-      if (this.dragcontainer === 'a') {
-        this.list_b_class.push(e.dragData);
-
-        var i = this.list_a_class.findIndex(i => i.id === e.dragData.id);
-        this.list_a_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'b', this.selectedDistanceB));
-      }
-      if (this.dragcontainer === 'elementary') {
-        this.list_b_class.push(e.dragData);
-
-        var i = this.list_elementary_class.findIndex(i => i.id === e.dragData.id);
-        this.list_elementary_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'b', this.selectedDistanceB));
-      }
-      if (this.dragcontainer === 'senior') {
-        this.list_b_class.push(e.dragData);
-
-        var i = this.list_senior_class.findIndex(i => i.id === e.dragData.id);
-        this.list_senior_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'b', this.selectedDistanceB));
-      }
-
-    }
-  }
 
   onNationalClassDrop(e: any) {
     // Get the dropped data here
@@ -176,14 +116,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
 
         var i = this.list_a_class.findIndex(i => i.id === e.dragData.id);
         this.list_a_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'national', this.selectedDistanceNational));
-      }
-      if (this.dragcontainer === 'b') {
-        this.list_national_class.push(e.dragData);
-
-        var i = this.list_b_class.findIndex(i => i.id === e.dragData.id);
-        this.list_b_class.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
         this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'national', this.selectedDistanceNational));
       }
@@ -238,14 +170,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
         //this.tournamentService.updateTournament(this.selected);
         this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'elementary', this.selectedDistanceElementary));
       }
-      if (this.dragcontainer === 'b') {
-        this.list_elementary_class.push(e.dragData);
-
-        var i = this.list_b_class.findIndex(i => i.id === e.dragData.id);
-        this.list_b_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'elementary', this.selectedDistanceElementary));
-      }
       if (this.dragcontainer === 'senior') {
         this.list_elementary_class.push(e.dragData);
 
@@ -289,14 +213,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
         //this.tournamentService.updateTournament(this.selected);
         this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'senior', this.selectedDistanceSenior));
       }
-      if (this.dragcontainer === 'b') {
-        this.list_senior_class.push(e.dragData);
-
-        var i = this.list_b_class.findIndex(i => i.id === e.dragData.id);
-        this.list_b_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDogRace(new Race(e.dragData, this.selectedTournament, 'senior', this.selectedDistanceSenior));
-      }
       if (this.dragcontainer === 'elementary') {
         this.list_senior_class.push(e.dragData);
 
@@ -317,13 +233,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
         this.list_all_dogs.push(e.dragData);
         var i = this.list_a_class.findIndex(i => i.id === e.dragData.id);
         this.list_a_class.splice(i, 1);
-        //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.deleteRace(e.dragData.id, this.selectedTournament.id);
-      }
-      if (this.dragcontainer === 'b') {
-        this.list_all_dogs.push(e.dragData);
-        var i = this.list_b_class.findIndex(i => i.id === e.dragData.id);
-        this.list_b_class.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
         this.tournamentDogService.deleteRace(e.dragData.id, this.selectedTournament.id);
       }
@@ -356,7 +265,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
 
     this.list_all_dogs = [];
     this.list_a_class = [];
-    this.list_b_class = [];
     this.list_national_class = [];
     this.list_elementary_class = [];
     this.list_senior_class = [];
@@ -366,9 +274,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
       if (this.isNumber(this.selectedTournament.races[i].dog)) {
         if (this.selectedTournament.races[i].raceClass === 'a') {
           this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_a_class.push(dog));
-        }
-        if (this.selectedTournament.races[i].raceClass === 'b') {
-          this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_b_class.push(dog));
         }
         if (this.selectedTournament.races[i].raceClass === 'national') {
           this.dogService.getDogById(this.selectedTournament.races[i].dog).subscribe(dog => this.list_national_class.push(dog));
@@ -384,9 +289,6 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
         if (this.selectedTournament.races[i].raceClass === 'a') {
           this.list_a_class.push(this.selectedTournament.races[i].dog)
         }
-        if (this.selectedTournament.races[i].raceClass === 'b') {
-          this.list_b_class.push(this.selectedTournament.races[i].dog)
-        }
         if (this.selectedTournament.races[i].raceClass === 'national') {
           this.list_national_class.push(this.selectedTournament.races[i].dog)
         }
@@ -399,13 +301,13 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
       }
     }
     // Load available dogs
-    this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_a_class, this.list_b_class,
+    this.dogService.getDogsAsArray().subscribe(dogs => this.list_all_dogs = dogs.filter(dog => this.customFilterDog(dog, this.list_a_class,
       this.list_national_class, this.list_elementary_class, this.list_senior_class)));
 
 
   }
 
-  customFilterDog(element: Dogpass, a_class: Dogpass[], b_class: Dogpass[], national_class: Dogpass[],
+  customFilterDog(element: Dogpass, a_class: Dogpass[], national_class: Dogpass[],
                   elementary_class: Dogpass[], senior_class: Dogpass[]): boolean {
     var result = true;
 
@@ -415,39 +317,30 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
         break;
       }
     }
+
     if (result) {
-      for (var i = 0; i < b_class.length; i++) {
-        if (element.id === b_class[i].id) {
+      for (var i = 0; i < national_class.length; i++) {
+        if (element.id === national_class[i].id) {
           result = false;
           break;
         }
       }
       if (result) {
-        for (var i = 0; i < national_class.length; i++) {
-          if (element.id === national_class[i].id) {
+        for (var i = 0; i < elementary_class.length; i++) {
+          if (element.id === elementary_class[i].id) {
             result = false;
             break;
           }
         }
         if (result) {
-          for (var i = 0; i < elementary_class.length; i++) {
-            if (element.id === elementary_class[i].id) {
+          for (var i = 0; i < senior_class.length; i++) {
+            if (element.id === senior_class[i].id) {
               result = false;
               break;
             }
           }
-          if (result) {
-            for (var i = 0; i < senior_class.length; i++) {
-              if (element.id === senior_class[i].id) {
-                result = false;
-                break;
-              }
-            }
-          }
         }
-
       }
-
     }
 
     return result;

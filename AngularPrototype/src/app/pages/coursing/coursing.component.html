@@ -99,29 +99,23 @@
 
   <mat-tab label="Rüden/Hündinnen - Nationale Klasse">
   </mat-tab>
+<!--
+  <mat-tab disabled>
+    <ng-template mat-tab-label>
+      <mat-form-field class="example-full-width">
+        <mat-select [(value)]="selected">
+          <mat-option *ngFor="let year of listItems" [value]="year">
+            {{'Bestenlisten für ' + year}}
+          </mat-option>
+          {{selected}}
+        </mat-select>
+      </mat-form-field>
+
+
+    </ng-template>
+  </mat-tab>
+-->
 </mat-tab-group>
-
-<!-- <nav class="nav-tournament-type">
-  <div class="nav nav-tabs" id="nav-tab-tournament-type" role="tablist">
-
-    <a class="nav-item nav-link active" id="international_rüde" data-toggle="tab" href="#nav-home" role="tab"
-       aria-controls="nav-home" aria-selected="true">
-      International Rüde
-    </a>
-    <a class="nav-item nav-link" id="international_hündin" data-toggle="tab" href="#nav-home" role="tab"
-       aria-controls="nav-home" aria-selected="true">
-      International Hündin
-    </a>
-    <a class="nav-item nav-link" id="internationale_klasse" data-toggle="tab" href="#nav-home" role="tab"
-       aria-controls="nav-home" aria-selected="true">
-      Nationale Klasse
-    </a>
-
-
-
-  </div>
-</nav> -->
-
 
 
 
@@ -135,7 +129,7 @@
 
     <ng-container matColumnDef="total">
       <mat-header-cell *matHeaderCellDef> Total%</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.totalratings}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalratings.replace('.',',')}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="position">

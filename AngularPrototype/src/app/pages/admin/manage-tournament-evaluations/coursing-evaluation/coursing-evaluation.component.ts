@@ -54,16 +54,15 @@ export class CoursingEvaluationComponent implements OnInit {
 
 
   editField(field: string, editValue: string, el: any) {
-    console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData));
+    editValue = editValue.replace(',','.');
+    if (editValue == null) {
+      editValue = '0';
+    }
+    console.log(editValue);
 
     let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
     this.dataSourceTournamentDog.renderedData[idx][field] = editValue;
-    //console.log(this.dataSourceTournamentDog.renderedData);
-    //this.selected_awarding.tournament_dog = this.dataSourceTournamentDog.renderedData;
-    // this.tournamentService.updateTournament(this.selected_awarding);
-    // this.tournamentDogService.addTournamentDog(new TournamentDog(e.dragData,this.selected,null, this.selected.tournamenttype,e.dragData.name));
     this.tournamentDogService.addTournamentDog(this.dataSourceTournamentDog.renderedData[idx]);
-    //console.log(JSON.stringify(this.dataSourceTournamentDog.renderedData[idx]));
 
 
   }
@@ -193,6 +192,7 @@ export class TournamentDogDataSource extends DataSource<any> {
       return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
     });
   }
+
 
 
 }

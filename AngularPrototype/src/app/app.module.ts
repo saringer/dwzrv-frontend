@@ -82,6 +82,7 @@ import { RaceEvaluationComponent } from './pages/admin/manage-tournament-evaluat
 import { CoursingEvaluationComponent } from './pages/admin/manage-tournament-evaluations/coursing-evaluation/coursing-evaluation.component';
 import {RaceService} from "./services/TournamentDogService/RaceService";
 import {MatRadioModule} from '@angular/material/radio';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -173,7 +174,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatFormFieldModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatAutocompleteModule
 
 
   ],

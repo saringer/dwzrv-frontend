@@ -26,11 +26,23 @@ export class CoursingComponent implements OnInit {
   dataSourceCoursing: CoursingDataSource | null;
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
+  years = [];
+  selected: string = "Medium";
+  public listItems: Array<string> = [ "Small", "Medium", "Large" ];
+
 
 
 
   constructor(private searchService: SearchService, private coursingService: CoursingService, elementRef: ElementRef) {
+    var year = new Date().getFullYear();
+    var range = [];
 
+    for (var i = 0; i < 7; i++) {
+      this.years.push({
+        label: year - i,
+        value: parseInt(String(year + i).slice(2, 4))
+      });
+    }
   }
 
   ngOnInit() {
@@ -73,6 +85,13 @@ export class CoursingComponent implements OnInit {
     else if (event.index === 3) {
       this.coursingService.getAllCoursings('national', 'all');
     }
+  }
+
+  replaceDotWithComma(el: string): string {
+        console.log(el);
+        el = el.replace('.', ',');
+        console.log(el);
+        return el.replace(/./g, ',')
   }
 
 }

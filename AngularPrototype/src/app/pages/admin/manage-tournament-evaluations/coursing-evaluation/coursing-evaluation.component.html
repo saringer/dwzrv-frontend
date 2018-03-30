@@ -1,3 +1,5 @@
+
+
 <mat-table #table [dataSource]="dataSourceTournamentDog" matSort>
 
   <!--- Note that these columns can be defined in any order.
@@ -16,7 +18,7 @@
     <mat-cell *matCellDef="let element">
       Wertung in %:
       <mat-form-field floatLabel="never">
-        <input matInput placeholder="Wertung" [value]="element.coursingRating"
+        <input matInput placeholder="Wertung" [value]="element.coursingRating.toString().replace('.',',')"
                (input)="editField('coursingRating', $event.target.value, element)">
       </mat-form-field>
       Punkte(optional):
@@ -27,47 +29,6 @@
     </mat-cell>
 
   </ng-container>
-
-  <!--
-   RENNEN WERTUNGEN
-   -->
-  <ng-container matColumnDef="race">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Finallauf</mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      Platz:
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Platz" [value]="element.raceplacement"
-               (input)="editField('raceplacement', $event.target.value, element)">
-      </mat-form-field>
-      Eigene Zeit:
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Eigene Zeit" [value]="element.racetime"
-               (input)="editField('racetime', $event.target.value, element)">
-      </mat-form-field>
-      Zeit des Siegers:
-      <mat-form-field floatLabel="never">
-        <input matInput placeholder="Zeit des Siegers" [value]="element.racetimewinner"
-               (input)="editField('racetimewinner', $event.target.value, element)">
-      </mat-form-field>
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="exhibition">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> Ausstellungswertungen</mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      <mat-form-field floatLabel="never">
-        Formwertnote:
-        <input matInput placeholder="Formwertnote" [value]="element.coursingrating12"
-               (input)="editField('coursingrating12', $event.target.value, element)">
-      </mat-form-field>
-    </mat-cell>
-  </ng-container>
-
-
-  <!-- <ng-container matColumnDef="judging">
-     <mat-header-cell *matHeaderCellDef mat-sort-header> Wertung</mat-header-cell>
-     <mat-cell *matCellDef="let element"> {{element.judging}}</mat-cell>
-   </ng-container>-->
 
 
   <mat-header-row *matHeaderRowDef=" displayedColumnsTournamentDog"></mat-header-row>
@@ -82,3 +43,9 @@
                [pageSize]="20"
                [pageSizeOptions]="[10, 20, 50, 100]">
 </mat-paginator>
+
+
+
+
+
+

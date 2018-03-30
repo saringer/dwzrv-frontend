@@ -6,6 +6,7 @@ import {MatDialog} from "@angular/material";
 import {PasswordDialogComponent} from "./pages/admin/dialogs/password-dialog/password-dialog.component";
 import {Observable} from "rxjs/Observable";
 import {SearchService} from "./services/SearchService/search.service";
+import {CoursingService} from "./services/CoursingService/coursing.service";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
   @ViewChild('filterCoursing') filterCoursing: ElementRef;
 
 
-  constructor(private searchService: SearchService,private router: Router, public authService: AuthService, public dialog: MatDialog) {}
+  constructor(private coursingService: CoursingService, private searchService: SearchService,private router: Router, public authService: AuthService, public dialog: MatDialog) {}
 
   onKey(event: any) { // without type info
     this.searchService.changeFilterString(event.target.value);
@@ -27,8 +28,11 @@ export class AppComponent {
   onAdminLogoutClick() {
     this.authService.logout();
     this.router.navigate(['/coursing']);
+    // refresh data when the user goes back to start screen
+    this.coursingService.getAllCoursings('all', 'all');
 
-}
+
+  }
 
   onAdminLoginClick() {
     const dialogRef = this.dialog.open(PasswordDialogComponent);

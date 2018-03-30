@@ -58,7 +58,7 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
         this.list_all_dogs.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'international'));
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'international',0));
       }
 
       // Add object to the international class container and remove it from national container
@@ -68,7 +68,7 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         var i = this.list_national_class.findIndex(i => i.id === e.dragData.id);
         this.list_national_class.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'international'));
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'international',0));
       }
 
     }
@@ -85,7 +85,7 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         var i = this.list_all_dogs.findIndex(i => i.id === e.dragData.id);
         this.list_all_dogs.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'national'));
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'national',0));
       }
 
       // Add object to the national class container and remove it from international container
@@ -95,7 +95,7 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
         var i = this.list_international_class.findIndex(i => i.id === e.dragData.id);
         this.list_international_class.splice(i, 1);
         //this.tournamentService.updateTournament(this.selected);
-        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'national'));
+        this.tournamentDogService.addTournamentDog(new Coursing(e.dragData, this.selectedTournament, e.dragData.name, 'national',0));
       }
 
     }

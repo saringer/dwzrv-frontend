@@ -31,22 +31,6 @@
       </div>
     </div>
 
-    <div class="col-sm-3">
-      <mat-select [(ngModel)]="selectedDistanceB" placeholder="Distanz">
-        <mat-option *ngFor="let distance of distances" [value]="distance">
-          {{distance}}
-        </mat-option>
-      </mat-select>
-      <div class="card">
-        <h5 class="card-header">B-Klasse</h5>
-        <div class="card-body" droppable (onDrop)="onBClassDrop($event)">
-          <li draggable *ngFor="let item of list_b_class | customdogfilter:filterDog" [dragData]="item"
-              class="list-group-item" (onDragStart)="dragStart('b')">
-            {{formatDogAndKennel(item)}}
-          </li>
-        </div>
-      </div>
-    </div>
 
     <div class="col-sm-3">
       <mat-select [(ngModel)]="selectedDistanceElementary" placeholder="Distanz">

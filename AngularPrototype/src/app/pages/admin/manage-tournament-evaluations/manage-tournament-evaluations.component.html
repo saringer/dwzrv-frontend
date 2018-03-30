@@ -10,16 +10,28 @@
           {{tournament.title + ' (' + datetostring(tournament.date) + ')'}}
         </option>
       </select>
-      <!--     //<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>-->
+
+
+
+      <!-- <mat-form-field class="example-full-width">
+        <input matInput [matAutocomplete]="auto" [formControl]="formControl">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option (onSelectionChange)="test(tournament)" *ngFor="let tournament of filteredTournaments | async"
+                      [value]="tournament.title">
+            <span>{{ tournament.title }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> -->
+
+
+
       <div>
         <button mat-raised-button color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
 
-  <!--  -->
 
-  [selectedTournament]="selected"
   <mat-step class="content">
     <ng-template matStepLabel>Punkte vergeben</ng-template>
 
