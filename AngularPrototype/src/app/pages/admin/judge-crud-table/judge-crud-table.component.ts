@@ -21,7 +21,7 @@ export class JudgeCrudTableComponent implements OnInit {
   @ViewChild('paginatorJudge') paginatorJudge: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumnsJudge = ['judgefirstname', 'judgelastname', 'judgenationality', 'action'];
+  displayedColumnsJudge = ['firstname', 'lastname', 'nationality', 'action'];
   dataSourceJudge: JudgeDataSource | null;
   id: number;
 
@@ -180,8 +180,14 @@ export class JudgeDataSource extends DataSource<any> {
       let propertyB: number | string = '';
 
       switch (this._sort.active) {
-        case 'name':
-          [propertyA, propertyB] = [a.firstname, b.firstname];
+        case 'firstname':
+          [propertyA, propertyB] = [a.firstname.toLowerCase(), b.firstname.toLowerCase()];
+          break;
+        case 'lastname':
+          [propertyA, propertyB] = [a.lastname.toLowerCase(), b.lastname.toLowerCase()];
+          break;
+        case 'nationality':
+          [propertyA, propertyB] = [a.nationality.toLowerCase(), b.nationality.toLowerCase()];
           break;
       }
 

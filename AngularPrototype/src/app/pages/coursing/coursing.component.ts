@@ -74,15 +74,12 @@ export class CoursingComponent implements OnInit {
 
   onTabSwitch(event) {
     if (event.index === 0) {
-      this.coursingService.getAllCoursings('all', 'all');
-    }
-    else if (event.index === 1) {
       this.coursingService.getAllCoursings('international', 'Rüde');
     }
-    else if (event.index === 2) {
+    else if (event.index === 1) {
       this.coursingService.getAllCoursings('international', 'Hündin');
     }
-    else if (event.index === 3) {
+    else if (event.index === 2) {
       this.coursingService.getAllCoursings('national', 'all');
     }
   }
@@ -127,7 +124,7 @@ export class CoursingDataSource extends DataSource<any> {
       this._paginatorCoursing.page
     ];
 
-    this.coursingService.getAllCoursings('all', 'all');
+    this.coursingService.getAllCoursings('international', 'Rüde');
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.coursingService.data.slice().filter((coursingResult: Coursingresult) => {

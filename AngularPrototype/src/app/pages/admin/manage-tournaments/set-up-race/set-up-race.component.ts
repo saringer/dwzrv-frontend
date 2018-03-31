@@ -53,6 +53,40 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
     this.dragcontainer = container;
   }
 
+  changeAClassDistance() {
+    for (var i = 0; i < this.list_a_class.length; i++) {
+      var dogID = this.list_a_class[i].id;
+      var tournamentID = this.selectedTournament.id;
+      var distance = this.selectedDistanceA;
+      this.raceService.updateRaceDistance(dogID, tournamentID, distance);
+    }
+  }
+
+  changeElementaryClassDistance() {
+    for (var i = 0; i < this.list_elementary_class.length; i++) {
+      var dogID = this.list_elementary_class[i].id;
+      var tournamentID = this.selectedTournament.id;
+      var distance = this.selectedDistanceA;
+      this.raceService.updateRaceDistance(dogID, tournamentID, distance);
+    }
+  }
+  changeNationalClassDistance() {
+    for (var i = 0; i < this.list_national_class.length; i++) {
+      var dogID = this.list_national_class[i].id;
+      var tournamentID = this.selectedTournament.id;
+      var distance = this.selectedDistanceA;
+      this.raceService.updateRaceDistance(dogID, tournamentID, distance);
+    }
+  }
+  changeSeniorClassDistance() {
+    for (var i = 0; i < this.list_senior_class.length; i++) {
+      var dogID = this.list_senior_class[i].id;
+      var tournamentID = this.selectedTournament.id;
+      var distance = this.selectedDistanceA;
+      this.raceService.updateRaceDistance(dogID, tournamentID, distance);
+    }
+  }
+
 
   onAClassDrop(e: any) {
     // Get the dropped data here

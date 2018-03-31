@@ -15,7 +15,7 @@
   <div class="row">
 
     <div class="col-sm-3">
-      <mat-select [(ngModel)]="selectedDistanceA" placeholder="Distanz">
+      <mat-select [(ngModel)]="selectedDistanceA" placeholder="Distanz" (change)="changeAClassDistance()">
         <mat-option *ngFor="let distance of distances" [value]="distance">
           {{distance}}
         </mat-option>
@@ -33,7 +33,7 @@
 
 
     <div class="col-sm-3">
-      <mat-select [(ngModel)]="selectedDistanceElementary" placeholder="Distanz">
+      <mat-select [(ngModel)]="selectedDistanceElementary" placeholder="Distanz" (change)="changeElementaryClassDistance()">
         <mat-option *ngFor="let distance of distances" [value]="distance">
           {{distance}}
         </mat-option>
@@ -52,7 +52,7 @@
 
 
     <div class="col-sm-3">
-      <mat-select [(ngModel)]="selectedDistanceNational" placeholder="Distanz">
+      <mat-select [(ngModel)]="selectedDistanceNational" placeholder="Distanz" (change)="changeNationalClassDistance()">
         <mat-option *ngFor="let distance of distances" [value]="distance">
           {{distance}}
         </mat-option>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="col-sm-3">
-      <mat-select [(ngModel)]="selectedDistanceSenior" placeholder="Distanz">
+      <mat-select [(ngModel)]="selectedDistanceSenior" placeholder="Distanz" (change)="changeSeniorClassDistance()">
         <mat-option *ngFor="let distance of distances" [value]="distance">
           {{distance}}
         </mat-option>

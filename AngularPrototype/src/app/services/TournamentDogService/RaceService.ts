@@ -4,6 +4,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {AppSettings} from "../../appsettings";
 import {Coursing} from "../../data-models/coursing";
 import {Race} from "../../data-models/race";
+import {Tournament} from "../../data-models/tournament";
 
 @Injectable()
 export class RaceService {
@@ -41,6 +42,15 @@ export class RaceService {
   addTournamentDogRace (tournamentdog: Race): void {
     const req = this.http.post(AppSettings.saveTournamentDogRaceUrl, tournamentdog);
     req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
+
+  updateRaceDistance(dogID: number, tournamentID: number, raceDistance: string): void {
+    this.http.put(AppSettings.updateRaceDistanceUrl + dogID + '/' + tournamentID , raceDistance).subscribe(data => {
+      },
+      (err: HttpErrorResponse) => {
+        //this.toasterService.showToaster('Error occurred. Details: ' + err.name + ' ' + err.message, 8000);
+      }
+    );
+  }
 
 
   // Delete Method

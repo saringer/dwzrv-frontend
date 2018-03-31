@@ -21,7 +21,7 @@ export class OwnerCrudTableComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('paginatorOwner') paginatorOwner: MatPaginator;
 
-  displayedColumnsOwner = ['ownerfirstname', 'ownerlastname', 'action'];
+  displayedColumnsOwner = ['firstname', 'lastname', 'action'];
   dataSourceOwner: OwnerDataSource | null;
   id: number;
 
@@ -177,6 +177,7 @@ export class OwnerDataSource extends DataSource<any> {
 
   disconnect() {
   }
+
 //http://tphangout.com/angular-5-firestore-sorting-in-data-tables/
   /** Returns a sorted copy of the database data. */
   sortData(data: Dogowner[]): Dogowner[] {
@@ -189,8 +190,11 @@ export class OwnerDataSource extends DataSource<any> {
       let propertyB: number | string = '';
 
       switch (this._sort.active) {
-        case 'name':
-          [propertyA, propertyB] = [a.firstname, b.firstname];
+        case 'firstname':
+          [propertyA, propertyB] = [a.firstname.toLowerCase(), b.firstname.toLowerCase()];
+          break;
+        case 'lastname':
+          [propertyA, propertyB] = [a.lastname.toLowerCase(), b.lastname.toLowerCase()];
           break;
       }
 

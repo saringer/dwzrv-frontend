@@ -7,17 +7,17 @@
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <ng-container matColumnDef="judgefirstname">
+    <ng-container matColumnDef="firstname">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Vorname</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.firstname}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="judgelastname">
+    <ng-container matColumnDef="lastname">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nachname</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.lastname}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="judgenationality">
+    <ng-container matColumnDef="nationality">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Nationalität</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.nationality}}</mat-cell>
     </ng-container>

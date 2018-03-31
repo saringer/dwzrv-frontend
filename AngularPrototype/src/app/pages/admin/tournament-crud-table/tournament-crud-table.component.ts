@@ -181,8 +181,17 @@ export class TournamentDataSource extends DataSource<any> {
       let propertyB: number | string = '';
 
       switch (this._sort.active) {
-        case 'name':
-          [propertyA, propertyB] = [a.title, b.title];
+        case 'title':
+          [propertyA, propertyB] = [a.title.toLowerCase(), b.title.toLowerCase()];
+          break;
+        case 'club':
+          [propertyA, propertyB] = [a.club.clubname.toLowerCase(), b.club.clubname.toLowerCase()];
+          break;
+        case 'tournamenttype':
+          [propertyA, propertyB] = [a.tournamenttype.toLowerCase(), b.tournamenttype.toLowerCase()];
+          break;
+        case 'date':
+          [propertyA, propertyB] = [a.date.toString(), b.date.toString()];
           break;
       }
 

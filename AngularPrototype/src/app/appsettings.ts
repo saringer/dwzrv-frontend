@@ -1,6 +1,6 @@
 export class AppSettings {
 
-  public static server: string = 'http://softwerkerei.de:';
+   public static server: string = 'http://softwerkerei.de:';
   //public static server: string = 'http://localhost:';
   //public static server: string = '';
 
@@ -48,7 +48,8 @@ export class AppSettings {
   public static deleteDogUrl = AppSettings.server + '8080/delete/dog/';
 
   // Race
-  public static getRacesUrl = AppSettings.server + '8080/get/races/';
+  public static getRacesUrl = AppSettings.server + '8080/get/races/'
+  public static updateRaceDistanceUrl = AppSettings.server + '8080/update/racedistance/';
 
   // CoursingResults
   public static coursingResultsUrl = AppSettings.server + '8080/get/coursings/'

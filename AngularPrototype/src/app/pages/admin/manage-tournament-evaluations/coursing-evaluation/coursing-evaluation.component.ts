@@ -162,8 +162,8 @@ export class TournamentDogDataSource extends DataSource<any> {
       let propertyB: number | string = '';
 
       switch (this._sort.active) {
-        case 'name':
-          [propertyA, propertyB] = [a.dogname, b.dogname];
+        case 'dogname':
+          [propertyA, propertyB] = [a.dogname.toLowerCase(), b.dogname.toLowerCase()];
           break;
       }
 

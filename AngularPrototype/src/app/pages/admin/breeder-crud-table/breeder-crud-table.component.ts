@@ -197,14 +197,14 @@ export class BreederDataSource extends DataSource<any> {
 
 
       switch (this._sort.active) {
-        case 'city':
-          [propertyA, propertyB] = [a.kennelname, b.kennelname];
+        case 'kennelname':
+          [propertyA, propertyB] = [a.kennelname.toLowerCase(), b.kennelname.toLowerCase()];
           break;
-        case 'clubname':
-          [propertyA, propertyB] = [a.firstname, b.firstname];
+        case 'firstname':
+          [propertyA, propertyB] = [a.firstname.toLowerCase(), b.firstname.toLowerCase()];
           break;
-        case 'city':
-          [propertyA, propertyB] = [a.lastname, b.lastname];
+        case 'lastname':
+          [propertyA, propertyB] = [a.lastname.toLowerCase(), b.lastname.toLowerCase()];
           break;
 
       }

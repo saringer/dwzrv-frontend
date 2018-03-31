@@ -189,10 +189,10 @@ export class ClubDataSource extends DataSource<any> {
 
       switch (this._sort.active) {
         case 'clubname':
-          [propertyA, propertyB] = [a.clubname, b.clubname];
+          [propertyA, propertyB] = [a.clubname.toLowerCase(), b.clubname.toLowerCase()];
           break;
         case 'city':
-          [propertyA, propertyB] = [a.city, b.city];
+          [propertyA, propertyB] = [a.city != null ? a.city.toLowerCase() : 'a', b.city != null ? b.city.toLowerCase() : 'a'];
           break;
       }
 

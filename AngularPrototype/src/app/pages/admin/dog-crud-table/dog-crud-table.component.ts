@@ -201,6 +201,15 @@ export class UserDataSource extends DataSource<any> {
   disconnect() {
   }
 
+  breederNotNull(dogpass): string {
+    if (dogpass.breeder != null) {
+      return dogpass.breeder.kennelname;
+    }
+    else {
+      return '-';
+    }
+  }
+
   /** Returns a sorted copy of the database data. */
   sortData(data: Dogpass[]): Dogpass[] {
     if (!this._sort.active || this._sort.direction === '') {
@@ -213,7 +222,16 @@ export class UserDataSource extends DataSource<any> {
 
       switch (this._sort.active) {
         case 'name':
-          [propertyA, propertyB] = [a.name, b.name];
+          [propertyA, propertyB] = [a.name.toLowerCase(), b.name.toLowerCase()];
+          break;
+        case 'race':
+          [propertyA, propertyB] = [a.race.toLowerCase(), b.race.toLowerCase()];
+          break;
+        case 'sex':
+          [propertyA, propertyB] = [a.sex.toLowerCase(), b.sex.toLowerCase()];
+          break;
+        case 'breeder':
+          [propertyA, propertyB] = [this.breederNotNull(a).toLowerCase(), this.breederNotNull(b).toLowerCase()];
           break;
       }
 
