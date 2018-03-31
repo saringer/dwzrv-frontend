@@ -20,35 +20,40 @@
   <mat-step class="content">
     <ng-template matStepLabel>Richter zuordnen</ng-template>
 
-    <div class="row">
+    <div class="card">
+      <h5 class="card-header">{{selected != null ? selected.title + ' ' + datetostring(selected.date) : '-'}}</h5>
+      <div class="card-body">
 
-      <div class="col-sm-3">
-        <div class="card">
-          <h5 class="card-header">Alle Richter</h5>
-          <div class="card-body" droppable (onDrop)="onAllJudgesDrop($event)">
-            <li draggable *ngFor="let item of list_all_judges | customjudgefilter:filterJudge" [dragData]="item"
-                class="list-group-item">
-              {{item.firstname + ' ' + item.lastname}}
-            </li>
+        <div class="row">
+
+          <div class="col-sm-3">
+            <div class="card">
+              <h5 class="card-header">Alle Richter</h5>
+              <div class="card-body" droppable (onDrop)="onAllJudgesDrop($event)">
+                <li draggable *ngFor="let item of list_all_judges | customjudgefilter:filterJudge" [dragData]="item"
+                    class="list-group-item">
+                  {{item.firstname + ' ' + item.lastname}}
+                </li>
+              </div>
+            </div>
           </div>
+
+          <div class="col-sm-3">
+            <div class="card">
+              <h5 class="card-header">Teilnehmende Richter</h5>
+              <div class="card-body" droppable (onDrop)="onParticipatingJudgesDrop($event)">
+                <li draggable *ngFor="let item of list_participating_judges | customjudgefilter:filterJudge"
+                    [dragData]="item"
+                    class="list-group-item">{{item.firstname + ' ' + item.lastname}}
+                </li>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
-
-      <div class="col-sm-3">
-        <div class="card">
-          <h5 class="card-header">Teilnehmende Richter</h5>
-          <div class="card-body" droppable (onDrop)="onParticipatingJudgesDrop($event)">
-            <li draggable *ngFor="let item of list_participating_judges | customjudgefilter:filterJudge"
-                [dragData]="item"
-                class="list-group-item">{{item.firstname + ' ' + item.lastname}}
-            </li>
-          </div>
-        </div>
-      </div>
-
-
     </div>
-
 
   </mat-step>
 
@@ -62,7 +67,7 @@
                          [selectedTournament]="selected" [currentStepperIndex]="stepperIndex"></app-set-up-coursing>
 
     <app-set-up-race *ngIf="selected != null && selected.tournamenttype == 'Rennen'"
-                         [selectedTournament]="selected" [currentStepperIndex]="stepperIndex"></app-set-up-race>
+                     [selectedTournament]="selected" [currentStepperIndex]="stepperIndex"></app-set-up-race>
 
   </mat-step>
 </mat-horizontal-stepper>
