@@ -35,6 +35,10 @@ export class RaceEvaluationComponent implements OnInit {
               private tournamentService: TournamentService) {
   }
 
+  datetostring(milliseconds: number): String {
+    return new Date(milliseconds).toLocaleDateString();
+  }
+
   ngOnInit() {
     this.paginatorTournamentDog._intl.itemsPerPageLabel = 'Pro Seite: ';
     this.paginatorTournamentDog._intl.nextPageLabel = 'Nächste Seite';

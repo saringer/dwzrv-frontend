@@ -37,6 +37,10 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
     this.searchService.currentMessage.subscribe(message => this.filterDog.name = message)
   }
 
+  datetostring(milliseconds: number): String {
+    return new Date(milliseconds).toLocaleDateString();
+  }
+
   ngOnInit() {
   }
 

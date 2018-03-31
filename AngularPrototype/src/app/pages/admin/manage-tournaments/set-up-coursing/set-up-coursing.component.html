@@ -1,40 +1,47 @@
-<div class="row">
+<div class="card">
+  <h5 class="card-header">{{selectedTournament.title + ' ' + datetostring(selectedTournament.date)}}</h5>
+  <div class="card-body">
 
-  <div class="col-sm-3">
-    <div class="card">
-      <h5 class="card-header">Alle Hunde</h5>
-      <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)">
-        <li [draggable] *ngFor="let item of list_all_dogs | customdogfilter:filterDog" [dragData]="item"
-            class="list-group-item" (onDragStart)="dragStart('alldogs')">
-          {{formatDogAndKennel(item)}}
-        </li>
+    <div class="row">
+
+      <div class="col-sm-3">
+        <div class="card">
+          <h5 class="card-header">Alle Hunde</h5>
+          <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)">
+            <li [draggable] *ngFor="let item of list_all_dogs | customdogfilter:filterDog" [dragData]="item"
+                class="list-group-item" (onDragStart)="dragStart('alldogs')">
+              {{formatDogAndKennel(item)}}
+            </li>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="col-sm-3">
-    <div class="card">
-      <h5 class="card-header">Internationale Klasse</h5>
-      <div class="card-body" droppable (onDrop)="onInternationalClassDrop($event)">
-        <li draggable *ngFor="let item of list_international_class | customdogfilter:filterDog" [dragData]="item"
-            class="list-group-item" (onDragStart)="dragStart('international')">
-          {{formatDogAndKennel(item)}}
-        </li>
+      <div class="col-sm-3">
+        <div class="card">
+          <h5 class="card-header">Internationale Klasse</h5>
+          <div class="card-body" droppable (onDrop)="onInternationalClassDrop($event)">
+            <li draggable *ngFor="let item of list_international_class | customdogfilter:filterDog" [dragData]="item"
+                class="list-group-item" (onDragStart)="dragStart('international')">
+              {{formatDogAndKennel(item)}}
+            </li>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="col-sm-3">
-    <div class="card">
-      <h5 class="card-header">Nationale Klasse</h5>
-      <div class="card-body" droppable (onDrop)="onNationalClassDrop($event)">
-        <li draggable *ngFor="let item of list_national_class | customdogfilter:filterDog" [dragData]="item"
-            class="list-group-item" (onDragStart)="dragStart('national')">
-          {{formatDogAndKennel(item)}}
-        </li>
+      <div class="col-sm-3">
+        <div class="card">
+          <h5 class="card-header">Nationale Klasse</h5>
+          <div class="card-body" droppable (onDrop)="onNationalClassDrop($event)">
+            <li draggable *ngFor="let item of list_national_class | customdogfilter:filterDog" [dragData]="item"
+                class="list-group-item" (onDragStart)="dragStart('national')">
+              {{formatDogAndKennel(item)}}
+            </li>
+          </div>
+        </div>
       </div>
+
+
     </div>
+
   </div>
-
-
 </div>
