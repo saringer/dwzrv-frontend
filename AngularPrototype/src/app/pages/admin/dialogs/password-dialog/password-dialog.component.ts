@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, Injectable, OnInit, ViewChild} from '@angular/core';
 import {AuthService} from "../../../../services/AuthService/auth.service";
 import {CanActivate, Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material";
@@ -16,11 +16,15 @@ export class PasswordDialogComponent implements OnInit {
 
 
   constructor(private router: Router, private authService: AuthService, public dialogRef: MatDialogRef<PasswordDialogComponent>, fb: FormBuilder) {
+    dialogRef.disableClose = true;
 
     this.form = fb.group({
       password: ['', Validators.required]})
 
 
+  }
+  @HostListener('window:keyup.esc') onKeyUp() {
+    this.dialogRef.close();
   }
   submit() {
     // emppty stuff

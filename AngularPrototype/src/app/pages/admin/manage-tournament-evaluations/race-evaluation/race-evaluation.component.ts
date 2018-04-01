@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {TournamentService} from "../../../../services/TournamentService/tournament.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -54,6 +54,11 @@ export class RaceEvaluationComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
+  }
+
+  // Check if the selected tournament passed via @Input() is changed and update the table respectively
+  ngOnChanges(changes: SimpleChanges): void {
+    this.raceService.getAllRacesByTournamentId(this.selected_awarding.id)
   }
 
   formControl = new FormControl('', [
