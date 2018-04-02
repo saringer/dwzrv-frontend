@@ -17,10 +17,13 @@
         <!--
         COURSING WERTUNGEN
         -->
+
+
         <mat-cell *matCellDef="let element">
           Punkte:
           <mat-form-field floatLabel="never">
-            <input matInput [disabled]="element.notfinished" placeholder="Punkte" [value]="element.points"
+            <input matInput [disabled]="element.notfinished" placeholder="Punkte"
+                   [value]="element.points"
                    (input)="editField('points', $event.target.value, element)">
           </mat-form-field>
           Zeit(optional):
