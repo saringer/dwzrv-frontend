@@ -1,3 +1,7 @@
+<app-tournament-administration [selectedTournament]="selectedTournament" [parent]="self" *ngIf="showDetailView"></app-tournament-administration>
+<!-- [hidden]="!showDetailView" -->
+
+<div [hidden]="showDetailView">
 
 <mat-table #table [dataSource]="dataSourceTournament" matSort>
 
@@ -6,7 +10,14 @@
 
   <ng-container matColumnDef="title">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Veranstaltungsname</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.title}}</mat-cell>
+    <mat-cell *matCellDef="let element">
+
+     <!-- <button mat-button="link" color="accent" (click)="openDetailView(element)">
+        {{element.title}}
+      </button> -->
+      <a href="javascript:openDetailView(element)" (click)="openDetailView(element)">{{element.title}}</a>
+
+    </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="club">
@@ -16,7 +27,7 @@
 
   <ng-container matColumnDef="tournamenttype">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Typ der Veranstaltung</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.tournamenttype}}</mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.tournamenttype}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="date">
@@ -60,3 +71,4 @@
                [pageSizeOptions]="[10, 20, 50, 100]">
 </mat-paginator>
 
+</div>

@@ -64,13 +64,19 @@ export class RaceService {
     );
   }
 
-  getAllRacesByTournamentId(tournament_id): void {
+  loadAllRacesByTournamentId(tournament_id): void {
     this.http.get<Race[]>(AppSettings.getRacesUrl + tournament_id).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {
         console.log (error.name + ' ' + error.message);
       });
+  }
+
+  getAllRacesByTournamentId(tournament_id: number) {
+    // now returns an Observable of Config
+    return this.http.get<Race[]>(AppSettings.getRacesUrl + tournament_id);
+    //return this.http.get<Tournament>(AppSettings.getTournamentUrl + tournament_id);
   }
 
 

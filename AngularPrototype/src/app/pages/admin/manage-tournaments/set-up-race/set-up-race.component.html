@@ -1,97 +1,90 @@
-<div class="card">
-  <h5 class="card-header">{{selectedTournament.title + ' ' + datetostring(selectedTournament.date)}}</h5>
-  <div class="card-body">
+<div class="row" style="padding-top: 10px;">
 
-    <div class="row">
-
-      <div class="col-sm-3">
-        <div class="card">
-          <h5 class="card-header">Alle Hunde</h5>
-          <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)">
-            <li [draggable] *ngFor="let item of list_all_dogs | customdogfilter:filterDog" [dragData]="item"
-                class="list-group-item" (onDragStart)="dragStart('alldogs')">
-              {{formatDogAndKennel(item)}}
-            </li>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-
-        <div class="col-sm-3">
-          <mat-select [(ngModel)]="selectedDistanceA" placeholder="Distanz" (change)="changeAClassDistance()">
-            <mat-option *ngFor="let distance of distances" [value]="distance">
-              {{distance}}
-            </mat-option>
-          </mat-select>
-          <div class="card">
-            <h5 class="card-header">A-Klasse</h5>
-            <div class="card-body" droppable (onDrop)="onAClassDrop($event)">
-              <li draggable *ngFor="let item of list_a_class | customdogfilter:filterDog" [dragData]="item"
-                  class="list-group-item" (onDragStart)="dragStart('a')">
-                {{formatDogAndKennel(item)}}
-              </li>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-3">
-          <mat-select [(ngModel)]="selectedDistanceElementary" placeholder="Distanz"
-                      (change)="changeElementaryClassDistance()">
-            <mat-option *ngFor="let distance of distances" [value]="distance">
-              {{distance}}
-            </mat-option>
-          </mat-select>
-          <div class="card">
-            <h5 class="card-header">Grundklasse</h5>
-            <div class="card-body" droppable (onDrop)="onElementaryClassDrop($event)">
-              <li draggable *ngFor="let item of list_elementary_class | customdogfilter:filterDog" [dragData]="item"
-                  class="list-group-item" (onDragStart)="dragStart('elementary')">
-                {{formatDogAndKennel(item)}}
-              </li>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-sm-3">
-          <mat-select [(ngModel)]="selectedDistanceNational" placeholder="Distanz"
-                      (change)="changeNationalClassDistance()">
-            <mat-option *ngFor="let distance of distances" [value]="distance">
-              {{distance}}
-            </mat-option>
-          </mat-select>
-          <div class="card">
-            <h5 class="card-header">Sprinter/Nationale Klasse</h5>
-            <div class="card-body" droppable (onDrop)="onNationalClassDrop($event)">
-              <li draggable *ngFor="let item of list_national_class | customdogfilter:filterDog" [dragData]="item"
-                  class="list-group-item" (onDragStart)="dragStart('national')">
-                {{formatDogAndKennel(item)}}
-              </li>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-3">
-          <mat-select [(ngModel)]="selectedDistanceSenior" placeholder="Distanz" (change)="changeSeniorClassDistance()">
-            <mat-option *ngFor="let distance of distances" [value]="distance">
-              {{distance}}
-            </mat-option>
-          </mat-select>
-          <div class="card">
-            <h5 class="card-header">Seniorenklasse</h5>
-            <div class="card-body" droppable (onDrop)="onSeniorClassDrop($event)">
-              <li draggable *ngFor="let item of list_senior_class | customdogfilter:filterDog" [dragData]="item"
-                  class="list-group-item" (onDragStart)="dragStart('senior')">
-                {{formatDogAndKennel(item)}}
-              </li>
-            </div>
-          </div>
-        </div>
-
+  <div class="col-sm-3">
+    <div class="card">
+      <h5 class="card-header">Alle Hunde</h5>
+      <div class="card-body" droppable (onDrop)="onAllDogsDrop($event)">
+        <li [draggable] *ngFor="let item of list_all_dogs | customdogfilter:filterDog" [dragData]="item"
+            class="list-group-item" (onDragStart)="dragStart('alldogs')">
+          {{formatDogAndKennel(item)}}
+        </li>
       </div>
     </div>
-
   </div>
+
+
+  <div class="col-sm-3">
+    <mat-select [(ngModel)]="selectedDistanceA" placeholder="Distanz" (change)="changeAClassDistance()">
+      <mat-option *ngFor="let distance of distances" [value]="distance">
+        {{distance}}
+      </mat-option>
+    </mat-select>
+    <div class="card">
+      <h5 class="card-header">A-Klasse</h5>
+      <div class="card-body" droppable (onDrop)="onAClassDrop($event)">
+        <li draggable *ngFor="let item of list_a_class | customdogfilter:filterDog" [dragData]="item"
+            class="list-group-item" (onDragStart)="dragStart('a')">
+          {{formatDogAndKennel(item)}}
+        </li>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-3">
+    <mat-select [(ngModel)]="selectedDistanceElementary" placeholder="Distanz"
+                (change)="changeElementaryClassDistance()">
+      <mat-option *ngFor="let distance of distances" [value]="distance">
+        {{distance}}
+      </mat-option>
+    </mat-select>
+    <div class="card">
+      <h5 class="card-header">Grundklasse</h5>
+      <div class="card-body" droppable (onDrop)="onElementaryClassDrop($event)">
+        <li draggable *ngFor="let item of list_elementary_class | customdogfilter:filterDog" [dragData]="item"
+            class="list-group-item" (onDragStart)="dragStart('elementary')">
+          {{formatDogAndKennel(item)}}
+        </li>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-sm-3">
+    <mat-select [(ngModel)]="selectedDistanceNational" placeholder="Distanz"
+                (change)="changeNationalClassDistance()">
+      <mat-option *ngFor="let distance of distances" [value]="distance">
+        {{distance}}
+      </mat-option>
+    </mat-select>
+    <div class="card">
+      <h5 class="card-header">Sprinter/Nationale Klasse</h5>
+      <div class="card-body" droppable (onDrop)="onNationalClassDrop($event)">
+        <li draggable *ngFor="let item of list_national_class | customdogfilter:filterDog" [dragData]="item"
+            class="list-group-item" (onDragStart)="dragStart('national')">
+          {{formatDogAndKennel(item)}}
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <mat-select [(ngModel)]="selectedDistanceSenior" placeholder="Distanz" (change)="changeSeniorClassDistance()">
+      <mat-option *ngFor="let distance of distances" [value]="distance">
+        {{distance}}
+      </mat-option>
+    </mat-select>
+    <div class="card">
+      <h5 class="card-header">Seniorenklasse</h5>
+      <div class="card-body" droppable (onDrop)="onSeniorClassDrop($event)">
+        <li draggable *ngFor="let item of list_senior_class | customdogfilter:filterDog" [dragData]="item"
+            class="list-group-item" (onDragStart)="dragStart('senior')">
+          {{formatDogAndKennel(item)}}
+        </li>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+

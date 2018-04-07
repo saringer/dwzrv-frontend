@@ -1,0 +1,30 @@
+<div class="card">
+  <h5 class="card-header">
+    <button mat-icon-button color="accent" (click)="back()">
+      <mat-icon aria-label="Delete">arrow_back</mat-icon>
+    </button>
+    {{(selectedTournament != null) ? (selectedTournament.title + ' (' + datetostring(selectedTournament.date)) + ')' : '-'}} </h5>
+  <div class="card-body">
+
+    <mat-tab-group #tabGroupTournament color="primary" (selectedTabChange)="onTabSwitch($event)">
+
+      <mat-tab label="Richter zuordnen">
+
+        <app-set-up-judge [selected]="selectedTournament" *ngIf="tabGroupTournament.selectedIndex === 0"></app-set-up-judge>
+
+      </mat-tab>
+
+      <mat-tab label="Hunde zuordnen">
+
+        <app-manage-tournaments [selected]="selectedTournament" *ngIf="tabGroupTournament.selectedIndex === 1"></app-manage-tournaments>
+
+      </mat-tab>
+
+      <mat-tab label="Wertungen eingeben">
+
+        <app-manage-tournament-evaluations [selected_awarding]="selectedTournament" *ngIf="tabGroupTournament.selectedIndex === 2"></app-manage-tournament-evaluations>
+
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

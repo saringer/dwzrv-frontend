@@ -10,7 +10,11 @@ export class SearchService {
   constructor() { }
 
   changeFilterString(inputString: string) {
-    this.filterString.next(inputString)
+    this.filterString.next(inputString);
+  }
+
+  resetFilter() {
+    this.filterString.next("");
   }
 
 }

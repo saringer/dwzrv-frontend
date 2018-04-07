@@ -9,9 +9,19 @@
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  -->
 
-    <mat-tab label="Vereine anlegen">
+    <mat-tab label="Vereine">
 
       <app-club-crud-table *ngIf="tabGroup.selectedIndex === 0"></app-club-crud-table>
+
+    </mat-tab>
+
+    <!-- RICHTER ANMELDEN %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <mat-tab label="Richter">
+
+      <app-judge-crud-table *ngIf="tabGroup.selectedIndex === 1"></app-judge-crud-table>
 
     </mat-tab>
 
@@ -19,9 +29,19 @@
      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Zwinger anlegen">
+    <mat-tab label="Zwinger">
 
-      <app-breeder-crud-table *ngIf="tabGroup.selectedIndex === 1"></app-breeder-crud-table>
+      <app-breeder-crud-table *ngIf="tabGroup.selectedIndex === 2"></app-breeder-crud-table>
+
+    </mat-tab>
+
+    <!-- HUNDE ANMELDEN %%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <mat-tab label="Hunde">
+
+      <app-dog-crud-table *ngIf="tabGroup.selectedIndex === 3"></app-dog-crud-table>
 
     </mat-tab>
 
@@ -29,42 +49,25 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Besitzer anlegen">
+    <mat-tab label="Besitzer">
 
-      <app-owner-crud-table *ngIf="tabGroup.selectedIndex === 2"></app-owner-crud-table>
-
-    </mat-tab>
-
-    <!-- RICHTER ANMELDEN %%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Richter anlegen">
-
-      <app-judge-crud-table *ngIf="tabGroup.selectedIndex === 3"></app-judge-crud-table>
+      <app-owner-crud-table *ngIf="tabGroup.selectedIndex === 4"></app-owner-crud-table>
 
     </mat-tab>
 
-    <!-- HUNDE ANMELDEN %%%%%
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Hunde anlegen">
 
-      <app-dog-crud-table *ngIf="tabGroup.selectedIndex === 4"></app-dog-crud-table>
 
-    </mat-tab>
+
     <!-- VERANSTALTUNGEN ANLEGEN %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-    <mat-tab label="Veranstaltungen anlegen">
+    <mat-tab label="Veranstaltungen">
 
       <app-tournament-crud-table *ngIf="tabGroup.selectedIndex === 5"></app-tournament-crud-table>
 
     </mat-tab>
 
-    <!-- Veranstaltungen verwalten %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+<!--
 
     <mat-tab label="Veranstaltungen verwalten">
 
@@ -72,15 +75,14 @@
       <app-manage-tournaments *ngIf="tabGroup.selectedIndex === 6"></app-manage-tournaments>
 
     </mat-tab>
-    <!-- TURNIERWERTUNGEN ANLEGEN %%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 
     <mat-tab label="Wertungen eintragen">
 
       <app-manage-tournament-evaluations *ngIf="tabGroup.selectedIndex === 7"></app-manage-tournament-evaluations>
 
     </mat-tab>
-
+-->
   </mat-tab-group>
 
 

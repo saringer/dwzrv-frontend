@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs/Rx";
@@ -20,7 +20,7 @@ export class ManageTournamentEvaluationsComponent implements OnInit {
   tournaments: Observable<Tournament[]>;
   //tournaments: Tournament[];
   firstFormGroup: FormGroup;
-  selected_awarding: any;
+  @Input() selected_awarding: any;
   //filteredTournaments: Observable<Tournament[]>;
 
   constructor(private searchService: SearchService,

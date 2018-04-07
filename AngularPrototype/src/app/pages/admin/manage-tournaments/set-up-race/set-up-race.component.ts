@@ -20,9 +20,10 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
   list_elementary_class: Dogpass[] = [];
   list_national_class: Dogpass[] = [];
   list_senior_class: Dogpass[] = [];
+  races: Race[] = [];
   dragcontainer: string;
   filterDog = {name: ''};
-  distances: string[] = ['280 m', '365 m'];
+  distances: string[] = ['265 m', '275 m', '280 m', '350 m', '365 m'];
   selectedDistanceA: string = '280 m';
   selectedDistanceNational: string = '280 m';
   selectedDistanceElementary: string = '280 m';
@@ -37,21 +38,25 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
     this.searchService.currentMessage.subscribe(message => this.filterDog.name = message)
   }
 
-  datetostring(milliseconds: number): String {
-    return new Date(milliseconds).toLocaleDateString();
-  }
+
 
   ngOnInit() {
   }
 
   // Check if the selected tournament or MatStepper index passed via @Input() is changed
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.currentStepperIndex == 2) {
-      this.tournamentService.getTournamentById(this.selectedTournament.id).subscribe(tournament => this.selectedTournament = tournament);
-      this.loadData();
-    }
+
+      this.tournamentService.getTournamentById(this.selectedTournament.id).subscribe(tournament => this.loadOnServerResponse(tournament));
+
+
 
   }
+
+  loadOnServerResponse(tournament) {
+    this.selectedTournament = tournament;
+    this.loadData()
+  }
+
 
   dragStart(container: string) {
     this.dragcontainer = container;
@@ -307,6 +312,10 @@ export class SetUpRaceComponent implements OnInit, OnChanges {
     this.list_national_class = [];
     this.list_elementary_class = [];
     this.list_senior_class = [];
+
+    //this.tournamentService.getTournamentById(this.selectedTournament.id).subscribe(tournament => this.selectedTournament = tournament);
+    this.raceService.getAllRacesByTournamentId(this.selectedTournament.id).subscribe(response => this.races = response );
+// selectedTournament.races.length
 
     for (var i = 0; i < this.selectedTournament.races.length; i++) {
       // If dog object of the json-array is is represented by its id only we fetch the object from the db

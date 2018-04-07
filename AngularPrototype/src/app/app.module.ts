@@ -83,6 +83,8 @@ import { CoursingEvaluationComponent } from './pages/admin/manage-tournament-eva
 import {RaceService} from "./services/TournamentDogService/RaceService";
 import {MatRadioModule} from '@angular/material/radio';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { TournamentAdministrationComponent } from './pages/admin/tournament-crud-table/tournament-administration/tournament-administration.component';
+import { SetUpJudgeComponent } from './pages/admin/manage-tournaments/set-up-judge/set-up-judge.component';
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -139,7 +141,9 @@ const appRoutes: Routes = [
     SetUpCoursingComponent,
     SetUpRaceComponent,
     RaceEvaluationComponent,
-    CoursingEvaluationComponent
+    CoursingEvaluationComponent,
+    TournamentAdministrationComponent,
+    SetUpJudgeComponent
 
   ],
   imports: [

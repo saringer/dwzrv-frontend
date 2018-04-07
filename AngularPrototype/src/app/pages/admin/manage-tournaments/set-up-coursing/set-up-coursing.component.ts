@@ -40,11 +40,17 @@ export class SetUpCoursingComponent implements OnInit, OnChanges {
 
   // Check if the selected tournament or MatStepper index passed via @Input() is changed
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.currentStepperIndex == 2) {
-      this.tournamentService.getTournamentById(this.selectedTournament.id).subscribe(tournament => this.selectedTournament = tournament);
-      this.loadData();
-    }
 
+
+      this.tournamentService.getTournamentById(this.selectedTournament.id).subscribe(tournament => this.loadOnServerResponse(tournament));
+
+
+
+  }
+
+  loadOnServerResponse(tournament) {
+    this.selectedTournament = tournament;
+    this.loadData()
   }
 
   dragStart(container: string) {

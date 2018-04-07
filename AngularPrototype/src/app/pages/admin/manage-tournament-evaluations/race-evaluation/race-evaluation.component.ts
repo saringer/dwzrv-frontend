@@ -45,7 +45,7 @@ export class RaceEvaluationComponent implements OnInit {
     this.paginatorTournamentDog._intl.previousPageLabel = 'Vorherige Seite';
     this.tournaments = this.tournamentService.getTournaments();
 
-    this.raceService.getAllRacesByTournamentId(this.selected_awarding.id)
+    this.raceService.loadAllRacesByTournamentId(this.selected_awarding.id);
 
 
     this.loadDataTournamentDog();
@@ -58,7 +58,7 @@ export class RaceEvaluationComponent implements OnInit {
 
   // Check if the selected tournament passed via @Input() is changed and update the table respectively
   ngOnChanges(changes: SimpleChanges): void {
-    this.raceService.getAllRacesByTournamentId(this.selected_awarding.id)
+    this.raceService.loadAllRacesByTournamentId(this.selected_awarding.id)
   }
 
   formControl = new FormControl('', [

@@ -1,0 +1,28 @@
+<div class="row" style="padding-top: 10px;">
+
+  <div class="col-sm-3">
+    <div class="card">
+      <h5 class="card-header">Alle Richter</h5>
+      <div class="card-body" droppable (onDrop)="onAllJudgesDrop($event)">
+        <li draggable *ngFor="let item of list_all_judges | customjudgefilter:filterJudge" [dragData]="item"
+            class="list-group-item">
+          {{item.firstname + ' ' + item.lastname}}
+        </li>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card">
+      <h5 class="card-header">Teilnehmende Richter</h5>
+      <div class="card-body" droppable (onDrop)="onParticipatingJudgesDrop($event)">
+        <li draggable *ngFor="let item of list_participating_judges | customjudgefilter:filterJudge"
+            [dragData]="item"
+            class="list-group-item">{{item.firstname + ' ' + item.lastname}}
+        </li>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,43 +1,7 @@
-<mat-horizontal-stepper [linear]="true">
+<app-coursing-evaluation *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Coursing'"
+                         [selected_awarding]="selected_awarding"></app-coursing-evaluation>
 
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Veranstaltungen</ng-template>
-
-      <select matInput formControlName="firstCtrl" class="form-control" [(ngModel)]="selected_awarding"
-              style="height: auto;text-align: center;" name="selecttournaments" required>
-        <option *ngFor='let tournament of tournaments | async' [ngValue]="tournament">
-          {{tournament.title + ' (' + datetostring(tournament.date) + ')'}}
-        </option>
-      </select>
+<app-race-evaluation *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Rennen'"
+                     [selected_awarding]="selected_awarding"></app-race-evaluation>
 
 
-
-      <!-- <mat-form-field class="example-full-width">
-        <input matInput [matAutocomplete]="auto" [formControl]="formControl">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option (onSelectionChange)="test(tournament)" *ngFor="let tournament of filteredTournaments | async"
-                      [value]="tournament.title">
-            <span>{{ tournament.title }}</span>
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field> -->
-
-
-
-      <div>
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-
-  <mat-step class="content">
-    <ng-template matStepLabel>Punkte vergeben</ng-template>
-
-    <app-coursing-evaluation *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Coursing'" [selected_awarding]="selected_awarding"></app-coursing-evaluation>
-
-    <app-race-evaluation *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Rennen'" [selected_awarding]="selected_awarding"></app-race-evaluation>
-
-  </mat-step>
-</mat-horizontal-stepper>

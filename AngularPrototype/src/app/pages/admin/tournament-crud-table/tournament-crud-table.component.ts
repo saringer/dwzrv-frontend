@@ -21,12 +21,19 @@ import {SearchService} from "../../../services/SearchService/search.service";
 })
 export class TournamentCrudTableComponent implements OnInit {
 
-  @ViewChild('paginatorTournament') paginatorTournament: MatPaginator;
+
+  showDetailView: boolean = false;
+  @ViewChild('paginatorTournament') paginatorTournament: MatPaginator | null;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumsTournament = ['title', 'club','tournamenttype', 'date', 'action'];
-  dataSourceTournament: TournamentDataSource | null;
+  displayedColumsTournament = ['title', 'date', 'club','tournamenttype', 'action'];
+  dataSourceTournament: TournamentDataSource;
   id: number;
+  selectedTournament: any;
+
+  get self(): TournamentCrudTableComponent {
+    return this;
+  }
 
   constructor(private searchService: SearchService, public dialog: MatDialog, private http: HttpClient,private tournamentService: TournamentService) { }
 
@@ -37,6 +44,12 @@ export class TournamentCrudTableComponent implements OnInit {
     this.loadDataTournaments();
 
   }
+
+  openDetailView(element) {
+    this.selectedTournament = element;
+    this.showDetailView = true;
+  }
+
 
   onCreateTournamentClick(tournament: Tournament) {
     const dialogRef = this.dialog.open(TournamentDialogComponent, {
@@ -169,6 +182,7 @@ export class TournamentDataSource extends DataSource<any> {
 
   disconnect() {
   }
+
 
   /** Returns a sorted copy of the database data. */
   sortData(data: Tournament[]): Tournament[] {
