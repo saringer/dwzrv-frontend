@@ -25,6 +25,10 @@ export class RacingComponent implements OnInit {
   ngOnInit() {
   }
 
+  onYearChange(event) {
+
+  }
+
 
   displayedColumns = ['position', 'name', 'besitzer', 'rennengesamt', 'rennengewertet', 'punkte'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);

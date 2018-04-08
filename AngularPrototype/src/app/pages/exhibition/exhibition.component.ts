@@ -33,6 +33,10 @@ export class ExhibitionComponent implements OnInit {
   years: String[] = [];
   selected: string = String(new Date().getFullYear()-1);
 
+  onYearChange(event) {
+
+  }
+
   hover(element) {
    // this.whippetImg = 'assets/img/whippet.png';
   }
