@@ -8,7 +8,19 @@ import {MatTableDataSource} from "@angular/material";
 })
 export class RacingComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    var year = new Date().getFullYear();
+    var range = [];
+
+    for (var i = 0; i < 7; i++) {
+      this.years.push(
+        // String(year - i)
+        //parseInt(String(year + i).slice(2, 4));
+        String(year - i)
+        // ""
+      );
+    }
+  }
 
   ngOnInit() {
   }
@@ -18,6 +30,8 @@ export class RacingComponent implements OnInit {
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
+  years: String[] = [];
+  selected: string = String(new Date().getFullYear()-1);
 
   hover(element) {
    // this.whippetImg = 'assets/img/whippet.png';

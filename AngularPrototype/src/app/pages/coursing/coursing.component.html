@@ -82,6 +82,31 @@
            (mouseout)="unhover($event)">
     </a>
 
+
+    <a class="nav-item nav-link disabled ml-auto" id="year"   role="tab">
+      <div class="select-wrapper">
+        <select [(ngModel)]="selected" (ngModelChange)="onYearChange($event)">
+          <option *ngFor="let year of years" [ngValue]="year">
+            {{'Bestenlisten für ' + year}}
+          </option>
+        </select>
+      </div>
+    </a>
+
+    <!--  <ul class="navbar-nav ml-auto">
+        <mat-form-field class="example-full-width">
+          <mat-select [(value)]="selected">
+            <mat-option *ngFor="let year of years" [value]="year">
+              {{'Bestenlisten für ' + year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </ul>-->
+
+
+
   </div>
 </nav>
 
@@ -96,24 +121,23 @@
 
   <mat-tab label="Rüden/Hündinnen - Nationale Klasse">
   </mat-tab>
-<!--
-  <mat-tab disabled>
-    <ng-template mat-tab-label>
-      <mat-form-field class="example-full-width">
-        <mat-select [(value)]="selected">
-          <mat-option *ngFor="let year of listItems" [value]="year">
-            {{'Bestenlisten für ' + year}}
-          </mat-option>
-          {{selected}}
-        </mat-select>
-      </mat-form-field>
+  <!--
+    <mat-tab disabled>
+      <ng-template mat-tab-label>
+        <mat-form-field class="example-full-width">
+          <mat-select [(value)]="selected">
+            <mat-option *ngFor="let year of listItems" [value]="year">
+              {{'Bestenlisten für ' + year}}
+            </mat-option>
+            {{selected}}
+          </mat-select>
+        </mat-form-field>
 
 
-    </ng-template>
-  </mat-tab>
--->
+      </ng-template>
+    </mat-tab>
+  -->
 </mat-tab-group>
-
 
 
 <div class="example-container mat-elevation-z8">
@@ -121,7 +145,6 @@
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-
 
 
     <ng-container matColumnDef="total">

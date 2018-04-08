@@ -30,8 +30,8 @@ export class CoursingService {
   }
 
 
-  getAllCoursings(coursingclass: string, doggender:string): void {
-    this.http.get<Coursingresult[]>(AppSettings.coursingResultsUrl + coursingclass + '/' + doggender).subscribe(data => {
+  getAllCoursings(coursingclass: string, doggender:string, year: string): void {
+    this.http.get<Coursingresult[]>(AppSettings.coursingResultsUrl + coursingclass + '/' + doggender + '/' + year).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {

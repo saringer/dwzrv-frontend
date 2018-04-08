@@ -29,7 +29,9 @@ export class AppComponent {
     this.authService.logout();
     this.router.navigate(['/coursing']);
     // refresh data when the user goes back to start screen
-    this.coursingService.getAllCoursings('all', 'all');
+    var year = new Date().getFullYear();
+    this.coursingService.getAllCoursings('international', 'Rüde', String(year-1));
+
 
 
   }

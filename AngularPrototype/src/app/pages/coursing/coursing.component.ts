@@ -26,10 +26,9 @@ export class CoursingComponent implements OnInit {
   dataSourceCoursing: CoursingDataSource | null;
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
-  years = [];
-  selected: string = "Medium";
-  public listItems: Array<string> = [ "Small", "Medium", "Large" ];
-
+  years: String[] = [];
+  selected: string = String(new Date().getFullYear()-1);
+  tabIndex: number = 0;
 
 
 
@@ -38,10 +37,12 @@ export class CoursingComponent implements OnInit {
     var range = [];
 
     for (var i = 0; i < 7; i++) {
-      this.years.push({
-        label: year - i,
-        value: parseInt(String(year + i).slice(2, 4))
-      });
+      this.years.push(
+        // String(year - i)
+        //parseInt(String(year + i).slice(2, 4));
+        String(year - i)
+       // ""
+      );
     }
   }
 
@@ -50,6 +51,18 @@ export class CoursingComponent implements OnInit {
     this.paginatorCoursing._intl.nextPageLabel = 'Nächste Seite';
     this.paginatorCoursing._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataCoursing();
+  }
+
+  onYearChange(event) {
+    if (this.tabIndex === 0) {
+      this.coursingService.getAllCoursings('international', 'Rüde', this.selected);
+    }
+    else if (this.tabIndex === 1) {
+      this.coursingService.getAllCoursings('international', 'Hündin', this.selected);
+    }
+    else if (this.tabIndex === 2) {
+      this.coursingService.getAllCoursings('national', 'all', this.selected);
+    }
   }
 
   hover(element) {
@@ -74,13 +87,16 @@ export class CoursingComponent implements OnInit {
 
   onTabSwitch(event) {
     if (event.index === 0) {
-      this.coursingService.getAllCoursings('international', 'Rüde');
+      this.tabIndex = event.index;
+      this.coursingService.getAllCoursings('international', 'Rüde', this.selected);
     }
     else if (event.index === 1) {
-      this.coursingService.getAllCoursings('international', 'Hündin');
+      this.tabIndex = event.index;
+      this.coursingService.getAllCoursings('international', 'Hündin', this.selected);
     }
     else if (event.index === 2) {
-      this.coursingService.getAllCoursings('national', 'all');
+      this.tabIndex = event.index;
+      this.coursingService.getAllCoursings('national', 'all', this.selected);
     }
   }
 
@@ -123,8 +139,8 @@ export class CoursingDataSource extends DataSource<any> {
       this._filterChange,
       this._paginatorCoursing.page
     ];
-
-    this.coursingService.getAllCoursings('international', 'Rüde');
+    var year = new Date().getFullYear();
+    this.coursingService.getAllCoursings('international', 'Rüde', String(year-1));
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.coursingService.data.slice().filter((coursingResult: Coursingresult) => {
