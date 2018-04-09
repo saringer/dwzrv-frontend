@@ -10,7 +10,7 @@ import {FormControl, Validators} from "@angular/forms";
 })
 export class JudgeEditComponent implements OnInit {
 
-  nationalities = ['Deutschland', 'Belgien', 'Bulgarien', 'Dänemark', 'Deutschland', 'Estland', 'Finnland',
+  nationality = ['Deutschland', 'Belgien', 'Bulgarien', 'Dänemark', 'Deutschland', 'Estland', 'Finnland',
     'Frankreich', 'Griechenland', 'Irland', 'Italien', 'Kroatien', 'Lettland', 'Litauen', 'Luxemburg',
     'Malta', 'Niederlande', 'Österreich', 'Polen', 'Portugal', 'Rumänien', 'Schweden', 'Slowakei', 'Slowenien',
     'Spanien', 'Tschechische Republik', 'Ungarn', 'Vereinigtes Königreich', 'Zypern' ];

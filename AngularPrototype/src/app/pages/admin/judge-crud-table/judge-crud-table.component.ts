@@ -51,10 +51,10 @@ export class JudgeCrudTableComponent implements OnInit {
     });
   }
 
-  startEdit(id: number, firstname: string, lastname: string) {
+  startEdit(id: number, firstname: string, lastname: string, nationality: string) {
     this.id = id;
     const dialogRef = this.dialog.open(JudgeEditComponent, {
-      data: {id: id, firstname: firstname,  lastname: lastname}
+      data: {id: id, firstname: firstname,  lastname: lastname, nationality: nationality}
     });
 
     dialogRef.afterClosed().subscribe(result => {

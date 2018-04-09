@@ -20,7 +20,7 @@
       <label for="nationality"> Nationalität</label>
       <select matInput #input class="form-control" id="nationality" required [(ngModel)]="data.nationality"
               name="nationality" style="height: auto;">
-        <option *ngFor="let nationality of nationalities" [ngValue]="nationality">{{nationality}}</option>
+        <option *ngFor="let nationality of nationality" [ngValue]="nationality">{{nationality}}</option>
       </select>
     </div>
 
