@@ -80,10 +80,10 @@ export class BreederCrudTableComponent implements OnInit {
     });
   }
 
-  deleteItem(id: number, firstname: string, lastname: string) {
+  deleteItem(id: number, kennelname: string) {
     this.id = id;
     const dialogRef = this.dialog.open(BreederDeleteDialogComponent, {
-      data: {id: id, firstname: firstname, lastname: lastname}
+      data: {id: id, kennelname: kennelname}
     });
 
     dialogRef.afterClosed().subscribe(result => {

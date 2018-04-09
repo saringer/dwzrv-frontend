@@ -4,10 +4,7 @@
 
   <mat-tab-group #tabGroup color="primary" (selectedTabChange)="onTabSwitch($event)">
 
-    <!-- VEREINE ANMELDEN %%%%%
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  -->
+    <!-- VEREINE  -->
 
     <mat-tab label="Vereine">
 
@@ -15,40 +12,28 @@
 
     </mat-tab>
 
-    <!-- RICHTER ANMELDEN %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- RICHTER  -->
     <mat-tab label="Richter">
 
       <app-judge-crud-table *ngIf="tabGroup.selectedIndex === 1"></app-judge-crud-table>
 
     </mat-tab>
 
-    <!-- ZÜCHTER ANMELDEN %%%%%
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-      %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- ZÜCHTER  -->
     <mat-tab label="Zwinger">
 
       <app-breeder-crud-table *ngIf="tabGroup.selectedIndex === 2"></app-breeder-crud-table>
 
     </mat-tab>
 
-    <!-- HUNDE ANMELDEN %%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- HUNDE   -->
     <mat-tab label="Hunde">
 
       <app-dog-crud-table *ngIf="tabGroup.selectedIndex === 3"></app-dog-crud-table>
 
     </mat-tab>
 
-    <!-- BESITZER ANMELDEN %%%%%
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+    <!-- BESITZER ANMELDEN -->
     <mat-tab label="Besitzer">
 
       <app-owner-crud-table *ngIf="tabGroup.selectedIndex === 4"></app-owner-crud-table>
