@@ -1,4 +1,7 @@
 export class AppSettings {
+  /*
+  BASE PATHS, PARAMETERS ARE DEFINED IN THE RESPECTIVE SERVICES
+   */
 
    public static server: string = 'http://softwerkerei.de:';
   //public static server: string = 'http://localhost:';
@@ -7,7 +10,7 @@ export class AppSettings {
 
   // TournamentDog
   public static getTournamentDogsUrl = AppSettings.server + '8080/get/tournamentdogs/';
-  public static saveTournamentDogUrl = AppSettings.server + '8080/save/tournamentdog';
+  public static saveCoursingUrl = AppSettings.server + '8080/save/tournamentdog';
   public static saveTournamentDogRaceUrl = AppSettings.server + '8080/save/tournamentdograce';
   public static deleteTournamentDogUrl = AppSettings.server + '8080/delete/tournamentdog/';
   public static deleteTournamentDogRaceUrl = AppSettings.server + '8080/delete/tournamentdograce/';
@@ -51,8 +54,10 @@ export class AppSettings {
   public static getRacesUrl = AppSettings.server + '8080/get/races/'
   public static updateRaceDistanceUrl = AppSettings.server + '8080/update/racedistance/';
 
-  // CoursingResults
+  // Coursing
   public static coursingResultsUrl = AppSettings.server + '8080/get/coursings/'
+  public static coursingDetailsUrl = AppSettings.server + '8080/get/coursingdetails/'
+
 
 
 

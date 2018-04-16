@@ -13,7 +13,7 @@
       <ng-container matColumnDef="race">
         <mat-header-cell *matHeaderCellDef> Finallauf</mat-header-cell>
         <!--
-        COURSING WERTUNGEN
+        RENNEN WERTUNGEN
         -->
 
 
@@ -30,10 +30,31 @@
                    [value]="element.raceTime===null ? element.raceTime : element.raceTime.toString().replace('.',',')"
                    (input)="editField('raceTime', $event.target.value, element)">
           </mat-form-field>
+          <br>
           <mat-checkbox
             class="example-margin"
             [(ngModel)]="element.notfinished" (change)="checkSelected(element)">
-            zurückgezogen/disqualifiziert/nicht durch
+            nicht durch
+          </mat-checkbox>
+          <mat-checkbox
+            class="example-margin"
+            [(ngModel)]="element.withdrawn" (change)="checkSelected(element)">
+            zurückgezogen
+          </mat-checkbox>
+          <mat-checkbox
+            class="example-margin"
+            [(ngModel)]="element.notstarted" (change)="checkSelected(element)">
+            nicht angetreten
+          </mat-checkbox>
+          <mat-checkbox
+            class="example-margin"
+            [(ngModel)]="element.disqualified" (change)="checkSelected(element)">
+            disqualifiziert
+          </mat-checkbox>
+          <mat-checkbox
+            class="example-margin"
+            [(ngModel)]="element.injured" (change)="checkSelected(element)">
+            verletzt
           </mat-checkbox>
         </mat-cell>
 

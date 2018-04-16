@@ -40,7 +40,7 @@ export class TournamentDogService {
 
 
 
-  getAllTournamentDogCoursingsByTournamentId(tournament_id): void {
+  getAllCoursingsByTournamentId(tournament_id): void {
     this.http.get<Coursing[]>(AppSettings.getTournamentDogsUrl + tournament_id).subscribe(data => {
         this.dataChange.next(data);
       },
@@ -52,9 +52,9 @@ export class TournamentDogService {
 
   // Add Method
 
-  addTournamentDog (tournamentdog: Coursing): void {
-    const req = this.http.post(AppSettings.saveTournamentDogUrl, tournamentdog);
-    req.subscribe(tournamentdog => this.dialogData = tournamentdog);  }
+  addTournamentDog (coursing: Coursing): void {
+    const req = this.http.post(AppSettings.saveCoursingUrl, coursing);
+    req.subscribe(coursing => this.dialogData = coursing);  }
 
 
 

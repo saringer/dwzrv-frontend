@@ -42,7 +42,7 @@ export class CoursingEvaluationComponent implements OnInit {
     this.paginatorTournamentDog._intl.nextPageLabel = 'Nächste Seite';
     this.paginatorTournamentDog._intl.previousPageLabel = 'Vorherige Seite';
 
-    this.tournamentDogService.getAllTournamentDogCoursingsByTournamentId(this.selected_awarding.id)
+    this.tournamentDogService.getAllCoursingsByTournamentId(this.selected_awarding.id)
 
     this.loadDataTournamentDog();
 
@@ -54,7 +54,7 @@ export class CoursingEvaluationComponent implements OnInit {
 
   // Check if the selected tournament passed via @Input() is changed and update the table respectively
   ngOnChanges(changes: SimpleChanges): void {
-    this.tournamentDogService.getAllTournamentDogCoursingsByTournamentId(this.selected_awarding.id)
+    this.tournamentDogService.getAllCoursingsByTournamentId(this.selected_awarding.id)
   }
 
   formControl = new FormControl('', [
@@ -62,9 +62,14 @@ export class CoursingEvaluationComponent implements OnInit {
     // Validators.email,
   ]);
 
+  checkSelected(el) {
+    let idx = this.dataSourceTournamentDog.renderedData.findIndex(ele => el.dogname == ele.dogname);
+    this.tournamentDogService.addTournamentDog(this.dataSourceTournamentDog.renderedData[idx]);
+  }
+
 
   editField(field: string, editValue: string, el: any) {
-    editValue = editValue.replace(',','.');
+    editValue = editValue.replace(',', '.');
     if (editValue == null) {
       editValue = '0';
     }
@@ -183,7 +188,6 @@ export class TournamentDogDataSource extends DataSource<any> {
       return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
     });
   }
-
 
 
 }

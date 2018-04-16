@@ -85,7 +85,7 @@
 
     <a class="nav-item nav-link disabled ml-auto" id="year"   role="tab">
       <div class="select-wrapper">
-        <select [(ngModel)]="selected" (ngModelChange)="onYearChange($event)">
+        <select [(ngModel)]="selectedYear" (ngModelChange)="onYearChange($event)">
           <option *ngFor="let year of years" [ngValue]="year">
             {{'Bestenlisten für ' + year}}
           </option>
@@ -159,7 +159,11 @@
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dogname}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        <a  (click)="openCoursingDetailView(element,selectedYear)" style="color: #0088cc; cursor: pointer; text-decoration: underline">{{element.dogname}}</a>
+
+
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="besitzer">

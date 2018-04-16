@@ -6,6 +6,10 @@ export class Race {
   public points: number;
   public raceTime: string;
   public notfinished: boolean = false;
+  public disqualified: boolean = false;
+  public injured: boolean = false;
+  public withdrawn: boolean = false;
+  public notstarted: boolean = false;
   public dogname: string;
 
 

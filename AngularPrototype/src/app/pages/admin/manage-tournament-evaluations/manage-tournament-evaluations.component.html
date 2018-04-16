@@ -1,7 +1,20 @@
+<!--
+<app-coursing-evaluation-table
+  *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Coursing'" [path]="'http://softwerkerei.de:8080/get/tournamentdogs/' + selected_awarding.id">
+
+</app-coursing-evaluation-table>
+-->
+
+
+
 <app-coursing-evaluation *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Coursing'"
                          [selected_awarding]="selected_awarding"></app-coursing-evaluation>
 
+
 <app-race-evaluation *ngIf="selected_awarding != null && selected_awarding.tournamenttype == 'Rennen'"
                      [selected_awarding]="selected_awarding"></app-race-evaluation>
+
+
+
 
 

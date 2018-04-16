@@ -26,7 +26,7 @@ export class TournamentCrudTableComponent implements OnInit {
   @ViewChild('paginatorTournament') paginatorTournament: MatPaginator | null;
   @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumsTournament = ['title', 'date', 'club','tournamenttype', 'action'];
+  displayedColumsTournament = ['title', 'date', 'club','tournamenttype', 'double_weighted', 'action'];
   dataSourceTournament: TournamentDataSource;
   id: number;
   selectedTournament: any;
@@ -191,8 +191,8 @@ export class TournamentDataSource extends DataSource<any> {
     }
 
     return data.sort((a, b) => {
-      let propertyA: number | string = '';
-      let propertyB: number | string = '';
+      let propertyA: boolean | number | string = '';
+      let propertyB: boolean | number | string = '';
 
       switch (this._sort.active) {
         case 'title':
@@ -203,6 +203,9 @@ export class TournamentDataSource extends DataSource<any> {
           break;
         case 'tournamenttype':
           [propertyA, propertyB] = [a.tournamenttype.toLowerCase(), b.tournamenttype.toLowerCase()];
+          break;
+        case 'double_weighted':
+          [propertyA, propertyB] = [a.double_weighted, b.double_weighted];
           break;
         case 'date':
           [propertyA, propertyB] = [a.date.toString(), b.date.toString()];

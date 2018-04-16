@@ -85,6 +85,11 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { TournamentAdministrationComponent } from './pages/admin/tournament-crud-table/tournament-administration/tournament-administration.component';
 import { SetUpJudgeComponent } from './pages/admin/manage-tournaments/set-up-judge/set-up-judge.component';
+import { CoursingEvaluationTableComponent } from './pages/admin/manage-tournament-evaluations/coursing-evaluation/coursing-evaluation-table/coursing-evaluation-table.component';
+import {ApiService} from "./services/DynamicApiService/api.service";
+import { CoursingDetailDialogComponent } from './pages/coursing/dialogs/coursing-detail-dialog/coursing-detail-dialog.component';
+import { CoursingDetailsTableComponent } from './pages/coursing/coursing-details-table/coursing-details-table.component';
+import {CoursingDetailService} from "./services/CoursingService/coursing.detail.service";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -143,7 +148,10 @@ const appRoutes: Routes = [
     RaceEvaluationComponent,
     CoursingEvaluationComponent,
     TournamentAdministrationComponent,
-    SetUpJudgeComponent
+    SetUpJudgeComponent,
+    CoursingEvaluationTableComponent,
+    CoursingDetailDialogComponent,
+    CoursingDetailsTableComponent
 
   ],
   imports: [
@@ -183,8 +191,8 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  entryComponents: [ CoursingDetailDialogComponent ,TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
+  providers: [CoursingDetailService ,ApiService ,RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

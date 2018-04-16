@@ -1,5 +1,5 @@
 import {Component, ElementRef, Injectable, Input, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorIntl, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatPaginator, MatPaginatorIntl, MatSort, MatTableDataSource} from '@angular/material';
 import {Club} from "../../data-models/club";
 import {ClubService} from "../../services/ClubService/club.service";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
@@ -10,6 +10,8 @@ import {CoursingService} from "../../services/CoursingService/coursing.service";
 import {Coursingresult} from "../../data-models/coursingresult";
 import {ClubDataSource} from "../admin/club-crud-table/club-crud-table.component";
 import {SearchService} from "../../services/SearchService/search.service";
+import {TournamentDeleteDialogComponent} from "../admin/dialogs/tournament-dialog/tournament-delete-dialog/tournament-delete-dialog.component";
+import {CoursingDetailDialogComponent} from "./dialogs/coursing-detail-dialog/coursing-detail-dialog.component";
 
 
 @Component({
@@ -27,24 +29,28 @@ export class CoursingComponent implements OnInit {
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
   years: String[] = [];
-  selected: string = String(new Date().getFullYear()-1);
+  selectedYear: string = String(new Date().getFullYear()-1);
   tabIndex: number = 0;
 
 
 
-  constructor(private searchService: SearchService, private coursingService: CoursingService, elementRef: ElementRef) {
+  constructor(private dialog: MatDialog, private searchService: SearchService, private coursingService: CoursingService, elementRef: ElementRef) {
     var year = new Date().getFullYear();
     var range = [];
 
     for (var i = 0; i < 7; i++) {
       this.years.push(
-        // String(year - i)
-        //parseInt(String(year + i).slice(2, 4));
-        String(year - i)
-       // ""
+        String((year-1) - i)
       );
     }
   }
+
+  openCoursingDetailView(element, year) {
+    this.dialog.open(CoursingDetailDialogComponent, {
+      data:{element, year}});
+
+  }
+
 
   ngOnInit() {
     this.paginatorCoursing._intl.itemsPerPageLabel = 'Pro Seite: ';
@@ -55,13 +61,13 @@ export class CoursingComponent implements OnInit {
 
   onYearChange(event) {
     if (this.tabIndex === 0) {
-      this.coursingService.getAllCoursings('international', 'Rüde', this.selected);
+      this.coursingService.getAllCoursings('international', 'Rüde', this.selectedYear);
     }
     else if (this.tabIndex === 1) {
-      this.coursingService.getAllCoursings('international', 'Hündin', this.selected);
+      this.coursingService.getAllCoursings('international', 'Hündin', this.selectedYear);
     }
     else if (this.tabIndex === 2) {
-      this.coursingService.getAllCoursings('national', 'all', this.selected);
+      this.coursingService.getAllCoursings('national', 'all', this.selectedYear);
     }
   }
 
@@ -88,15 +94,15 @@ export class CoursingComponent implements OnInit {
   onTabSwitch(event) {
     if (event.index === 0) {
       this.tabIndex = event.index;
-      this.coursingService.getAllCoursings('international', 'Rüde', this.selected);
+      this.coursingService.getAllCoursings('international', 'Rüde', this.selectedYear);
     }
     else if (event.index === 1) {
       this.tabIndex = event.index;
-      this.coursingService.getAllCoursings('international', 'Hündin', this.selected);
+      this.coursingService.getAllCoursings('international', 'Hündin', this.selectedYear);
     }
     else if (event.index === 2) {
       this.tabIndex = event.index;
-      this.coursingService.getAllCoursings('national', 'all', this.selected);
+      this.coursingService.getAllCoursings('national', 'all', this.selectedYear);
     }
   }
 

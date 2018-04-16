@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Pipe, PipeTransform} from '@angular/core';
 import {JudgeEditComponent} from "../../judge-dialog/judge-edit-dialog/judge-edit.component";
 import {FormControl, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
@@ -16,6 +16,8 @@ import {AppSettings} from "../../../../../appsettings";
 })
 export class DogEditDialogComponent implements OnInit {
 
+
+
   sex = ['Rüde', 'Hündin'];
   race = ['Afghanischer Windhund', 'Azawakh', 'Barsoi', 'Chart Polski', 'Deerhound', 'Greyhound', 'Galgo Español', 'Irischer Wolfshund',
     'Italienisches Windspiel', 'Magyar agár', 'Saluki', 'Sloughi', 'Silken Windsprite', 'Whippet'];
@@ -30,6 +32,10 @@ export class DogEditDialogComponent implements OnInit {
   }
 
   log(val) { console.log(val); }
+
+  formatDate(date): Date   {
+    return new Date(date);
+  }
 
   compareBreeders(c1: Breeder, c2: Breeder): boolean {
 
@@ -77,3 +83,5 @@ export class DogEditDialogComponent implements OnInit {
   }
 
 }
+
+

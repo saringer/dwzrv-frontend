@@ -16,7 +16,7 @@ export class ExhibitionComponent implements OnInit {
       this.years.push(
         // String(year - i)
         //parseInt(String(year + i).slice(2, 4));
-        String(year - i)
+        String((year-1) - i)
         // ""
       );
     }

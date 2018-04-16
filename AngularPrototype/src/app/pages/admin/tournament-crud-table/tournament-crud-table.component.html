@@ -14,8 +14,10 @@
 
      <!-- <button mat-button="link" color="accent" (click)="openDetailView(element)">
         {{element.title}}
-      </button> -->
-      <a href="javascript:openDetailView(element)" (click)="openDetailView(element)">{{element.title}}</a>
+      </button>
+      href="javascript:openDetailView(element)"
+      -->
+      <a  (click)="openDetailView(element)" style="color: #0088cc; cursor: pointer; text-decoration: underline">{{element.title}}</a>
 
     </mat-cell>
   </ng-container>
@@ -28,6 +30,11 @@
   <ng-container matColumnDef="tournamenttype">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Typ der Veranstaltung</mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.tournamenttype}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="double_weighted">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Veranstaltung zählt doppelt</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.double_weighted == true ? 'Ja' : 'Nein'}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="date">

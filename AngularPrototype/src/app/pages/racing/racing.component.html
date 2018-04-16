@@ -84,7 +84,7 @@
 
     <a class="nav-item nav-link disabled ml-auto" id="year"   role="tab">
       <div class="select-wrapper">
-        <select [(ngModel)]="selected" (ngModelChange)="onYearChange($event)">
+        <select disabled [(ngModel)]="selected" (ngModelChange)="onYearChange($event)">
           <option *ngFor="let year of years" [ngValue]="year">
             {{'Bestenlisten für ' + year}}
           </option>

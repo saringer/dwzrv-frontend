@@ -7,7 +7,7 @@
   width: 100%;
   max-height: 100%;
   overflow: auto;
-  margin-top: 56px;
+  //margin-top: 56px;
   /*top: 56px;
   bottom: 0px;*/
 
@@ -48,6 +48,69 @@
   font-style: italic;
 }
 
+.nav-tabs > a {
+}
+
+.nav-tabs{
+  background-color:grey;
+  text-align: center;
+}
+
+.nav-tabs > li > a{
+  border: medium none;
+}
 
 
+.nav-tabs > li > a:hover{
+  background-color: #303136 !important;
+  border: medium none;
+  border-radius: 0;
+  color:white;
+}
+
+
+.nav-admin {
+  width: 100%;
+  margin-top: 62px;
+
+}
+
+.nav-tournament-type {
+  width: 100%;
+  margin-top: 1px;
+
+}
+/*
+https://www.clickstorm.de/blog/dropdown-css3/ */
+select {
+// -moz-appearance: none;
+// -webkit-appearance: none;
+//appearance: none;
+  border: none;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  background: url(/src/assets/img/562A17-0.8.png) repeat-x;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+select option {
+  color: #666;
+}
+select:focus::-ms-value {
+  background-color: transparent;
+}
+
+[disabled] { /* Text and background colour, medium red on light yellow */
+  color:#a4a5a0;
+  background-color:grey;
+}
 

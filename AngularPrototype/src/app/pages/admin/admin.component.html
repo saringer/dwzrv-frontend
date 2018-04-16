@@ -1,4 +1,18 @@
+<nav class="nav-admin">
+  <div class="nav nav-tabs" id="nav-tab-admin" role="tablist">
 
+    <a class="nav-item nav-link disabled ml-auto" id="year"   role="tab">
+      <div class="select-wrapper">
+        <select [disabled]="yearSelectionDisabled" [(ngModel)]="selectedYear" (ngModelChange)="onYearChange($event)">
+          <option *ngFor="let year of years" [ngValue]="year">
+            {{'Wertungsübersicht für ' + year}}
+          </option>
+        </select>
+      </div>
+    </a>
+
+  </div>
+</nav>
 
 <div class="example-container mat-elevation-z8">
 
