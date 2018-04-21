@@ -86,7 +86,7 @@ export class DogCrudTableComponent implements OnInit {
       if (result === 1) {
         // When using an edit things are little different, firstly we find record inside DataService by id
         const foundIndex = this.dogService.dataChange.value.findIndex(x => x.id === this.id);
-        // Then you update that record using data from dialogData (values you enetered)
+        // Then you update that record using data from dialogData (values you entered)
         this.dogService.dataChange.value[foundIndex] = this.dogService.getDialogData();
         // And lastly refresh table
         this.refreshTableDogpass();

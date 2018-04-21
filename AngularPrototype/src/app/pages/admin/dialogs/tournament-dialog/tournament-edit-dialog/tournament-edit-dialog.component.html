@@ -20,9 +20,9 @@
 
     <div class="form">
       <label for="club"> Austragender Verein</label>
-      <select [compareWith]="compareFn" matInput #input class="form-control" id="club" required [(ngModel)]="data.club"
+      <select [compareWith]="compareFn" matInput #input class="form-control" placeholder="Verein" id="club" required [(ngModel)]="data.club"
               name="club" style="height: auto;">
-        <option *ngFor="let club of clubs" [selected]="log(data)" [ngValue]="club">{{club.clubname}}</option>
+        <option *ngFor="let club of clubs" [ngValue]="club">{{club.clubname}}</option>
       </select>
     </div>
 

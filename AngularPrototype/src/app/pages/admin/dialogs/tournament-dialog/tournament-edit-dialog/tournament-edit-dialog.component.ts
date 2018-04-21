@@ -8,6 +8,7 @@ import {Club} from "../../../../../data-models/club";
 import {HttpClient} from "@angular/common/http";
 import {AppSettings} from "../../../../../appsettings";
 import {Breeder} from "../../../../../data-models/breeder";
+import {Dogowner} from "../../../../../data-models/dogowner";
 
 @Component({
   selector: 'app-tournament-edit-dialog',
@@ -31,11 +32,10 @@ export class TournamentEditDialogComponent implements OnInit {
   }
 
 
-  log(val) { console.log(val); }
-
   compareFn(c1: Club, c2: Club): boolean {
     return c1 && c2 ? c1.id === c2.id : c1 === c2;
   }
+
 
   ngOnInit() {
   }

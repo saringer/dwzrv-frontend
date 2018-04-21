@@ -71,7 +71,7 @@ export class TournamentCrudTableComponent implements OnInit {
   startEdit(id: number, title: string, tournamenttype: string, club: Club, date: Date, double_weighted: boolean) {
     this.id = id;
     const dialogRef = this.dialog.open(TournamentEditDialogComponent, {
-      data: {id: id, title: title, tournamenttype: tournamenttype,  club: Club, date: Date, double_weighted: double_weighted}
+      data: {id: id, title: title, tournamenttype: tournamenttype,  club: club, date: date, double_weighted: double_weighted}
     });
 
     dialogRef.afterClosed().subscribe(result => {
