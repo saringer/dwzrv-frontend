@@ -137,7 +137,7 @@
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <a  (click)="openRaceDetailView(element,selectedYear)" style="color: #0088cc; cursor: pointer; text-decoration: underline">{{element.dogname}}</a>
+        <a  (click)="openRaceDetailView(element, selected_race_class, selectedYear)" style="color: #0088cc; cursor: pointer; text-decoration: underline">{{element.dogname}}</a>
 
       </mat-cell>
     </ng-container>

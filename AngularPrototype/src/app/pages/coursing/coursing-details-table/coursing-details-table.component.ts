@@ -22,6 +22,7 @@ export class CoursingDetailsTableComponent implements OnInit {
   dataSourceTournament: TournamentDataSource;
   @Input() year: string;
   @Input() dog_id: number;
+  @Input() coursing_class: string;
 
   constructor(private coursingDetailService: CoursingDetailService, private searchService: SearchService) { }
 
@@ -30,7 +31,7 @@ export class CoursingDetailsTableComponent implements OnInit {
     this.paginatorTournament._intl.nextPageLabel = 'Nächste Seite';
     this.paginatorTournament._intl.previousPageLabel = 'Vorherige Seite';
     this.loadDataTournaments();
-    this.coursingDetailService.getAllCoursingDetailsForDog(this.dog_id,this.year);
+    this.coursingDetailService.getAllCoursingDetailsForDog(this.dog_id, this.coursing_class, this.year);
 
   }
 

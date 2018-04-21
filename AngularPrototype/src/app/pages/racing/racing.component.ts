@@ -28,6 +28,7 @@ export class RacingComponent implements OnInit {
   selected: string = String(new Date().getFullYear()-1);
   tabIndex: number = 0;
   selectedYear: string = String(new Date().getFullYear()-1);
+  selected_race_class: string = 'a';
 
 
 
@@ -95,9 +96,9 @@ export class RacingComponent implements OnInit {
 
   }
 
-  openRaceDetailView(element, year) {
+  openRaceDetailView(element, selected_race_class, year) {
     this.dialog.open(RaceDetailDialogComponent, {
-      data:{element, year}});
+      data:{element, selected_race_class, year}});
 
   }
 
@@ -113,34 +114,42 @@ export class RacingComponent implements OnInit {
 
     if (event.index === 0) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'a';
       this.raceRankingService.getAllRaces('a', 'Rüde', this.selectedYear);
     }
     else if (event.index === 1) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'a';
       this.raceRankingService.getAllRaces('a', 'Hündin', this.selectedYear);
     }
     else if (event.index === 2) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'elementary';
       this.raceRankingService.getAllRaces('elementary', 'Rüde', this.selectedYear);
     }
     else if (event.index === 3) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'elementary';
       this.raceRankingService.getAllRaces('elementary', 'Hündin', this.selectedYear);
     }
     else if (event.index === 4) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'national';
       this.raceRankingService.getAllRaces('national', 'Rüde', this.selectedYear);
     }
     else if (event.index === 5) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'national';
       this.raceRankingService.getAllRaces('national', 'Hündin', this.selectedYear);
     }
     else if (event.index === 6) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'senior';
       this.raceRankingService.getAllRaces('senior', 'Rüde', this.selectedYear);
     }
     else if (event.index === 7) {
       this.tabIndex = event.index;
+      this.selected_race_class = 'senior';
       this.raceRankingService.getAllRaces('senior', 'Hündin', this.selectedYear);
     }
 

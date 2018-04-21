@@ -29,8 +29,9 @@ export class CoursingDetailService {
     return this.dialogData;
   }
 
-  getAllCoursingDetailsForDog(dog_id: number, year: string): void {
-    this.http.get<Coursingdetail[]>(AppSettings.coursingDetailsUrl + dog_id + '/' + year ).subscribe(data => {
+  getAllCoursingDetailsForDog(dog_id: number, coursing_class: string, year: string): void {
+    console.log(AppSettings.coursingDetailsUrl + dog_id + '/' + coursing_class + '/' +  year);
+    this.http.get<Coursingdetail[]>(AppSettings.coursingDetailsUrl + dog_id + '/' + coursing_class + '/' +  year ).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {

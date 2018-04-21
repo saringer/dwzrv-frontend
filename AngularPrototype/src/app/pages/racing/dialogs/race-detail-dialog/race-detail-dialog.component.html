@@ -2,7 +2,7 @@
   <h3 mat-dialog-title>{{data.element.dogname + ' - Rennen ' + data.year}}</h3>
   <div mat-dialog-content>
 
-    <app-race-details-table [dog_id]="data.element.dog_id" [year]="data.year"></app-race-details-table>
+    <app-race-details-table [dog_id]="data.element.dog_id" [race_class]="data.selected_race_class" [year]="data.year"></app-race-details-table>
 
   </div>
 

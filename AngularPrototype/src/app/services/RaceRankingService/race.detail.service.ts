@@ -27,8 +27,9 @@ export class RaceDetailService {
     return this.dialogData;
   }
 
-  getAllRaceDetailsForDog(dog_id: number, year: string): void {
-    this.http.get<Racedetail[]>(AppSettings.raceDetailsUrl + dog_id + '/' + year ).subscribe(data => {
+  getAllRaceDetailsForDog(dog_id: number, race_class: string, year: string): void {
+    console.log(AppSettings.raceDetailsUrl + dog_id + '/' + race_class + '/' +  year);
+    this.http.get<Racedetail[]>(AppSettings.raceDetailsUrl + dog_id + '/' + race_class + '/' +  year ).subscribe(data => {
         this.dataChange.next(data);
       },
       (error: HttpErrorResponse) => {

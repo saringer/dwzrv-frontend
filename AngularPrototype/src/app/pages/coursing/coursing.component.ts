@@ -30,6 +30,7 @@ export class CoursingComponent implements OnInit {
   whippetImgColored = 'assets/img/whippet.png';
   years: String[] = [];
   selectedYear: string = String(new Date().getFullYear()-1);
+  selected_coursing_class: string = 'international';
   tabIndex: number = 0;
 
 
@@ -45,9 +46,9 @@ export class CoursingComponent implements OnInit {
     }
   }
 
-  openCoursingDetailView(element, year) {
+  openCoursingDetailView(element, selected_coursing_class, year) {
     this.dialog.open(CoursingDetailDialogComponent, {
-      data:{element, year}});
+      data:{element, selected_coursing_class, year}});
 
   }
 
@@ -94,14 +95,17 @@ export class CoursingComponent implements OnInit {
   onTabSwitch(event) {
     if (event.index === 0) {
       this.tabIndex = event.index;
+      this.selected_coursing_class = 'international';
       this.coursingService.getAllCoursings('international', 'Rüde', this.selectedYear);
     }
     else if (event.index === 1) {
       this.tabIndex = event.index;
+      this.selected_coursing_class = 'international';
       this.coursingService.getAllCoursings('international', 'Hündin', this.selectedYear);
     }
     else if (event.index === 2) {
       this.tabIndex = event.index;
+      this.selected_coursing_class = 'national';
       this.coursingService.getAllCoursings('national', 'all', this.selectedYear);
     }
   }
