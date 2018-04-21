@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {AppSettings} from "../../appsettings";
-import {Coursing} from "../../data-models/coursing";
 import {Race} from "../../data-models/race";
-import {Tournament} from "../../data-models/tournament";
+
 
 @Injectable()
 export class RaceService {
@@ -78,6 +77,7 @@ export class RaceService {
     return this.http.get<Race[]>(AppSettings.getRacesUrl + tournament_id);
     //return this.http.get<Tournament>(AppSettings.getTournamentUrl + tournament_id);
   }
+
 
 
 }

@@ -97,54 +97,69 @@
 
 <mat-tab-group #tabGroup color="primary" (selectedTabChange)="onTabSwitch($event)">
 
-  <mat-tab label="A-Klasse">
+  <mat-tab label="Rüden - A-Klasse">
   </mat-tab>
 
-  <mat-tab label="Grundklasse">
+  <mat-tab label="Hündinnen - A-Klasse">
   </mat-tab>
 
-  <mat-tab label="Sprinter/Nationale Klasse">
+  <mat-tab label="Rüden - Grundklasse">
   </mat-tab>
 
-  <mat-tab label="Seniorenklasse">
+  <mat-tab label="Hündinnen - Grundklasse">
+</mat-tab>
+
+  <mat-tab label="Rüden - Sprinter/Nationale Klasse">
+</mat-tab>
+
+  <mat-tab label="Hündinnen - Sprinter/Nationale Klasse">
+  </mat-tab>
+
+  <mat-tab label="Rüden - Seniorenklasse">
+  </mat-tab>
+
+  <mat-tab label="Hündinnen - Seniorenklasse">
   </mat-tab>
 
 </mat-tab-group>
 
 <div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource">
+  <mat-table #table [dataSource]="dataSourceRace" matSort>
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
     <ng-container matColumnDef="position">
       <mat-header-cell *matHeaderCellDef> Platz</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.ranking}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        <a  (click)="openRaceDetailView(element,selectedYear)" style="color: #0088cc; cursor: pointer; text-decoration: underline">{{element.dogname}}</a>
+
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="besitzer">
       <mat-header-cell *matHeaderCellDef> Besitzer</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.besitzer}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.ownername}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="rennengesamt">
-      <mat-header-cell *matHeaderCellDef> Rennen gesamt</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.rennengesamt}}</mat-cell>
+    <ng-container matColumnDef="gesamtteilnahme">
+      <mat-header-cell *matHeaderCellDef> Gesamtteilnahme</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalParticipations}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="rennengewertet">
-      <mat-header-cell *matHeaderCellDef> Rennen gewertet</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.rennengewertet}}</mat-cell>
+    <ng-container matColumnDef="inwertung">
+      <mat-header-cell *matHeaderCellDef> In Wertung</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.maxNoRatings}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="punkte">
       <mat-header-cell *matHeaderCellDef> Punkte - 5 beste Rennen</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.punkte}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalPoints}}</mat-cell>
     </ng-container>
 
 
@@ -152,6 +167,12 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
+  <mat-paginator #paginatorRace
+                 [length]="dataSourceRace.filteredData.length"
+                 [pageIndex]="0"
+                 [pageSize]="20"
+                 [pageSizeOptions]="[10, 20, 50, 100]">
+  </mat-paginator>
 
 </div>
 

@@ -34,7 +34,7 @@ export class CoursingComponent implements OnInit {
 
 
 
-  constructor(private dialog: MatDialog, private searchService: SearchService, private coursingService: CoursingService, elementRef: ElementRef) {
+  constructor(private dialog: MatDialog, private searchService: SearchService, private coursingService: CoursingService) {
     var year = new Date().getFullYear();
     var range = [];
 

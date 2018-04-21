@@ -90,6 +90,10 @@ import {ApiService} from "./services/DynamicApiService/api.service";
 import { CoursingDetailDialogComponent } from './pages/coursing/dialogs/coursing-detail-dialog/coursing-detail-dialog.component';
 import { CoursingDetailsTableComponent } from './pages/coursing/coursing-details-table/coursing-details-table.component';
 import {CoursingDetailService} from "./services/CoursingService/coursing.detail.service";
+import {RaceRankingService} from "./services/RaceRankingService/race-ranking.service";
+import { RaceDetailDialogComponent } from './pages/racing/dialogs/race-detail-dialog/race-detail-dialog.component';
+import {RaceDetailService} from "./services/RaceRankingService/race.detail.service";
+import {RaceDetailsTableComponent} from "./pages/racing/race-details-table/race-details-table.component";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -151,7 +155,9 @@ const appRoutes: Routes = [
     SetUpJudgeComponent,
     CoursingEvaluationTableComponent,
     CoursingDetailDialogComponent,
-    CoursingDetailsTableComponent
+    CoursingDetailsTableComponent,
+    RaceDetailDialogComponent,
+    RaceDetailsTableComponent
 
   ],
   imports: [
@@ -191,8 +197,8 @@ const appRoutes: Routes = [
 
 
   ],
-  entryComponents: [ CoursingDetailDialogComponent ,TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [CoursingDetailService ,ApiService ,RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  entryComponents: [ RaceDetailDialogComponent, CoursingDetailDialogComponent ,TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
+  providers: [RaceDetailService, RaceRankingService, CoursingDetailService ,ApiService ,RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

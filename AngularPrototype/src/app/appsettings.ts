@@ -53,6 +53,9 @@ export class AppSettings {
   // Race
   public static getRacesUrl = AppSettings.server + '8080/get/races/'
   public static updateRaceDistanceUrl = AppSettings.server + '8080/update/racedistance/';
+  public static raceRankingResultsUrl = AppSettings.server + '8080/get/races/'
+  public static raceDetailsUrl = AppSettings.server + '8080/get/racedetails/'
+
 
   // Coursing
   public static coursingResultsUrl = AppSettings.server + '8080/get/coursings/'

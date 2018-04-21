@@ -1,0 +1,67 @@
+
+
+<mat-table #table [dataSource]="dataSourceTournament" matSort>
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Name der Veranstaltung</mat-header-cell>
+    <mat-cell *matCellDef="let element">
+
+      {{element.title}}
+
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="points">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Punkte</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.points}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="double_weighted">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Veranstaltung zählt doppelt</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.double_weighted == true ? 'Ja' : 'Nein'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="notstarted">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Nicht angetreten</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.notstarted == true ? 'Ja' : 'Nein'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="notfinished">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Nicht durch</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.notfinished == true ? 'Ja' : 'Nein'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="withdrawn">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Zurückgezogen</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.withdrawn == true ? 'Ja' : 'Nein'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="disqualified">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Disqualifiziert</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.disqualified == true ? 'Ja' : 'Nein'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="injured">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Verletzt</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.injured == true ? 'Ja' : 'Nein'}}</mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef=" displayedColumsTournament"></mat-header-row>
+  <mat-row *matRowDef="let row; columns:  displayedColumsTournament;"></mat-row>
+
+
+</mat-table>
+
+<mat-paginator #paginatorTournament
+               [length]="dataSourceTournament.filteredData.length"
+               [pageIndex]="0"
+               [pageSize]="20"
+               [pageSizeOptions]="[10, 20, 50, 100]">
+</mat-paginator>
+
+
+
