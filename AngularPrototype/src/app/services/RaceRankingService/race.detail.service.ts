@@ -28,7 +28,6 @@ export class RaceDetailService {
   }
 
   getAllRaceDetailsForDog(dog_id: number, race_class: string, year: string): void {
-    console.log(AppSettings.raceDetailsUrl + dog_id + '/' + race_class + '/' +  year);
     this.http.get<Racedetail[]>(AppSettings.raceDetailsUrl + dog_id + '/' + race_class + '/' +  year ).subscribe(data => {
         this.dataChange.next(data);
       },
