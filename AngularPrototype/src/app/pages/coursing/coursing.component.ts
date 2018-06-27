@@ -39,9 +39,11 @@ export class CoursingComponent implements OnInit {
     var year = new Date().getFullYear();
     var range = [];
 
-    for (var i = 0; i < 7; i++) {
+    // i>100 dient hier nur als Sicherheitsanker falls aus irgendeinem Grund das Jahr nicht richtig ausgelesen wird um
+    // eine Endlosschleife zu vermeiden
+    for (var i = 0; ((year) - i) != 2010 || i > 100; i++) {
       this.years.push(
-        String((year-1) - i)
+        String((year) - i)
       );
     }
   }

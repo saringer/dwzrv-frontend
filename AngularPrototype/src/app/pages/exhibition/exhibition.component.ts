@@ -12,11 +12,11 @@ export class ExhibitionComponent implements OnInit {
     var year = new Date().getFullYear();
     var range = [];
 
-    for (var i = 0; i < 7; i++) {
+    for (var i = 0; ((year) - i) != 2010 || i > 100; i++) {
       this.years.push(
         // String(year - i)
         //parseInt(String(year + i).slice(2, 4));
-        String((year-1) - i)
+        String((year) - i)
         // ""
       );
     }
