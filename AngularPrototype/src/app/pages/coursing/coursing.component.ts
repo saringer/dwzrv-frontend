@@ -12,6 +12,7 @@ import {ClubDataSource} from "../admin/club-crud-table/club-crud-table.component
 import {SearchService} from "../../services/SearchService/search.service";
 import {TournamentDeleteDialogComponent} from "../admin/dialogs/tournament-dialog/tournament-delete-dialog/tournament-delete-dialog.component";
 import {CoursingDetailDialogComponent} from "./dialogs/coursing-detail-dialog/coursing-detail-dialog.component";
+import {DataService} from "../../services/DataService/dataservice";
 
 
 @Component({
@@ -29,13 +30,12 @@ export class CoursingComponent implements OnInit {
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
   years: String[] = [];
-  selectedYear: string = String(new Date().getFullYear()-1);
+  selectedYear: string = this.dataService.selectedYear;
   selected_coursing_class: string = 'international';
   tabIndex: number = 0;
 
 
-
-  constructor(private dialog: MatDialog, private searchService: SearchService, private coursingService: CoursingService) {
+  constructor(private dialog: MatDialog, private searchService: SearchService, private coursingService: CoursingService, private dataService: DataService) {
     var year = new Date().getFullYear();
     var range = [];
 
@@ -50,7 +50,8 @@ export class CoursingComponent implements OnInit {
 
   openCoursingDetailView(element, selected_coursing_class, year) {
     this.dialog.open(CoursingDetailDialogComponent, {
-      data:{element, selected_coursing_class, year}});
+      data: {element, selected_coursing_class, year}
+    });
 
   }
 
@@ -64,12 +65,13 @@ export class CoursingComponent implements OnInit {
 
   onYearChange(event) {
     if (this.tabIndex === 0) {
+      this.dataService.selectedYear = this.selectedYear;
       this.coursingService.getAllCoursings('international', 'Rüde', this.selectedYear);
-    }
-    else if (this.tabIndex === 1) {
+    } else if (this.tabIndex === 1) {
+      this.dataService.selectedYear = this.selectedYear;
       this.coursingService.getAllCoursings('international', 'Hündin', this.selectedYear);
-    }
-    else if (this.tabIndex === 2) {
+    } else if (this.tabIndex === 2) {
+      this.dataService.selectedYear = this.selectedYear;
       this.coursingService.getAllCoursings('national', 'all', this.selectedYear);
     }
   }
@@ -79,16 +81,15 @@ export class CoursingComponent implements OnInit {
   }
 
   unhover(element) {
-   // this.whippetImg = 'assets/img/whippet_grau.png';
+    // this.whippetImg = 'assets/img/whippet_grau.png';
   }
 
   public loadDataCoursing() {
 
-    this.dataSourceCoursing = new CoursingDataSource(this.coursingService, this.paginatorCoursing, this.sort);
+    this.dataSourceCoursing = new CoursingDataSource(this.coursingService, this.paginatorCoursing, this.sort, this.dataService);
     if (!this.dataSourceCoursing) {
       return;
-    }
-    else {
+    } else {
       this.searchService.currentMessage.subscribe(message => this.dataSourceCoursing.filter = message);
     }
 
@@ -99,13 +100,11 @@ export class CoursingComponent implements OnInit {
       this.tabIndex = event.index;
       this.selected_coursing_class = 'international';
       this.coursingService.getAllCoursings('international', 'Rüde', this.selectedYear);
-    }
-    else if (event.index === 1) {
+    } else if (event.index === 1) {
       this.tabIndex = event.index;
       this.selected_coursing_class = 'international';
       this.coursingService.getAllCoursings('international', 'Hündin', this.selectedYear);
-    }
-    else if (event.index === 2) {
+    } else if (event.index === 2) {
       this.tabIndex = event.index;
       this.selected_coursing_class = 'national';
       this.coursingService.getAllCoursings('national', 'all', this.selectedYear);
@@ -113,10 +112,10 @@ export class CoursingComponent implements OnInit {
   }
 
   replaceDotWithComma(el: string): string {
-        console.log(el);
-        el = el.replace('.', ',');
-        console.log(el);
-        return el.replace(/./g, ',')
+    console.log(el);
+    el = el.replace('.', ',');
+    console.log(el);
+    return el.replace(/./g, ',')
   }
 
 }
@@ -138,7 +137,8 @@ export class CoursingDataSource extends DataSource<any> {
 
   constructor(private coursingService: CoursingService,
               public _paginatorCoursing: MatPaginator,
-              private _sort: MatSort) {
+              private _sort: MatSort,
+              private dataService: DataService) {
     super();
     this._filterChange.subscribe(() => this._paginatorCoursing.pageIndex = 0);
 
@@ -151,8 +151,7 @@ export class CoursingDataSource extends DataSource<any> {
       this._filterChange,
       this._paginatorCoursing.page
     ];
-    var year = new Date().getFullYear();
-    this.coursingService.getAllCoursings('international', 'Rüde', String(year-1));
+    this.coursingService.getAllCoursings('international', 'Rüde', this.dataService.selectedYear);
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.coursingService.data.slice().filter((coursingResult: Coursingresult) => {

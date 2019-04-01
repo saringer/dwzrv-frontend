@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material";
+import {DataService} from "../../services/DataService/dataservice";
 
 @Component({
   selector: 'app-exhibition',
@@ -8,7 +9,7 @@ import {MatTableDataSource} from "@angular/material";
 })
 export class ExhibitionComponent implements OnInit {
 
-  constructor() {
+  constructor(private dataService: DataService) {
     var year = new Date().getFullYear();
     var range = [];
 
@@ -31,10 +32,10 @@ export class ExhibitionComponent implements OnInit {
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
   years: String[] = [];
-  selected: string = String(new Date().getFullYear()-1);
+  selectedYear: string = this.dataService.selectedYear;
 
   onYearChange(event) {
-
+    this.dataService.selectedYear = this.selectedYear;
   }
 
   hover(element) {

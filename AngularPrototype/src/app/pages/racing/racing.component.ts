@@ -7,6 +7,7 @@ import {SearchService} from "../../services/SearchService/search.service";
 import {Raceresult} from "../../data-models/raceresult";
 import {RaceRankingService} from "../../services/RaceRankingService/race-ranking.service";
 import {RaceDetailDialogComponent} from "./dialogs/race-detail-dialog/race-detail-dialog.component";
+import {DataService} from "../../services/DataService/dataservice";
 
 @Component({
   selector: 'app-racing',
@@ -25,15 +26,14 @@ export class RacingComponent implements OnInit {
   whippetImg = 'assets/img/whippet_grau.png';
   whippetImgColored = 'assets/img/whippet.png';
   years: String[] = [];
-  selected: string = String(new Date().getFullYear()-1);
   tabIndex: number = 0;
-  selectedYear: string = String(new Date().getFullYear()-1);
+  selectedYear: string = this.dataService.selectedYear;
   selected_race_class: string = 'a';
 
 
 
 
-  constructor(private dialog: MatDialog, private searchService: SearchService, private raceRankingService: RaceRankingService) {
+  constructor(private dialog: MatDialog, private searchService: SearchService, private raceRankingService: RaceRankingService, private dataService: DataService) {
     var year = new Date().getFullYear();
     var range = [];
 
@@ -54,27 +54,35 @@ export class RacingComponent implements OnInit {
   onYearChange(event) {
 
     if (this.tabIndex === 0) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('a', 'Rüde', this.selectedYear);
     }
     else if (this.tabIndex === 1) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('a', 'Hündin', this.selectedYear);
     }
     else if (this.tabIndex === 2) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('elementary', 'Rüde', this.selectedYear);
     }
     else if (this.tabIndex === 3) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('elementary', 'Hündin', this.selectedYear);
     }
     else if (this.tabIndex === 4) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('national', 'Rüde', this.selectedYear);
     }
     else if (this.tabIndex === 5) {
       this.raceRankingService.getAllRaces('national', 'Hündin', this.selectedYear);
+      this.dataService.selectedYear = this.selectedYear;
     }
     else if (this.tabIndex === 6) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('senior', 'Rüde', this.selectedYear);
     }
     else if (this.tabIndex === 7) {
+      this.dataService.selectedYear = this.selectedYear;
       this.raceRankingService.getAllRaces('senior', 'Hündin', this.selectedYear);
     }
 
@@ -83,7 +91,7 @@ export class RacingComponent implements OnInit {
 
   public loadDataRace() {
 
-    this.dataSourceRace = new RaceDataSource(this.raceRankingService, this.paginatorRace, this.sort);
+    this.dataSourceRace = new RaceDataSource(this.raceRankingService, this.paginatorRace, this.sort, this.dataService);
     if (!this.dataSourceRace) {
       return;
     }
@@ -171,7 +179,8 @@ export class RaceDataSource extends DataSource<any> {
 
   constructor(private raceRankingService: RaceRankingService,
               public _paginatorCoursing: MatPaginator,
-              private _sort: MatSort) {
+              private _sort: MatSort,
+              private dataService: DataService) {
     super();
     this._filterChange.subscribe(() => this._paginatorCoursing.pageIndex = 0);
 
@@ -184,8 +193,7 @@ export class RaceDataSource extends DataSource<any> {
       this._filterChange,
       this._paginatorCoursing.page
     ];
-    var year = new Date().getFullYear();
-    this.raceRankingService.getAllRaces('a', 'Rüde', String(year-1));
+    this.raceRankingService.getAllRaces('a', 'Rüde', this.dataService.selectedYear);
     return Observable.merge(...displayDataChanges).map(() => {
       // Filter data
       this.filteredData = this.raceRankingService.data.slice().filter((raceResult: Raceresult) => {

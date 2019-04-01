@@ -94,6 +94,7 @@ import {RaceRankingService} from "./services/RaceRankingService/race-ranking.ser
 import { RaceDetailDialogComponent } from './pages/racing/dialogs/race-detail-dialog/race-detail-dialog.component';
 import {RaceDetailService} from "./services/RaceRankingService/race.detail.service";
 import {RaceDetailsTableComponent} from "./pages/racing/race-details-table/race-details-table.component";
+import {DataService} from "./services/DataService/dataservice";
 
 const appRoutes: Routes = [
   {path: 'coursing', component: CoursingComponent},
@@ -198,7 +199,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [ RaceDetailDialogComponent, CoursingDetailDialogComponent ,TournamentDeleteDialogComponent, TournamentEditDialogComponent, DogDeleteDialogComponent, DogEditDialogComponent, JudgeDeleteDialogComponent, JudgeEditComponent, OwnerDeleteDialogComponent, OwnerEditDialogComponent, ClubDeleteDialogComponent, ClubEditDialogComponent, BreederDeleteDialogComponent,BreederEditDialogComponent, DogDialogComponent,PasswordDialogComponent, OwnerDialogComponent, TournamentDialogComponent, BreederDialogComponent, ClubDialogComponent, JudgeDialogComponent ],
-  providers: [RaceDetailService, RaceRankingService, CoursingDetailService ,ApiService ,RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService],
+  providers: [RaceDetailService, RaceRankingService, CoursingDetailService ,ApiService ,RaceService, NativeDateAdapter, SearchService, CoursingService, TournamentDogService, DogService, CanActivateViaAuthGuard, AuthService, JudgeService, BreederService, ClubService, OwnerService, TournamentService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
