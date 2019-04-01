@@ -20,7 +20,7 @@ export class RacingComponent implements OnInit {
 
 
 
-
+  // Test
   displayedColumns = ['position', 'punkte', 'name', 'besitzer', 'gesamtteilnahme', 'inwertung'];
   dataSourceRace: RaceDataSource | null;
   whippetImg = 'assets/img/whippet_grau.png';
